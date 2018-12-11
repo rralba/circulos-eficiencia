@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Proyect;
 use Illuminate\Http\Request;
 
-class ProyectController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProyectController extends Controller
      */
     public function index()
     {
-        $proyects = proyect::paginate();
-        return view('proyects.index', compact('proyects'));
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class ProyectController extends Controller
      */
     public function create()
     {
-        return view('proyects.create');
+        //
     }
 
     /**
@@ -36,56 +34,51 @@ class ProyectController extends Controller
      */
     public function store(Request $request)
     {
-        $proyect = Proyect::create($request->all());
-        return redirect()->route('proyects.edit', $proyect->id_py)
-        ->with('info', 'Proyecto guardado con exito');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Proyect  $proyect
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Proyect $proyect)
+    public function show($id)
     {
-        return view('proyects.show', compact('proyect'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Proyect  $proyect
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proyect $proyect)
+    public function edit($id)
     {
-        return view('proyects.edit', compact('proyect'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Proyect  $proyect
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proyect $proyect)
+    public function update(Request $request, $id)
     {
-        $proyect->update($request->all());
-        return redirect()->route('proyects.edit', $proyect->id_py)
-        ->with('info', 'Proyecto actualizado con exito');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Proyect  $proyect
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proyect $proyect)
+    public function destroy($id)
     {
-        $proyect->delete();
-        return back()->with('info', 'Eliminado correctamente');
+        //
     }
 }
