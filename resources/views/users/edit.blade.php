@@ -6,11 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Proyecto
+                    Usuarios
                 </div>
                 <div class="card-body">     
-                {!! Form::open(['route' => 'proyects.store']) !!}
-                    @include('proyects.partials.form')
+                {!! Form::model($User, ['route' => ['users.update', $User->id],
+                'method' => 'PUT']) !!}
+                    @include('users.partials.form')
                 {!! Form::close() !!}
                 </div>
             </div>

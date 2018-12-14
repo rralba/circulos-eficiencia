@@ -8,7 +8,7 @@
                 <div class="card-header">
                     Proyecto
                 </div>
-                <div class="card-body">
+                <div class="card-body">     
                     <p><strong>Proyecto</strong> {{ $proyect->proyecto }}</p>
                     <p><strong>Fecha de registro</strong> {{ $proyect->fecha_reg }}</p>
                     <p><strong>Nivel</strong> {{ $proyect->nivel }}</p>

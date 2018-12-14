@@ -37,7 +37,7 @@ class ProyectController extends Controller
     public function store(Request $request)
     {
         $proyect = Proyect::create($request->all());
-        return redirect()->route('proyects.edit', $proyect->id_py)
+        return redirect()->route('proyects.edit', $proyect->id)
         ->with('info', 'Proyecto guardado con exito');
     }
 
@@ -73,7 +73,7 @@ class ProyectController extends Controller
     public function update(Request $request, Proyect $proyect)
     {
         $proyect->update($request->all());
-        return redirect()->route('proyects.edit', $proyect->id_py)
+        return redirect()->route('proyects.edit', $proyect->id)
         ->with('info', 'Proyecto actualizado con exito');
     }
 

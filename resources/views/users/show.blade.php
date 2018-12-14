@@ -6,15 +6,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Proyecto
+                    Usuarios
                 </div>
                 <div class="card-body">     
-                {!! Form::open(['route' => 'proyects.store']) !!}
-                    @include('proyects.partials.form')
-                {!! Form::close() !!}
+                    <p><strong>Nombre</strong> {{ $User->name }}</p>
+                    <p><strong>Email</strong> {{ $User->email }}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection 
+@endsection    

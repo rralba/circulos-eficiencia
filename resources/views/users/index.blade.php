@@ -6,53 +6,43 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Proyectos
-                    @can('proyects.create')
-                        <a href="{{ route('proyects.create') }}" 
-                        class="btn btn-sm btn-primary float-right">
-                            Crear
-                        </a>
-                    @endcan
+                    Usuarios
                 </div>
                 <div class="card-body">
                    <table class="table table-striped table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th width="10px">ID</th>
-                                <th width="400px">Nombre</th>
-                                <th>Fecha de Registro</th>
-                                <th>Nivel</th>
-                                <th>Departamento</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($proyects as $proyect)
+                            @foreach($Users as $user)
                                 <tr>
-                                    <td>{{ $proyect->id }}</td>
-                                    <td>{{ $proyect->proyecto }}</td>
-                                    <td>{{ $proyect->fecha_reg }}</td>
-                                    <td>{{ $proyect->nivel }}</td>
-                                    <td>{{ $proyect->depto }}</td>
-                                        @can('proyects.show')
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                        @can('users.show')
                                         <td width="10px">
-                                            <a  href="{{ route('proyects.show', $proyect->id) }}"
+                                            <a  href="{{ route('users.show', $user->id) }}"
                                             class="btn btn-sm btn-primary">
                                                 Ver
                                             </a>
                                         </td>
                                         @endcan
-                                        @can('proyects.edit')
+                                        @can('users.edit')
                                         <td width="10px">
-                                            <a href="{{ route('proyects.edit', $proyect->id) }}"
+                                            <a href="{{ route('users.edit', $user->id) }}"
                                             class="btn btn-sm btn-primary">
                                                 Editar
                                             </a>
                                         </td>
                                         @endcan
-                                        @can('proyects.destroy')
+                                        @can('users.destroy')
                                         <td width="10px">
-                                            {!! Form::open(['route' => ['proyects.destroy', $proyect->id],
+                                            {!! Form::open(['route' => ['users.destroy', $user->id],
                                             'method' => 'delete']) !!} 
                                                 <button class="btn btn-sm btn-danger">
                                                     Eliminar
@@ -64,7 +54,7 @@
                             @endforeach
                         </tbody>
                    </table>
-                   {{ $proyects->render() }}
+                   {{ $Users->render() }}
                 </div>
             </div>
         </div>
