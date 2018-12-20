@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProyectsTable extends Migration
+class CreateCanceladosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateProyectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proyects', function (Blueprint $table) {
-            $table->increments('id')->unique();
+        Schema::create('cancelados', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('cancelados_id')->unsigned();
             $table->string('proyecto',150);
             $table->date('fecha_reg');
             $table->enum('nivel',['0','1','2'])->default('0')->nullable();
@@ -26,6 +27,7 @@ class CreateProyectsTable extends Migration
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
             $table->decimal('ahorro_anual_proy',10,0)->nullable();
+            $table->foreign('cancelados_id')->references('id')->on('proyects');
             $table->timestamps();
         });
     }
@@ -37,6 +39,6 @@ class CreateProyectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyects');
+        Schema::dropIfExists('cancelados');
     }
 }
