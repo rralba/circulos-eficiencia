@@ -63,4 +63,32 @@ Route::delete('proyects/{proyect}', 'ProyectController@destroy')->name('proyects
 ->middleware('permission:proyects.destroy');
 Route::get('proyects/{proyect}/edit', 'ProyectController@edit')->name('proyects.edit')
 ->middleware('permission:proyects.edit');
+//integrantes
+Route::get('integrants/create', 'IntegrantController@create')->name('integrants.create')
+->middleware('permission:integrants.create');
+Route::put('integrants/{integrant}', 'IntegrantController@edit')->name('integrants.edit')
+->middleware('permission:integrants.edit');
+Route::delete('integrants/{integrant}', 'IntegrantController@destroy')->name('integrants.destroy')
+->middleware('permission:integrants.destroy');
+//beneficios
+Route::get('beneficios', 'BeneficioController@index')->name('beneficios.index')
+->middleware('permission:beneficios.index');
+Route::get('beneficios/create', 'BeneficioController@create')->name('beneficios.create')
+->middleware('permission:beneficios.create');
+Route::get('beneficios/{beneficio}', 'BeneficioController@show')->name('beneficios.show')
+->middleware('permission:beneficios.show');
+Route::get('beneficios/{beneficio}/edit', 'BeneficioController@edit')->name('beneficios.edit')
+->middleware('permission:beneficios.edit');
+//cancelados
+Route::get('cancelados', 'CanceladoController@index')->name('cancelados.index')
+->middleware('permission:cancelados.index');
+Route::get('cancelados/{cancelado}', 'CanceladoController@show')->name('cancelados.show')
+->middleware('permission:cancelados.show');
+Route::get('cancelados/{cancelado}/edit', 'CanceladoController@edit')->name('cancelados.edit')
+->middleware('permission:cancelados.edit');
+//universo
+Route::get('universo/create', 'UniversoController@create')->name('universo.create')
+->middleware('permission:universo.create');
+Route::get('universo/{universo}', 'UniversoController@show')->name('universo.show')
+->middleware('permission:universo.show');
 });

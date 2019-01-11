@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Proyect;
+use App\integrant;
 use Illuminate\Http\Request;
+use DB;
 
 class ProyectController extends Controller
 {
@@ -49,10 +51,17 @@ class ProyectController extends Controller
      */
     public function show(Proyect $proyect)
     {
-        return view('proyects.show', compact('proyect'));
+       return view('proyects.show', compact('proyect'));
     }
-
-    /**
+    public function integrant()
+    {
+        $integrant=DB::table('integrants')
+        ->join('universo','universo.ficha','=','integrants.integrant_ficha')
+        ->select('integrants.ficha','universo.nombre','univreso.depto','universo.cia','integrants.rol')
+        ->get();
+        return view('proyects.show', compact('integrant'));
+    }
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Proyect  $proyect

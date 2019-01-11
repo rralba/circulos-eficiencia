@@ -85,5 +85,69 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'proyects.destroy',
             'description'   =>  'Eliminar cualquier proyecto del sistema',
         ]);
+        //integrantes
+        Permission::create([
+            'name'          =>  'Crear integrantes',
+            'slug'          =>  'integrants.create',
+            'description'   =>  'Crear integrantes de un proyecto',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar integrantes',
+            'slug'          =>  'integrants.edit',
+            'description'   =>  'Editar integrantes de un proyecto',
+        ]);
+        Permission::create([
+            'name'          =>  'Eliminar integrantes',
+            'slug'          =>  'integrants.destroy',
+            'description'   =>  'Eliminar integrantes de un proyecto',
+        ]);
+        //beneficio
+        Permission::create([
+            'name'          =>  'Navega beneficios',
+            'slug'          =>  'beneficios.index',
+            'description'   =>  'Navega beneficios del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver beneficios',
+            'slug'          =>  'beneficios.show',
+            'description'   =>  'Ver beneficios del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Crear beneficios',
+            'slug'          =>  'beneficios.create',
+            'description'   =>  'Crear beneficios del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar beneficios',
+            'slug'          =>  'beneficios.edit',
+            'description'   =>  'Editar beneficios del sistema',
+        ]);
+        //cancelados
+        Permission::create([
+            'name'          =>  'Navega cancelados',
+            'slug'          =>  'cancelados.index',
+            'description'   =>  'Navega proyectos cancelados del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver cancelados',
+            'slug'          =>  'cancelados.show',
+            'description'   =>  'Ver proyectos cancelados del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar cancelados',
+            'slug'          =>  'cancelados.edit',
+            'description'   =>  'Editar proyectos cancelados del sistema',
+        ]);
+        //universo
+        Permission::create([
+            'name'          =>  'Ver universo',
+            'slug'          =>  'universo.show',
+            'description'   =>  'Ver universo del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Crear universo',
+            'slug'          =>  'universo.create',
+            'description'   =>  'Crear universo del sistema',
+        ]);
     }
 }
