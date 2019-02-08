@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUniversoTable extends Migration
+class CreateEmpleadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateUniversoTable extends Migration
      */
     public function up()
     {
-        Schema::create('universo', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('ficha')->unique();
+        Schema::create('empleados', function (Blueprint $table) {
+            $table->integer('id')->unique()->unsigned();
             $table->string('nombre',150);
             $table->string('posicion',45);
             $table->string('depto',45);
@@ -33,6 +32,6 @@ class CreateUniversoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universo');
+        Schema::dropIfExists('empleados');
     }
 }

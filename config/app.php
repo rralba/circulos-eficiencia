@@ -177,6 +177,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        Sineld\BladeSet\BladeSetServiceProvider::class,
     ],
 
     /*

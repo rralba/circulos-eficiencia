@@ -14,8 +14,8 @@ class CreateCanceladosTable extends Migration
     public function up()
     {
         Schema::create('cancelados', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('cancelados_id')->unsigned();
+            $table->integer('id')->unique()->unsigned()->increments();
+            $table->integer('proyect_id')->unique()->unsigned();
             $table->string('proyecto',150);
             $table->date('fecha_reg');
             $table->enum('nivel',['0','1','2'])->default('0')->nullable();
@@ -27,8 +27,8 @@ class CreateCanceladosTable extends Migration
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
             $table->decimal('ahorro_anual_proy',10,0)->nullable();
-            $table->foreign('cancelados_id')->references('id')->on('proyects');
             $table->timestamps();
+            $table->foreign('proyect_id')->references('id')->on('proyects');
         });
     }
 

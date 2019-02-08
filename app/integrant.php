@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class integrant extends Model
 {
-    protected $fillable = [
-        'ficha', 'rol',
-    ];
+  protected $fillable = [
+    'proyect_id','empleado_id','rol'
+  ];
 }

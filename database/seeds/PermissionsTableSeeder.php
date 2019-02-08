@@ -138,16 +138,16 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'cancelados.edit',
             'description'   =>  'Editar proyectos cancelados del sistema',
         ]);
-        //universo
+        //empleados
         Permission::create([
-            'name'          =>  'Ver universo',
-            'slug'          =>  'universo.show',
-            'description'   =>  'Ver universo del sistema',
+            'name'          =>  'Ver empleados',
+            'slug'          =>  'empleados.show',
+            'description'   =>  'Ver empleados del sistema',
         ]);
         Permission::create([
-            'name'          =>  'Crear universo',
-            'slug'          =>  'universo.create',
-            'description'   =>  'Crear universo del sistema',
+            'name'          =>  'Crear empleados',
+            'slug'          =>  'empleados.create',
+            'description'   =>  'Crear empleados del sistema',
         ]);
     }
 }

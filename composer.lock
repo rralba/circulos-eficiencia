@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76d55244939b33889c62e029a7f44557",
+    "content-hash": "4083bbd75383125469da71beedcb9c69",
     "packages": [
         {
             "name": "caffeinated/shinobi",
@@ -2132,6 +2132,57 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "sineld/bladeset",
+            "version": "v5.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sineld/bladeset.git",
+                "reference": "1ea2012fb1703c7387f4f74d8e69fbf424ab0f28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sineld/bladeset/zipball/1ea2012fb1703c7387f4f74d8e69fbf424ab0f28",
+                "reference": "1ea2012fb1703c7387f4f74d8e69fbf424ab0f28",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.3",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sineld\\BladeSet\\BladeSetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sinan Eldem",
+                    "email": "sineld@gmail.com"
+                }
+            ],
+            "description": "A very simple blade extension which allows variables to be set within blade templates.",
+            "homepage": "https://github.com/sineld/bladeset",
+            "keywords": [
+                "blade",
+                "bladeset",
+                "laravel",
+                "template"
+            ],
+            "time": "2018-03-07T07:30:53+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -45,7 +45,3 @@
 <div class="form-group">
     {{ Form::submit('Guardar', ['class' => 'btn btn-sm btm-primary']) }}
 </div>
-<div class="form-group">
-    {{ Form::label('ficha', 'Numero de ficha') }}
-    {{ Form::text('ficha', null, ['class' => 'form-control']) }}
-</div>

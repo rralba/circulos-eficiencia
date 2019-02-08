@@ -14,17 +14,15 @@ class CreateBeneficiosTable extends Migration
     public function up()
     {
         Schema::create('beneficios', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('beneficios_id')->unsigned();
+            $table->integer('id')->unique()->unsigned()->increments();
+            $table->integer('proyect_id')->unique()->unsigned();
             $table->date('fecha_gen');
             $table->decimal('n_pago',2)->nullable();
             $table->decimal('ahorro');
             $table->enum('status',['1','0'])->default('0');
             $table->date('mes_pago')->nullable();
             $table->timestamps();
-        });    
-            Schema::table('beneficios', function (Blueprint $table) {    
-            $table->foreign('beneficios_id')->references('id')->on('proyects');
+            $table->foreign('proyect_id')->references('id')->on('proyects');
         });
     }
 
