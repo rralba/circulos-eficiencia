@@ -1,9 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-          <div class="col-md-12">
+
+    <div id="wrapper" class="d-flex" >
+        <!-- Sidebar -->
+        <div class="bg-light border" id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+                <a href="{{ url('/home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
+                @can('integrants.edit')
+                <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">integrantes</a>
+                @endcan
+                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+            </div>
+        </div>
+        <div class="container-fluid">
+          <div class="">   
             <div class="card">
                 <div class="card-header">
                        Proyecto
@@ -78,7 +92,6 @@
                 </div>
                 </div>
             </div>
-        </div>
         <br>
         <div class="col-md-12">
             <div class="card">
@@ -156,6 +169,9 @@
                     </table>
             </div>
         </div>
-    </div>  
+    </div>
+  </div>  
 </div>
+
+
 @endsection    

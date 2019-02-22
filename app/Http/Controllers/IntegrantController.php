@@ -19,6 +19,18 @@ class IntegrantController extends Controller
     {
         return view('integrants.create');
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $integrant = integrant::create($request->all());
+        return redirect()->route('integrants.edit', $integrant->proyect_id)
+        ->with('info', 'integrantes guardados con exito');
+    }
 
      /**
      * Show the form for editing the specified resource.
@@ -26,9 +38,9 @@ class IntegrantController extends Controller
      * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
-    public function edit(integrant $integrant)
+    public function edit(Proyect $proyect, integrant $integrant)
     {
-        return view('integrants.edit', compact('integrant'));
+        return view('integrants.edit', compact('proyect', 'integrant'));
     }
 
     /**
@@ -38,9 +50,9 @@ class IntegrantController extends Controller
      * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, integrant $integrant)
+    public function update(Request $request)
     {
-        $integrant->update($request->all());
+        $proyect->update($request->all());
         return redirect()->route('proyects.show', $proyect->id)
         ->with('info', 'Proyecto actualizado con exito');
     }
@@ -51,9 +63,9 @@ class IntegrantController extends Controller
      * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
-    public function destroy(empleado $empleado)
+    public function destroy(integrant $integrant)
     {
-        $empleado->delete();
+        $integrant->delete();
         return back()->with('info', 'Eliminado correctamente');
     }
 }

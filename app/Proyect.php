@@ -13,6 +13,10 @@ class Proyect extends Model
      public function empleados()
         {
             return $this->belongsToMany(empleado::class, 'integrants', 'proyect_id', 'empleado_id')
-            ->withPivot('rol');
+            ->withPivot('proyect_id', 'empleado_id','rol');
         }
+    public function integrantes()
+    {
+      return $this->hasMany(integrant::class, 'proyect_id');
+    }
 }

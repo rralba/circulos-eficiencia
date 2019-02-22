@@ -51,7 +51,7 @@ class ProyectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Proyect $proyect)
-    { 
+    {   
        return view('proyects.show', compact('proyect'));
     }
     
@@ -65,6 +65,10 @@ class ProyectController extends Controller
     {
         return view('proyects.edit', compact('proyect'));
     }
+    public function editar(Proyect $proyect)
+    {
+        return view('proyects.editinteg', compact('proyect'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -74,7 +78,7 @@ class ProyectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Proyect $proyect)
-    {
+    {   
         $proyect->update($request->all());
         return redirect()->route('proyects.edit', $proyect->id)
         ->with('info', 'Proyecto actualizado con exito');

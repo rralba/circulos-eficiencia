@@ -23,7 +23,7 @@
                                 <th>Fecha de Registro</th>
                                 <th>Nivel</th>
                                 <th>Departamento</th>
-                                <th colspan="3">&nbsp;</th>
+                                <th colspan="3">&nbsp;</th> 
                             </tr>
                         </thead>
                         <tbody>

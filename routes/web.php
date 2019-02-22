@@ -66,11 +66,11 @@ Route::get('proyects/{proyect}/edit', 'ProyectController@edit')->name('proyects.
 //integrantes
 Route::get('integrants/create', 'IntegrantController@create')->name('integrants.create')
 ->middleware('permission:integrants.create');
-Route::get('integrants/{integrant}/edit', 'IntegrantController@edit')->name('integrants.edit')
+Route::get('proyects/{proyect}/editinteg', 'ProyectController@editar')->name('proyects.editinteg')
 ->middleware('permission:integrants.edit');
 Route::delete('integrants/{integrant}', 'IntegrantController@destroy')->name('integrants.destroy')
 ->middleware('permission:integrants.destroy');
-Route::get('integrants/{integrant}', 'IntegrantController@update')->name('integrants.update')
+Route::put('integrants/{integrant}', 'IntegrantController@update')->name('integrants.update')
 ->middleware('permission:integrants.edit');
 //beneficios
 Route::get('beneficios', 'BeneficioController@index')->name('beneficios.index')

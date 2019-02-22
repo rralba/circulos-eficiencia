@@ -12,6 +12,6 @@ class empleado extends Model
    public function proyects()
     {
       return $this->belongsToMany(Proyect::class, 'integrants', 'empleado_id', 'proyect_id')
-      ->withPivot('rol');
-    } 
+      ->withPivot('proyect_id', 'empleado_id', 'rol');
+    }
 }
