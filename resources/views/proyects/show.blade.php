@@ -8,7 +8,7 @@
             <div class="list-group list-group-flush">
                 <a href="{{ url('/home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
                 @can('integrants.edit')
-                <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">integrantes</a>
+                <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
                 @endcan
                 <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>

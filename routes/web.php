@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,15 +62,16 @@ Route::delete('proyects/{proyect}', 'ProyectController@destroy')->name('proyects
 ->middleware('permission:proyects.destroy');
 Route::get('proyects/{proyect}/edit', 'ProyectController@edit')->name('proyects.edit')
 ->middleware('permission:proyects.edit');
-//integrantes
-Route::get('integrants/create', 'IntegrantController@create')->name('integrants.create')
-->middleware('permission:integrants.create');
 Route::get('proyects/{proyect}/editinteg', 'ProyectController@editar')->name('proyects.editinteg')
 ->middleware('permission:integrants.edit');
-Route::delete('integrants/{integrant}', 'IntegrantController@destroy')->name('integrants.destroy')
-->middleware('permission:integrants.destroy');
-Route::put('integrants/{integrant}', 'IntegrantController@update')->name('integrants.update')
+Route::post('proyect', 'ProyectController@delete')->name('integrants.delete')
 ->middleware('permission:integrants.edit');
+Route::post('proyects', 'ProyectController@save')->name('integrants.save')
+->middleware('permission:integrants.edit');
+//integrantes
+Route::post('proyect/editinteg', 'ProyectController@add')->name('integrants.store')
+->middleware('permission:integrants.create');
+
 //beneficios
 Route::get('beneficios', 'BeneficioController@index')->name('beneficios.index')
 ->middleware('permission:beneficios.index');

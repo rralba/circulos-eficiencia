@@ -83,6 +83,26 @@ class ProyectController extends Controller
         return redirect()->route('proyects.edit', $proyect->id)
         ->with('info', 'Proyecto actualizado con exito');
     }
+    public function save(Request $request, Proyect $proyect)
+    {
+        $integrante = integrant::where('proyect_id', '=', $request->proyect_id)->first();
+        $integrante->empleado_id = $request->input('edit_id');
+        $integrante->rol = $request->input('country');
+        $integrante->save();
+        return redirect()->back();
+    }
+
+    public function delete(Request $request)
+    {
+        $data = $request->all();
+        $delete = integrant::where('id' ,$data['pin'])->delete();
+        return redirect()->back();
+    }
+
+    public function add(Request $request)
+    {
+        dd($request->all());
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -95,4 +115,5 @@ class ProyectController extends Controller
         $proyect->delete();
         return back()->with('info', 'Eliminado correctamente');
     }
+    
 }
