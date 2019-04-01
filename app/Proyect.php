@@ -19,13 +19,13 @@ class Proyect extends Model
     {
       return $this->hasMany(integrant::class, 'proyect_id');
     }
-    public function beneficios()
-    {
-        return $this->belongsToMany(beneficio::class, 'reconocimientos', 'proyect_id', 'beneficio_id')
-        ->withPivot('proyect_id', 'beneficio_id', 'beneficio_a', 'beneficio_b', 'beneficio_c', 'pago_total');
-    }
     public function reconocimientos()
     {
-      return $this->hasMany(reconocimiento::class, 'proyect_id');
+        return $this->belongsToMany(reconocimiento::class, 'beneficios', 'proyect_id', 'beneficio_id')
+        ->withPivot('proyect_id','beneficio_id','fecha_gen','beneficio','status','num_pago','mes_pago');
+    }
+    public function beneficios()
+    {
+      return $this->hasMany(beneficio::class, 'proyect_id');
     }
 }

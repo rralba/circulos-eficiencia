@@ -122,6 +122,11 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'beneficios.edit',
             'description'   =>  'Editar beneficios del sistema',
         ]);
+        Permission::create([
+            'name'          =>  'eliminar beneficios',
+            'slug'          =>  'beneficios.destroy',
+            'description'   =>  'eliminar beneficios del sistema',
+        ]);
         //cancelados
         Permission::create([
             'name'          =>  'Navega cancelados',
@@ -148,6 +153,32 @@ class PermissionsTableSeeder extends Seeder
             'name'          =>  'Crear empleados',
             'slug'          =>  'empleados.create',
             'description'   =>  'Crear empleados del sistema',
+        ]);
+        //reconocimientos
+        Permission::create([
+            'name'          =>  'Navega reconocimientos',
+            'slug'          =>  'reconocimientos.index',
+            'description'   =>  'Navega reconocimientos del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver reconocimientos',
+            'slug'          =>  'reconocimientos.show',
+            'description'   =>  'Ver reconocimientos del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Crear reconocimientos',
+            'slug'          =>  'reconocimientos.create',
+            'description'   =>  'Crear reconocimientos del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar reconocimientos',
+            'slug'          =>  'reconocimientos.edit',
+            'description'   =>  'Editar reconocimientos del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'eliminar reconocimientos',
+            'slug'          =>  'reconocimientos.destroy',
+            'description'   =>  'eliminar reconocimientos del sistema',
         ]);
     }
 }

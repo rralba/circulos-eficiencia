@@ -49,6 +49,11 @@
                             <a class="nav-link" href="{{ route('proyects.index') }}">Proyectos</a>
                         </li>
                         @endcan
+                        @can('beneficios.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('beneficios.index') }}">Beneficios</a>
+                        </li>
+                        @endcan
                         @can('users.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>

@@ -81,6 +81,8 @@ Route::get('beneficios/{beneficio}', 'BeneficioController@show')->name('benefici
 ->middleware('permission:beneficios.show');
 Route::get('beneficios/{beneficio}/edit', 'BeneficioController@edit')->name('beneficios.edit')
 ->middleware('permission:beneficios.edit');
+Route::get('beneficios/{beneficio}', 'BeneficioController@destroy')->name('beneficios.destroy')
+->middleware('permission:beneficios.destroy');
 //cancelados
 Route::get('cancelados', 'CanceladoController@index')->name('cancelados.index')
 ->middleware('permission:cancelados.index');
@@ -93,4 +95,8 @@ Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.cre
 ->middleware('permission:empleados.create');
 Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.show')
 ->middleware('permission:empleados.show');
+
+//reconocimientos
+Route::get('reconocimientos', 'ReconocimientoController@index')->name('reconocimientos.index')
+->middleware('permission:reconocimientos.index');
 });
