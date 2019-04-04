@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCanceladosTable extends Migration
+class CreateProydatosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateCanceladosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cancelados', function (Blueprint $table) {
-            $table->integer('id')->unique()->unsigned()->increments();
-            $table->integer('proyect_id')->unique()->unsigned();
+        Schema::create('proydatos', function (Blueprint $table) {
+            $table->integer('id')->unique()->increments()->unsigned();
             $table->string('proyecto',150);
             $table->date('fecha_reg');
             $table->enum('nivel',['0','1','2'])->default('0')->nullable();
@@ -26,9 +25,14 @@ class CreateCanceladosTable extends Migration
             $table->decimal('comite',2,0)->nullable();
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
-            $table->decimal('ahorro_anual_proy',10,0)->nullable();
+            $table->decimal('ahorro_anual_proy',9,0)->nullable();
+            $table->integer('atrib1')->nullable();
+            $table->string('atrib2',15)->nullable();
+            $table->decimal('atrib3',10,0)->nullable();
+            $table->integer('atrib4')->nullable();
+            $table->string('atrib5',15)->nullable();
+            $table->decimal('atrib6',10,0)->nullable();
             $table->timestamps();
-            $table->foreign('proyect_id')->references('id')->on('proyects');
         });
     }
 
@@ -39,6 +43,6 @@ class CreateCanceladosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cancelados');
+        Schema::dropIfExists('proydatos');
     }
 }

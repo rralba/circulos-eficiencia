@@ -21,6 +21,10 @@ class CreateEmpleadosTable extends Migration
             $table->decimal('cia',4,0);
             $table->string('direccion',45);
             $table->decimal('nivel',2,0);
+            $table->decimal('atrib1')->nullable();
+            $table->decimal('atrib2')->nullable();
+            $table->string('atrib3')->nullable();
+            $table->string('atrib4')->nullable();
             $table->timestamps();
         });
     }

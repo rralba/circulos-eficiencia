@@ -14,12 +14,17 @@ class CreateReconocimientosTable extends Migration
     public function up()
     {
         Schema::create('reconocimientos', function (Blueprint $table) {
-            $table->integer('id')->unique()->unsigned()->increments();
-            $table->decimal('beneficio_a')->nullable();
-            $table->decimal('beneficio_b')->nullable();
-            $table->decimal('beneficio_c')->nullable();
-            $table->decimal('pago_total');
+            $table->integer('beneficio_id')->unsigned();
+            $table->integer('empleado');
+            $table->decimal('pago',9,0);
+            $table->date('mes_pago');
+            $table->decimal('num_pago',2);
             $table->timestamps();
+            $table->decimal('atrib1')->nullable();
+            $table->decimal('atrib2')->nullable();
+            $table->string('atrib3')->nullable();
+            $table->string('atrib4')->nullable();
+            $table->foreign('beneficio_id')->references('idbeneficio')->on('proyects');
         });
     }
 
