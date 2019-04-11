@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Proyect;
 use App\integrant;
 use App\empleado;
+use App\proydato;
+use App\reconocimiento;
 use Illuminate\Http\Request;
 use DB;
 

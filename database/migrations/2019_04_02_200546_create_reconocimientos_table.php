@@ -18,12 +18,11 @@ class CreateReconocimientosTable extends Migration
             $table->integer('empleado');
             $table->decimal('pago',9,0);
             $table->date('mes_pago');
-            $table->decimal('num_pago',2);
-            $table->timestamps();
             $table->decimal('atrib1')->nullable();
             $table->decimal('atrib2')->nullable();
             $table->string('atrib3')->nullable();
             $table->string('atrib4')->nullable();
+            $table->timestamps();
             $table->foreign('beneficio_id')->references('idbeneficio')->on('proyects');
         });
     }

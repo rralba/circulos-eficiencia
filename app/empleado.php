@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class empleado extends Model
 {
    protected $fillable = [
-        'nombre','posicion','depto','cia','direccion','nivel'
+        'id','nombre','posicion','depto','cia','direccion','nivel'
    ]; 
    public function proyects()
     {
-      return $this->belongsToMany(Proyect::class, 'integrants', 'empleado_id', 'proyect_id')
-      ->withPivot('id','proyect_id', 'empleado_id', 'rol');
+      return $this->belongsToMany(proydato::class, 'integrants', 'empleado_id', 'proydato_id')
+      ->withPivot('id','proydato_id', 'empleado_id', 'rol');
     }
 }

@@ -26,6 +26,7 @@ class CreateProydatosTable extends Migration
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
             $table->decimal('ahorro_anual_proy',9,0)->nullable();
+            $table->enum('status_proy',['0','1'])->default('1');
             $table->integer('atrib1')->nullable();
             $table->string('atrib2',15)->nullable();
             $table->decimal('atrib3',10,0)->nullable();

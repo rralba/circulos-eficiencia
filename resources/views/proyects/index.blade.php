@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach($proyects as $proyect)
                                 <tr>
-                                    <td>{{ $proyect->id }}</td>
+                                    <td>{{ $proyect->proydato_id }}</td>
                                     <td>{{ $proyect->proyecto }}</td>
                                     <td>{{ $proyect->fecha_reg }}</td>
                                     <td>{{ $proyect->nivel }}</td>
@@ -64,7 +64,7 @@
                             @endforeach
                         </tbody>
                    </table>
-                   {{ $proyects->render() }}
+                   
                 </div>
             </div>
         </div>

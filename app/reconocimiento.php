@@ -11,7 +11,6 @@ class reconocimiento extends Model
     ];
     public function proy()
     {
-        return $this->belongsToMany(Proyect::class, 'beneficios', 'beneficio_id', 'proyect_id')
-        ->withPivot('proyect_id','beneficio_id','fecha_gen','beneficio','status','num_pago','mes_pago');
+      return $this->hasOne(proyect::class, 'idbeneficio', 'beneficio_id');
     }
 }
