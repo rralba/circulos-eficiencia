@@ -69,11 +69,11 @@ Route::post('proyect', 'ProyectController@delete')->name('integrants.delete')
 Route::post('proyects', 'ProyectController@save')->name('integrants.save')
 ->middleware('permission:integrants.edit');
 //integrantes
-Route::post('proyect/editinteg', 'ProyectController@add')->name('integrants.store')
+Route::post('proyects/editinteg', 'ProyectController@add')->name('integrants.store')
 ->middleware('permission:integrants.create');
 
 //beneficios
-Route::get('beneficios', 'BeneficioController@index')->name('beneficios.index')
+Route::get('proyects/{proyect}/beneficios', 'ProyectController@beneindex')->name('beneficios.index')
 ->middleware('permission:beneficios.index');
 Route::get('beneficios/create', 'BeneficioController@create')->name('beneficios.create')
 ->middleware('permission:beneficios.create');
@@ -97,6 +97,6 @@ Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.s
 ->middleware('permission:empleados.show');
 
 //reconocimientos
-Route::get('reconocimientos', 'ReconocimientoController@index')->name('reconocimientos.index')
+Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');
 });

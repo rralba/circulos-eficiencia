@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div id="wrapper" class="d-flex" >
         <!-- Sidebar -->
         <div class="bg-light border" id="sidebar-wrapper">
@@ -10,26 +9,22 @@
                 @can('integrants.edit')
                 <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
                 @endcan
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                @can('beneficios.index')
+                <a href="{{ route('beneficios.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Beneficios</a>
+                @endcan
+                @can('reconocimientos.index')
+                <a href="{{ route('reconocimientos.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">reconocimientos</a>
+                @endcan
+                @can('proceso.index')
+                <a href="#" class="list-group-item list-group-item-action bg-light">Proceso de Pago</a>
+                @endcan
                 <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>
         <div class="container-fluid">
           <div class="">   
+                <h1>{{ $proyect->proyecto }}</h1>  
             <div class="card">
-                <div class="card-header">
-                       Proyecto
-                </div>
-                <div class="card-group">
-                    <div class="card">   
-                        <h5>
-                        <a>Nombre del Proyecto</a> &nbsp;
-                        <small class="text-muted">{{ $proyect->proyecto }}</small>
-                        </h5>
-                    </div>
-                </div>
                 <div class="card-group">
                     <div class="card">
                         <h5>
@@ -93,85 +88,36 @@
                 </div>
             </div>
         <br>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                      Integrantes
-                </div>
-                <div class="card-body">   
-                    <table class="table table-striped table-hover" style="width:100%">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Departamento</th>
-                            <th>Posicion</th>
-                            <th>Nivel</th>
-                            <th>Rol</th>
-                            <th>Direccion</th>
-                            <th>Compañia</th>
-                        </tr>
-                    </thead>
-                    <tbody>  
-                            @foreach($proyect->empleados as $integrante) 
-                                <tr>
-                                    <td>{{ $integrante->id }}</td>
-                                    <td>{{ $integrante->nombre }}</td>
-                                    <td>{{ $integrante->depto }}</td>
-                                    <td>{{ $integrante->posicion }}</td>
-                                    <td>{{ $integrante->nivel }}</td>
-                                    <td>{{ $integrante->pivot->rol }}</td> 
-                                    <td>{{ $integrante->direccion }}</td>
-                                    <td>{{ $integrante->cia }}</td> 
-                                </tr>
-                            @endforeach
-                            {{--@foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->id }}</td>
-                                </tr>            
-                            @endforeach
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->nombre }}</td>
-                                </tr>   
-                            @endforeach     
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->depto }}</td>
-                                </tr>    
-                            @endforeach     
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->posicion }}</td>
-                                </tr>    
-                            @endforeach     
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->nivel }}</td>
-                                </tr>    
-                            @endforeach     
-                            @foreach ($proyect->integrantes as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->rol }}</td>
-                                </tr>    
-                            @endforeach     
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->direccion }}</td>
-                                </tr>    
-                            @endforeach     
-                            @foreach ($proyect->empleados as $Integrant)
-                                <tr>
-                                    <td>{{ $Integrant->cia }}</td>
-                                </tr>    
-                            @endforeach--}}     
-                    </tbody>
-                    </table>
-            </div>
+        <div class="col-md-12">  
+            <table class="table table-striped table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Departamento</th>
+                        <th>Posicion</th>
+                        <th>Nivel</th>
+                        <th>Rol</th>
+                        <th>Direccion</th>
+                        <th>Compañia</th>
+                    </tr>
+                </thead>
+            <tbody>  
+                @foreach($proyect->empleados as $integrante) 
+                    <tr>
+                        <td>{{ $integrante->id }}</td>
+                        <td>{{ $integrante->nombre }}</td>
+                        <td>{{ $integrante->depto }}</td>
+                        <td>{{ $integrante->posicion }}</td>
+                        <td>{{ $integrante->nivel }}</td>
+                        <td>{{ $integrante->pivot->rol }}</td> 
+                        <td>{{ $integrante->direccion }}</td>
+                        <td>{{ $integrante->cia }}</td> 
+                    </tr>
+                @endforeach
+            </tbody>
+            </table>
         </div>
     </div>
-  </div>  
-</div>
-
-
+</div>  
 @endsection    

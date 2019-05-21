@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Proyect;
 use App\integrant;
 use App\empleado;
+use App\beneficio;
+use App\reconocimiento;
 use Illuminate\Http\Request;
 use DB;
 
@@ -101,9 +103,40 @@ class ProyectController extends Controller
 
     public function add(Request $request)
     {
-        dd($request->all());
+        $integrant = integrant::create($request->all());
+        return redirect()->route('proyects.editinteg', $proyect->id)
+        ->with('info', 'Proyecto guardado con exito');
+        // dd($request->all());
     }
-
+    public function recoindex(Proyect $proyect, Request $request)
+    {
+        // $reconocimientos = reconocimiento::paginate();
+        // return view('proyects.reconocimientos', compact('reconocimientos', 'proyect', 'request'));
+        // $prueba = $request;
+        // $num = $proyect->id;
+        // $data = Proyect::where('proyects.id', '=', '$num')
+        $data = db::table('proyects')
+        ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+        ->join('reconocimientos', 'beneficios.id', '=', 'reconocimientos.beneficio_id')
+        ->select('reconocimientos.*', 'beneficios.id', 'proyects.id')
+        ->get();
+        return view('proyects.reconocimientos', compact('data', 'proyect', 'request'));
+        // $data = DB::table('proyects')
+        // ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+        // ->join('reconocimientos', 'beneficios.id', '=', 'reconocimientos.beneficio_id')
+        // ->get();
+        // $reco = reconocimiento::where('proyect_id', '=', $request);
+        // return view('proyects.reconocimientos', compact('proyect', 'beneficio'));
+        // dd($reconocimientos);
+        // var_dump($data); die();
+        // dd($data);
+    }
+    public function beneindex(Proyect $proyect, Request $request)
+    {
+        $beneficios = beneficio::paginate();
+        return view('proyects.beneficios', compact('beneficios', 'proyect', 'request'));
+        // dd($request->all());  
+    }   
     /**
      * Remove the specified resource from storage.
      *

@@ -2,21 +2,20 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    Proyectos
+    
+      
+            
+                <br>
                     @can('proyects.create')
                         <a href="{{ route('proyects.create') }}" 
                         class="btn btn-sm btn-primary float-right">
                             Crear
                         </a>
                     @endcan
-                </div>
-                <div class="card-body">
+                <br>
+                
                    <table class="table table-striped table-hover">
-                        <thead class="thead-dark">
+                        <thead class="">
                             <tr>
                                 <th width="10px">ID</th>
                                 <th width="400px">Nombre</th>
@@ -65,9 +64,9 @@
                         </tbody>
                    </table>
                    {{ $proyects->render() }}
-                </div>
-            </div>
-        </div>
-    </div>
+                
+            
+       
+    
 </div>
 @endsection

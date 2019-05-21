@@ -26,6 +26,7 @@ class CreateProyectsTable extends Migration
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
             $table->decimal('ahorro_anual_proy',10,0)->nullable();
+            $table->enum('proy_status',['0','1'])->default('1');
             $table->timestamps();
         });
     }
