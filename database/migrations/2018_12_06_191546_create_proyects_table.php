@@ -14,10 +14,10 @@ class CreateProyectsTable extends Migration
     public function up()
     {
         Schema::create('proyects', function (Blueprint $table) {
-            $table->integer('id')->unique()->increments()->unsigned();
+            $table->integer('id')->increments()->unique()->unsigned();
             $table->string('proyecto',150);
             $table->date('fecha_reg');
-            $table->enum('nivel',['0','1','2'])->default('0')->nullable();
+            $table->enum('nivel',['0','1','2'])->default('0');
             $table->string('depto',45);
             $table->text('asesor');
             $table->date('fecha_ini')->nullable();
@@ -26,7 +26,11 @@ class CreateProyectsTable extends Migration
             $table->text('valor')->nullable();
             $table->string('metodologia',15)->nullable();
             $table->decimal('ahorro_anual_proy',10,0)->nullable();
-            $table->enum('proy_status',['0','1'])->default('1');
+            $table->string('metrico_primario',150)->nulleable();
+            $table->string('metrico_secundario',150)->nulleable();
+            $table->string('empresa',10);
+            $table->enum('desc_proy',['0','1'])->default('0');
+            $table->enum('proy_status',['0','1','2'])->default('1');
             $table->timestamps();
         });
     }

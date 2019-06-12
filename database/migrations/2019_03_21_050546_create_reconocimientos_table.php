@@ -18,6 +18,8 @@ class CreateReconocimientosTable extends Migration
             $table->integer('beneficio_id')->unsigned();
             $table->integer('empleado')->unsigned();
             $table->decimal('pago',9,0);
+            $table->decimal('descuento',9,0)->default('0');
+            $table->string('concepto_desc',100)->nullable();
             $table->timestamps();
             $table->foreign('beneficio_id')->references('id')->on('beneficios');
         });

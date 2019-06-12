@@ -14,10 +14,11 @@ class Integrants extends Migration
     public function up()
     {
         Schema::create('integrants', function (Blueprint $table) {
-        $table->integer('id')->unique()->unsigned()->incements();
+        $table->integer('id')->incements()->unique()->unsigned();
         $table->integer('proyect_id')->unsigned();
         $table->integer('empleado_id')->unsigned();
         $table->decimal('rol',1,0);
+        $table->enum('pago',['0','1'])->default('1');
         $table->timestamps();
         $table->foreign('proyect_id')->references('id')->on('proyects')->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('empleado_id')->references('id')->on('empleados');

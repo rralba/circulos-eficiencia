@@ -71,6 +71,10 @@ Route::post('proyects', 'ProyectController@save')->name('integrants.save')
 //integrantes
 Route::post('proyects/editinteg', 'ProyectController@add')->name('integrants.store')
 ->middleware('permission:integrants.create');
+Route::get('proyects/{beneficio}/beneficio', 'ProyectController@benedit')->name('beneficios.edit')
+->middleware('permission:beneficios.edit');
+Route::post('proyects/{beneficio}/beneficio', 'ProyectController@benupdate')->name('beneficios.update')
+->middleware('permission:beneficios.edit');
 
 //beneficios
 Route::get('proyects/{proyect}/beneficios', 'ProyectController@beneindex')->name('beneficios.index')
@@ -79,8 +83,7 @@ Route::get('beneficios/create', 'BeneficioController@create')->name('beneficios.
 ->middleware('permission:beneficios.create');
 Route::get('beneficios/{beneficio}', 'BeneficioController@show')->name('beneficios.show')
 ->middleware('permission:beneficios.show');
-Route::get('beneficios/{beneficio}/edit', 'BeneficioController@edit')->name('beneficios.edit')
-->middleware('permission:beneficios.edit');
+
 Route::get('beneficios/{beneficio}', 'BeneficioController@destroy')->name('beneficios.destroy')
 ->middleware('permission:beneficios.destroy');
 //cancelados
