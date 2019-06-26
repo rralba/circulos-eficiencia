@@ -14,7 +14,7 @@ class CreateReconocimientosTable extends Migration
     public function up()
     {
         Schema::create('reconocimientos', function (Blueprint $table) {
-            $table->integer('id')->increments()->unique();
+            $table->increments('id')->unique();
             $table->integer('beneficio_id')->unsigned();
             $table->integer('empleado')->unsigned();
             $table->decimal('pago',9,0);

@@ -79,7 +79,7 @@ Route::post('proyects/{beneficio}/beneficio', 'ProyectController@benupdate')->na
 //beneficios
 Route::get('proyects/{proyect}/beneficios', 'ProyectController@beneindex')->name('beneficios.index')
 ->middleware('permission:beneficios.index');
-Route::get('beneficios/create', 'BeneficioController@create')->name('beneficios.create')
+Route::POST('proyects/beneficios', 'ProyectController@addbenef')->name('beneficios.store')
 ->middleware('permission:beneficios.create');
 Route::get('beneficios/{beneficio}', 'BeneficioController@show')->name('beneficios.show')
 ->middleware('permission:beneficios.show');

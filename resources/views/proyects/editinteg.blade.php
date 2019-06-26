@@ -57,8 +57,11 @@
             <form action="{{ route('integrants.store') }}" method = "POST">
                {{ csrf_field() }}
               <div class="form-group">
+                <input type="hidden" id="proyect_id" name="proyect_id" value="{{ $proyect->id }}">
+              </div>
+              <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Id sap:</label>
-                  <input type="text" class="form-control" id="id" required>
+                  <input type="text" class="form-control" id="id" name="id" required>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Nombre:</label>
@@ -78,10 +81,10 @@
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Rol:</label>
-                  <select class="form-control" id="rol" required>
-                     <option value="1">1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
+                  <select class="form-control" id="rol" name="rol" required>
+                     <option value="1">Autor</option>
+                     <option value="2">Implementador A</option>
+                     <option value="3">Implementador B</option>
                   </select>
               </div>
               <div class="form-group">
@@ -113,61 +116,44 @@
        <form class="container" action="{{ route('integrants.save') }}" method = "post">
          {{ csrf_field() }}
          <input type="hidden" id="pin" name="pin">
-         <input type="hidden" id="proyect_id" name="proyect_id">
+         <input type="hidden" id="proy_id" name="proy_id">
           <div class="modal-body">
-               <div class="row">
-                  <div class="col clearfix">
-                   <div class="col-xs-2"><label><b>Id SAP</b></label></div>
-                   <div class="col-xs-4"><input class="form-control form-control-sm" id="edit_id" type="text" placeholder="Numero de ficha" name="edit_id" required></div>
-                  </div>
-                </div>
-             <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Nombre</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="fname" type="text" placeholder="Nombre de empleado" name="" required readonly>
-                </div>
-               </div>
-             </div>
-             <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Departamento</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="lname" type="text" placeholder="Departamento" name="" required readonly></div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Posicion</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="gender" type="text" placeholder="posicion" name="" required readonly></div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Nivel</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="email" type="email" placeholder="nivel" name="" required readonly></div>
-               </div>
-            </div>
-             <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Rol</b></label></div>
-                <div class="col-xs-4"><select class="form-control form-control-sm" id="country" placeholder="Rol" name="country" required>  
-                  <option>1</option>
-                  <option>2</option>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Id sap:</label>
+                  <input type="text" class="form-control" id="edit_id" name="edit_id" required>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Nombre:</label>
+                  <input type="text" class="form-control" id="fname" name="" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Departamento:</label>
+                  <input type="text" class="form-control" id="lname" name="" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Posicion:</label>
+                  <input type="text" class="form-control" id="gender" name="" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Nivel:</label>
+                  <input type="text" class="form-control" id="email" name="" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Rol:</label>
+                  <select class="form-control" id="country" name="country" required>
+                      <option value="1">Autor</option>
+                      <option value="2">Implementador A</option>
+                      <option value="3">Implementador B</option>
                   </select>
-               </div>
-               </div>
-            </div>  
-             <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Direccion</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="salary" type="text" placeholder="Direccion" name="" required readonly></div>
-               </div>
-            </div>
-             <div class="row">
-               <div class="col clearfix">
-                <div class="col-xs-2"><label><b>Compañia</b></label></div>
-                <div class="col-xs-4"><input class="form-control form-control-sm" id="cia" type="text" placeholder="Compañia" name="" required readonly></div>
-               </div>
-            </div> 
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Direccion:</label>
+                  <input type="text" class="form-control" id="salary" name="" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Compañia:</label>
+                  <input type="text" class="form-control" id="cia" name="" readonly>
+              </div>
             <button class="btn btn-primary small" type="submit">Save</button>  
       </div>
    </form>
@@ -182,16 +168,16 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title">Delete</h5>
+            <h5 class="modal-title">Eliminar</h5>
             <div class="center">
                <span onclick="document.getElementById('delete').style.display='none'" class="close" title="Close Modal">&times;</span>
             </div>
          </div>
          <form class="container" action="{{ route('integrants.delete') }}  " method="POST">
          {{ csrf_field() }}
-         <input type="hidden" id="pin" name="pin">
-         <input type="hidden" id="proy_id" name="proy_id">
-         <input type="hidden" id="rol" name="rol">
+         <input type="hidden" id="pinn" name="pinn">
+         <input type="hidden" id="proye_id" name="proye_id">
+         <input type="hidden" id="asig" name="asig">
             <div class="modal-body">
                <input type="hidden" id="del_id" name="del_id">
                <p>Seguro que deseas borrar al empleado Id <span id ="delete_name"></span> ?</p>
@@ -199,7 +185,7 @@
             </div>
          </form>
          <div class="modal-footer">
-            <button onclick="document.getElementById('delete').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+            <button onclick="document.getElementById('delete').style.display='none'" type="button" class="btn btn-secundary small">Cancelar</button>
          </div>
       </div>
    </div>
@@ -211,13 +197,13 @@
             "actions": function(column, row)
             {
               return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-nombre=\"" + row.nombre + "\" data-departamento=\"" + row.departamento + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-primary small edit\"><span class=\"fa fa-pencil\"></span></button> " +
-              "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
+                   "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
             }
           }}).on("loaded.rs.jquery.bootgrid", function (){
             /* Executes after data is loaded and rendered */
             $(this).find(".edit").click(function (e) {
               $('#pin').val($(this).data("pin"));
-              $('#proyect_id').val($(this).data("proyect_id")); 
+              $('#proy_id').val($(this).data("proyect_id")); 
               $('#edit_id').val($(this).data("id"));
               $('#fname').val($(this).data("nombre"));
               $('#lname').val($(this).data("departamento"));
@@ -228,10 +214,10 @@
               $('#cia').val($(this).data("cia"));
             });
             $(this).find(".delete").click(function (e) {
-              $('#pin').val($(this).data("pin")); 
-              $('#proy_id').val($(this).data("proyect_id"));
+              $('#pinn').val($(this).data("pin")); 
+              $('#proye_id').val($(this).data("proyect_id"));
               $('#del_id').val($(this).data("id"));
-              $('#rol').val($(this).data("rol"));
+              $('#asig').val($(this).data("rol"));
               $('#delete_name').html($(this).data("id"));
             });
           });

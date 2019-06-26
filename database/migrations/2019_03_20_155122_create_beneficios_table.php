@@ -14,8 +14,8 @@ class CreateBeneficiosTable extends Migration
     public function up()
     {
         Schema::create('beneficios', function (Blueprint $table) {
+            $table->increments('id')->unique()->unsigned();
             $table->integer('proyect_id')->unsigned();
-            $table->integer('id')->increments()->unique()->unsigned();
             $table->date('fecha_gen');
             $table->decimal('beneficio',9,0);
             $table->enum('status',['0','1','2'])->default('0');

@@ -14,7 +14,7 @@ class Integrants extends Migration
     public function up()
     {
         Schema::create('integrants', function (Blueprint $table) {
-        $table->integer('id')->incements()->unique()->unsigned();
+        $table->increments('id')->unique()->unsigned();
         $table->integer('proyect_id')->unsigned();
         $table->integer('empleado_id')->unsigned();
         $table->decimal('rol',1,0);

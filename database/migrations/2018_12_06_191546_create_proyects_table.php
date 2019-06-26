@@ -14,7 +14,7 @@ class CreateProyectsTable extends Migration
     public function up()
     {
         Schema::create('proyects', function (Blueprint $table) {
-            $table->integer('id')->increments()->unique()->unsigned();
+            $table->increments('id')->unique()->unsigned();
             $table->string('proyecto',150);
             $table->date('fecha_reg');
             $table->enum('nivel',['0','1','2'])->default('0');

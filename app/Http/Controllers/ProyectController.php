@@ -15,12 +15,13 @@ class ProyectController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $proyects = proyect::paginate();
-        return view('proyects.index', compact('proyects'));
+        $proyect = Proyect::all();
+        return view('proyects.index', compact('proyect'));
     }
 
     /**
@@ -67,9 +68,9 @@ class ProyectController extends Controller
     {
         return view('proyects.edit', compact('proyect'));
     }
-    public function editar(Proyect $proyect)
+    public function editar(Proyect $proyect, integrant $integrant)
     {
-        return view('proyects.editinteg', compact('proyect'));
+        return view('proyects.editinteg', compact('proyect', 'integrant'));
     }
 
     /**
@@ -85,13 +86,18 @@ class ProyectController extends Controller
         return redirect()->route('proyects.edit', $proyect->id)
         ->with('info', 'Proyecto actualizado con exito');
     }
-    public function save(Request $request, Proyect $proyect)
+    public function save(Request $request, Proyect $proyect, integrant $integrant)
     {
-        $integrante = integrant::where('proyect_id', '=', $request->proyect_id)->first();
+        // $integrant->update($request->all());
+        // return redirect()->back()->with('info', 'Integrante actualizado con exito');
+        $integrante = integrant::where('id', '=', $request->pin)->first();
+        $integrante->id = $request->input('pin');
+        $integrante->proyect_id = $request->input('proy_id');
         $integrante->empleado_id = $request->input('edit_id');
         $integrante->rol = $request->input('country');
         $integrante->save();
         return redirect()->back();
+        // dd($request->all());
         // $integrant->update($request->all());
         // ->where('proyect_id', '=', '$request->proyect_id');
         // $integrante->empleado_id = $request->input('edit_id');
@@ -120,18 +126,35 @@ class ProyectController extends Controller
         // dd($request->all());
     }
 
+    public function addbenef(Request $request)
+    {
+        // $beneficio = beneficio::create($request->all());
+        // return view('proyects.beneficios', compact('request', 'beneficio'));
+        $beneficio = new beneficio();
+        $beneficio->proyect_id = $request->input('proyect_id');
+        $beneficio->fecha_gen = $request->input('fecha_gen');
+        $beneficio->beneficio = $request->input('beneficio');
+        $beneficio->save();
+        return redirect()->back();
+        // dd($request->all());
+    }
+
     public function delete(Request $request)
     {
         $data = $request->all();
-        $delete = integrant::where('id' ,$data['pin'])->delete();
+        $delete = integrant::where('id' ,$data['pinn'])->delete();
         return redirect()->back();
+        // dd($request->all());
     }
 
     public function add(Request $request)
     {
-        $integrant = integrant::create($request->all());
-        return redirect()->route('proyects.editinteg', $proyect->id)
-        ->with('info', 'Proyecto guardado con exito');
+        $integrante = new integrant();
+        $integrante->proyect_id = $request->input('proyect_id');
+        $integrante->empleado_id = $request->input('id');
+        $integrante->rol = $request->input('rol');
+        $integrante->save();
+        return redirect()->back();
         // dd($request->all());
     }
     public function recoindex(Proyect $proyect, Request $request)
@@ -157,10 +180,10 @@ class ProyectController extends Controller
         // var_dump($data); die();
         // dd($data);
     }
-    public function beneindex(Proyect $proyect, Request $request)
+    public function beneindex(Proyect $proyect, Request $request, beneficio $beneficio)
     {
         $beneficios = beneficio::paginate();
-        return view('proyects.beneficios', compact('beneficios', 'proyect', 'request'));
+        return view('proyects.beneficios', compact('beneficios', 'proyect', 'beneficio'));
         // dd($request->all());  
     }   
     /**
