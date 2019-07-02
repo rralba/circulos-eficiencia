@@ -20,8 +20,9 @@ class ProyectController extends Controller
      */
     public function index()
     {
-        $proyect = Proyect::all();
-        return view('proyects.index', compact('proyect'));
+        $proyects = DB::table('proyects')->get();
+        return view('proyects.index', ['proyects' => $proyects]);
+        // dd($proyect->all());
     }
 
     /**
@@ -43,8 +44,9 @@ class ProyectController extends Controller
     public function store(Request $request)
     {
         $proyect = Proyect::create($request->all());
-        return redirect()->route('proyects.edit', $proyect->id)
+        return redirect()->back()
         ->with('info', 'Proyecto guardado con exito');
+        // dd($request->all());
     }
 
     /**
@@ -130,13 +132,13 @@ class ProyectController extends Controller
     {
         // $beneficio = beneficio::create($request->all());
         // return view('proyects.beneficios', compact('request', 'beneficio'));
-        $beneficio = new beneficio();
-        $beneficio->proyect_id = $request->input('proyect_id');
-        $beneficio->fecha_gen = $request->input('fecha_gen');
-        $beneficio->beneficio = $request->input('beneficio');
-        $beneficio->save();
-        return redirect()->back();
-        // dd($request->all());
+        // $beneficio = new beneficio();
+        // $beneficio->proyect_id = $request->input('proyect_id');
+        // $beneficio->fecha_gen = $request->input('fecha_gen');
+        // $beneficio->beneficio = $request->input('beneficio');
+        // $beneficio->save();
+        // return redirect()->back();
+        dd($request->all());
     }
 
     public function delete(Request $request)
@@ -182,7 +184,7 @@ class ProyectController extends Controller
     }
     public function beneindex(Proyect $proyect, Request $request, beneficio $beneficio)
     {
-        $beneficios = beneficio::paginate();
+        $beneficios = beneficio::all();
         return view('proyects.beneficios', compact('beneficios', 'proyect', 'beneficio'));
         // dd($request->all());  
     }   
@@ -194,8 +196,9 @@ class ProyectController extends Controller
      */
     public function destroy(Proyect $proyect)
     {
-        $proyect->delete();
-        return back()->with('info', 'Eliminado correctamente');
+        // $proyect->delete();
+        // return back()->with('info', 'Eliminado correctamente');
+        dd($proyect->all());
     }
     
 }

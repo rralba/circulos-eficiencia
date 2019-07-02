@@ -6,10 +6,10 @@
     {{ Form::label('fecha_reg', 'Fecha de registro del proyecto') }}
     {{ Form::date('fecha_reg', null, ['class' => 'form-control']) }}
 </div>
-<div class="form-group">
+{{--  <div class="form-group">
     {{ Form::label('nivel', 'nivel del proyecto') }}
     {{ Form::select('nivel', ['1'=>'1','2'=>'2'], null, ['class' => 'form-control']) }}
-</div>
+</div>  --}}
 <div class="form-group">
     {{ Form::label('depto', 'Departamento del proyecto') }}
     {{ Form::select('depto', ['ACERACION B.O.F Y COLADA CONTI S2'=>'ACERACION B.O.F Y COLADA CONTI S2',
@@ -112,11 +112,11 @@
 </div>
 <div class="form-group">
     {{ Form::label('asesor', 'Asesor asignado al proyecto') }}
-    {{ Form::select('asesor', ['119314'=>'Ing. Cinthya Rodriguez', 
-    '117192'=>'Ing. Isabela San Miguel', 
-    '115672'=>'Ing. Edith Ramos', 
-    '115664'=>'Ing. Orlando Guerra', 
-    '115668'=>'Ing. Sergio Camacho'], null, ['class' => 'form-control']) }}
+    {{ Form::select('asesor', ['Ing. Cinthya Rodriguez'=>'Ing. Cinthya Rodriguez', 
+    'Ing. Isabela San Miguel'=>'Ing. Isabela San Miguel', 
+    'Ing. Edith Ramos'=>'Ing. Edith Ramos', 
+    'Ing. Orlando Guerra'=>'Ing. Orlando Guerra', 
+    'Ing. Sergio Camacho'=>'Ing. Sergio Camacho'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('fecha_ini', 'Fecha de inicio del proyecto') }}
@@ -126,13 +126,13 @@
     {{ Form::label('fecha_fin', 'Fecha fin del proyecto') }}
     {{ Form::date('fecha_fin', null, ['class' => 'form-control']) }}
 </div>
-<div class="form-group">
+{{--  <div class="form-group">
     {{ Form::label('comite', 'Numero de comite') }}
     {{ Form::select('comite', ['1'=>'1','2'=>'2','3'=>'3'], null, ['class' => 'form-control']) }}
-</div>
+</div>  --}}
 <div class="form-group">
     {{ Form::label('valor', 'Valor corporativo del proyecto') }}
-    {{ Form::select('valor', ['Productividad'=>'Productividad', 'Calidad'=>'Calidad', 'Costos'=>'Costos', 'Innovación'=>'Innovación','Servicio a Cliente'=>'Servicio a Cliente'], null, ['class' => 'form-control']) }}
+    {{ Form::select('valor', ['Productividad'=>'Productividad', 'Calidad'=>'Calidad', 'Costos'=>'Costos', 'Productividad y Costos'=>'Productividad y Costos'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('metodologia', 'Metodologia del proyecto') }}
@@ -140,8 +140,8 @@
 </div>
 <div class="form-group">
     {{ Form::label('ahorro_anual_proy', 'Ahorro anual proyectado') }}
-    {{ Form::text('ahorro_anual_proy', null, ['class' => 'form-control']) }}
+    {{ Form::number('ahorro_anual_proy', null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
-    {{ Form::submit('Guardar', ['class' => 'btn btn-sm btm-primary']) }}
+    {{ Form::submit('Guardar', ['class' => 'btn btm-primary']) }}
 </div>

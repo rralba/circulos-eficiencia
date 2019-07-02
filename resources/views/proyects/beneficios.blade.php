@@ -52,11 +52,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
         <form action="{{ route('beneficios.store') }}" method = "POST">
            {{ csrf_field() }}
+      <div class="modal-body">
           <div class="form-group">
-              <input type="hidden" id="proyect_id" name="proyect_id" value="{{ $beneficio->proyect_id }}">
+              <input type="hidden" id="proyec_id" name="proyec_id" value="{{ $beneficio->proyect_id }}">
           </div>
           <div class="form-group">
               <label for="recipient-name" class="col-form-label"> Fecha de Registro:</label>

@@ -104,20 +104,22 @@
         </div>
       </div>
     </div>
-<div id="edit" class="modal">
-    <div class="modal-dialog">
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title">Editar Integrante</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Editar Integrante</h5>
           <div class="center">
-            <span onclick="document.getElementById('edit').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
          </div>
        </div>
+       <div class="modal-body">
        <form class="container" action="{{ route('integrants.save') }}" method = "post">
          {{ csrf_field() }}
          <input type="hidden" id="pin" name="pin">
          <input type="hidden" id="proy_id" name="proy_id">
-          <div class="modal-body">
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Id sap:</label>
                   <input type="text" class="form-control" id="edit_id" name="edit_id" required>
@@ -158,8 +160,7 @@
       </div>
    </form>
       <div class="modal-footer">
-         
-         <button onclick="document.getElementById('edit').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
     </div>
@@ -196,12 +197,13 @@
           formatters: {
             "actions": function(column, row)
             {
-              return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-nombre=\"" + row.nombre + "\" data-departamento=\"" + row.departamento + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-primary small edit\"><span class=\"fa fa-pencil\"></span></button> " +
+              return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-nombre=\"" + row.nombre + "\" data-departamento=\"" + row.departamento + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-primary small edit\" data-toggle=\"modal\" data-target=\"#edit\"><span class=\"fa fa-pencil\"></span></button> " +
                    "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
             }
           }}).on("loaded.rs.jquery.bootgrid", function (){
             /* Executes after data is loaded and rendered */
             $(this).find(".edit").click(function (e) {
+              $($(this).attr("data-target")).modal("show");
               $('#pin').val($(this).data("pin"));
               $('#proy_id').val($(this).data("proyect_id")); 
               $('#edit_id').val($(this).data("id"));
