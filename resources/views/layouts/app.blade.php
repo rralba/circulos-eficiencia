@@ -14,6 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     {{--  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  --}}
     <link href="{!! asset('css/bootstrap.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
     {{--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  --}}
     <link href="{!! asset('css/jquery.bootgrid.css') !!}" rel="stylesheet">
     <script src="{!! asset('js/jquery.bootgrid.js') !!}" ></script>
@@ -40,15 +41,23 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @can('proyects.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('proyects.index') }}">Proyectos</a>
-                        </li>
-                        @endcan
+                        <div class="dropdown">
+                            @can('proyects.index')
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Proyectos
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('proyects.index') }}">Proyectos</a>
+                                @can('cancelados.edit')
+                                    <a class="dropdown-item" href="{{ route('cancelados.edit') }}">Maestro</a>
+                                @endcan
+                             </div>
+                            @endcan
+                        </div>
                         {{--  @can('beneficios.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('beneficios.index') }}">Beneficios</a>

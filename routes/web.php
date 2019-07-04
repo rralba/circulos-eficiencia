@@ -91,7 +91,7 @@ Route::get('cancelados', 'CanceladoController@index')->name('cancelados.index')
 ->middleware('permission:cancelados.index');
 Route::get('cancelados/{cancelado}', 'CanceladoController@show')->name('cancelados.show')
 ->middleware('permission:cancelados.show');
-Route::get('cancelados/{cancelado}/edit', 'CanceladoController@edit')->name('cancelados.edit')
+Route::get('proyects/master', 'ProyectController@master')->name('cancelados.edit')
 ->middleware('permission:cancelados.edit');
 //empleados
 Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.create')

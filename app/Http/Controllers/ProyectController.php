@@ -24,6 +24,18 @@ class ProyectController extends Controller
         return view('proyects.index', ['proyects' => $proyects]);
         // dd($proyect->all());
     }
+ /**
+     * Display a listing of the resource.
+     *
+     * @param  \App\Proyect  $proyect
+     * @return \Illuminate\Http\Response
+     */
+    public function master()
+    {
+        $proye = DB::table('proyects')->get();
+        // return view('proyects.master', ['proye' => $proye]);
+        dd($proye->all());
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -132,13 +144,13 @@ class ProyectController extends Controller
     {
         // $beneficio = beneficio::create($request->all());
         // return view('proyects.beneficios', compact('request', 'beneficio'));
-        // $beneficio = new beneficio();
-        // $beneficio->proyect_id = $request->input('proyect_id');
-        // $beneficio->fecha_gen = $request->input('fecha_gen');
-        // $beneficio->beneficio = $request->input('beneficio');
-        // $beneficio->save();
-        // return redirect()->back();
-        dd($request->all());
+        $beneficio = new beneficio();
+        $beneficio->proyect_id = $request->input('proyect_id');
+        $beneficio->fecha_gen = $request->input('fecha_gen');
+        $beneficio->beneficio = $request->input('beneficio');
+        $beneficio->save();
+        return redirect()->back();
+        // dd($request->all());
     }
 
     public function delete(Request $request)

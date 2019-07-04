@@ -104,6 +104,7 @@ class ComposerStaticInit680e7dda36b4eabfc2f520f7f139cc22
         array (
             'League\\Flysystem\\' => 17,
             'Lcobucci\\JWT\\' => 13,
+            'Laraveles\\Spanish\\' => 18,
             'Laravel\\Tinker\\' => 15,
         ),
         'J' => 
@@ -303,6 +304,10 @@ class ComposerStaticInit680e7dda36b4eabfc2f520f7f139cc22
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
+        'Laraveles\\Spanish\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveles/spanish/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -464,7 +469,6 @@ class ComposerStaticInit680e7dda36b4eabfc2f520f7f139cc22
         'App\\Proyect' => __DIR__ . '/../..' . '/app/Proyect.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\beneficio' => __DIR__ . '/../..' . '/app/beneficio.php',
-        'App\\cancelado' => __DIR__ . '/../..' . '/app/cancelado.php',
         'App\\empleado' => __DIR__ . '/../..' . '/app/empleado.php',
         'App\\integrant' => __DIR__ . '/../..' . '/app/integrant.php',
         'App\\reconocimiento' => __DIR__ . '/../..' . '/app/reconocimiento.php',
@@ -2009,6 +2013,8 @@ class ComposerStaticInit680e7dda36b4eabfc2f520f7f139cc22
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laraveles\\Spanish\\Commands\\InstallLang' => __DIR__ . '/..' . '/laraveles/spanish/src/Commands/InstallLang.php',
+        'Laraveles\\Spanish\\SpanishServiceProvider' => __DIR__ . '/..' . '/laraveles/spanish/src/SpanishServiceProvider.php',
         'Lcobucci\\JWT\\Builder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Builder.php',
         'Lcobucci\\JWT\\Claim' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim.php',
         'Lcobucci\\JWT\\Claim\\Basic' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Basic.php',
