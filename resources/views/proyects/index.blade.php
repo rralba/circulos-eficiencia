@@ -269,7 +269,7 @@
 <br>
     @can('proyects.create')
         <a href="{{ route('proyects.create') }}" 
-        class="btn btn-xl btn-primary float-right fa fa-file-o" title="Agregar Proyecto">
+        class="btn btn-xl btn-outline-primary float-right fa fa-file-o" title="Agregar Proyecto">
         </a>
     @endcan
 <br>
@@ -285,10 +285,8 @@
                 <th width="150px">Departamento</th>
                 <th>Asesor</th>
                 <th>Comite</th>
-                
                 <th>Metodologia</th>
                 <th>Proyeccion Anual</th>
-                
                 <th colspan="3">&nbsp;</th> 
             </tr>
         </thead>
@@ -302,29 +300,35 @@
                     <td>{{ $proyect->depto }}</td>
                     <td>{{ $proyect->asesor }}</td>
                     <td>{{ $proyect->comite }}</td>
-                    
                     <td>{{ $proyect->metodologia }}</td>
                     <td>{{ sprintf('$ %s', number_format($proyect->ahorro_anual_proy,0, '.', ',')) }}</td>
-                    
                         @can('proyects.show')
                         <td width="07px">
                             <a  href="{{ route('proyects.show', $proyect->id) }}"
-                            class="btn btn-xl btn-primary fa fa-info-circle" title="Detalles del Proyecto">
+                            class="btn btn-xl btn-outline-primary fa fa-info-circle" title="Detalles del Proyecto">
                             </a>
                         </td>
                         @endcan
                         @can('proyects.edit')
-                        <td width="07px">
-                            <a href="{{ route('proyects.edit', $proyect->id) }}"
-                            class="btn btn-xl btn-primary fa fa-pencil-square-o" title="Editar Proyecto">
-                            </a>
-                        </td>
+                        @if ($proyect->comite == 0) 
+                            <td width="07px">
+                                <a href="{{ route('proyects.edit', $proyect->id) }}"
+                                class="btn btn-xl btn-outline-primary fa fa-pencil-square-o" title="Editar Proyecto">
+                                </a>
+                            </td> 
+                        @else
+                            <td width="07px">
+                                <a href="{{ route('proyects.edit', $proyect->id) }}"
+                                class="btn btn-xl btn-outline-primary fa fa-pencil-square-o disabled" title="Editar Proyecto">
+                                </a>
+                            </td>
+                        @endif
                         @endcan
                         @can('proyects.destroy')
                         <td width="07px">
                             {!! Form::open(['route' => ['proyects.destroy', $proyect->id],
                             'method' => 'delete']) !!} 
-                                <button class="btn btn-xl btn-danger fa fa-ban" title="Cancelar Proyecto">
+                                <button class="btn btn-xl btn-outline-danger fa fa-ban" title="Cancelar Proyecto">
                                 </button>
                             {!! Form::close() !!}
                         </td>    

@@ -163,13 +163,14 @@ class ProyectController extends Controller
 
     public function add(Request $request)
     {
-        $integrante = new integrant();
-        $integrante->proyect_id = $request->input('proyect_id');
-        $integrante->empleado_id = $request->input('id');
-        $integrante->rol = $request->input('rol');
-        $integrante->save();
-        return redirect()->back();
-        // dd($request->all());
+        $count = Proyect::where('id','=','$request->proyect_id')->count();
+        // $integrante = new integrant();
+        // $integrante->proyect_id = $request->input('proyect_id');
+        // $integrante->empleado_id = $request->input('id');
+        // $integrante->rol = $request->input('rol');
+        // $integrante->save();
+        // return redirect()->back();
+        dd($request->all());
     }
     public function recoindex(Proyect $proyect, Request $request)
     {

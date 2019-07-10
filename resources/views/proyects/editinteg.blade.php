@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <h1>{{ $proyect->proyecto }}</h1>
-    <button type="button" class="btn btn-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#adduser"></button>
+    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#adduser"></button>
     <div class="table-responsive">
             <table id="grid-basic" class="w3-table-all w3-card-4">
                 <thead>
@@ -197,8 +197,8 @@
           formatters: {
             "actions": function(column, row)
             {
-              return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-nombre=\"" + row.nombre + "\" data-departamento=\"" + row.departamento + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-primary small edit\" data-toggle=\"modal\" data-target=\"#edit\"><span class=\"fa fa-pencil\"></span></button> " +
-                   "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
+              return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-nombre=\"" + row.nombre + "\" data-departamento=\"" + row.departamento + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-outline-primary small edit\" data-toggle=\"modal\" data-target=\"#edit\"><span class=\"fa fa-pencil\"></span></button> " +
+                   "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-outline-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
             }
           }}).on("loaded.rs.jquery.bootgrid", function (){
             /* Executes after data is loaded and rendered */

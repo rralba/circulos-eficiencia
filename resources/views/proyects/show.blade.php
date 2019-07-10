@@ -1,35 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="wrapper" class="d-flex" >
+    <div class="d-flex" id="wrapper" >
         <!-- Sidebar -->
-        <div class="bg-light border" id="sidebar-wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="{{ url('/home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
+                    <a href="{{ url('/home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
                 @can('integrants.edit')
-                <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
+                @if ($proyect->comite == 0)
+                    <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
+                @else
+                    <a href="#" class="list-group-item list-group-item-action bg-light disabled">Editar integrantes</a>   
+                @endif        
                 @endcan
                 @can('beneficios.index')
-                <a href="{{ route('beneficios.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Beneficios</a>
+                    <a href="{{ route('beneficios.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Beneficios</a>
                 @endcan
                 @can('reconocimientos.index')
-                <a href="{{ route('reconocimientos.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">reconocimientos</a>
+                    <a href="{{ route('reconocimientos.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">reconocimientos</a>
                 @endcan
                 @can('proceso.index')
-                <a href="#" class="list-group-item list-group-item-action bg-light">Proceso de Pago</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Proceso de Pago</a>
                 @endcan
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>
         <div class="container-fluid">
-          <div class="">   
+            <div class="">   
                 <h1>{{ $proyect->proyecto }}</h1>  
             <div class="card">
                 <div class="card-group">
                     <div class="card">
                         <h5>
                         <a>Fecha de Registro</a>
-                        <small class="text-muted">{{ $proyect->fecha_reg }}</small>
+                        <small class="text-muted">{{ \carbon\carbon::parse($proyect->fecha_reg)->format('M-Y') }}</small>
                         </h5>
                     </div>
                     <div class="card">
@@ -49,13 +53,13 @@
                     <div class="card">    
                         <h5>
                         <a>Fecha de Inicio del Proyecto</a>
-                        <small class="text-muted">{{ $proyect->fecha_ini }}</small>
+                        <small class="text-muted">{{ \carbon\carbon::parse($proyect->fecha_ini)->format('M-Y') }}</small>
                         </h5>
                     </div>
                     <div class="card">
                         <h5>
                         <a>Fecha Fin del Proyecto</a>
-                        <small class="text-muted">{{ $proyect->fecha_fin }}</small>
+                        <small class="text-muted">{{ \carbon\carbon::parse($proyect->fin)->format('M-Y') }}</small>
                         </h5>
                     </div>
                     <div class="card">
@@ -81,43 +85,57 @@
                     <div class="card">
                         <h5>
                         <a>Ahorro Anual Proyectado</a>
-                        <small class="text-muted">{{ $proyect->ahorro_anual_proy }}</small>
+                        <small class="text-muted">{{ sprintf('$ %s', number_format($proyect->ahorro_anual_proy,0, '.', ',')) }}</small>
                         </h5>
                     </div>
                 </div>
-                </div>
             </div>
-        <br>
-        <div class="col-md-12">  
-            <table class="table table-striped table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Departamento</th>
-                        <th>Posicion</th>
-                        <th>Nivel</th>
-                        <th>Rol</th>
-                        <th>Direccion</th>
-                        <th>Compañia</th>
-                    </tr>
-                </thead>
-            <tbody>  
-                @foreach($proyect->empleados as $integrante) 
-                    <tr>
-                        <td>{{ $integrante->id }}</td>
-                        <td>{{ $integrante->nombre }}</td>
-                        <td>{{ $integrante->depto }}</td>
-                        <td>{{ $integrante->posicion }}</td>
-                        <td>{{ $integrante->nivel }}</td>
-                        <td>{{ $integrante->pivot->rol }}</td> 
-                        <td>{{ $integrante->direccion }}</td>
-                        <td>{{ $integrante->cia }}</td> 
-                    </tr>
-                @endforeach
-            </tbody>
-            </table>
+            </div>
+                <br>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Integrantes</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <br>
+                    <div class="col-md-12">  
+                        <table class="table table-striped table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Departamento</th>
+                                    <th>Posicion</th>
+                                    <th>Nivel</th>
+                                    <th>Rol</th>
+                                    <th>Direccion</th>
+                                    <th>Compañia</th>
+                                </tr>
+                            </thead>
+                        <tbody>  
+                            @foreach($proyect->empleados as $integrante) 
+                                <tr>
+                                    <td>{{ $integrante->id }}</td>
+                                    <td>{{ $integrante->nombre }}</td>
+                                    <td>{{ $integrante->depto }}</td>
+                                    <td>{{ $integrante->posicion }}</td>
+                                    <td>{{ $integrante->nivel }}</td>
+                                    <td>{{ $integrante->pivot->rol }}</td> 
+                                    <td>{{ $integrante->direccion }}</td>
+                                    <td>{{ $integrante->cia }}</td> 
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+            </div>
         </div>
-    </div>
-</div>  
+    </div>  
 @endsection    
