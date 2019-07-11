@@ -163,15 +163,77 @@ class ProyectController extends Controller
 
     public function add(Request $request)
     {
-        $count = Proyect::where('id','=','$request->proyect_id')->count();
-        // $integrante = new integrant();
-        // $integrante->proyect_id = $request->input('proyect_id');
-        // $integrante->empleado_id = $request->input('id');
-        // $integrante->rol = $request->input('rol');
-        // $integrante->save();
-        // return redirect()->back();
-        dd($request->all());
+        $int_total = integrant::where('proyect_id','=',$request->proyect_id)
+            ->count();
+        $autor = DB::table('integrants')
+            ->where('proyect_id','=',$request->proyect_id)
+            ->where('rol','=', 1)
+            ->count();
+        $imp_a = DB::table('integrants')
+            ->where('proyect_id','=',$request->proyect_id)
+            ->where('rol','=', '2')
+            ->count();
+        $idsap = DB::table('integrants')
+            ->where('proyect_id','=',$request->proyect_id)
+            ->where('empleado_id','=',$request->id)
+            ->count();    
+        $existe = DB::table('empleados')
+            ->where('id','=',$request->id)
+            ->count();
+        if (($existe) == 0){
+            return redirect()->back()->with('info', 'No existe empleado');
+            }   
+            else{
+        if (($idsap) == 1){
+            return redirect()->back()->with('info', 'Integrante duplicado');
+            }   
+            else{ 
+        if (($int_total) >= 10) {
+            return redirect()->back()->with('info', 'Numero maximo de integrantes alcanzado');
+        } 
+        if (($request->rol) == 1){
+            if (($autor) > 0){
+                return redirect()->back()->with('info', 'Proyeto ya cuenta con autor');
+            }
+            else {
+                $integrante = new integrant();
+                $integrante->proyect_id = $request->input('proyect_id');
+                $integrante->empleado_id = $request->input('id');
+                $integrante->rol = $request->input('rol');
+                $integrante->save();
+            return redirect()->back();
+            }
+            }
+            else{
+            if (($request->rol) == 2){
+                if (($imp_a) >= 2){
+                    return redirect()->back()->with('info', 'Numero maximo de Implementadores A alcanzado');
+                }
+                else {
+                $integrante = new integrant();
+                $integrante->proyect_id = $request->input('proyect_id');
+                $integrante->empleado_id = $request->input('id');
+                $integrante->rol = $request->input('rol');
+                $integrante->save();
+                return redirect()->back();
+                }
+        }
+            else{
+                if (($request->rol) == 3){
+                    $integrante = new integrant();
+                    $integrante->proyect_id = $request->input('proyect_id');
+                    $integrante->empleado_id = $request->input('id');
+                    $integrante->rol = $request->input('rol');
+                    $integrante->save();
+                    return redirect()->back();  
+                }
+            }
+        }
     }
+    }
+        // dd($request->all());
+}    
+        
     public function recoindex(Proyect $proyect, Request $request)
     {
         // $reconocimientos = reconocimiento::paginate();

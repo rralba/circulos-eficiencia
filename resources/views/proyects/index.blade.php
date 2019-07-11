@@ -269,7 +269,7 @@
 <br>
     @can('proyects.create')
         <a href="{{ route('proyects.create') }}" 
-        class="btn btn-xl btn-outline-primary float-right fa fa-file-o" title="Agregar Proyecto">
+        class="btn btn-sm btn-outline-primary float-right fa fa-file-o" title="Agregar Proyecto">
         </a>
     @endcan
 <br>
@@ -279,10 +279,10 @@
         <thead class="">
             <tr>
                 <th data-column-id="id" width="10px">Id</th>
-                <th width="400px">Nombre</th>
+                <th>Nombre</th>
                 <th>Registro</th>
                 <th>Nivel</th>
-                <th width="150px">Departamento</th>
+                <th>Departamento</th>
                 <th>Asesor</th>
                 <th>Comite</th>
                 <th>Metodologia</th>
@@ -305,7 +305,7 @@
                         @can('proyects.show')
                         <td width="07px">
                             <a  href="{{ route('proyects.show', $proyect->id) }}"
-                            class="btn btn-xl btn-outline-primary fa fa-info-circle" title="Detalles del Proyecto">
+                            class="btn btn-sm btn-outline-primary fa fa-info-circle" title="Detalles del Proyecto">
                             </a>
                         </td>
                         @endcan
@@ -313,13 +313,13 @@
                         @if ($proyect->comite == 0) 
                             <td width="07px">
                                 <a href="{{ route('proyects.edit', $proyect->id) }}"
-                                class="btn btn-xl btn-outline-primary fa fa-pencil-square-o" title="Editar Proyecto">
+                                class="btn btn-sm btn-outline-primary fa fa-pencil-square-o" title="Editar Proyecto">
                                 </a>
                             </td> 
                         @else
                             <td width="07px">
                                 <a href="{{ route('proyects.edit', $proyect->id) }}"
-                                class="btn btn-xl btn-outline-primary fa fa-pencil-square-o disabled" title="Editar Proyecto">
+                                class="btn btn-sm btn-outline-primary fa fa-pencil-square-o disabled" title="Editar Proyecto">
                                 </a>
                             </td>
                         @endif
@@ -328,7 +328,7 @@
                         <td width="07px">
                             {!! Form::open(['route' => ['proyects.destroy', $proyect->id],
                             'method' => 'delete']) !!} 
-                                <button class="btn btn-xl btn-outline-danger fa fa-ban" title="Cancelar Proyecto">
+                                <button class="btn btn-sm btn-outline-danger fa fa-ban" title="Cancelar Proyecto">
                                 </button>
                             {!! Form::close() !!}
                         </td>    

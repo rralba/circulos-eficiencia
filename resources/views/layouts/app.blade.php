@@ -40,7 +40,10 @@
                                 Proyectos
                             </button>
                             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('proyects.index') }}">Proyectos</a>
+                                    <a class="dropdown-item" href="{{ route('proyects.index') }}">Activos</a>
+                                    <a class="dropdown-item" href="#">Terminados</a>
+                                    <a class="dropdown-item" href="#">Cancelados</a>
+                                    <a class="dropdown-item" href="#">En Proceso de Pago</a>
                                 @can('cancelados.edit')
                                     <a class="dropdown-item" href="{{ route('cancelados.edit') }}">Maestro</a>
                                 @endcan
