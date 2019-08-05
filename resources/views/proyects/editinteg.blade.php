@@ -154,7 +154,7 @@
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Compañia:</label>
-                  <input type="text" class="form-control" id="cia" name="" readonly>
+                  <input type="text" class="form-control" id="comp" name="comp" readonly>
               </div>
             <button class="btn btn-primary small" type="submit">Save</button>  
       </div>
@@ -213,7 +213,7 @@
               $('#email').val($(this).data("nivel"));
               $('#country').val($(this).data("rol"));
               $('#salary').val($(this).data("direccion"));
-              $('#cia').val($(this).data("cia"));
+              $('#comp').val($(this).data("cia"));
             });
             $(this).find(".delete").click(function (e) {
               $('#pinn').val($(this).data("pin")); 

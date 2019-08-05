@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     {{--  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  --}}
     <link href="{!! asset('css/bootstrap.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    {{--  <link href="{!! asset('css/style.css') !!}" rel="stylesheet">  --}}
     {{--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  --}}
     <link href="{!! asset('css/jquery.bootgrid.css') !!}" rel="stylesheet">
     <script src="{!! asset('js/jquery.bootgrid.js') !!}" ></script>
@@ -22,7 +22,7 @@
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
 </head>
 <body>
-    <div id="app">
+    <div>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

@@ -279,7 +279,7 @@
         <thead class="">
             <tr>
                 <th data-column-id="id" width="10px">Id</th>
-                <th>Nombre</th>
+                <th width="400px">Nombre</th>
                 <th>Registro</th>
                 <th>Nivel</th>
                 <th>Departamento</th>
@@ -325,13 +325,11 @@
                         @endif
                         @endcan
                         @can('proyects.destroy')
-                        <td width="07px">
-                            {!! Form::open(['route' => ['proyects.destroy', $proyect->id],
-                            'method' => 'delete']) !!} 
-                                <button class="btn btn-sm btn-outline-danger fa fa-ban" title="Cancelar Proyecto">
-                                </button>
-                            {!! Form::close() !!}
-                        </td>    
+                            <td width="07px">
+                                <a href="{{ route('proyects.destroy', $proyect->id)  }}"
+                                class="btn btn-sm btn-outline-danger fa fa-ban" title="Cancelar Proyecto">
+                                </a>
+                            </td>    
                         @endcan
                 </tr>
             @endforeach

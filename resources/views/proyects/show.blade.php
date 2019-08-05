@@ -101,19 +101,19 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <br>
                     <div class="col-md-12">  
-                        <table class="table table-striped table-hover" style="width:100%">
+                        <div class="table-responsive">
+                        <table id="grid-basic" class="w3-table-all w3-card-4" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Departamento</th>
-                                    <th>Posicion</th>
-                                    <th>Nivel</th>
-                                    <th>Rol</th>
-                                    <th>Direccion</th>
-                                    <th>Compañia</th>
+                                    <th data-column-id="id">Id</th>
+                                    <th data-column-id="nombre">Nombre</th>
+                                    <th data-column-id="departamento">Departamento</th>
+                                    <th data-column-id="posicion">Posicion</th>
+                                    <th data-column-id="nivel">Nivel</th>
+                                    <th data-column-id="rol">Rol</th>
+                                    <th data-column-id="direccion">Direccion</th>
+                                    <th data-column-id="compañia">Compañia</th>
                                 </tr>
                             </thead>
                         <tbody>  
@@ -132,10 +132,31 @@
                         </tbody>
                         </table>
                     </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
             </div>
         </div>
     </div>  
+    <script>
+        $( document ).ready(function(){
+            $("#grid-basic").bootgrid({
+              }).on("loaded.rs.jquery.bootgrid", function (){
+                /* Executes after data is loaded and rendered */
+                $(this).find(".edit").click(function (e) {
+                  $($(this).attr("data-target")).modal("show");
+                  $('#pin').val($(this).data("id"));
+                  $('#proy_id').val($(this).data("nombre")); 
+                  $('#lname').val($(this).data("departamento"));
+                  $('#gender').val($(this).data("posicion"));
+                  $('#email').val($(this).data("nivel"));
+                  $('#country').val($(this).data("rol"));
+                  $('#salary').val($(this).data("direccion"));
+                  $('#cia').val($(this).data("compañia"));
+                });
+              });
+            });
+            
+    </script>
 @endsection    

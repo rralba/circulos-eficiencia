@@ -111,31 +111,23 @@ class ProyectController extends Controller
         $integrante->rol = $request->input('country');
         $integrante->save();
         return redirect()->back();
-        // dd($request->all());
-        // $integrant->update($request->all());
-        // ->where('proyect_id', '=', '$request->proyect_id');
-        // $integrante->empleado_id = $request->input('edit_id');
-        // $integrante->rol = $request->input('country'); 
-        // $integrante->save();
-        // return redirect()->back()->with('info', 'Integrante Actualizado');
-        // dd($request->all());
     }
 
-    public function benedit(Request $request, Proyect $proyect, beneficio $beneficio)
+    public function benedit(Request $request)
     {
-        return view('proyects.beneficios', compact('request', 'beneficio', 'proyect'));
-        // dd($beneficio->all());
+        $beneficio = beneficio::where('id', '=', $request->idbenef)->first();
+        $beneficio->status = $request->input('statusbenef');
+        $beneficio->save();
+        return redirect()->back()->with('info', 'Status Actualizado');
+        // dd($request->all());
     }
 
     public function benupdate(Request $request, beneficio $beneficio)
     {
-        $beneficio->update($request->all());
-        // $fechareg = $request->input('fecha_gen');
-        // $benef = $request->input('beneficio');
-        // $beneficio = beneficio::find($request->proyect_id);
-        // $beneficio->fecha_gen = $fechareg;
-        // $beneficio->beneficio = $benef;
-        // $beneficio->save();
+        $beneficio = beneficio::where('id', '=', $request->id)->first();
+        $beneficio->fecha_gen = $request->input('fechagen');
+        $beneficio->beneficio = $request->input('benef');
+        $beneficio->save();
         return redirect()->back()->with('info', 'Beneficio Actualizado');
         // dd($request->all());
     }
@@ -150,7 +142,7 @@ class ProyectController extends Controller
         $beneficio->beneficio = $request->input('beneficio');
         $beneficio->save();
         return redirect()->back();
-        // dd($request->all());
+        // dd($beneficio->all());
     }
 
     public function delete(Request $request)
@@ -257,11 +249,15 @@ class ProyectController extends Controller
         // var_dump($data); die();
         // dd($data);
     }
-    public function beneindex(Proyect $proyect, Request $request, beneficio $beneficio)
+    public function beneindex(Request $request, Proyect $proyect, beneficio $beneficio)
     {
-        $beneficios = beneficio::all();
-        return view('proyects.beneficios', compact('beneficios', 'proyect', 'beneficio'));
-        // dd($request->all());  
+        $data = db::table('proyects')
+        ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+        ->select('beneficios.*')
+        ->where('status', '<>', '2')
+        ->get();
+        return view('proyects.beneficios', compact('data', 'proyect', 'beneficio'));
+        // dd($data->all());  
     }   
     /**
      * Remove the specified resource from storage.
@@ -269,11 +265,12 @@ class ProyectController extends Controller
      * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proyect $proyect)
+    public function benefdestroy(Request $request)
     {
-        // $proyect->delete();
-        // return back()->with('info', 'Eliminado correctamente');
-        dd($proyect->all());
+        $data = $request->all();
+        $delete = beneficio::where('id' ,$data['pinn'])->delete();
+        return redirect()->back();
+        // dd($request->all());
     }
     
 }
