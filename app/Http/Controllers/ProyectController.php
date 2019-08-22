@@ -7,6 +7,7 @@ use App\integrant;
 use App\empleado;
 use App\beneficio;
 use App\reconocimiento;
+use App\descuento;
 use Illuminate\Http\Request;
 use DB;
 
@@ -33,8 +34,8 @@ class ProyectController extends Controller
     public function master()
     {
         $proye = DB::table('proyects')->get();
-        // return view('proyects.master', ['proye' => $proye]);
-        dd($proye->all());
+        return view('proyects.master', ['proye' => $proye]);
+        // dd($proye->all());
     }
 
     /**
@@ -174,7 +175,7 @@ class ProyectController extends Controller
             ->count();
         if (($existe) == 0){
             return redirect()->back()->with('info', 'No existe empleado');
-            }   
+            }
             else{
         if (($idsap) == 1){
             return redirect()->back()->with('info', 'Integrante duplicado');
@@ -253,10 +254,13 @@ class ProyectController extends Controller
     {
         $data = db::table('proyects')
         ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
-        ->select('beneficios.*')
-        ->where('status', '<>', '2')
+        ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
+        ->select('beneficios.*', 'integrants.empleado_id', 'integrants.rol', 'integrants.pago')
+        ->where('beneficios.proyect_id', '=',$proyect->id)
+        ->where('beneficios.status', '<>', '2')
+        ->groupBy('id')
         ->get();
-        return view('proyects.beneficios', compact('data', 'proyect', 'beneficio'));
+        return view('proyects.beneficios', compact('data', 'proyect', 'beneficio', 'request'));
         // dd($data->all());  
     }   
     /**
@@ -272,5 +276,72 @@ class ProyectController extends Controller
         return redirect()->back();
         // dd($request->all());
     }
-    
+
+    public function procesosindex(Proyect $proyect, beneficio $beneficio)
+    {
+        $data = db::table('proyects')
+        ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+        ->select('beneficios.*', 'proyects.proyecto')
+        ->where('beneficios.status', '=','2')
+        ->get();
+        return view('proyects.procesos', compact('data', 'proyect', 'beneficio'));
+        // dd($data->all());  
+    }
+
+    public function procesosdest(Request $request)
+    {
+        $beneficio = beneficio::where('id', '=', $request->pinn)->first();
+        $beneficio->status = $request->input('proyestat');
+        $beneficio->save();
+        return redirect()->back()->with('info', 'Status Actualizado');
+        // dd($request->all());  
+    }
+
+    public function procesospago(Request $request)
+    {
+        
+        return view('proyects.pagos');
+        // dd($request->all());  
+    }
+
+    public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
+    {
+        $benef = $request->input('benefi'); 
+        $desctot = DB::table('descuentos')
+            ->where('beneficio_id','=',$benef)
+            ->count();
+        if (($desctot) > 0){
+        $dat = db::table('proyects')
+            ->select('beneficios.*', 'integrants.empleado_id', 'integrants.rol', 'integrants.pago', 'empleados.nombre', 'empleados.posicion','descuentos.sap_id', 'descuentos.descuento', 'descuentos.concepto')
+            ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+            ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
+            ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
+            ->join('descuentos', 'beneficios.id', '=', 'descuentos.beneficio_id')
+            ->where('beneficios.proyect_id', '=',$proyect->id)
+            ->where('beneficios.id', '=',$benef)    
+            ->groupBy('empleado_id')
+            ->orderBy('rol', 'asc')
+            ->get();
+            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot'));
+        }
+        else{
+        $dat = db::table('proyects')
+            ->select('beneficios.*', 'integrants.empleado_id', 'integrants.rol', 'integrants.pago', 'empleados.nombre', 'empleados.posicion')
+            ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+            ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
+            ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
+            ->where('beneficios.proyect_id', '=',$proyect->id)
+            ->where('beneficios.id', '=',$benef)    
+            ->groupBy('empleado_id')
+            ->orderBy('rol', 'asc')
+            ->get();
+            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot'));
+        }
+        //dd($desctot);  
+    } 
+
+    public function descuentostore(Request $request)
+    {
+        dd($request->all());
+    }
 }

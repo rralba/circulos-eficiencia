@@ -22,4 +22,8 @@ class beneficio extends Model
     {
         return $this->hasMany(reconocimiento::class, 'beneficio_id', 'id');
     }
+    public function descuento()
+    {
+        return $this->hasMany(descuento::class, 'beneficio_id', 'id');
+    }
 }

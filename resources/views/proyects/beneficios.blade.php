@@ -31,7 +31,6 @@
           </thead>
           <tbody>
             @foreach($data as $beneficio)
-              @if (($beneficio->proyect_id)==($proyect->id))
               <tr>
                 <td>{{ $beneficio->proyect_id }}</td>
                 <td>{{ $beneficio->id }}</td>
@@ -47,7 +46,6 @@
                   <td>{{ \carbon\carbon::parse($beneficio->mes_pago)->format('M-Y') }}</td>
                 @endif
               </tr>
-              @endif
             @endforeach
           </tbody>
         </table>
@@ -89,7 +87,7 @@
 <div class="modal-dialog">
 <div class="modal-content">
    <div class="modal-header">
-      <h5 class="modal-title">Editar Integrante</h5>
+      <h5 class="modal-title">Editar Beneficio</h5>
       <div class="center">
         <span onclick="document.getElementById('edit').style.display='none'" class="close" title="Close Modal">&times;</span>
      </div>
@@ -110,10 +108,10 @@
       </div>
         <button class="btn btn-primary small" type="submit">Save</button>  
 </form>
+<div class="modal-footer">
+    <button onclick="document.getElementById('edit').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+ </div>
 </div>
-  <div class="modal-footer">
-     <button onclick="document.getElementById('edit').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
-  </div>
 </div>
 </div>
 <div id="delete" class="modal">
@@ -150,7 +148,7 @@
              <span onclick="document.getElementById('reconocimientos').style.display='none'" class="close" title="Close Modal">&times;</span>
           </div>
        </div>
-       <form class="container" action="{{ route('beneficios.edit') }}  " method="POST">
+       <form class="container" action="{{ route('beneficios.edit') }}" method="POST">
        {{ csrf_field() }}
        <input type="hidden" id="idbenef" name="idbenef">
        <input type="hidden" id="statusbenef" name="statusbenef" value="2">
@@ -164,7 +162,31 @@
        </div>
     </div>
   </div>
-  </div>
+</div>
+<div id="descuentos" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title">Descuentos por Integrante</h5>
+            <div class="center">
+               <span onclick="document.getElementById('descuentos').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+         </div>
+         <form class="container" action="{{ route('descuentos.create', $proyect->id) }}  " method="POST">
+            {{ csrf_field() }}
+            <input type="hidden" id="benefi" name="benefi">
+                <div class="modal-body">
+                  <p>Agregar y/o Editar beneficios</p>
+                  <br>
+                  <button type="submit" class="btn btn-primary small">Ir</button>
+                </div>
+         </form>
+         <div class="modal-footer">
+            <button onclick="document.getElementById('descuentos').style.display='none'" type="submit" class="btn btn-danger small">Cancel</button>
+         </div>
+      </div>
+    </div>
+</div>
 <script>
 $( document ).ready(function(){
     $("#grid-basic").bootgrid({
@@ -172,8 +194,9 @@ $( document ).ready(function(){
         "actions": function(column, row)
         {
           return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-fecha_gen=\"" + row.fecha_gen + "\" data-beneficio=\"" + row.beneficio + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-sm btn-outline-primary edit\"><span class=\"fa fa-pencil\"></span></button> " +
-          "<button onclick=\"document.getElementById('delete').style.display='block'\" data-id=\"" + row.id + "\" data-proyect_id=\"" + row.proyect_id + "\" data-beneficio1=\"" + row.beneficio1 + "\" class=\"btn btn-sm btn-outline-danger delete\"><span class=\"fa fa-trash\"></span></button> " +
-          "<button onclick=\"document.getElementById('reconocimientos').style.display='block'\" data-id=\"" + row.id + "\" data-status=\"" + row.status + "\" class=\"btn btn-sm btn-outline-secondary reconocimientos\"><span class=\"fa fa-calculator\"></span></button>";
+          "<button onclick=\"document.getElementById('reconocimientos').style.display='block'\" data-id=\"" + row.id + "\" data-status=\"" + row.status + "\" class=\"btn btn-sm btn-outline-secondary reconocimientos\"><span class=\"fa fa-calculator\"></span></button> " +
+          "<button onclick=\"document.getElementById('descuentos').style.display='block'\" data-id=\"" + row.id + "\" class=\"btn btn-sm btn-outline-secondary descuentos\"><span class=\"fa fa-exclamation-triangle\"></span></button> " +
+          "<button onclick=\"document.getElementById('delete').style.display='block'\" data-id=\"" + row.id + "\" data-proyect_id=\"" + row.proyect_id + "\" data-beneficio1=\"" + row.beneficio1 + "\" class=\"btn btn-sm btn-outline-danger delete\"><span class=\"fa fa-trash\"></span></button>";
         }
       }}).on("loaded.rs.jquery.bootgrid", function (){
         /* Executes after data is loaded and rendered */
@@ -198,6 +221,9 @@ $( document ).ready(function(){
         $(this).find(".reconocimientos").click(function (e) {
           $('#idbenef').val($(this).data("id")); 
           $('#benef_id').html($(this).data("id"));
+      });
+      $(this).find(".descuentos").click(function (e) {
+        $('#benefi').val($(this).data("id"));
       });
     });
   });  

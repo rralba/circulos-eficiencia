@@ -20,7 +20,7 @@
                     <a href="{{ route('reconocimientos.index', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">reconocimientos</a>
                 @endcan
                 @can('proceso.index')
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Proceso de Pago</a>
+                    <a href="{{ route('procesos.index') }}" class="list-group-item list-group-item-action bg-light">Proceso de Pago</a>
                 @endcan
                     <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>

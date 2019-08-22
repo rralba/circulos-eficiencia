@@ -90,7 +90,7 @@ Route::get('cancelados', 'CanceladoController@index')->name('cancelados.index')
 ->middleware('permission:cancelados.index');
 Route::get('cancelados/{cancelado}', 'CanceladoController@show')->name('cancelados.show')
 ->middleware('permission:cancelados.show');
-Route::get('proyects/master', 'ProyectController@master')->name('cancelados.edit')
+Route::get('master', 'ProyectController@master')->name('cancelados.edit')
 ->middleware('permission:cancelados.edit');
 //empleados
 Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.create')
@@ -101,4 +101,17 @@ Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.s
 //reconocimientos
 Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');
+
+//proceso
+Route::get('proyects-proceso', 'ProyectController@procesosindex')->name('procesos.index')
+->middleware('permission:procesos.index');
+Route::post('proyects-procesos', 'ProyectController@procesosdest')->name('procesos.destroy')
+->middleware('permission:procesos.destroy');
+Route::post('proyects-process', 'ProyectController@procesospago')->name('procesos.create')
+->middleware('permission:procesos.create');
+//descuentos
+Route::post('proyects/{proyect}/beneficios/descuentos', 'ProyectController@desceuntoscrear')->name('descuentos.create')
+->middleware('permission:descuentos.create');
+Route::post('proyects/{proyect}/beneficios/descuento', 'ProyectController@descuentostore')->name('descuentos.edit')
+->middleware('permission:descuentos.edit');
 });

@@ -180,5 +180,21 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'reconocimientos.destroy',
             'description'   =>  'eliminar reconocimientos del sistema',
         ]);
+        Permission::create([
+            'name'          =>  'Navegar proceso',
+            'slug'          =>  'procesos.index',
+            'description'   =>  'Navega proyectos en inicio de proceso de pago',
+        ]);
+        Permission::create([
+            'name'          =>  'Ejecutar proceso',
+            'slug'          =>  'procesos.create',
+            'description'   =>  'Ejecuta proceso de pago',
+        ]);
+        Permission::create([
+            'name'          =>  'Acceso a Maestro',
+            'slug'          =>  'maestro.index',
+            'description'   =>  'Ejecuta proceso Maestro',
+        ]);    
+        
     }
 }
