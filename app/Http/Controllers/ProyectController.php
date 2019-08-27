@@ -299,9 +299,73 @@ class ProyectController extends Controller
 
     public function procesospago(Request $request)
     {
-        
-        return view('proyects.pagos');
-        // dd($request->all());  
+        $desc = db::table('descuentos')
+            ->select('descuentos.beneficio_id','descuentos.sap_id','descuentos.descuento')
+            ->get();
+        $nproy = db::table('proyects')
+            ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago')
+            ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+            ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
+            ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
+            //->join('descuentos', 'beneficios.id', '=', 'descuentos.beneficio_id')
+            ->where('beneficios.status', '=', '2')
+            //->groupby('beneficios.proyect_id')
+            ->get();
+            foreach ($nproy as $beneficios)
+                {
+                    if (($beneficios->nivel)== 1)
+                    {
+                       $x = $beneficios->beneficio;
+                       $btotal = $x*0.1;   
+                    if (($beneficios->rol)==1)
+                       {
+                           $rol = $btotal*.3;
+                       }
+                       if (($beneficios->rol)==2)
+                       {
+                        $rol = $btotal*.14;
+                       }
+                       if (($beneficios->rol)==3)
+                       {
+                        $rol = $btotal*.06;
+                       }
+                    //    if (($beneficios->id)==($desc->beneficio_id))
+                    //    {
+                    //        if (($beneficios->empleado_id)==($desc->sap_id))
+                    //        {
+                    //            $total = $rol - $desc->descuento;
+                    //        }
+                    //    }
+                    }
+                    else
+                    {
+                        $x = $beneficios->beneficio;
+                       $btotal = $x*0.05;      
+                    if (($beneficios->rol)==1)
+                       {
+                           $rol = $btotal*.15;
+                       }
+                       if (($beneficios->rol)==2)
+                       {
+                        $rol = $btotal*.07;
+                       }
+                       if (($beneficios->rol)==3)
+                       {
+                        $rol = $btotal*.03;
+                       }
+                    //    if (($beneficios->id)==($desc->beneficio_id))
+                    //    {
+                    //        if (($beneficios->empleado_id)==($desc->sap_id))
+                    //        {
+                    //            $total = $rol - $desc->descuento;
+                    //        }
+                    //    }
+                    }
+                    $tot[] = $rol;
+                }
+
+        // return view('proyects.pagos');
+        dd($tot);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
