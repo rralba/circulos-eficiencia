@@ -320,14 +320,22 @@ class ProyectController extends Controller
                     if (($beneficios->rol)==1)
                        {
                            $rol = $btotal*.3;
+                           $rol = round($rol,0);
                        }
                        if (($beneficios->rol)==2)
                        {
                         $rol = $btotal*.14;
+                        $rol = round($rol,0);
                        }
                        if (($beneficios->rol)==3)
                        {
                         $rol = $btotal*.06;
+                        $rol = round($rol,0);
+                       }
+                       if (($beneficios->pago)==0)
+                       {
+                           $rol = 0;
+                           $rol = round($rol,0);
                        }
                     //    if (($beneficios->id)==($desc->beneficio_id))
                     //    {
@@ -344,14 +352,22 @@ class ProyectController extends Controller
                     if (($beneficios->rol)==1)
                        {
                            $rol = $btotal*.15;
+                           $rol = round($rol,0);
                        }
                        if (($beneficios->rol)==2)
                        {
                         $rol = $btotal*.07;
+                        $rol = round($rol,0);
                        }
                        if (($beneficios->rol)==3)
                        {
                         $rol = $btotal*.03;
+                        $rol = round($rol,0);
+                       }
+                       if (($beneficios->pago)==0)
+                       {
+                           $rol = 0;
+                           $rol = round($rol,0);
                        }
                     //    if (($beneficios->id)==($desc->beneficio_id))
                     //    {
@@ -362,10 +378,13 @@ class ProyectController extends Controller
                     //    }
                     }
                     $tot[] = $rol;
+                    $a = $tot;
+                    $suma = array_sum($a);
+                    $suma = round($suma);
                 }
 
         // return view('proyects.pagos');
-        dd($tot);  
+        dd($nproy, $tot, $suma);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
