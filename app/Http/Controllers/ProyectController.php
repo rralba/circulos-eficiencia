@@ -21,9 +21,25 @@ class ProyectController extends Controller
      */
     public function index()
     {
-        $proyects = DB::table('proyects')->get();
+        $proyects = DB::table('proyects')
+        ->where('proy_status', '=', '1')
+        ->get();
         return view('proyects.index', ['proyects' => $proyects]);
         // dd($proyect->all());
+    }
+
+    public function cancelados()
+    {
+        $proyects = DB::table('proyects')
+        ->where('proy_status', '=', '0')
+        ->get();
+        return view('proyects.cancelados', ['proyects' => $proyects]);
+        // dd($proyect->all());
+    }
+
+    public function destroy(Request $request)
+    {
+        dd($request->all());
     }
  /**
      * Display a listing of the resource.
@@ -73,6 +89,10 @@ class ProyectController extends Controller
        return view('proyects.show', compact('proyect'));
     }
     
+    public function showmaster(Proyect $proyect, integrant $integrant)
+    {   
+       return view('proyects.showmaster', compact('proyect', 'integrant'));
+    }
       /**
      * Show the form for editing the specified resource.
      *
@@ -315,8 +335,8 @@ class ProyectController extends Controller
                 {
                     if (($beneficios->nivel)== 1)
                     {
-                       $x = $beneficios->beneficio;
-                       $btotal = $x*0.1;   
+                       $x = $beneficios;
+                       $btotal = $x->beneficio*0.1;   
                     if (($beneficios->rol)==1)
                        {
                            $rol = $btotal*.3;
@@ -347,8 +367,8 @@ class ProyectController extends Controller
                     }
                     else
                     {
-                        $x = $beneficios->beneficio;
-                       $btotal = $x*0.05;      
+                        $x = $beneficios;
+                       $btotal = $x->beneficio*0.05;      
                     if (($beneficios->rol)==1)
                        {
                            $rol = $btotal*.15;
@@ -383,8 +403,9 @@ class ProyectController extends Controller
                     $suma = round($suma);
                 }
 
-        // return view('proyects.pagos');
-        dd($nproy, $tot, $suma);  
+         //return view('proyects.pagos', compact('nproy', 'tot', 'suma'));
+        //$data = array_merge($nproy->toarray(), $tot);
+        dd($nproy);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)

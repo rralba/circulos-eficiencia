@@ -3,12 +3,7 @@
 @section('content')
 <div class="container-fluid">
         <br>
-            @can('proyects.create')
-                <a href="{{ route('proyects.create') }}" 
-                class="btn btn-sm btn-outline-primary float-right fa fa-file-o" title="Agregar Proyecto">
-                </a>
-            @endcan
-        <br>
+         <h1 align="center">Maestro de Proyectos</h1>
         <br>
         <div class="table-responsive">
            <table class="table table-striped table-hover table-bordered">
@@ -38,9 +33,9 @@
                             <td>{{ $proyect->comite }}</td>
                             <td>{{ $proyect->metodologia }}</td>
                             <td>{{ sprintf('$ %s', number_format($proyect->ahorro_anual_proy,0, '.', ',')) }}</td>
-                                @can('proyects.show')
+                                @can('cancelados.edit')
                                 <td width="07px">
-                                    <a  href="{{ route('proyects.show', $proyect->id) }}"
+                                    <a  href="{{ route('proyects.showmaster', $proyect->id) }}"
                                     class="btn btn-sm btn-outline-primary fa fa-info-circle" title="Detalles del Proyecto">
                                     </a>
                                 </td>

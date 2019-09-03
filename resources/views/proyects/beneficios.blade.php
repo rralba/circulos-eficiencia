@@ -4,14 +4,6 @@
 <div class="container">
   <h1>{{ $proyect->proyecto }}</h1> <br>
     <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio">  Agregar Beneficio</button>
-      {{--  <div class="custom-control custom-checkbox custom-control-inline">
-        <input type="checkbox" class="custom-control-input" id="defaultInline1" name="status" value="0">
-        <label class="custom-control-label" for="defaultInline1">Pendiente de Pago</label>
-      </div>
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input type="checkbox" class="custom-control-input" id="defaultInline2" name="status1" value="1" checked>
-        <label class="custom-control-label" for="defaultInline2">Pagado</label>
-      </div>    --}}
       <div class="table-responsive">
         <br>
         <table id="grid-basic" class="w3-table-all w3-card-4">

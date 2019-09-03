@@ -40,21 +40,22 @@
                                 Proyectos
                             </button>
                             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                                @can('proyects.index')
                                     <a class="dropdown-item" href="{{ route('proyects.index') }}">Activos</a>
+                                @endcan
                                     <a class="dropdown-item" href="#">Terminados</a>
+                                @can('procesos.index')
                                     <a class="dropdown-item" href="{{ route('procesos.index') }}">En Proceso de Pago</a>
+                                @endcan
                                 @can('cancelados.edit')
                                     <a class="dropdown-item" href="{{ route('cancelados.edit') }}">Maestro</a>
                                 @endcan
-                                <a class="dropdown-item" href="#">Cancelados</a>
+                                @can('cancelados.index')
+                                <a class="dropdown-item" href="{{ route('cancelados.index') }}">Cancelados</a>
+                                @endcan
                              </div>
                             @endcan
                         </div>
-                        {{--  @can('beneficios.index')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('beneficios.index') }}">Beneficios</a>
-                        </li>
-                        @endcan  --}}
                         @can('users.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>

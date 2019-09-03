@@ -27,7 +27,8 @@
         </div>
         <div class="container-fluid">
             <div class="">   
-                <h1>{{ $proyect->proyecto }}</h1>  
+                <h1 align="center">{{ $proyect->proyecto }}</h1>  
+                <br>
             <div class="card">
                 <div class="card-group">
                     <div class="card">

@@ -58,7 +58,9 @@ Route::put('proyects/{proyect}', 'ProyectController@update')->name('proyects.upd
 ->middleware('permission:proyects.edit');
 Route::get('proyects/{proyect}', 'ProyectController@show')->name('proyects.show')
 ->middleware('permission:proyects.show');
-Route::put('proyecto/{proyect}', 'ProyectController@destroy')->name('proyects.destroy')
+Route::get('proyects/{proyect}/showmaster', 'ProyectController@showmaster')->name('proyects.showmaster')
+->middleware('permission:proyects.show');
+Route::post('proyects/destroy', 'ProyectController@destroy')->name('proyects.destroy')
 ->middleware('permission:proyects.destroy');
 Route::get('proyects/{proyect}/edit', 'ProyectController@edit')->name('proyects.edit')
 ->middleware('permission:proyects.edit');
@@ -86,7 +88,7 @@ Route::get('beneficios/{beneficio}', 'BeneficioController@show')->name('benefici
 Route::post('proyectss', 'ProyectController@benefdestroy')->name('beneficios.destroy')
 ->middleware('permission:beneficios.destroy');
 //cancelados
-Route::get('cancelados', 'CanceladoController@index')->name('cancelados.index')
+Route::get('cancelados', 'ProyectController@cancelados')->name('cancelados.index')
 ->middleware('permission:cancelados.index');
 Route::get('cancelados/{cancelado}', 'CanceladoController@show')->name('cancelados.show')
 ->middleware('permission:cancelados.show');
