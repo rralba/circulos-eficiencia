@@ -57,13 +57,13 @@
                         <tbody>
                             @foreach($data as $beneficio)
                                 <tr>
-                                    <td>{{ $beneficio->proyecto }}</td>
+                                    <td>*{{ $beneficio->proyecto }}</td>
                                 </tr>    
                             @endforeach
                         </tbody>
                     </table>
                     <br> 
-                    <button type="submit" class="btn btn-primary">Guardar</button>  
+                    <button type="submit" class="btn btn-primary">Ejecutar</button>  
                 </div>  
             </form>
             <div class="modal-footer">

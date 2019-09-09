@@ -330,6 +330,8 @@ class ProyectController extends Controller
             ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
             //->join('descuentos', 'beneficios.id', '=', 'descuentos.beneficio_id')
             ->where('beneficios.status', '=', '2')
+            ->orderBy('beneficios.proyect_id', 'asc')
+            ->orderBy('integrants.rol', 'asc')
             //->groupby('beneficios.proyect_id')
             ->get();
             // foreach ($nproy as $beneficios)
@@ -445,6 +447,11 @@ class ProyectController extends Controller
     } 
 
     public function descuentostore(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function procesosave(Request $request)
     {
         dd($request->all());
     }

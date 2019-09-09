@@ -111,6 +111,8 @@ Route::post('proyects-procesos', 'ProyectController@procesosdest')->name('proces
 ->middleware('permission:procesos.destroy');
 Route::post('proyects-process', 'ProyectController@procesospago')->name('procesos.create')
 ->middleware('permission:procesos.create');
+Route::post('proyects-save', 'ProyectController@procesosave')->name('procesos.store')
+->middleware('permission:procesos.create');
 //descuentos
 Route::post('proyects/{proyect}/beneficios/descuentos', 'ProyectController@desceuntoscrear')->name('descuentos.create')
 ->middleware('permission:descuentos.create');
