@@ -8,17 +8,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <script src="{!! asset('js/jquery-3.3.1.js') !!}" ></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    {{--  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  --}}
+    <script src="{!! asset('js/bootstrap.js') !!}" ></script>
     <link href="{!! asset('css/bootstrap.css') !!}" rel="stylesheet">
-    {{--  <link href="{!! asset('css/style.css') !!}" rel="stylesheet">  --}}
-    {{--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  --}}
     <link href="{!! asset('css/jquery.bootgrid.css') !!}" rel="stylesheet">
     <script src="{!! asset('js/jquery.bootgrid.js') !!}" ></script>
-    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>  --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    {{--  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  --}}
+    <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
+    <script src="{!! asset('js/popper.js') !!}" ></script>
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
 </head>
 <body>

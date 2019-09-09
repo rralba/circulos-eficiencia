@@ -323,7 +323,8 @@ class ProyectController extends Controller
             ->select('descuentos.beneficio_id','descuentos.sap_id','descuentos.descuento')
             ->get();
         $nproy = db::table('proyects')
-            ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago')
+            ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago','empleados.nombre','empleados.posicion',
+            'empleados.depto','beneficios.fecha_gen','beneficios.num_pago','integrants.pago','empleados.cia')
             ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
             ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
             ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
@@ -331,81 +332,80 @@ class ProyectController extends Controller
             ->where('beneficios.status', '=', '2')
             //->groupby('beneficios.proyect_id')
             ->get();
-            foreach ($nproy as $beneficios)
-                {
-                    if (($beneficios->nivel)== 1)
-                    {
-                       $x = $beneficios;
-                       $btotal = $x->beneficio*0.1;   
-                    if (($beneficios->rol)==1)
-                       {
-                           $rol = $btotal*.3;
-                           $rol = round($rol,0);
-                       }
-                       if (($beneficios->rol)==2)
-                       {
-                        $rol = $btotal*.14;
-                        $rol = round($rol,0);
-                       }
-                       if (($beneficios->rol)==3)
-                       {
-                        $rol = $btotal*.06;
-                        $rol = round($rol,0);
-                       }
-                       if (($beneficios->pago)==0)
-                       {
-                           $rol = 0;
-                           $rol = round($rol,0);
-                       }
-                    //    if (($beneficios->id)==($desc->beneficio_id))
-                    //    {
-                    //        if (($beneficios->empleado_id)==($desc->sap_id))
-                    //        {
-                    //            $total = $rol - $desc->descuento;
-                    //        }
-                    //    }
-                    }
-                    else
-                    {
-                        $x = $beneficios;
-                       $btotal = $x->beneficio*0.05;      
-                    if (($beneficios->rol)==1)
-                       {
-                           $rol = $btotal*.15;
-                           $rol = round($rol,0);
-                       }
-                       if (($beneficios->rol)==2)
-                       {
-                        $rol = $btotal*.07;
-                        $rol = round($rol,0);
-                       }
-                       if (($beneficios->rol)==3)
-                       {
-                        $rol = $btotal*.03;
-                        $rol = round($rol,0);
-                       }
-                       if (($beneficios->pago)==0)
-                       {
-                           $rol = 0;
-                           $rol = round($rol,0);
-                       }
-                    //    if (($beneficios->id)==($desc->beneficio_id))
-                    //    {
-                    //        if (($beneficios->empleado_id)==($desc->sap_id))
-                    //        {
-                    //            $total = $rol - $desc->descuento;
-                    //        }
-                    //    }
-                    }
-                    $tot[] = $rol;
-                    $a = $tot;
-                    $suma = array_sum($a);
-                    $suma = round($suma);
-                }
-
-         //return view('proyects.pagos', compact('nproy', 'tot', 'suma'));
-        //$data = array_merge($nproy->toarray(), $tot);
-        dd($nproy);  
+            // foreach ($nproy as $beneficios)
+            //     {
+            //         if (($beneficios->nivel)== 1)
+            //         {
+            //            $x = $beneficios;
+            //            $btotal = $x->beneficio*0.1;   
+            //         if (($beneficios->rol)==1)
+            //            {
+            //                $rol = $btotal*.3;
+            //                $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->rol)==2)
+            //            {
+            //             $rol = $btotal*.14;
+            //             $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->rol)==3)
+            //            {
+            //             $rol = $btotal*.06;
+            //             $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->pago)==0)
+            //            {
+            //                $rol = 0;
+            //                $rol = round($rol,0);
+            //            }
+            //         //    if (($beneficios->id)==($desc->beneficio_id))
+            //         //    {
+            //         //        if (($beneficios->empleado_id)==($desc->sap_id))
+            //         //        {
+            //         //            $total = $rol - $desc->descuento;
+            //         //        }
+            //         //    }
+            //         }
+            //         else
+            //         {
+            //             $x = $beneficios;
+            //            $btotal = $x->beneficio*0.05;      
+            //         if (($beneficios->rol)==1)
+            //            {
+            //                $rol = $btotal*.15;
+            //                $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->rol)==2)
+            //            {
+            //             $rol = $btotal*.07;
+            //             $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->rol)==3)
+            //            {
+            //             $rol = $btotal*.03;
+            //             $rol = round($rol,0);
+            //            }
+            //            if (($beneficios->pago)==0)
+            //            {
+            //                $rol = 0;
+            //                $rol = round($rol,0);
+            //            }
+            //         //    if (($beneficios->id)==($desc->beneficio_id))
+            //         //    {
+            //         //        if (($beneficios->empleado_id)==($desc->sap_id))
+            //         //        {
+            //         //            $total = $rol - $desc->descuento;
+            //         //        }
+            //         //    }
+            //         }
+            //         $tot[] = $rol;
+            //         $a = $tot;
+            //         $suma = array_sum($a);
+            //         $suma = round($suma);
+            //     }
+            //$data =array('nproy' => $nproy, 'desc' => $desc,);
+         return view('proyects.pagos', compact('nproy', 'desc'));
+        //dd($nproy);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
