@@ -12,13 +12,37 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-ahmsa" role="tabpanel" aria-labelledby="nav-home-tab">
-    <div class="table-responsive">
+    <div id="imprimible">
+        <div class="conta">
+            <div class="left">
+                <img src="{!! asset('jpg/logoce.jpg') !!}" alt="Logo de circulos de eficiencia" width="170" height="60">
+            </div>
+            <div class="center">
+                <h3 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h3>
+                <h3 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h3>
+            </div>
+            <div class="right">
+                <div class="input-group">
+                    <label for="recipient-name" class="col-form-label">Fecha:</label>
+                    <input class="form-control form-control-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" size="10" / readonly>
+                </div>
+                <div class="input-group">   
+                    <label for="recipient-name" class="col-form-label">Mes de Pago:</label>
+                    <input class="form-control form-control-sm" name="mes" type="month" id="mes" required>
+                </div>    
+                <div class="input-group">
+                    <label for="recipient-name" class="col-form-label">Folio:</label>
+                    <input class="form-control form-control-sm" name="folio" type="text" id="folio" required>
+                </div>    
+            </div>    
+        </div>
+        <div class="table-responsive">
         <table class="table table-sm table-striped table-hover table-bordered">
             <thead class="">
                 <tr>
                     <th width="5%">Ficha</th>
-                    <th width="25%">Nombre</th>
-                    <th width="15%">Posicion</th>
+                    <th width="20%">Nombre</th>
+                    <th width="20%">Posicion</th>
                     <th width="20%">Departamento</th>
                     <th width="20%">Proyecto</th>
                     <th width="5%">Beneficio</th>
@@ -34,7 +58,7 @@
                         <td>{{ $proyect->nombre }}</td>
                         <td>{{ $proyect->posicion }}</td>
                         <td>{{ $proyect->depto }}</td>
-                        <td>{{ $proyect->proyecto }}</td>
+                        <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         @if (($proyect->pago)==0)
                             <td>{{ 0 }}</td>
                         @else
@@ -69,7 +93,11 @@
             </tbody>
        </table>
     </div>
+    </div>
+    <br>
     <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
+    <button id="print" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus">Imprimir</button>
+    <br>
         </div>
         <div class="tab-pane fade" id="nav-sid1" role="tabpanel" aria-labelledby="nav-sid1-tab">
                 <div class="table-responsive">
@@ -155,44 +183,45 @@
         <div class="modal-body">
             @foreach($nproy as $proyect)
             @if ((($proyect->cia)<> 1000)&&(($proyect->cia)<> 2000))
-            <input type="hidden" id="id" name="id" value="{{ $proyect->empleado_id }}">
-            <input type="hidden" id="beneficio" name="beneficio" value="{{ $proyect->id }}">
+            <input type="hidden" id="id" name="id[]" value="{{ $proyect->empleado_id }}">
+            <input type="hidden" id="beneficio" name="beneficio[]" value="{{ $proyect->id }}">
                 @if (($proyect->pago)==0)
-                <input type="hidden" id="pago" name="pago" value="{{ 0 }}">
+                <input type="hidden" id="pago" name="pago[]" value="{{ 0 }}">
                 @else
                 @if (($proyect->nivel)==1)
                     @if (($proyect->rol)==1)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.3),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.3),0, '.', ',')) }}">
                     @endif    
                     @if (($proyect->rol)==2)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.14),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.14),0, '.', ',')) }}">
                     @endif    
                     @if (($proyect->rol)==3)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.06),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.06),0, '.', ',')) }}">
                     @endif
                 @endif
                 @if (($proyect->nivel)==2)
                     @if (($proyect->rol)==1)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.15),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.15),0, '.', ',')) }}">
                     @endif
                     @if (($proyect->rol)==2)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.07),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.07),0, '.', ',')) }}">
                     @endif
                     @if (($proyect->rol)==3)
-                    <input type="hidden" id="pago" name="pago" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.03),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.03),0, '.', ',')) }}">
                     @endif
                 @endif
                 @endif
-                <input type="hidden" id="nump" name="nump" value="{{ (($proyect->num_pago)+ 1) }}">
+                <input type="hidden" id="nump" name="nump[]" value="{{ (($proyect->num_pago)+ 1) }}">
             @endif
         @endforeach
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>    
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
   </div>
+  <script src={!! asset('js/app.js') !!}></script>">
 @endsection

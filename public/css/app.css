@@ -1,2 +1,14 @@
+.conta {right: 0; text-align: center;}
 
+.conta .left, .conta .center, .conta .right { display: inline-block; }
 
+.conta .left { float: left; }
+.conta .center { margin: 0 auto; }
+.conta .right { float: right; }
+
+.ellipsis {
+    max-width: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -15,6 +15,7 @@
     <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
     <script src="{!! asset('js/popper.js') !!}" ></script>
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
+    <link href="{!! asset('css/app.css') !!}" rel="stylesheet"> 
 </head>
 <body>
     <div>
