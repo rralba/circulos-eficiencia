@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    @media print{
+        body{
+            background: white;
+        }
+        @page {
+            sizw: letter;
+            size: landscape;
+            margin: 0;
+        }
+        #nav-tab {display: none}
+        #imprimible {font-size: 60%;}
+        @top-left{
+            content: none;
+        }
+        tr:nth-child(even) {
+            background: #336699;
+        }
+        tr:nth-child(odd){
+            background: #ff0000;
+        }
+    }
+</style>
 <div class="container-fluid">
     <br>
     <nav>
@@ -14,26 +37,38 @@
         <div class="tab-pane fade show active" id="nav-ahmsa" role="tabpanel" aria-labelledby="nav-home-tab">
     <div id="imprimible">
         <div class="conta">
-            <div class="left">
+            <div class="left col-md-4">
                 <img src="{!! asset('jpg/logoce.jpg') !!}" alt="Logo de circulos de eficiencia" width="170" height="60">
             </div>
-            <div class="center">
+            <div id="centro" class="center col-md-4">
                 <h3 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h3>
                 <h3 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h3>
             </div>
-            <div class="right">
-                <div class="input-group">
-                    <label for="recipient-name" class="col-form-label">Fecha:</label>
-                    <input class="form-control form-control-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" size="10" / readonly>
+            <div class="right col-md-4">
+                <div class="row">
+                    <div class="col">
+                        <label for="recipient-name" class="col-form-label">Fecha:</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control form-control-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" / readonly>
+                    </div>
                 </div>
-                <div class="input-group">   
-                    <label for="recipient-name" class="col-form-label">Mes de Pago:</label>
-                    <input class="form-control form-control-sm" name="mes" type="month" id="mes" required>
+                <div class="row"> 
+                    <div class="col">  
+                        <label for="recipient-name" class="col-form-label">Mes de Pago:</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control form-control-sm" name="mes" type="month" id="mes" required>
+                    </div>
                 </div>    
-                <div class="input-group">
-                    <label for="recipient-name" class="col-form-label">Folio:</label>
-                    <input class="form-control form-control-sm" name="folio" type="text" id="folio" required>
-                </div>    
+                <div class="row">
+                    <div class="col">
+                        <label for="recipient-name" class="col-form-label">Folio:</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control form-control-sm" name="folio" type="text" id="folio" required>
+                    </div>
+                </div>   
             </div>    
         </div>
         <div class="table-responsive">
@@ -95,8 +130,8 @@
     </div>
     </div>
     <br>
-    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
-    <button id="print" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus">Imprimir</button>
+    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-floppy-o" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
+    <a class="imprimir btn btn-outline-primary btn-lg fa fa-print" href="#">Imprimir</a>
     <br>
         </div>
         <div class="tab-pane fade" id="nav-sid1" role="tabpanel" aria-labelledby="nav-sid1-tab">
@@ -223,5 +258,10 @@
         </div>
       </div>
   </div>
-  <script src={!! asset('js/app.js') !!}></script>">
+  <script>
+    $('.imprimir').click(function(){
+        window.print();
+        return false;
+    });
+  </script>
 @endsection
