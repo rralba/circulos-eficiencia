@@ -1,29 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    @media print{
-        body{
-            background: white;
-        }
-        @page {
-            sizw: letter;
-            size: landscape;
-            margin: 0;
-        }
-        #nav-tab {display: none}
-        #imprimible {font-size: 60%;}
-        @top-left{
-            content: none;
-        }
-        tr:nth-child(even) {
-            background: #336699;
-        }
-        tr:nth-child(odd){
-            background: #ff0000;
-        }
-    }
-</style>
 <div class="container-fluid">
     <br>
     <nav>
@@ -35,45 +12,46 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-ahmsa" role="tabpanel" aria-labelledby="nav-home-tab">
+            <br>
     <div id="imprimible">
         <div class="conta">
-            <div class="left col-md-4">
-                <img src="{!! asset('jpg/logoce.jpg') !!}" alt="Logo de circulos de eficiencia" width="170" height="60">
+            <div class="left col-md-2 m-0 p-0">
+                <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
             </div>
-            <div id="centro" class="center col-md-4">
+            <div class="center col-md-8 m-0 p-0">
                 <h3 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h3>
                 <h3 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h3>
             </div>
-            <div class="right col-md-4">
-                <div class="row">
-                    <div class="col">
+            <div class="right col-md-2 m-0 p-0">
+                <div class="row float-right">
+                    <div class="col col-md-3 m-0 p-0">
                         <label for="recipient-name" class="col-form-label">Fecha:</label>
                     </div>
-                    <div class="col">
+                    <div class="col col-md-9 float-left ml-0 pl-0">
                         <input class="form-control form-control-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" / readonly>
                     </div>
                 </div>
-                <div class="row"> 
-                    <div class="col">  
-                        <label for="recipient-name" class="col-form-label">Mes de Pago:</label>
+                <div class="row float-right"> 
+                    <div class="col m-0 p-0">  
+                        <label for="recipient-name" class="col-form-label">Mes Pago:</label>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" name="mes" type="month" id="mes" required>
+                    <div class="col m-0 p-0">
+                        <input class="form-control form-control-sm col-11" name="mes" type="month" id="mes" required>
                     </div>
                 </div>    
-                <div class="row">
-                    <div class="col">
+                <div class="row float-right">
+                    <div class="col col-md-3 m-0 p-0">
                         <label for="recipient-name" class="col-form-label">Folio:</label>
                     </div>
-                    <div class="col">
-                        <input class="form-control form-control-sm" name="folio" type="text" id="folio" required>
+                    <div class="col col-md-9 float-left ml-0 pl-0">
+                        <input class="form-control form-control-sm" name="folio" type="text" id="folio" maxlength="10" required>
                     </div>
                 </div>   
             </div>    
         </div>
         <div class="table-responsive">
         <table class="table table-sm table-striped table-hover table-bordered">
-            <thead class="">
+            <thead>
                 <tr>
                     <th width="5%">Ficha</th>
                     <th width="20%">Nombre</th>
@@ -85,7 +63,7 @@
                     <th width="5px">Mes</th>
                 </tr>
             </thead>
-            <tbody id="developers">
+            <tbody>
                 @foreach($nproy as $proyect)
                     @if ((($proyect->cia)<> 1000)&&(($proyect->cia)<> 2000))
                     <tr>
@@ -129,9 +107,47 @@
        </table>
     </div>
     </div>
+<footer>
+    <div class="container-fluid m-o p-0">
+        <div class="row">
+            <div class="col-xs-12 col-md-4 m-0 p-0">
+                <h6 class="text-muted lead text-center">Atentamente:</h6>
+                <br>
+                <h6 class="text-muted text-center">
+                Lic. Virginia Lozano Guajardo<br>
+                Gerente de Capacitación<br>
+                </h6>
+            </div>
+            <div class="col-xs-12 col-md-4 m-0 p-0">
+                    <h6 class="text-muted lead text-center">Vo.Bo.:</h6>
+                    <br>
+                    <h6 class="text-muted text-center">
+                    Lic. Fernando Monroy Guajardo<br>
+                    Director Corporativo de Recursos Humanos<br>
+                    </h6>
+                </div>
+                <div class="col-xs-12 col-md-4 m-0 p-0">
+                        <h6 class="text-muted lead text-center">Autorización:</h6>
+                        <br>
+                        <h6 class="text-muted text-center   ">
+                        N/A<br>
+                        <br>
+                        </h6>
+                    </div>
+        </div>  
+    </div>
+</footer>
     <br>
-    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-floppy-o" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
-    <a class="imprimir btn btn-outline-primary btn-lg fa fa-print" href="#">Imprimir</a>
+    <div id="botones">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-floppy-o" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
+            </div>
+            <div class="col-xs-12 col-md-6">        
+                <a class="imprimir btn btn-outline-primary btn-lg fa fa-print" href="#">Imprimir</a>
+            </div>
+        </div>        
+    </div>
     <br>
         </div>
         <div class="tab-pane fade" id="nav-sid1" role="tabpanel" aria-labelledby="nav-sid1-tab">
