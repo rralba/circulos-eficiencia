@@ -20,15 +20,13 @@
     @page {
         sizw: letter;
         size: landscape;
-        margin-top: 5;
-        margin-bottom: 5px;
+        margin-top: 0;
+        margin-bottom: 0px;
     }
     #nav-tab {display: none}
     #botones {display: none}
     #imprimible {font-size: 55%;}
-    @top-left{
-        content: none;
-    }
+    
     .table-striped>tbody>tr:nth-child(odd)>td{
      background-color: #ff0;
     }

@@ -319,95 +319,220 @@ class ProyectController extends Controller
 
     public function procesospago(Request $request)
     {
-        $desc = db::table('descuentos')
-            ->select('descuentos.beneficio_id','descuentos.sap_id','descuentos.descuento')
-            ->get();
         $nproy = db::table('proyects')
             ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago','empleados.nombre','empleados.posicion',
-            'empleados.depto','beneficios.fecha_gen','beneficios.num_pago','integrants.pago','empleados.cia')
+            'empleados.depto','beneficios.fecha_gen','beneficios.num_pago','integrants.pago','empleados.cia','descuentos.descuento','descuentos.beneficio_id','descuentos.sap_id')
             ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
             ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
             ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
-            //->join('descuentos', 'beneficios.id', '=', 'descuentos.beneficio_id')
+            ->leftjoin('descuentos', function ($join){
+                $join->on('beneficios.id', '=', 'descuentos.beneficio_id')->on('descuentos.sap_id','=','integrants.empleado_id');
+                })
             ->where('beneficios.status', '=', '2')
+            ->whereraw('beneficio', DB::raw("(select max(`beneficio`) from beneficios)"))
             ->orderBy('beneficios.proyect_id', 'asc')
             ->orderBy('integrants.rol', 'asc')
-            //->groupby('beneficios.proyect_id')
+            //->groupby('integrants.empleado_id')
             ->get();
-            // foreach ($nproy as $beneficios)
-            //     {
-            //         if (($beneficios->nivel)== 1)
-            //         {
-            //            $x = $beneficios;
-            //            $btotal = $x->beneficio*0.1;   
-            //         if (($beneficios->rol)==1)
-            //            {
-            //                $rol = $btotal*.3;
-            //                $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->rol)==2)
-            //            {
-            //             $rol = $btotal*.14;
-            //             $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->rol)==3)
-            //            {
-            //             $rol = $btotal*.06;
-            //             $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->pago)==0)
-            //            {
-            //                $rol = 0;
-            //                $rol = round($rol,0);
-            //            }
-            //         //    if (($beneficios->id)==($desc->beneficio_id))
-            //         //    {
-            //         //        if (($beneficios->empleado_id)==($desc->sap_id))
-            //         //        {
-            //         //            $total = $rol - $desc->descuento;
-            //         //        }
-            //         //    }
-            //         }
-            //         else
-            //         {
-            //             $x = $beneficios;
-            //            $btotal = $x->beneficio*0.05;      
-            //         if (($beneficios->rol)==1)
-            //            {
-            //                $rol = $btotal*.15;
-            //                $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->rol)==2)
-            //            {
-            //             $rol = $btotal*.07;
-            //             $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->rol)==3)
-            //            {
-            //             $rol = $btotal*.03;
-            //             $rol = round($rol,0);
-            //            }
-            //            if (($beneficios->pago)==0)
-            //            {
-            //                $rol = 0;
-            //                $rol = round($rol,0);
-            //            }
-            //         //    if (($beneficios->id)==($desc->beneficio_id))
-            //         //    {
-            //         //        if (($beneficios->empleado_id)==($desc->sap_id))
-            //         //        {
-            //         //            $total = $rol - $desc->descuento;
-            //         //        }
-            //         //    }
-            //         }
-            //         $tot[] = $rol;
-            //         $a = $tot;
-            //         $suma = array_sum($a);
-            //         $suma = round($suma);
-            //     }
-            //$data =array('nproy' => $nproy, 'desc' => $desc,);
-         return view('proyects.pagos', compact('nproy', 'desc'));
-        //dd($nproy);  
+            foreach ($nproy as $beneficios)
+                {
+                    if (($beneficios->nivel)== 1)
+                    {
+                       $x = $beneficios;
+                       $btotal = $x->beneficio*0.1;   
+                    if (($beneficios->rol)==1)
+                       {
+                           $beneficio = $btotal*.3;
+                           $beneficio = round($beneficio,0);
+                           $proyecto = $x->proyecto;
+                           $proyect_id = $x->proyect_id;
+                           $nivel = $x->nivel;
+                           $desc_proy = $x->desc_proy;
+                           $id = $x->id;
+                           $status = $x->status;
+                           $empleado_id = $x->empleado_id;
+                           $rol = $x->rol;
+                           $pago = $x->pago;
+                           $nombre = $x->nombre;
+                           $posicion = $x->posicion;
+                           $depto = $x->depto;
+                           $fecha_gen = $x->fecha_gen;
+                           $num_pago = $x->num_pago;
+                           $cia = $x->cia;
+                           $descuento = $x->descuento;
+                       }
+                       if (($beneficios->rol)==2)
+                       {
+                        $beneficio = $btotal*.14;
+                        $beneficio = round($beneficio,0);
+                        $proyecto = $x->proyecto;
+                        $proyect_id = $x->proyect_id;
+                        $nivel = $x->nivel;
+                        $desc_proy = $x->desc_proy;
+                        $id = $x->id;
+                        $status = $x->status;
+                        $empleado_id = $x->empleado_id;
+                        $rol = $x->rol;
+                        $pago = $x->pago;
+                        $nombre = $x->nombre;
+                        $posicion = $x->posicion;
+                        $depto = $x->depto;
+                        $fecha_gen = $x->fecha_gen;
+                        $num_pago = $x->num_pago;
+                        $cia = $x->cia;
+                        $descuento = $x->descuento;
+                       }
+                       if (($beneficios->rol)==3)
+                       {
+                        $beneficio = $btotal*.06;
+                        $beneficio = round($beneficio,0);
+                        $proyecto = $x->proyecto;
+                        $proyect_id = $x->proyect_id;
+                        $nivel = $x->nivel;
+                        $desc_proy = $x->desc_proy;
+                        $id = $x->id;
+                        $status = $x->status;
+                        $empleado_id = $x->empleado_id;
+                        $rol = $x->rol;
+                        $pago = $x->pago;
+                        $nombre = $x->nombre;
+                        $posicion = $x->posicion;
+                        $depto = $x->depto;
+                        $fecha_gen = $x->fecha_gen;
+                        $num_pago = $x->num_pago;
+                        $cia = $x->cia;
+                        $descuento = $x->descuento;
+                       }
+                       if (($beneficios->pago)==0)
+                       {
+                           $beneficio = 0;
+                           $beneficio = round($beneficio,0);
+                           $proyecto = $x->proyecto;
+                           $proyect_id = $x->proyect_id;
+                           $nivel = $x->nivel;
+                           $desc_proy = $x->desc_proy;
+                           $id = $x->id;
+                           $status = $x->status;
+                           $empleado_id = $x->empleado_id;
+                           $rol = $x->rol;
+                           $pago = $x->pago;
+                           $nombre = $x->nombre;
+                           $posicion = $x->posicion;
+                           $depto = $x->depto;
+                           $fecha_gen = $x->fecha_gen;
+                           $num_pago = $x->num_pago;
+                           $cia = $x->cia;
+                           $descuento = $x->descuento;
+                       }
+                       if (($beneficios->id)==($beneficios->beneficio_id))
+                       {
+                           if (($beneficios->empleado_id)==($beneficios->sap_id))
+                           {
+                               $beneficio = $beneficio - $beneficios->descuento;
+                           }
+                       }
+                    }
+                    else
+                    {
+                        $x = $beneficios;
+                       $btotal = $x->beneficio*0.05;      
+                    if (($beneficios->rol)==1)
+                       {
+                           $beneficio = $btotal*.15;
+                           $beneficio = round($beneficio,0);
+                           $proyecto = $x->proyecto;
+                           $proyect_id = $x->proyect_id;
+                           $nivel = $x->nivel;
+                           $desc_proy = $x->desc_proy;
+                           $id = $x->id;
+                           $status = $x->status;
+                           $empleado_id = $x->empleado_id;
+                           $rol = $x->rol;
+                           $pago = $x->pago;
+                           $nombre = $x->nombre;
+                           $posicion = $x->posicion;
+                           $depto = $x->depto;
+                           $fecha_gen = $x->fecha_gen;
+                           $num_pago = $x->num_pago;
+                           $cia = $x->cia;
+                           $descuento = $x->descuento;
+                       }
+                       if (($beneficios->rol)==2)
+                       {
+                        $beneficio = $btotal*.07;
+                        $beneficio = round($beneficio,0);
+                        $proyecto = $x->proyecto;
+                        $proyect_id = $x->proyect_id;
+                        $nivel = $x->nivel;
+                        $desc_proy = $x->desc_proy;
+                        $id = $x->id;
+                        $status = $x->status;
+                        $empleado_id = $x->empleado_id;
+                        $rol = $x->rol;
+                        $pago = $x->pago;
+                        $nombre = $x->nombre;
+                        $posicion = $x->posicion;
+                        $depto = $x->depto;
+                        $fecha_gen = $x->fecha_gen;
+                        $num_pago = $x->num_pago;
+                        $cia = $x->cia;
+                        $descuento = $x->descuento;
+                       }
+                       if (($beneficios->rol)==3)
+                       {
+                        $beneficio = $btotal*.03;
+                        $beneficio = round($beneficio,0);
+                        $proyecto = $x->proyecto;
+                        $proyect_id = $x->proyect_id;
+                        $nivel = $x->nivel;
+                        $desc_proy = $x->desc_proy;
+                        $id = $x->id;
+                        $status = $x->status;
+                        $empleado_id = $x->empleado_id;
+                        $rol = $x->rol;
+                        $pago = $x->pago;
+                        $nombre = $x->nombre;
+                        $posicion = $x->posicion;
+                        $depto = $x->depto;
+                        $fecha_gen = $x->fecha_gen;
+                        $num_pago = $x->num_pago;
+                        $cia = $x->cia;
+                        $descuento = $x->descuento;
+                       }
+                       if (($beneficios->pago)==0)
+                       {
+                           $beneficio = 0;
+                           $beneficio = round($beneficio,0);
+                           $proyecto = $x->proyecto;
+                           $proyect_id = $x->proyect_id;
+                           $nivel = $x->nivel;
+                           $desc_proy = $x->desc_proy;
+                           $id = $x->id;
+                           $status = $x->status;
+                           $empleado_id = $x->empleado_id;
+                           $rol = $x->rol;
+                           $pago = $x->pago;
+                           $nombre = $x->nombre;
+                           $posicion = $x->posicion;
+                           $depto = $x->depto;
+                           $fecha_gen = $x->fecha_gen;
+                           $num_pago = $x->num_pago;
+                           $cia = $x->cia;
+                           $descuento = $x->descuento;
+                       }
+                       if (($beneficios->id)==($beneficios->beneficio_id))
+                       {
+                           if (($beneficios->empleado_id)==($beneficios->sap_id))
+                           {
+                               $beneficio = $beneficio - $beneficios->descuento;
+                           }
+                       }
+                    }
+                    $tot[] = array("beneficio"=>$beneficio,"proyecto"=>$proyecto,"proyect_id"=>$proyect_id,"nivel"=>$nivel,"desc_proy"=>$desc_proy,"id"=>$id,"status"=>$status,"empleado_id"=>$empleado_id,"rol"=>$rol,"pago"=>$pago,"nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento);
+                }
+              //$data =array('nproy' => $nproy, 'desc' => $desc,);
+         return view('proyects.pagos', compact('nproy'));
+        //dd($tot);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)

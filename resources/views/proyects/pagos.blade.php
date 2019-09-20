@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .tabla-pagos tr > *:nth-child(6) { 
+        display: none; 
+    }
+</style>
 <div class="container-fluid">
     <br>
     <nav>
@@ -19,8 +24,8 @@
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
             </div>
             <div class="center col-md-8 m-0 p-0">
-                <h3 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h3>
-                <h3 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h3>
+                <h4 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h4>
+                <h4 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h4>
             </div>
             <div class="right col-md-2 m-0 p-0">
                 <div class="row float-right">
@@ -50,7 +55,7 @@
             </div>    
         </div>
         <div class="table-responsive">
-        <table class="table table-sm table-striped table-hover table-bordered">
+        <table class="table table-sm table-striped table-hover table-bordered  tabla-pagos">
             <thead>
                 <tr>
                     <th width="5%">Ficha</th>
@@ -58,6 +63,7 @@
                     <th width="20%">Posicion</th>
                     <th width="20%">Departamento</th>
                     <th width="20%">Proyecto</th>
+                    <th>Beneficio</th>
                     <th width="5%">Beneficio</th>
                     <th width="5px">Pago</th>
                     <th width="5px">Mes</th>
@@ -73,31 +79,57 @@
                         <td>{{ $proyect->depto }}</td>
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         @if (($proyect->pago)==0)
+                            <td class="dectot">{{ 0 }}</td>
+                        @else
+                            @if (($proyect->nivel)==1)
+                                @if (($proyect->rol)==1)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.1)*.3)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @if (($proyect->rol)==2)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.1)*.14)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @if (($proyect->rol)==3)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.1)*.06)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @endif
+                            @if (($proyect->nivel)==2)
+                                @if (($proyect->rol)==1)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.05)*.15)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @if (($proyect->rol)==2)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.05)*.07)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @if (($proyect->rol)==3)
+                                        <td class="dectot">{{ number_format((((($proyect->beneficio)*0.05)*.03)-($proyect->descuento)),0, '.', '') }}</td>
+                                    @endif
+                                @endif
+                            @endif
+                        @if (($proyect->pago)==0)
                             <td>{{ 0 }}</td>
                         @else
-                        @if (($proyect->nivel)==1)
-                            @if (($proyect->rol)==1)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.3),0, '.', ',')) }}</td>
-                            @endif    
-                            @if (($proyect->rol)==2)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.14),0, '.', ',')) }}</td>
-                            @endif    
-                            @if (($proyect->rol)==3)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.06),0, '.', ',')) }}</td>
+                            @if (($proyect->nivel)==1)
+                                @if (($proyect->rol)==1)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.1)*.3)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @if (($proyect->rol)==2)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.1)*.14)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @if (($proyect->rol)==3)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.1)*.06)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @endif
+                            @if (($proyect->nivel)==2)
+                                @if (($proyect->rol)==1)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.05)*.15)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @if (($proyect->rol)==2)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.05)*.07)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @if (($proyect->rol)==3)
+                                        <td>{{ sprintf('$ %s', number_format((((($proyect->beneficio)*0.05)*.03)-($proyect->descuento)),0, '.', ',')) }}</td>
+                                    @endif
+                                @endif
                             @endif
-                        @endif
-                        @if (($proyect->nivel)==2)
-                            @if (($proyect->rol)==1)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.15),0, '.', ',')) }}</td>
-                            @endif
-                            @if (($proyect->rol)==2)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.07),0, '.', ',')) }}</td>
-                            @endif
-                            @if (($proyect->rol)==3)
-                                <td>{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.03),0, '.', ',')) }}</td>
-                            @endif
-                        @endif
-                        @endif
                         <td>{{ (($proyect->num_pago)+1) }}</td>
                         <td>{{ \carbon\carbon::parse($proyect->fecha_gen)->format('M-Y') }}</td>
                     </tr>
@@ -105,6 +137,7 @@
                 @endforeach
             </tbody>
        </table>
+       <p id="demo"></p>
     </div>
     </div>
 <footer>
@@ -241,24 +274,24 @@
                 @else
                 @if (($proyect->nivel)==1)
                     @if (($proyect->rol)==1)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.3),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.1)*.3)-($proyect->descuento)),0, '.', '') }}">
                     @endif    
                     @if (($proyect->rol)==2)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.14),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.1)*.14)-($proyect->descuento)),0, '.', '') }}">
                     @endif    
                     @if (($proyect->rol)==3)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.1)*.06),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.1)*.06)-($proyect->descuento)),0, '.', '') }}">
                     @endif
                 @endif
                 @if (($proyect->nivel)==2)
                     @if (($proyect->rol)==1)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.15),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.05)*.15)-($proyect->descuento)),0, '.', '') }}">
                     @endif
                     @if (($proyect->rol)==2)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.07),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.05)*.07)-($proyect->descuento)),0, '.', '') }}">
                     @endif
                     @if (($proyect->rol)==3)
-                    <input type="hidden" id="pago" name="pago[]" value="{{ sprintf('$ %s', number_format(((($proyect->beneficio)*0.05)*.03),0, '.', ',')) }}">
+                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format((((($proyect->beneficio)*0.05)*.03)-($proyect->descuento)),0, '.', '') }}">
                     @endif
                 @endif
                 @endif
@@ -279,5 +312,23 @@
         window.print();
         return false;
     });
+
+let pagototal = [];
+document.querySelectorAll('.tabla-pagos tbody tr').forEach(function(e){
+  let fila = {
+    dectot: e.querySelector('.dectot').innerText,
+  };
+  pagototal.push(fila["dectot"]);
+
+  total = 0;
+
+for ( i = 0; i < pagototal.length; i++) {
+    pago = parseInt(pagototal[i]);
+    total = total + pago;
+    
+}
+});
+
+console.log(total);
   </script>
 @endsection
