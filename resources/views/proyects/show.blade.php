@@ -60,7 +60,7 @@
                     <div class="card">
                         <h5>
                         <a>Fecha Fin del Proyecto</a>
-                        <small class="text-muted">{{ \carbon\carbon::parse($proyect->fin)->format('M-Y') }}</small>
+                        <small class="text-muted">{{ \carbon\carbon::parse($proyect->fecha_fin)->format('M-Y') }}</small>
                         </h5>
                     </div>
                     <div class="card">

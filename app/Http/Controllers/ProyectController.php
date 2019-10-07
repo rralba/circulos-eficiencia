@@ -319,6 +319,7 @@ class ProyectController extends Controller
 
     public function procesospago(Request $request)
     {
+        $mes1 = $request->mes;
         $nproy = db::table('proyects')
             ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago','empleados.nombre','empleados.posicion',
             'empleados.depto','beneficios.fecha_gen','beneficios.num_pago','integrants.pago','empleados.cia','descuentos.descuento','descuentos.beneficio_id','descuentos.sap_id')
@@ -329,11 +330,22 @@ class ProyectController extends Controller
                 $join->on('beneficios.id', '=', 'descuentos.beneficio_id')->on('descuentos.sap_id','=','integrants.empleado_id');
                 })
             ->where('beneficios.status', '=', '2')
-            ->whereraw('beneficio', DB::raw("(select max(`beneficio`) from beneficios)"))
             ->orderBy('beneficios.proyect_id', 'asc')
             ->orderBy('integrants.rol', 'asc')
-            //->groupby('integrants.empleado_id')
-            ->get();
+            //->groupby('beneficios.proyect_id')
+            ->get(); 
+        $cuenta = db::table('beneficios')
+        ->select('id','proyect_id', db::raw('count(num_pago) as num_pago'))
+        ->groupby('proyect_id')
+        ->get(); 
+            foreach($cuenta as $cuenta)
+            {
+                $id = $cuenta->id;
+                $proyect_id = $cuenta->proyect_id;
+                $num_pago = $cuenta->num_pago;
+                $cuentas[] = array("id"=>$id,"proyect_id"=>$proyect_id,"num_pago"=>$num_pago);
+            }
+            $cuentas2 = $cuentas;
             foreach ($nproy as $beneficios)
                 {
                     if (($beneficios->nivel)== 1)
@@ -357,7 +369,7 @@ class ProyectController extends Controller
                            $posicion = $x->posicion;
                            $depto = $x->depto;
                            $fecha_gen = $x->fecha_gen;
-                           $num_pago = $x->num_pago;
+                            $num_pago = count($x->num_pago);
                            $cia = $x->cia;
                            $descuento = $x->descuento;
                        }
@@ -528,11 +540,12 @@ class ProyectController extends Controller
                            }
                        }
                     }
-                    $tot[] = array("beneficio"=>$beneficio,"proyecto"=>$proyecto,"proyect_id"=>$proyect_id,"nivel"=>$nivel,"desc_proy"=>$desc_proy,"id"=>$id,"status"=>$status,"empleado_id"=>$empleado_id,"rol"=>$rol,"pago"=>$pago,"nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento);
+                    $datafin[] = array("beneficio"=>$beneficio,"proyecto"=>$proyecto,"proyect_id"=>$proyect_id,"nivel"=>$nivel,"desc_proy"=>$desc_proy,"id"=>$id,"status"=>$status,"empleado_id"=>$empleado_id,"rol"=>$rol,"pago"=>$pago,
+                                    "nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento);         
+                    $json = json_encode($datafin); 
                 }
-              //$data =array('nproy' => $nproy, 'desc' => $desc,);
-         return view('proyects.pagos', compact('nproy'));
-        //dd($tot);  
+         //return view('proyects.pagos', compact('json','mes1'));
+        dd($datafin,$cuentas2);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
@@ -578,6 +591,26 @@ class ProyectController extends Controller
 
     public function procesosave(Request $request)
     {
-        dd($request->all());
+        // for($i=0; $i<count($request->beneficio); $i++)
+        //     {
+        //         $reconocimientos = new reconocimiento();
+        //         $reconocimientos->beneficio_id = $request->beneficio[$i];
+        //         $reconocimientos->empleado = $request->empleado[$i];
+        //         $reconocimientos->pago = $request->pago[$i];
+        //         $reconocimientos->save();
+        //     }
+        $uni = array_unique($request->beneficio);
+        for($i=0; $i<count($uni); $i++)
+            {
+                $beneficios = beneficio::where('id', '=', $uni)->first();
+                $beneficios->num_pago = $request->num_pago;
+                $beneficios->mes_pago = $request->mes_pago;
+                $beneficios->save();
+           }
+        $beneficio = beneficio::where('status', '=', 2)->first();
+        $beneficio->status = 1;
+        $beneficio->save();
+            return redirect()->back()->with('info', 'Informacion Guardada con Exito!');      
+        //dd($uni);
     }
 }

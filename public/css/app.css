@@ -20,12 +20,12 @@
     @page {
         sizw: letter;
         size: landscape;
-        margin-top: 0;
+        margin-top: 0px;
         margin-bottom: 0px;
     }
     #nav-tab {display: none}
     #botones {display: none}
-    #imprimible {font-size: 55%;}
+    #imprimible {font-size: 65%;}
     
     .table-striped>tbody>tr:nth-child(odd)>td{
      background-color: #ff0;

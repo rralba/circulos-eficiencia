@@ -62,8 +62,20 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <br> 
+                    <br>
+                    <div class="row float-left col-12"> 
+                        <div class="col m-0 p-0 col-2">  
+                            <label for="recipient-name" class="col-form-label float-right">Mes Pago:</label>
+                        </div>
+                        <div class="col m-0 p-0 col-10">
+                            <input class="form-control form-control-sm col-6" name="mes" type="month" id="mes" required>
+                        </div>
+                    </div>    
+                    <br>
+                    <br>
+                    <div class="row float-left col-5">
                     <button type="submit" class="btn btn-primary">Ejecutar</button>  
+                    </div>
                 </div>  
             </form>
             <div class="modal-footer">
