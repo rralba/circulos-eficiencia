@@ -52,6 +52,8 @@ Route::post('proyects/store', 'ProyectController@store')->name('proyects.store')
 ->middleware('permission:proyects.create');
 Route::get('proyects', 'ProyectController@index')->name('proyects.index')
 ->middleware('permission:proyects.index');
+Route::get('proyects_finished', 'ProyectController@terminado')->name('proyects.finished')
+->middleware('permission:proyects.finished');
 Route::get('proyects/create', 'ProyectController@create')->name('proyects.create')
 ->middleware('permission:proyects.create');
 Route::put('proyects/{proyect}', 'ProyectController@update')->name('proyects.update')
@@ -64,13 +66,13 @@ Route::post('proyects/destroy', 'ProyectController@destroy')->name('proyects.des
 ->middleware('permission:proyects.destroy');
 Route::get('proyects/{proyect}/edit', 'ProyectController@edit')->name('proyects.edit')
 ->middleware('permission:proyects.edit');
+//integrantes
 Route::get('proyects/{proyect}/editinteg', 'ProyectController@editar')->name('proyects.editinteg')
 ->middleware('permission:integrants.edit');
 Route::post('proyect', 'ProyectController@delete')->name('integrants.delete')
 ->middleware('permission:integrants.edit');
 Route::post('proyects', 'ProyectController@save')->name('integrants.save')
 ->middleware('permission:integrants.edit');
-//integrantes
 Route::post('proyects/editinteg', 'ProyectController@add')->name('integrants.store')
 ->middleware('permission:integrants.create');
 Route::post('proyect/beneficio', 'ProyectController@benedit')->name('beneficios.edit')

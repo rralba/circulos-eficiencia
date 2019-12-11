@@ -1,4 +1,7 @@
 <div class="form-group">
+    {{ Form::hidden('id', null) }}
+</div>
+<div class="form-group">
     {{ Form::label('proyecto', 'Nombre del proyecto') }}
     {{ Form::text('proyecto', null, ['class' => 'form-control']) }}
 </div>
@@ -6,10 +9,6 @@
     {{ Form::label('fecha_reg', 'Fecha de registro del proyecto') }}
     {{ Form::date('fecha_reg', null, ['class' => 'form-control']) }}
 </div>
-{{--  <div class="form-group">
-    {{ Form::label('nivel', 'nivel del proyecto') }}
-    {{ Form::select('nivel', ['1'=>'1','2'=>'2'], null, ['class' => 'form-control']) }}
-</div>  --}}
 <div class="form-group">
     {{ Form::label('depto', 'Departamento del proyecto') }}
     {{ Form::select('depto', ['ACERACION B.O.F Y COLADA CONTI S2'=>'ACERACION B.O.F Y COLADA CONTI S2',
@@ -111,6 +110,14 @@
     'VICEPRESIDENCIA DEL CONSEJO'=>'VICEPRESIDENCIA DEL CONSEJO'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
+    {{ Form::label('nivel', 'Nivel asignado al proyecto') }}
+    {{ Form::select('nivel', ['1'=>'1','2'=>'2'], null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('comite', 'Comite de aprobación') }}
+    {{ Form::select('comite', ['0'=>'0','1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9'], null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
     {{ Form::label('asesor', 'Asesor asignado al proyecto') }}
     {{ Form::select('asesor', ['Ing. Cinthya Rodriguez'=>'Ing. Cinthya Rodriguez', 
     'Ing. Isabela San Miguel'=>'Ing. Isabela San Miguel', 
@@ -126,22 +133,38 @@
     {{ Form::label('fecha_fin', 'Fecha fin del proyecto') }}
     {{ Form::date('fecha_fin', null, ['class' => 'form-control']) }}
 </div>
-{{--  <div class="form-group">
-    {{ Form::label('comite', 'Numero de comite') }}
-    {{ Form::select('comite', ['1'=>'1','2'=>'2','3'=>'3'], null, ['class' => 'form-control']) }}
-</div>  --}}
 <div class="form-group">
     {{ Form::label('valor', 'Valor corporativo del proyecto') }}
-    {{ Form::select('valor', ['Productividad'=>'Productividad', 'Calidad'=>'Calidad', 'Costos'=>'Costos', 'Productividad y Costos'=>'Productividad y Costos'], null, ['class' => 'form-control']) }}
+    {{ Form::select('valor', ['Productividad'=>'Productividad', 'Calidad'=>'Calidad', 'Costos'=>'Costos', 'Productividad y Costos'=>'Productividad y Costos','Productividad, calidad y Costos'=>'Productividad, calidad y Costos'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('metodologia', 'Metodologia del proyecto') }}
-    {{ Form::select('metodologia', ['DMAIC'=>'DMAIC', 'PDCA'=>'PDCA', 'QC-STORY 1'=>'QC-STORY 1', 'QC-STORY 2'=>'QC-STORY 2'], null, ['class' => 'form-control']) }}
+    {{ Form::select('metodologia', ['DMAIC'=>'DMAIC', 'PDCA'=>'PDCA', 'QC-STORY 1'=>'QC-STORY 1', 'QC-STORY 2'=>'QC-STORY 2', 'DMADV'=>'DMADV'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('ahorro_anual_proy', 'Ahorro anual proyectado') }}
     {{ Form::number('ahorro_anual_proy', null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
-    {{ Form::submit('Guardar', ['class' => 'btn btm-primary']) }}
+    {{ Form::label('metrico_primario', 'Metrico primario del proyecto') }}
+    {{ Form::text('metrico_primario', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('metrico_secundario', 'metrico Secundario del proyecto') }}
+    {{ Form::text('metrico_secundario', null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('empresa', 'Empresa donde se desarrolla el proyecto') }}
+    {{ Form::select('empresa', ['AHMSA 1'=>'AHMSA 1','AHMSA 2'=>'AHMSA 2','NASA'=>'NASA','MICARE'=>'MICARE','MIMOSA'=>'MIMOSA','HERCULES'=>'HERCULES'], null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('desc_proy', 'Proyecto sujeto a descuentos') }}
+    {{ Form::select('desc_proy', ['0'=>'Con descuento','1'=>'Sin descuento'], null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('proy_status', 'Status del proyecto') }}
+    {{ Form::select('proy_status', ['0'=>'Cancelado','1'=>'Activo','2'=>'Terminado'], null, ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
+    {{ Form::submit('Guardar', ['class' => 'btn btn-primary']) }}
 </div>

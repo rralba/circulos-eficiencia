@@ -39,7 +39,9 @@
                                 @can('proyects.index')
                                     <a class="dropdown-item" href="{{ route('proyects.index') }}">Activos</a>
                                 @endcan
-                                    <a class="dropdown-item" href="#">Terminados</a>
+                                @can('proyects.finished')
+                                    <a class="dropdown-item" href="{{ route('proyects.finished') }}">Terminados</a>
+                                @endcan
                                 @can('procesos.index')
                                     <a class="dropdown-item" href="{{ route('procesos.index') }}">En Proceso de Pago</a>
                                 @endcan

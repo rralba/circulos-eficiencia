@@ -37,6 +37,15 @@ class ProyectController extends Controller
         // dd($proyect->all());
     }
 
+    public function terminado()
+    {
+        $proyects = DB::table('proyects')
+        ->where('proy_status', '=', '2')
+        ->get();
+        return view('proyects.terminados', ['proyects' => $proyects]);
+        // dd($proyect->all());
+    }
+
     public function destroy(Request $request)
     {
         dd($request->all());
@@ -115,11 +124,28 @@ class ProyectController extends Controller
      * @param  \App\Proyect  $proyect
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proyect $proyect)
+    public function update(Request $request, $proyect)
     {   
-        $proyect->update($request->all());
-        return redirect()->route('proyects.edit', $proyect->id)
-        ->with('info', 'Proyecto actualizado con exito');
+        $proyectos = Proyect::where('id', '=', $request->id)->first();
+        $proyectos->proyecto = $request->input('proyecto');
+        $proyectos->fecha_reg = $request->input('fecha_reg');
+        $proyectos->depto = $request->input('depto');
+        $proyectos->nivel = $request->input('nivel');
+        $proyectos->comite = $request->input('comite');
+        $proyectos->asesor = $request->input('asesor');
+        $proyectos->fecha_ini = $request->input('fecha_ini');
+        $proyectos->fecha_fin = $request->input('fecha_fin');
+        $proyectos->valor = $request->input('valor');
+        $proyectos->metodologia = $request->input('metodologia');
+        $proyectos->ahorro_anual_proy = $request->input('ahorro_anual_proy');
+        $proyectos->metrico_primario = $request->input('metrico_primario');
+        $proyectos->metrico_secundario = $request->input('metrico_secundario');
+        $proyectos->empresa = $request->input('empresa');
+        $proyectos->desc_proy = $request->input('desc_proy');
+        $proyectos->proy_status = $request->input('proy_status');
+        $proyectos->save();
+        return redirect()->back()->with('info', 'Proyecto Actualizado');
+        //dd($proyectos);
     }
     public function save(Request $request, Proyect $proyect, integrant $integrant)
     {
@@ -332,20 +358,22 @@ class ProyectController extends Controller
             ->where('beneficios.status', '=', '2')
             ->orderBy('beneficios.proyect_id', 'asc')
             ->orderBy('integrants.rol', 'asc')
+            //->orderBy('integrants.empleado_id', 'asc')
+            //->orderBy('beneficios.beneficio', 'desc')
             //->groupby('beneficios.proyect_id')
             ->get(); 
-        $cuenta = db::table('beneficios')
-        ->select('id','proyect_id', db::raw('count(num_pago) as num_pago'))
-        ->groupby('proyect_id')
-        ->get(); 
-            foreach($cuenta as $cuenta)
-            {
-                $id = $cuenta->id;
-                $proyect_id = $cuenta->proyect_id;
-                $num_pago = $cuenta->num_pago;
-                $cuentas[] = array("id"=>$id,"proyect_id"=>$proyect_id,"num_pago"=>$num_pago);
-            }
-            $cuentas2 = $cuentas;
+        // $cuenta = db::table('beneficios')
+        // ->select('id','proyect_id', db::raw('count(num_pago) as num_pago'))
+        // ->groupby('proyect_id')
+        // ->get(); 
+        //     foreach($cuenta as $cuenta)
+        //     {
+        //         $id = $cuenta->id;
+        //         $proyect_id = $cuenta->proyect_id;
+        //         $num_pago = $cuenta->num_pago;
+        //         $cuentas[] = array("id"=>$id,"proyect_id"=>$proyect_id,"num_pago"=>$num_pago);
+        //     }
+        //     $cuentas2 = $cuentas;
             foreach ($nproy as $beneficios)
                 {
                     if (($beneficios->nivel)== 1)
@@ -369,7 +397,7 @@ class ProyectController extends Controller
                            $posicion = $x->posicion;
                            $depto = $x->depto;
                            $fecha_gen = $x->fecha_gen;
-                            $num_pago = count($x->num_pago);
+                           $num_pago = $x->num_pago;
                            $cia = $x->cia;
                            $descuento = $x->descuento;
                        }
@@ -544,8 +572,8 @@ class ProyectController extends Controller
                                     "nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento);         
                     $json = json_encode($datafin); 
                 }
-         //return view('proyects.pagos', compact('json','mes1'));
-        dd($datafin,$cuentas2);  
+         return view('proyects.pagos', compact('json','mes1'));
+        //dd($datafin,$cuentas2);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)

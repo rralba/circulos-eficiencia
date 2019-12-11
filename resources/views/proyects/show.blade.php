@@ -7,8 +7,8 @@
             <div class="list-group list-group-flush">
                     <a href="{{ url('/home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
                 @can('integrants.edit')
-                @if ($proyect->comite == 0)
-                    <a href="{{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
+                @if ($proyect->comite == 0 && $proyect->proy_status == 1)
+                    <a href="   {{ route('proyects.editinteg', $proyect->id) }}" class="list-group-item list-group-item-action bg-light">Editar integrantes</a>
                 @else
                     <a href="#" class="list-group-item list-group-item-action bg-light disabled">Editar integrantes</a>   
                 @endif        

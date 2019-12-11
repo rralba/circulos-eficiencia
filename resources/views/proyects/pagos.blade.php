@@ -53,19 +53,20 @@
         <table class="table table-sm table-striped table-hover table-bordered  tabla-pagos">
             <thead>
                 <tr>
-                    <th width="5%">Ficha</th>
-                    <th width="20%">Nombre</th>
-                    <th width="20%">Posicion</th>
-                    <th width="20%">Departamento</th>
-                    <th width="20%">Proyecto</th>
-                    <th width="5%">Beneficio</th>
-                    <th width="5px">Pago</th>
-                    <th width="5px">Mes</th>
+                    <th width="5%">FICHA</th>
+                    <th width="20%">NOMBRE</th>
+                    <th width="20%">POSICION</th>
+                    <th width="20%">DEPARTAMENTO</th>
+                    <th width="20%">PROYECTO</th>
+                    <th width="5%">BENEFICIO</th>
+                    <th width="5px">PAGO</th>
+                    <th width="5px">MES</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(json_decode($json) as $proyect)
                     @if ((($proyect->cia)<> 1000)&&(($proyect->cia)<> 2000))
+                        @if (($proyect->pago) == 1)
                     <tr>
                         <td>{{ $proyect->empleado_id }}</td>
                         <td>{{ $proyect->nombre }}</td>
@@ -76,15 +77,16 @@
                         <td>{{ (($proyect->num_pago)+1) }}</td>
                         <td>{{ \carbon\carbon::parse($proyect->fecha_gen)->format('M-Y') }}</td>
                     </tr>
+                        @endif
                     @endif
                 @endforeach
             </tbody>
        </table>
-       {{--  <div class="row float-right col-2">
+       {{-- <div class="row float-right col-2">
         <div class="col col-md-4 float-center ml-0 pl-0">
             <input class="form-control form-control-sm" name="folio" type="text" id="folio" value="{{ $suma1 }}" maxlength="10" readonly>
         </div>
-    </div>   --}}
+    </div> --}}
     </div>
     <br>
 <footer>
@@ -200,7 +202,7 @@
                 @endforeach
             </tbody>
        </table>
-       {{--  <div class="row float-right col-2">
+       {{-- <div class="row float-right col-2">
         <div class="col col-md-4 float-center ml-0 pl-0">
             <input class="form-control form-control-sm" name="folio" type="text" id="folio" value="{{ $suma1 }}" maxlength="10" readonly>
         </div>
@@ -317,11 +319,11 @@
                         @endforeach
                     </tbody>
                </table>
-               {{--  <div class="row float-right col-2">
+               {{-- <div class="row float-right col-2">
                 <div class="col col-md-4 float-center ml-0 pl-0">
                     <input class="form-control form-control-sm" name="folio" type="text" id="folio" value="{{ $suma1 }}" maxlength="10" readonly>
                 </div>
-            </div>   --}}
+            </div>    --}}
             </div>
             <br>
         <footer>
