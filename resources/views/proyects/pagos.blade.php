@@ -50,7 +50,7 @@
             </div>    
         </div>
         <div class="table-responsive">
-        <table class="table table-sm table-striped table-hover table-bordered  tabla-pagos">
+        <table class="table table-sm table-striped table-hover table-bordered tabla-pagos">
             <thead>
                 <tr>
                     <th width="5%">FICHA</th>
@@ -60,10 +60,14 @@
                     <th width="20%">PROYECTO</th>
                     <th width="5%">BENEFICIO</th>
                     <th width="5px">PAGO</th>
-                    <th width="5px">MES</th>
+                    <th width="5px">TOTAL PAGO</th>
                 </tr>
             </thead>
             <tbody>
+                <?php $x=0; ?>
+                <?php $y=0; ?>
+                <?php $r=0; ?>
+                <?php $pagosuma=0; ?>
                 @foreach(json_decode($json) as $proyect)
                     @if ((($proyect->cia)<> 1000)&&(($proyect->cia)<> 2000))
                         @if (($proyect->pago) == 1)
@@ -75,20 +79,45 @@
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         <td>{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
                         <td>{{ (($proyect->num_pago)+1) }}</td>
-                        <td>{{ \carbon\carbon::parse($proyect->fecha_gen)->format('M-Y') }}</td>
+                        <?php
+                        if (($x) == ($proyect->empleado_id))
+                        {
+                            if (($y) <= ($proyect->beneficio))
+                            {
+                                $r = $proyect->beneficio;
+                                $pagosuma = $pagosuma + $r;
+                            }
+                            else
+                            { 
+                                $r = 0;
+                            }
+                        }    
+                        else 
+                        {
+                            $r=($proyect->beneficio);
+                            $x=$proyect->empleado_id;
+                            $y=$proyect->beneficio;
+                            $pagosuma = $pagosuma + $r;
+                        } 
+                        ?>
+                        <td class="dectot">{{ sprintf('$ %s', number_format(($r),0, '.', ',')) }}</td>
                     </tr>
                         @endif
                     @endif
                 @endforeach
             </tbody>
        </table>
-       {{-- <div class="row float-right col-2">
-        <div class="col col-md-4 float-center ml-0 pl-0">
-            <input class="form-control form-control-sm" name="folio" type="text" id="folio" value="{{ $suma1 }}" maxlength="10" readonly>
+   </div>
+        <div class="row float-right">
+            <div class="col col-md-8 m-0 p-0">
+                <p>Total de Pago</p>
+            </div>
+            <div class="col col-md-4 float-left ml-0 p-0">
+                <div>{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
+            </div>
         </div>
-    </div> --}}
-    </div>
     <br>
+</div>
 <footer>
     <div class="container-fluid m-o p-0">
         <div class="row">
@@ -119,7 +148,6 @@
         </div>  
     </div>
 </footer>
-    </div>
     <br>
     <div id="botones">
         <div class="row">
@@ -402,5 +430,21 @@
         window.print();
         return false;
     });
+
+    let pagototal = [];
+        document.querySelectorAll('.tabla-pagos tbody tr').forEach(function(e){
+    let fila = {
+        dectot: e.querySelector('.dectot').innerText,
+    };
+    pagototal.push(fila["dectot"]);
+
+    total = 0;
+
+    for ( i = 0; i < pagototal.length; i++) {
+        pago = parseInt(pagototal[i]);
+        total = total + pago;
+    }
+    });
+        document.getElementById("total").innerHTML = total       
   </script>
 @endsection

@@ -25,7 +25,7 @@
     }
     #nav-tab {display: none}
     #botones {display: none}
-    #imprimible {font-size: 65%;}
+    #imprimible {font-size: 50%;}
     
     .table-striped>tbody>tr:nth-child(odd)>td{
      background-color: #ff0;

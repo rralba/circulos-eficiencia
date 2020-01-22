@@ -356,11 +356,11 @@ class ProyectController extends Controller
                 $join->on('beneficios.id', '=', 'descuentos.beneficio_id')->on('descuentos.sap_id','=','integrants.empleado_id');
                 })
             ->where('beneficios.status', '=', '2')
-            ->orderBy('beneficios.proyect_id', 'asc')
-            ->orderBy('integrants.rol', 'asc')
+            //->orderBy('beneficios.proyect_id', 'asc')
+            //->orderBy('integrants.rol', 'asc')
             //->orderBy('integrants.empleado_id', 'asc')
             //->orderBy('beneficios.beneficio', 'desc')
-            //->groupby('beneficios.proyect_id')
+            //->groupby('integrants.empleado_id')
             ->get(); 
         // $cuenta = db::table('beneficios')
         // ->select('id','proyect_id', db::raw('count(num_pago) as num_pago'))
@@ -566,14 +566,21 @@ class ProyectController extends Controller
                            {
                                $beneficio = $beneficio - $beneficios->descuento;
                            }
-                       }
-                    }
-                    $datafin[] = array("beneficio"=>$beneficio,"proyecto"=>$proyecto,"proyect_id"=>$proyect_id,"nivel"=>$nivel,"desc_proy"=>$desc_proy,"id"=>$id,"status"=>$status,"empleado_id"=>$empleado_id,"rol"=>$rol,"pago"=>$pago,
-                                    "nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento);         
-                    $json = json_encode($datafin); 
+                       }  
+                    } 
+                    $datafin[] = array("beneficio"=>$beneficio,"proyecto"=>$proyecto,"proyect_id"=>$proyect_id,"nivel"=>$nivel,"desc_proy"=>$desc_proy,"id"=>$id,"status"=>$status,"empleado_id"=>$empleado_id,"rol"=>$rol,"pago"=>$pago,"nombre"=>$nombre,"posicion"=>$posicion,"depto"=>$depto,"fecha_gen"=>$fecha_gen,"num_pago"=>$num_pago,"cia"=>$cia,"descuento"=>$descuento); 
+                    $datafin1 = array_sort($datafin, 'empleado_id', SORT_DESC);
+                    $datafin1 = array_sort($datafin, 'beneficio', SORT_DESC);   
                 }
+                $nuwbar = $datafin;
+                foreach ($nuwbar as $key => $row) {
+                    $count1[$key] = $row['empleado_id'];
+                    $count2[$key] = $row['beneficio'];
+                }
+                array_multisort($count1, SORT_ASC, SORT_NUMERIC, $count2, SORT_DESC, SORT_NUMERIC, $nuwbar);
+                 $json = json_encode($nuwbar);
          return view('proyects.pagos', compact('json','mes1'));
-        //dd($datafin,$cuentas2);  
+        //dd($nuwbar);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
