@@ -24,7 +24,7 @@
             </div>
             <div class="right col-md-2 m-0 p-0">
                 <div class="row float-right m-0 p-0">
-                    <div class="input-group input-group-sm mb-3">
+                    <div class="input-group input-group-sm mb-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
                         </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="row float-right m-0 p-0"> 
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Mes Pago</span>
                     </div>
@@ -40,7 +40,7 @@
                 </div>
                 </div>    
                 <div class="row float-right m-0 p-0">
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Folio</span>
                     </div>
@@ -57,10 +57,10 @@
                     <th width="20%">NOMBRE</th>
                     <th width="20%">POSICION</th>
                     <th width="20%">DEPARTAMENTO</th>
-                    <th width="20%">PROYECTO</th>
+                    <th width="23%">PROYECTO</th>
                     <th width="5%">BENEFICIO</th>
-                    <th width="5px">PAGO</th>
-                    <th width="5px">TOTAL PAGO</th>
+                    <th width="3%">PAGO</th>
+                    <th width="4%">TOTAL PAGO</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,7 +77,7 @@
                         <td>{{ $proyect->posicion }}</td>
                         <td>{{ $proyect->depto }}</td>
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
-                        <td>{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
                         <td>{{ (($proyect->num_pago)+1) }}</td>
                         <?php
                         if (($x) == ($proyect->empleado_id))
@@ -100,7 +100,7 @@
                             $pagosuma = $pagosuma + $r;
                         } 
                         ?>
-                        <td class="dectot">{{ sprintf('$ %s', number_format(($r),0, '.', ',')) }}</td>
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($r),0, '.', ',')) }}</td>
                     </tr>
                         @endif
                     @endif
@@ -108,46 +108,48 @@
             </tbody>
        </table>
    </div>
-        <div class="row float-right">
-            <div class="col col-md-8 m-0 p-0">
-                <p>Total de Pago</p>
+        <div class="col col-md-2 row float-right">
+            <div class="col col-md-6 float-left m-0 p-0">
+                <p class="font-weight-bold float-right">Total de Pago:</p>
             </div>
-            <div class="col col-md-4 float-left ml-0 p-0">
-                <div>{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
+            <div class="col col-md-6 float-left ml-0 p-0">
+                <div class="font-weight-bold float-right">{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
             </div>
         </div>
     <br>
-</div>
+    <br>
+    <br>
 <footer>
     <div class="container-fluid m-o p-0">
         <div class="row">
             <div class="col-xs-12 col-md-4 m-0 p-0">
-                <h6 class="text-muted lead text-center">Atentamente:</h6>
+                <h4 class="text-muted lead text-center">Atentamente:</h4>
                 <br>
-                <h6 class="text-muted text-center">
+                <h4 class="text-muted text-center">
                 Lic. Virginia Lozano Guajardo<br>
                 Gerente de Capacitación<br>
-                </h6>
+                </h4>
             </div>
             <div class="col-xs-12 col-md-4 m-0 p-0">
-                    <h6 class="text-muted lead text-center">Vo.Bo.:</h6>
+                    <h4 class="text-muted lead text-center">Vo.Bo.:</h4>
                     <br>
-                    <h6 class="text-muted text-center">
+                    <h4 class="text-muted text-center">
                     Lic. Fernando Monroy Guajardo<br>
                     Director Corporativo de Recursos Humanos<br>
-                    </h6>
+                    </h4>
                 </div>
                 <div class="col-xs-12 col-md-4 m-0 p-0">
-                        <h6 class="text-muted lead text-center">Autorización:</h6>
+                        <h4 class="text-muted lead text-center">Autorización:</h4>
                         <br>
-                        <h6 class="text-muted text-center   ">
+                        <h4 class="text-muted text-center   ">
                         N/A<br>
                         <br>
-                        </h6>
+                        </h4>
                     </div>
         </div>  
     </div>
 </footer>
+</div>
     <br>
     <div id="botones">
         <div class="row">
@@ -429,22 +431,6 @@
     $('.imprimir').click(function(){
         window.print();
         return false;
-    });
-
-    let pagototal = [];
-        document.querySelectorAll('.tabla-pagos tbody tr').forEach(function(e){
-    let fila = {
-        dectot: e.querySelector('.dectot').innerText,
-    };
-    pagototal.push(fila["dectot"]);
-
-    total = 0;
-
-    for ( i = 0; i < pagototal.length; i++) {
-        pago = parseInt(pagototal[i]);
-        total = total + pago;
-    }
-    });
-        document.getElementById("total").innerHTML = total       
+    });       
   </script>
 @endsection
