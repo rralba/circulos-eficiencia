@@ -6,11 +6,15 @@
 .conta .center { margin: 0 auto; }
 .conta .right { float: right; }
 
-.ellipsis {
-    max-width: 40px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+.ellipsis{
+    max-width: 23px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabla-pagos{
+    font-size: 9px;
 }
 
 @media print{
@@ -19,15 +23,19 @@
         margin: 0;
     }
     html, body{
-        margin: 10mm 10mm 0mm 0mm;
+        margin-top: 10mm;
+        margin-bottom: 10mm;
+        margin-right: 5mm;
+        margin-left: 5mm;
         background: white;
         font-size: 7px;
     }
-   body{
-        padding-top: 15mm;
-        padding-bottom: 15mm;
-   }
+   
     h4{
+        font-size: 9px;
+    }
+    
+    #titulo{
         font-size: 14px;
     }
     table, td{
@@ -36,7 +44,7 @@
     #nav-tab {display: none}
     #botones {display: none}
     #imprimible {font-size: 9px;}
-    
+    .table-pagos{
     .table-striped>tbody>tr:nth-child(odd)>td{
      background-color: #ff0;
     }
@@ -45,5 +53,6 @@
     }
     .table-striped>thead>tr>th {
        background-color: #eee;
+    }
     }
 }

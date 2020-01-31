@@ -19,8 +19,8 @@
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
             </div>
             <div class="center col-md-8 m-0 p-0">
-                <h4 class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h4>
-                <h4 class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h4>
+                <h4 id="titulo" class="text-center">RECONOCIMENTO CIRCULOS DE EFICIENCIA NIVEL 1 y 2</h4>
+                <h4 id="titulo" class="text-center">EMPLEADOS AHMSA Y CORPORATIVO</h4>
             </div>
             <div class="right col-md-2 m-0 p-0">
                 <div class="row float-right m-0 p-0">
