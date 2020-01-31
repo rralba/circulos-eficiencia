@@ -8,12 +8,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <script src="{!! asset('js/jquery-3.3.1.js') !!}" ></script>
-    <script src="{!! asset('js/bootstrap.js') !!}" ></script>
+    <script src="{!! asset('js/bootstrap.bundle.min.js') !!}" ></script>
     <link href="{!! asset('css/bootstrap.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/jquery.bootgrid.css') !!}" rel="stylesheet">
     <script src="{!! asset('js/jquery.bootgrid.js') !!}" ></script>
     <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
-    <script src="{!! asset('js/popper.js') !!}" ></script>
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet"> 
 </head>
@@ -109,7 +108,7 @@
             </div>
         </div>
         @endif
-        <main class="py-4">
+        <main class="py-1">
             @yield('content')
         </main>
     </div>

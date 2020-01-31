@@ -57,10 +57,10 @@
                     <th width="20%">NOMBRE</th>
                     <th width="20%">POSICION</th>
                     <th width="20%">DEPARTAMENTO</th>
-                    <th width="23%">PROYECTO</th>
+                    <th width="22.5%">PROYECTO</th>
                     <th width="5%">BENEFICIO</th>
                     <th width="3%">PAGO</th>
-                    <th width="4%">TOTAL PAGO</th>
+                    <th width="4.5%">TOTAL PAGO</th>
                 </tr>
             </thead>
             <tbody>
