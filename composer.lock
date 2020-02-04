@@ -1480,6 +1480,7 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
             "version": "1.0.46",
             "source": {
                 "type": "git",
@@ -1490,6 +1491,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
                 "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
+=======
+            "version": "1.0.63",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
                 "shasum": ""
             },
             "require": {
@@ -1560,7 +1573,11 @@
                 "sftp",
                 "storage"
             ],
+<<<<<<< HEAD
             "time": "2018-08-22T07:45:22+00:00"
+=======
+            "time": "2020-01-04T16:30:31+00:00"
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
         },
         {
             "name": "monolog/monolog",
@@ -2753,6 +2770,7 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v4.4.4",
             "source": {
                 "type": "git",
@@ -2763,6 +2781,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/a167b1860995b926d279f9bb538f873e3bfa3465",
                 "reference": "a167b1860995b926d279f9bb538f873e3bfa3465",
+=======
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "ff60c90cb7950b592ebc84ad1289d0345bf24f9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/ff60c90cb7950b592ebc84ad1289d0345bf24f9f",
+                "reference": "ff60c90cb7950b592ebc84ad1289d0345bf24f9f",
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
                 "shasum": ""
             },
             "require": {
@@ -2802,7 +2832,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-01-04T13:00:46+00:00"
+=======
+            "time": "2020-01-04T14:08:26+00:00"
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
         },
         {
             "name": "symfony/debug",
@@ -3240,6 +3274,7 @@
         },
         {
             "name": "symfony/mime",
+<<<<<<< HEAD
             "version": "v4.4.4",
             "source": {
                 "type": "git",
@@ -3250,6 +3285,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/mime/zipball/225034620ecd4b34fd826e9983d85e2b7a359094",
                 "reference": "225034620ecd4b34fd826e9983d85e2b7a359094",
+=======
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "2a3c7fee1f1a0961fa9cf360d5da553d05095e59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/2a3c7fee1f1a0961fa9cf360d5da553d05095e59",
+                "reference": "2a3c7fee1f1a0961fa9cf360d5da553d05095e59",
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
                 "shasum": ""
             },
             "require": {
@@ -3298,7 +3345,11 @@
                 "mime",
                 "mime-type"
             ],
+<<<<<<< HEAD
             "time": "2020-01-04T13:00:46+00:00"
+=======
+            "time": "2020-01-04T14:08:26+00:00"
+>>>>>>> abdb187bb55829ee612d0a13ca5ed6c7fc170f5d
         },
         {
             "name": "symfony/polyfill-ctype",
