@@ -17,12 +17,21 @@
     font-size: 10px;
 }
 
+#imprimible {
+        font-size: 9px;
+        margin: 0;
+        padding: 0;
+        orphans: 4;
+        widows: 4;
+    }
+
 @media print{
      @page {
         size: letter landscape;
         margin: 0;
         padding: 0;
     }
+
     html, body{
         margin-top: 10mm;
         margin-bottom: 10mm;
@@ -49,6 +58,8 @@
         font-size: 9px;
         margin: 0;
         padding: 0;
+        orphans: 4;
+        widows: 4;
     }
  
     .table-striped>tbody>tr:nth-child(odd)>td{

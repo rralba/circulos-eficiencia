@@ -14,6 +14,7 @@
         <div class="tab-pane fade show active" id="nav-ahmsa" role="tabpanel" aria-labelledby="nav-home-tab">
             <br>
     <div id="imprimible">
+        <div id="wrapper">
         <div class="conta">
             <div class="left col-md-2 m-0 p-0">
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
@@ -28,7 +29,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" / readonly>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text"  value="<?php echo date("d/M/Y"); ?>" / readonly>
                     </div>
                 </div>
                 <div class="row float-right m-0 p-0"> 
@@ -36,7 +37,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Mes Pago</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" id="mes" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
                 </div>
                 </div>    
                 <div class="row float-right m-0 p-0">
@@ -44,23 +45,24 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Folio</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text" id="folio" maxlength="10" required>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text"  maxlength="10" required>
                 </div>
                 </div>   
             </div>    
         </div>
+        <section>
         <div class="table-responsive">
         <table class="table table-sm table-striped table-hover table-bordered tabla-pagos">
             <thead>
                 <tr>
-                    <th width="5%">FICHA</th>
-                    <th width="20%">NOMBRE</th>
-                    <th width="20%">POSICION</th>
-                    <th width="20%">DEPARTAMENTO</th>
-                    <th width="22.5%">PROYECTO</th>
-                    <th width="5%">BENEFICIO</th>
-                    <th width="3%">PAGO</th>
-                    <th width="4.5%">TOTAL PAGO</th>
+                    <th width="5%" class="text-center">FICHA</th>
+                    <th width="20%" class="text-center">NOMBRE</th>
+                    <th width="20%" class="text-center">POSICION</th>
+                    <th width="20%" class="text-center">DEPARTAMENTO</th>
+                    <th width="22.5%" class="text-center">PROYECTO</th>
+                    <th width="5%" class="text-center">BENEFICIO</th>
+                    <th width="3%" class="text-center">PAGO</th>
+                    <th width="4.5%" class="text-center">PAGO</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +80,7 @@
                         <td>{{ $proyect->depto }}</td>
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
-                        <td>{{ (($proyect->num_pago)+1) }}</td>
+                        <td>{{ $proyect->num_pago }}</td>
                         <?php
                         if (($x) == ($proyect->empleado_id))
                         {
@@ -116,9 +118,11 @@
                 <div class="font-weight-bold float-right">{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
             </div>
         </div>
+        </section>
     <br>
     <br>
     <br>
+    </div>
 <footer>
     <div class="container-fluid m-o p-0">
         <div class="row">
@@ -148,8 +152,6 @@
                     </div>
         </div>  
     </div>
-</footer>
-</div>
     <br>
     <div id="botones">
         <div class="row">
@@ -157,15 +159,18 @@
                 <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-floppy-o" data-toggle="modal" data-target="#addbenef" title="agregar Beneficio"> Grabar</button>
             </div>
             <div class="col-xs-12 col-md-6">        
-                <a class="imprimir btn btn-outline-primary btn-lg fa fa-print" href="#">Imprimir</a>
+                <a class="imprimir btn btn-outline-primary btn-lg float-left fa fa-print" href="#">Imprimir</a>
             </div>
         </div>        
     </div>
+    </footer>
+</div>
     <br>
         </div>
         <div class="tab-pane fade" id="nav-sid1" role="tabpanel" aria-labelledby="nav-sid1-tab">
               <br>
     <div id="imprimible">
+        <div id="wrapper">
         <div class="conta">
             <div class="left col-md-2 m-0 p-0">
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
@@ -180,7 +185,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" / readonly>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text" value="<?php echo date("d/M/Y"); ?>" / readonly>
                     </div>
                 </div>
                 <div class="row float-right m-0 p-0"> 
@@ -188,7 +193,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Mes Pago</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" id="mes" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
                 </div>
                 </div>    
                 <div class="row float-right m-0 p-0">
@@ -196,23 +201,24 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Folio</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text" id="folio" maxlength="10" required>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text" maxlength="10" required>
                 </div>
                 </div>   
             </div>    
         </div>
+        <section>
         <div class="table-responsive">
         <table class="table table-sm table-striped table-hover table-bordered tabla-pagos">
             <thead>
                 <tr>
-                    <th width="5%">FICHA</th>
-                    <th width="20%">NOMBRE</th>
-                    <th width="20%">POSICION</th>
-                    <th width="20%">DEPARTAMENTO</th>
-                    <th width="22.5%">PROYECTO</th>
-                    <th width="5%">BENEFICIO</th>
-                    <th width="3%">PAGO</th>
-                    <th width="4.5%">TOTAL PAGO</th>
+                    <th width="5%" class="text-center">FICHA</th>
+                    <th width="20%" class="text-center">NOMBRE</th>
+                    <th width="20%" class="text-center">POSICION</th>
+                    <th width="20%" class="text-center">DEPARTAMENTO</th>
+                    <th width="22.5%" class="text-center">PROYECTO</th>
+                    <th width="5%" class="text-center">BENEFICIO</th>
+                    <th width="3%" class="text-center">PAGO</th>
+                    <th width="4.5%" class="text-center">PAGO</th>
                 </tr>
             </thead>
             <tbody>
@@ -230,7 +236,7 @@
                         <td>{{ $proyect->depto }}</td>
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
-                        <td>{{ (($proyect->num_pago)+1) }}</td>
+                        <td>{{ $proyect->num_pago }}</td>
                         <?php
                         if (($x) == ($proyect->empleado_id))
                         {
@@ -268,9 +274,11 @@
                 <div class="font-weight-bold float-right">{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
             </div>
         </div>
+        </section>
     <br>
     <br>
     <br>
+    </div>
 <footer>
     <div class="container-fluid m-o p-0">
         <div class="row">
@@ -291,17 +299,15 @@
                     </h4>
                 </div>
                 <div class="col-xs-12 col-md-4 m-0 p-0">
-                            <h6 class="text-muted lead text-center">Autorización:</h6>
+                            <h4 class="text-muted lead text-center">Autorización:</h4>
                             <br>
-                            <h6 class="text-muted text-center">
+                            <h4 class="text-muted text-center">
                             Lic. Enrique Rivera Gómez <br>
                             Director Relaciones Industriales <br>
-                            </h6>
+                            </h4>
                     </div>
         </div>  
     </div>
-</footer>
-</div>
     <br>
     <div id="botones">
         <div class="row text-center">
@@ -310,11 +316,14 @@
             </div>
         </div>        
     </div>
+    </footer>
+</div>
     <br>
         </div>    
         <div class="tab-pane fade" id="nav-sid2" role="tabpanel" aria-labelledby="nav-sid2-tab">
             <br>
     <div id="imprimible">
+        <div id="wrapper">
         <div class="conta">
             <div class="left col-md-2 m-0 p-0">
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center" alt="Logo de circulos de eficiencia" width="170" height="60">
@@ -329,7 +338,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Fecha</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text" id="fecha" value="<?php echo date("d/M/Y"); ?>" / readonly>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="fecha" type="text" value="<?php echo date("d/M/Y"); ?>" / readonly>
                     </div>
                 </div>
                 <div class="row float-right m-0 p-0"> 
@@ -337,7 +346,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Mes Pago</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" id="mes" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="mes" type="month" value="{{ \carbon\carbon::parse($mes1)->format('M-Y') }}" maxlength="10" readonly>
                 </div>
                 </div>    
                 <div class="row float-right m-0 p-0">
@@ -345,23 +354,24 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Folio</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text" id="folio" maxlength="10" required>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="folio" type="text" maxlength="10" required>
                 </div>
                 </div>   
             </div>    
         </div>
+        <section>
         <div class="table-responsive">
         <table class="table table-sm table-striped table-hover table-bordered tabla-pagos">
             <thead>
                 <tr>
-                    <th width="5%">FICHA</th>
-                    <th width="20%">NOMBRE</th>
-                    <th width="20%">POSICION</th>
-                    <th width="20%">DEPARTAMENTO</th>
-                    <th width="22.5%">PROYECTO</th>
-                    <th width="5%">BENEFICIO</th>
-                    <th width="3%">PAGO</th>
-                    <th width="4.5%">TOTAL PAGO</th>
+                    <th width="5%" class="text-center">FICHA</th>
+                    <th width="20%" class="text-center">NOMBRE</th>
+                    <th width="20%" class="text-center">POSICION</th>
+                    <th width="20%" class="text-center">DEPARTAMENTO</th>
+                    <th width="22.5%" class="text-center">PROYECTO</th>
+                    <th width="5%" class="text-center">BENEFICIO</th>
+                    <th width="3%" class="text-center">PAGO</th>
+                    <th width="4.5%" class="text-center">PAGO</th>
                 </tr>
             </thead>
             <tbody>
@@ -379,7 +389,7 @@
                         <td>{{ $proyect->depto }}</td>
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->beneficio),0, '.', ',')) }}</td>
-                        <td>{{ (($proyect->num_pago)+1) }}</td>
+                        <td>{{ $proyect->num_pago }}</td>
                         <?php
                         if (($x) == ($proyect->empleado_id))
                         {
@@ -417,11 +427,13 @@
                 <div class="font-weight-bold float-right">{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
             </div>
         </div>
+        </section>
     <br>
     <br>
     <br>
+    </div>
 <footer>
-    <div class="container-fluid m-o p-0">
+    <div class="firmas container-fluid m-o p-0">
         <div class="row">
             <div class="col-xs-12 col-md-4 m-0 p-0">
                 <h4 class="text-muted lead text-center">Atentamente:</h4>
@@ -440,17 +452,16 @@
                     </h4>
                 </div>
                 <div class="col-xs-12 col-md-4 m-0 p-0">
-                            <h6 class="text-muted lead text-center">Autorización:</h6>
+                            <h4 class="text-muted lead text-center">Autorización:</h4>
                             <br>
-                            <h6 class="text-muted text-center">
+                            <h4 class="text-muted text-center">
                             Lic. Enrique Rivera Gómez <br>
                             Director Relaciones Industriales <br>
-                            </h6>
+                            </h4>
                     </div>
         </div>  
     </div>
-</footer>
-</div>
+
     <br>
     <div id="botones">
         <div class="row text-center">
@@ -459,6 +470,8 @@
             </div>
         </div>        
     </div>
+        </footer>
+</div>
     <br>   
         </div> 
             </div>
@@ -476,11 +489,11 @@
              {{ csrf_field() }}
         <div class="modal-body">
             @foreach(json_decode($json) as $proyect)
-                    <input type="hidden" id="beneficio" name="beneficio[]" value="{{ $proyect->id }}">
-                    <input type="hidden" id="empleado" name="empleado[]" value="{{ $proyect->empleado_id }}">
-                    <input type="hidden" id="pago" name="pago[]" value="{{ number_format(($proyect->beneficio),0, '.', '') }}">
-                    <input type="hidden" id="mes_pago" name="mes_pago" value="{{ $mes1 }}">
-                    <input type="hidden" id="num_pago" name="num_pago[]" value="{{ (($proyect->num_pago)+1) }}">
+                    <input type="hidden" name="beneficio[]" value="{{ $proyect->id }}">
+                    <input type="hidden" name="empleado[]" value="{{ $proyect->empleado_id }}">
+                    <input type="hidden" name="pago[]" value="{{ number_format(($proyect->beneficio),0, '.', '') }}">
+                    <input type="hidden" name="mes_pago" value="{{ $mes1 }}">
+                    <input type="hidden" name="num_pago[]" value="{{ (($proyect->num_pago)+1) }}">
             @endforeach
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>    

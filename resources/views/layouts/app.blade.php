@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Circulos de Eficiencia') }}</title>
+    <link rel="shortcut icon" href="{!! asset('favicon.ico') !!}" type="image/x-icon">
     <!-- Styles -->
     <script src="{!! asset('js/jquery-3.3.1.js') !!}" ></script>
     <script src="{!! asset('js/bootstrap.bundle.min.js') !!}" ></script>
