@@ -625,27 +625,8 @@ class ProyectController extends Controller
     }
 
     public function procesosave(Request $request)
-    {
-        // for($i=0; $i<count($request->beneficio); $i++)
-        //     {
-        //         $reconocimientos = new reconocimiento();
-        //         $reconocimientos->beneficio_id = $request->beneficio[$i];
-        //         $reconocimientos->empleado = $request->empleado[$i];
-        //         $reconocimientos->pago = $request->pago[$i];
-        //         $reconocimientos->save();
-        //     }
-        $uni = array_unique($request->beneficio);
-        for($i=0; $i<count($uni); $i++)
-            {
-                $beneficios = beneficio::where('id', '=', $uni)->first();
-                $beneficios->num_pago = $request->num_pago;
-                $beneficios->mes_pago = $request->mes_pago;
-                $beneficios->save();
-           }
-        $beneficio = beneficio::where('status', '=', 2)->first();
-        $beneficio->status = 1;
-        $beneficio->save();
-            return redirect()->back()->with('info', 'Informacion Guardada con Exito!');      
-        //dd($uni);
+    {    
+        
+        dd($request->all());
     }
 }
