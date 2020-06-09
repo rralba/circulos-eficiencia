@@ -123,7 +123,10 @@
                     </ul>
                 </div>
             </div>
-        </nav> 
+        </nav>
+            <div class="submenu">
+                @yield('submenu')
+            </div>  
         @if(session('info'))
         <div class="container">
             <div class="row">

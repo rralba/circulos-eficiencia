@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/propuesta', function () {
+    return view('propuesta');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -21,6 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Rutas
 
 Route::middleware(['auth'])->group(function() {
+//Rutas de Sistema
 //Roles
 Route::post('roles/store', 'RoleController@store')->name('roles.store')
 ->middleware('permission:roles.create');
@@ -47,6 +52,8 @@ Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
 ->middleware('permission:users.destroy');
 Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 ->middleware('permission:users.edit');
+
+//Rutas de Proyectos
 //Proyects
 Route::post('proyects/store', 'ProyectController@store')->name('proyects.store')
 ->middleware('permission:proyects.create');
@@ -79,7 +86,6 @@ Route::post('proyect/beneficio', 'ProyectController@benedit')->name('beneficios.
 ->middleware('permission:beneficios.edit');
 Route::post('proyects/beneficio', 'ProyectController@benupdate')->name('beneficios.update')
 ->middleware('permission:beneficios.edit');
-
 //beneficios
 Route::get('proyects/{proyect}/beneficios', 'ProyectController@beneindex')->name('beneficios.index')
 ->middleware('permission:beneficios.index');
@@ -101,11 +107,9 @@ Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.cre
 ->middleware('permission:empleados.create');
 Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.show')
 ->middleware('permission:empleados.show');
-
 //reconocimientos
 Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');
-
 //proceso
 Route::get('proyects-proceso', 'ProyectController@procesosindex')->name('procesos.index')
 ->middleware('permission:procesos.index');
@@ -120,4 +124,13 @@ Route::post('proyects/{proyect}/beneficios/descuentos', 'ProyectController@desce
 ->middleware('permission:descuentos.create');
 Route::post('proyects/{proyect}/beneficios/descuento', 'ProyectController@descuentostore')->name('descuentos.edit')
 ->middleware('permission:descuentos.edit');
+
+//Rutas de Mejoras Rapidas
+//mejoras rapidas
+Route::get('mejorarapida', 'MejorasrapidasController@index')->name('mr.index')
+->middleware('permission:mr.index');
+Route::POST('mejorarapidas', 'MejorasrapidasController@store')->name('mr.store')
+->middleware('permission:mr.create');
+Route::get('mejorarapida/create', 'MejorasrapidasController@create')->name('mr.create')
+->middleware('permission:mr.create');
 });

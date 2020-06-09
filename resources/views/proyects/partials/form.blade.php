@@ -119,11 +119,14 @@
 </div>
 <div class="form-group">
     {{ Form::label('asesor', 'Asesor asignado al proyecto') }}
-    {{ Form::select('asesor', ['Ing. Cinthya Rodriguez'=>'Ing. Cinthya Rodriguez', 
+    {{ Form::select('asesor', ['Ing. Adriana Reyes'=>'Ing. Adriana Reyes', 
     'Ing. Isabela San Miguel'=>'Ing. Isabela San Miguel', 
     'Ing. Edith Ramos'=>'Ing. Edith Ramos', 
     'Ing. Orlando Guerra'=>'Ing. Orlando Guerra', 
-    'Ing. Sergio Camacho'=>'Ing. Sergio Camacho'], null, ['class' => 'form-control']) }}
+    'Ing. Sergio Camacho'=>'Ing. Sergio Camacho',
+    'Ing. Patricia Alvarez'=>'Patricia Alvarez',
+    'Ing. Oscar Rios'=>'Oscar Rios',
+    'Ing. Gerardo Rodriguez'=>'Gerardo Rodriguez'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::label('fecha_ini', 'Fecha de inicio del proyecto') }}

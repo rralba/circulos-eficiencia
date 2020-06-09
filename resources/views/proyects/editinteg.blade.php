@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container-fluid">
   <h1>{{ $proyect->proyecto }}</h1>
     <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#adduser"></button>
@@ -39,9 +38,6 @@
                         @endforeach   
                 </tbody>
             </table>
-            {{--  <div class="form-group">
-                {{ Form::submit('Guardar', ['class' => 'btn btn-sm btm-primary']) }}
-            </div>  --}}
     </div>
 </div>
 <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -156,9 +152,9 @@
                   <label for="recipient-name" class="col-form-label">Compañia:</label>
                   <input type="text" class="form-control" id="comp" name="comp" readonly>
               </div>
-            <button class="btn btn-primary small" type="submit">Save</button>  
-      </div>
-   </form>
+            <button class="btn btn-primary small" type="submit">Guardar</button>  
+        </form>
+      </div> 
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>

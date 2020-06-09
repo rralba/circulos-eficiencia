@@ -40,6 +40,12 @@
                 top: 18px;
             }
 
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 18px;
+            }
+
             .content {
                 text-align: center;
             }
@@ -61,11 +67,23 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .submenu{
+                background: rgba(245,245,247,0.7);
+                padding: 0;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                text-align: center; 
+                height: 50px;
+                z-index: 1;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        @if (Route::has('login'))
+            <div class="submenu">
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -77,8 +95,12 @@
                         @endif
                     @endauth
                 </div>
+                <div class="top-left links">
+                    <a href="/propuesta"> propuesta</a>
+                </div>
+            </div>    
             @endif
-
+        <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
                     Circulos de Eficiencia <br>

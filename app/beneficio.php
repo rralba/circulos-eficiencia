@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class beneficio extends Model
 {
     protected $fillable =[
-        'id','fecha_gen','beneficio','status','num_pago','mes_pago'
+        'id','fecha_gen','beneficio','status','num_pago','mes_pago','folio','mejora_id'
     ];
     // public function proy()
     //     {
@@ -25,5 +25,9 @@ class beneficio extends Model
     public function descuento()
     {
         return $this->hasMany(descuento::class, 'beneficio_id', 'id');
+    }
+    public function mejor()
+    {
+        return $this->hasOne(mejora::class, 'id', 'mejora_id');
     }
 }

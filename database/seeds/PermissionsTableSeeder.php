@@ -85,6 +85,11 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'proyects.destroy',
             'description'   =>  'Eliminar cualquier proyecto del sistema',
         ]);
+        Permission::create([
+            'name'          =>  'navega proyectos terminados',
+            'slug'          =>  'proyects.finished',
+            'description'   =>  'Lista y navega todos los proyectos terminados del sistema',
+        ]);
         //integrantes
         Permission::create([
             'name'          =>  'Crear integrantes',
@@ -126,6 +131,11 @@ class PermissionsTableSeeder extends Seeder
             'name'          =>  'eliminar beneficios',
             'slug'          =>  'beneficios.destroy',
             'description'   =>  'eliminar beneficios del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'sacar de proceso',
+            'slug'          =>  'procesos.destroy',
+            'description'   =>  'Elimina beneficio de la lista a procesar',
         ]);
         //cancelados
         Permission::create([
@@ -180,6 +190,7 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'reconocimientos.destroy',
             'description'   =>  'eliminar reconocimientos del sistema',
         ]);
+        //pago
         Permission::create([
             'name'          =>  'Navegar proceso',
             'slug'          =>  'procesos.index',
@@ -190,11 +201,160 @@ class PermissionsTableSeeder extends Seeder
             'slug'          =>  'procesos.create',
             'description'   =>  'Ejecuta proceso de pago',
         ]);
+        //maestro
         Permission::create([
             'name'          =>  'Acceso a Maestro',
             'slug'          =>  'maestro.index',
             'description'   =>  'Ejecuta proceso Maestro',
         ]);    
-        
+        //descuentos
+        Permission::create([
+            'name'          =>  'Agrega descuentos',
+            'slug'          =>  'descuentos.create',
+            'description'   =>  'Agrega descuentos a beneficios ',
+        ]);  
+        Permission::create([
+            'name'          =>  'Editar descuentos',
+            'slug'          =>  'descuentos.edit',
+            'description'   =>  'Edita descuentos',
+        ]);
+        //Seccion Mejoras Rapidas
+        //Mejoras Rapidas
+        Permission::create([
+            'name'          =>  'Navegar mejoras rapidas',
+            'slug'          =>  'mr.index',
+            'description'   =>  'Lista y navega todos las mejoras rapidas del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver detalle de mejoras rapidas',
+            'slug'          =>  'mr.show',
+            'description'   =>  'Ver en detalle cada mejora rapida del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Creacion de mejoras rapidas',
+            'slug'          =>  'mr.create',
+            'description'   =>  'crear cualquier dato de una mejora rapida del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Edicion de mejoras rapidas',
+            'slug'          =>  'mr.edit',
+            'description'   =>  'Editar cualquier dato de una mejora rapida del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Eliminar mejoras rapidas',
+            'slug'          =>  'mr.destroy',
+            'description'   =>  'Eliminar cualquier mejora rapida del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'navega mejoras rapidas terminadas',
+            'slug'          =>  'mr.finished',
+            'description'   =>  'Lista y navega todos las mejoras rapidas terminadas del sistema',
+        ]);
+        //integrantes
+        Permission::create([
+            'name'          =>  'Crear integrantes',
+            'slug'          =>  'mrintegrants.create',
+            'description'   =>  'Crear integrantes de una mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar integrantes',
+            'slug'          =>  'mrintegrants.edit',
+            'description'   =>  'Editar integrantes de una mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Eliminar integrantes',
+            'slug'          =>  'mrintegrants.destroy',
+            'description'   =>  'Eliminar integrantes de una mejora rapida',
+        ]);
+        //beneficio
+        Permission::create([
+            'name'          =>  'Navega beneficios',
+            'slug'          =>  'mrbeneficios.index',
+            'description'   =>  'Navega beneficio de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver beneficios',
+            'slug'          =>  'mrbeneficios.show',
+            'description'   =>  'Ver beneficio de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Crear beneficios',
+            'slug'          =>  'mrbeneficios.create',
+            'description'   =>  'Crear beneficio de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar beneficios',
+            'slug'          =>  'mrbeneficios.edit',
+            'description'   =>  'Editar beneficio de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'eliminar beneficios',
+            'slug'          =>  'mrbeneficios.destroy',
+            'description'   =>  'eliminar beneficio de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'sacar de proceso',
+            'slug'          =>  'mrprocesos.destroy',
+            'description'   =>  'Elimina beneficio de mejora rapida de la lista a procesar',
+        ]);
+        //cancelados
+        Permission::create([
+            'name'          =>  'Navega canceladas',
+            'slug'          =>  'mrcancelados.index',
+            'description'   =>  'Navega mejoras rapidas canceladas del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver canceladas',
+            'slug'          =>  'mrcancelados.show',
+            'description'   =>  'Ver mejoras rapidas canceladas del sistema',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar canceladas',
+            'slug'          =>  'mrcancelados.edit',
+            'description'   =>  'Editar mejoras rapidas canceladas del sistema',
+        ]);
+        //reconocimientos
+        Permission::create([
+            'name'          =>  'Navega reconocimientos',
+            'slug'          =>  'mrreconocimientos.index',
+            'description'   =>  'Navega reconocimiento de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Ver reconocimientos',
+            'slug'          =>  'mrreconocimientos.show',
+            'description'   =>  'Ver reconocimiento de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Crear reconocimientos',
+            'slug'          =>  'mrreconocimientos.create',
+            'description'   =>  'Crear reconocimiento de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'Editar reconocimientos',
+            'slug'          =>  'mrreconocimientos.edit',
+            'description'   =>  'Editar reconocimiento de mejora rapida',
+        ]);
+        Permission::create([
+            'name'          =>  'eliminar reconocimientos',
+            'slug'          =>  'mrreconocimientos.destroy',
+            'description'   =>  'eliminar reconocimiento de mejora rapida',
+        ]);
+        //pago
+        Permission::create([
+            'name'          =>  'Navegar proceso',
+            'slug'          =>  'mrprocesos.index',
+            'description'   =>  'Navega mejoras rapidas en inicio de proceso de pago',
+        ]);
+        Permission::create([
+            'name'          =>  'Ejecutar proceso',
+            'slug'          =>  'mrprocesos.create',
+            'description'   =>  'Ejecuta proceso de pago de mejoras rapidas',
+        ]);
+        //maestro
+        Permission::create([
+            'name'          =>  'Acceso a Maestro',
+            'slug'          =>  'mrmaestro.index',
+            'description'   =>  'Ejecuta proceso Maestro de mejoras rapidas',
+        ]);    
     }
 }

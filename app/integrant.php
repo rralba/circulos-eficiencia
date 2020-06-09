@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class integrant extends Model
 {
   protected $fillable = [
-    'id,proyect_id','empleado_id','rol'
+    'id,proyect_id','empleado_id','rol','mejora_id'
   ];
 }

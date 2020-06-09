@@ -10,8 +10,13 @@ class empleado extends Model
         'nombre','posicion','depto','cia','direccion','nivel'
    ]; 
    public function proyects()
-    {
-      return $this->belongsToMany(Proyect::class, 'integrants', 'empleado_id', 'proyect_id')
-      ->withPivot('id','proyect_id', 'empleado_id', 'rol');
-    }
+    	{
+      		return $this->belongsToMany(Proyect::class, 'integrants', 'empleado_id', 'proyect_id')
+      		->withPivot('id','proyect_id', 'empleado_id', 'rol');
+    	}
+   	public function mejoras()
+    	{
+      		return $this->belongsToMany(mejora::class, 'integrants', 'empleado_id', 'mejora_id')
+      		->withPivot('id','mejora_id', 'empleado_id', 'rol');
+    	}
 }
