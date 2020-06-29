@@ -1,38 +1,17 @@
- $( document ).ready(function(){
-        $("#grid-basic").bootgrid({
-          formatters: {
-            "actions": function(column, row)
-            {
-              return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-id=\"" + row.id + "\" data-registro=\"" + row.registro + "\" data-direccion=\"" + row.direccion + "\" data-subdireccion=\"" + row.subdireccion + "\" data-departamento=\"" + row.departamento + "\" data-seccion=\"" + row.seccion + "\" data-valor=\"" + row.valor + "\" data-desperdicio=\"" + row.desperdicio + "\" data-inicio=\"" + row.inicio + "\" data-final=\"" + row.final + "\" data-asesor=\"" + row.asesor + "\" data-amejorar=\"" + row.amejorar + "\" data-objetivo=\"" + row.objetivo + "\" data-solucion=\"" + row.solucion + "\" class=\"btn btn-outline-primary small edit\" data-toggle=\"modal\" data-target=\"#edit\"><span class=\"fa fa-pencil\"></span></button> " +
-                   "<button onclick=\"document.getElementById('delete').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-rol=\"" + row.rol + "\" class=\"btn btn-outline-danger smalll delete\"><span class=\"fa fa-trash\"></span></button>";
-            }
-          }}).on("loaded.rs.jquery.bootgrid", function (){
-            /* Executes after data is loaded and rendered */
-            $(this).find(".edit").click(function (e) {
-              $($(this).attr("data-target")).modal("show");
-              $('#id').val($(this).data("id"));
-              $('#registro').val($(this).data("registro")); 
-              $('#direccion').val($(this).data("direccion"));
-              $('#subdireccion').val($(this).data("subdireccion"));
-              $('#departamento').val($(this).data("departamento"));
-              $('#seccion').val($(this).data("seccion"));
-              $('#valor').val($(this).data("valor"));
-              $('#desperdicio').val($(this).data("desperdicio"));
-              $('#inicio').val($(this).data("inicio"));
-              $('#final').val($(this).data("final"));
-              $('#amejorar').val($(this).data("amejorar"));
-              $('#objetivo').val($(this).data("objetivo"));
-              $('#data-solucion').val($(this).data("data-solucion"));
-            });
-            $(this).find(".delete").click(function (e) {
-              $('#pinn').val($(this).data("pin")); 
-              $('#proye_id').val($(this).data("proyect_id"));
-              $('#del_id').val($(this).data("id"));
-              $('#asig').val($(this).data("rol"));
-              $('#delete_name').html($(this).data("id"));
-            });
-          });
+ $(document).ready(function(){
+        $('.validar').keyup(function (){
+            this.value = (this.value + '').replace(/[^0-9]/g, '');
         });
+        $('.datepicker').datepicker({
+            format: "yyyy-mm-dd",
+            language: "es",
+            autoclose: true
+        }); 
+            $('#filanivel1').hide(); //ocultar mediante id
+            $('#filanivel2').hide(); //ocultar mediante id
+            $('#filaper1').hide(); //ocultar mediante id
+            $('#filaper2').hide(); //ocultar mediante id
+          });
 
     var options = {
       CONSEJO : ["","AREA ADMINISTRATIVA OFICINAS MEXICO"],
@@ -120,4 +99,25 @@
       });
       $('#subdireccion').change(fillSecondar);
       fillSecondar();
+    });
+
+     $(document).ready(function(){
+        $("#nivel1").on( "click", function() {
+            $('#filanivel1').show(); //muestro mediante id
+            $('#filanivel2').hide(); //muestro mediante id
+            $('#filaper2').hide(); //muestro mediante id
+            $('.requeridon1').prop("required", true);
+        });
+        $("#nivel2").on( "click", function() {
+            $('#filanivel1').hide(); //oculto mediante id
+            $('#filanivel2').show(); //muestro mediante id
+            $('#filaper1').hide(); //muestro mediante id
+            $('.requeridon2').prop("required", true);
+        });
+        $("#nivel3").on( "click", function() {
+            $('#filaper1').show(); //muestro mediante id
+        });
+        $("#nivel4").on( "click", function() {
+            $('#filaper2').show(); //muestro mediante id
+        });
     });

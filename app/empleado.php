@@ -19,4 +19,9 @@ class empleado extends Model
       		return $this->belongsToMany(mejora::class, 'integrants', 'empleado_id', 'mejora_id')
       		->withPivot('id','mejora_id', 'empleado_id', 'rol');
     	}
+      public function propuesta()
+      {
+          return $this->belongsToMany(Proyect::class, 'integrantes_propuesta', 'empleado_id', 'propuesta_id')
+          ->withPivot('id','propuesta_id', 'empleado_id', 'rol');
+      }
 }

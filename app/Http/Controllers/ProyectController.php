@@ -181,8 +181,6 @@ class ProyectController extends Controller
 
     public function addbenef(Request $request)
     {
-        // $beneficio = beneficio::create($request->all());
-        // return view('proyects.beneficios', compact('request', 'beneficio'));
         $beneficio = new beneficio();
         $beneficio->proyect_id = $request->input('proyect_id');
         $beneficio->fecha_gen = $request->input('fecha_gen');
@@ -275,26 +273,12 @@ class ProyectController extends Controller
         
     public function recoindex(Proyect $proyect, Request $request)
     {
-        // $reconocimientos = reconocimiento::paginate();
-        // return view('proyects.reconocimientos', compact('reconocimientos', 'proyect', 'request'));
-        // $prueba = $request;
-        // $num = $proyect->id;
-        // $data = Proyect::where('proyects.id', '=', '$num')
         $data = db::table('proyects')
         ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
         ->join('reconocimientos', 'beneficios.id', '=', 'reconocimientos.beneficio_id')
         ->select('reconocimientos.*', 'beneficios.id', 'proyects.id')
         ->get();
         return view('proyects.reconocimientos', compact('data', 'proyect', 'request'));
-        // $data = DB::table('proyects')
-        // ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
-        // ->join('reconocimientos', 'beneficios.id', '=', 'reconocimientos.beneficio_id')
-        // ->get();
-        // $reco = reconocimiento::where('proyect_id', '=', $request);
-        // return view('proyects.reconocimientos', compact('proyect', 'beneficio'));
-        // dd($reconocimientos);
-        // var_dump($data); die();
-        // dd($data);
     }
     public function beneindex(Request $request, Proyect $proyect, beneficio $beneficio)
     {
@@ -356,24 +340,7 @@ class ProyectController extends Controller
                 $join->on('beneficios.id', '=', 'descuentos.beneficio_id')->on('descuentos.sap_id','=','integrants.empleado_id');
                 })
             ->where('beneficios.status', '=', '2')
-            //->orderBy('beneficios.proyect_id', 'asc')
-            //->orderBy('integrants.rol', 'asc')
-            //->orderBy('integrants.empleado_id', 'asc')
-            //->orderBy('beneficios.beneficio', 'desc')
-            //->groupby('integrants.empleado_id')
             ->get(); 
-        // $cuenta = db::table('beneficios')
-        // ->select('id','proyect_id', db::raw('count(num_pago) as num_pago'))
-        // ->groupby('proyect_id')
-        // ->get(); 
-        //     foreach($cuenta as $cuenta)
-        //     {
-        //         $id = $cuenta->id;
-        //         $proyect_id = $cuenta->proyect_id;
-        //         $num_pago = $cuenta->num_pago;
-        //         $cuentas[] = array("id"=>$id,"proyect_id"=>$proyect_id,"num_pago"=>$num_pago);
-        //     }
-        //     $cuentas2 = $cuentas;
             foreach ($nproy as $beneficios)
                 {
                     if (($beneficios->nivel)== 1)

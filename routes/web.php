@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::get('/propuesta', function () {
     return view('propuesta');
 });
+Route::post('/propuesta/getEmployees/','PropuestaController@getEmployees')->name('propuesta.getEmployees');
+Route::POST('/propuesta/store','PropuestaController@store')->name('propuesta.store');
 
 Auth::routes();
 
@@ -107,6 +109,8 @@ Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.cre
 ->middleware('permission:empleados.create');
 Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.show')
 ->middleware('permission:empleados.show');
+Route::post('proyect/editinteg/','EmpleadoController@getEmployees')->name('empleados.getEmployees')
+->middleware('permission:integrants.edit');
 //reconocimientos
 Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');

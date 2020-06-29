@@ -5,16 +5,33 @@
     <h1 class="text-center">Registro de propuesta de Circulo de Eficiencia</h1>
 @endsection      
       <div class="container">
-          <form id="mr" action="{{ route('mr.store') }}" method = "POST">
+          <form id="mr" action="{{ route('propuesta.store') }}" method = "POST">
             {{ csrf_field() }}
-              <div class="row">  
-                <div class="col-md-4">
-                  <label for="registro">Registro:</label>
-                  <input type="date" class="form-control" id="registro" name="" required>
+              <div class="row">
+              <div class="input-group col-md-4">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="identificador" id="nivel1" value="1" required>
+                  <label class="form-check-label"  for="inlineRadio1"><h4 class="p-0 m-0">Proyecto de Innovación o Mejora</h4></label>
                 </div>
-                <div class="col-md-8">  
-                  <label for="recipient-name" class="col-form-label">Direccion:</label>
-                  <select class="form-control" id="direccion" name="">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="identificador" id="nivel2" value="2" required>
+                  <label class="form-check-label" for="inlineRadio2"><h4 class="p-0 m-0">Mejora Rápida</h4></label>
+                </div>
+               </div> 
+              <div class="col-md-6">
+               </div> 
+                <div class="col-md-2">
+                  <label for="registro"><h6 class="p-0 m-0">Registro:</h6></label>
+                  <input type="date" class="form-control" id="registro" name="registro" value="{{ date("Y-m-d") }}" readonly>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row"> 
+                <div class="col-md-4">  
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Dirección:</h6></label>
+                  <select class="form-control" id="direccion" name="direccion" required>
+                      <option value=""></option>
                       <option value="CONSEJO">CONSEJO</option>
                       <option value="DIRECCIONGENERAL">DIRECCION GENERAL</option>
                       <option value="COMUNICACION SOCIAL Y REL PUBLICAS">COMUNICACION SOCIAL Y REL PUBLICAS</option>
@@ -35,84 +52,807 @@
                       <option value="CORPORATIVA DE OPERACIONES">CORPORATIVA DE OPERACIONES</option>
                   </select>
                 </div>  
-              </div>
-              <div class="row">  
-                <div class="col-md-6">
-                  <label for="recipient-name" class="col-form-label">Subdireccion:</label>
-                  <select class="form-control" id="subdireccion" name="">
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Subdirección:</h6></label>
+                  <select class="form-control" id="subdireccion" name="subdireccion" required>
                   </select>
                 </div>
-                <div class="col-md-6">  
-                  <label for="recipient-name" class="col-form-label">Departamento:</label>
-                  <input type="text" class="form-control" id="departamento" name="" required>
+                <div class="col-md-4">  
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Departamento:</h6></label>
+                  <select class="form-control" id="departamento" name="departamento" required>
+                  </select>
                 </div>  
               </div>
-              <div class="row">  
+              <br>
+              <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                  <div class="input-group input-group-sm mb-0">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Contacto:</h6></span>
+                    </div>
+                    <input type="text" class="form-control" id="contacto" name="contacto" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="99" required>
+                  </div>
+                  <div class="input-group input-group-sm mb-0">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Teléfono:</h6></span>
+                    </div>
+                    <input type="text" class="form-control validar" id="clave" name="clave" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="10" required>
+                  </div>
+                  <div class="input-group input-group-sm mb-0">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Extensión:</h6></span>
+                    </div>
+                    <input type="text" class="form-control validar" id="extension" name="extension" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="5" required>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <h3 class="text-center">¿Quién Autoriza el Proyecto?</h3>
+              <br>
+              <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeid" name="id_autoriza" readonly>
+                </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label">Seccion:</label>
-                  <input type="text" class="form-control" id="seccion" name="">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_search" name="nom_jefe" required>
                 </div>
-                <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label">Valor:</label>
-                  <input type="text" class="form-control" id="valor" name="" required>
-                </div>  
-                <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label">Desperdicio:</label>
-                  <input type="text" class="form-control" id="desperdicio" name="" required>
-                </div>  
-              </div>
-              <div class="row">  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label">Inicio:</label>
-                  <input type="date" class="form-control" id="inicio" name="">
-                </div>
-                <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label">Final:</label>
-                  <input type="date" class="form-control" id="final" name="" required>
-                </div>
-                <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label">Asesor:</label>
-                  <input type="text" class="form-control" id="asesor" name="" required>
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedepto" name="puesto_jefe" readonly>
                 </div>  
               </div>
+              <br>
+              <br>
+              <h3 class="text-center">Preguntas de inicio de proyecto</h3>
+              <br>
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Inicio:</h6></label>
+                  <input type="text" class="form-control datepicker" id="inicio" name="inicio">
+                </div>
+                <div class="col-md-2">  
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Final:</h6></label>
+                  <input type="text" class="form-control datepicker" id="final" name="final">
+                </div>
+              </div>
+              <br>
+              <div id="filanivel1">
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre del Proyecto</h6></label>
+                    <input type="text" class="form-control requeridon1" id="proyecto" name="proyecto" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué áreas deben participar en el desarrollo del proyecto?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="areas_part" name="areas_part" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="skills_integ" name="skills_integ" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cúal es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="conocimiento_critico" name="conocimiento_critico" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cómo participa el personal sindicalizado?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="sindicalizados" name="sindicalizados" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuales son las principales actividades a realizar?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="principales_act" name="principales_act" maxlength="249">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-10"></div>
+                  <div class="col-md-2">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Beneficio Economico</h6></label>
+                    <input type="text" class="form-control requeridon1" id="beneficio_eco" name="beneficio_eco" maxlength="10">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="integrantes" id="nivel3" value="2">
+                      <label class="form-check-label" for="inlineRadio1"><h6 class="p-0 m-0">¿Deseas agregar integrantes?</h6></label>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+              <br>
+              <div id="filaper1">
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp1" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp1" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop1" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp2" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp2" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop2" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp3" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp3" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop3" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp4" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp4" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop4" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp5" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp5" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop5" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp6" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp6" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop6" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp7" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp7" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop7" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp8" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp8" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop8" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp9" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp9" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop9" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidp10" name="integp[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchp10" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptop10" name="" readonly>
+                </div>  
+              </div>
+              </div>  
+              <br>
+              <div id="filanivel2">
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label">A Mejorar:</label>
-                  <textarea class="form-control" id="amejorar" name="" rows="4" maxlength="249"></textarea>
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué se debe mejorar?</h6></label>
+                  <textarea class="form-control requeridon2" id="mejorar" name="mejorar" rows="4" maxlength="249" placeholder="Escribe una breve descripcion del problema"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label">Objetivo:</label>
-                  <textarea class="form-control" id="objetivo" name="" rows="4" maxlength="249"></textarea>
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Objetivo:</h6></label>
+                  <textarea class="form-control requeridon2" id="objetivo" name="objetivo" rows="4" maxlength="249"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label">Solucion:</label>
-                  <textarea class="form-control" id="solucion" name="" rows="4" maxlength="249"></textarea>
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Solución:</h6></label>
+                  <textarea class="form-control requeridon2" id="solucion" name="solucion" rows="4" maxlength="249"></textarea>
                 </div> 
               </div>
+              <br>
+              <br>
+             {{--  <h6>¿Deseas adjuntar imagenes?</h6>
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="savejpg" name="savejpg" lang="es">
+                    <label class="custom-file-label" for="customFileLang"><h6 class="p-0 m-0">Seleccionar Archivo</h6></label>
+                </div>
+                </div>
+              </div> --}}
+              <br>
+               <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="integrantes" id="nivel4" value="3">
+                      <label class="form-check-label" for="inlineRadio1"><h6 class="p-0 m-0"><h6 class="p-0 m-0">¿Deseas agregar integrantes?</h6></label>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+              <br>
+              <div id="filaper2">
+              <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidm1" name="integm[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchm1" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptom1" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidm2" name="integm[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchm2" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptom2" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidm3" name="integm[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchm3" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptom3" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidm4" name="integm[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchm4" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptom4" name="" readonly>
+                </div>  
+              </div>
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <input type="text" class="form-control" id="employeeidm5" name="integm[]" value="0" readonly>
+                </div>  
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <input type="text" class="form-control" id="employee_searchm5" name="">
+                </div>
+                <div class="col-md-4">
+                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <input type="text" class="form-control" id="employeedeptom5" name="" readonly>
+                </div>  
+              </div>
+              </div>
+            
             <br>
             <button class="btn btn-primary small" type="submit">Guardar</button>
           </form>
-      </div>
-<script>
-	 var options = {
-      CONSEJO : ["AREA ADMINISTRATIVA OFICINAS MEXICO"],
-      DIRECCIONGENERAL : ["N/A"]
-    }
+           <!-- Script -->
+    <script type="text/javascript">
 
-    $(function(){
-      var fillSecondary = function(){
-        var selected = $('#direccion').val();
-        $('#subdireccion').empty();
-        options[selected].forEach(function(element,index){
-          $('#subdireccion').append('<option value="'+element+'">'+element+'</option>');
-        });
-      }
-      $('#direccion').change(fillSecondary);
-      fillSecondary();
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+
+      $( "#employee_search" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search').val(ui.item.label); // display the selected text
+           $('#employeeid').val(ui.item.value); // save selected id to input
+           $('#employeedepto').val(ui.item.depto);
+           return false;
+        }
+      });
+
+      $( "#employee_searchm1" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchm1').val(ui.item.label); // display the selected text
+           $('#employeeidm1').val(ui.item.value); // save selected id to input
+           $('#employeedeptom1').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchm2" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchm2').val(ui.item.label); // display the selected text
+           $('#employeeidm2').val(ui.item.value); // save selected id to input
+           $('#employeedeptom2').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchm3" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchm3').val(ui.item.label); // display the selected text
+           $('#employeeidm3').val(ui.item.value); // save selected id to input
+           $('#employeedeptom3').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchm4" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchm4').val(ui.item.label); // display the selected text
+           $('#employeeidm4').val(ui.item.value); // save selected id to input
+           $('#employeedeptom4').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchm5" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchm5').val(ui.item.label); // display the selected text
+           $('#employeeidm5').val(ui.item.value); // save selected id to input
+           $('#employeedeptom5').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp1" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp1').val(ui.item.label); // display the selected text
+           $('#employeeidp1').val(ui.item.value); // save selected id to input
+           $('#employeedeptop1').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp2" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp2').val(ui.item.label); // display the selected text
+           $('#employeeidp2').val(ui.item.value); // save selected id to input
+           $('#employeedeptop2').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp3" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp3').val(ui.item.label); // display the selected text
+           $('#employeeidp3').val(ui.item.value); // save selected id to input
+           $('#employeedeptop3').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp4" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp4').val(ui.item.label); // display the selected text
+           $('#employeeidp4').val(ui.item.value); // save selected id to input
+           $('#employeedeptop4').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp5" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp5').val(ui.item.label); // display the selected text
+           $('#employeeidp5').val(ui.item.value); // save selected id to input
+           $('#employeedeptop5').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp6" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp6').val(ui.item.label); // display the selected text
+           $('#employeeidp6').val(ui.item.value); // save selected id to input
+           $('#employeedeptop6').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp7" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp7').val(ui.item.label); // display the selected text
+           $('#employeeidp7').val(ui.item.value); // save selected id to input
+           $('#employeedeptop7').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp8" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp8').val(ui.item.label); // display the selected text
+           $('#employeeidp8').val(ui.item.value); // save selected id to input
+           $('#employeedeptop8').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp9" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp9').val(ui.item.label); // display the selected text
+           $('#employeeidp9').val(ui.item.value); // save selected id to input
+           $('#employeedeptop9').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_searchp10" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_searchp10').val(ui.item.label); // display the selected text
+           $('#employeeidp10').val(ui.item.value); // save selected id to input
+           $('#employeedeptop10').val(ui.item.depto);
+           return false;
+        }
+      });
+
     });
-</script>
+    </script>
+      </div>
 @endsection

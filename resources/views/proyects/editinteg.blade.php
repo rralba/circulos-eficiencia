@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.appm')
 
 @section('content')
+@section('submenu')
+  <h1 class="text-center">{{ $proyect->proyecto }}</h1>
+@endsection
 <div class="container-fluid">
-  <h1>{{ $proyect->proyecto }}</h1>
     <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus" data-toggle="modal" data-target="#adduser"></button>
+    <br>
     <div class="table-responsive">
             <table id="grid-basic" class="w3-table-all w3-card-4">
                 <thead>
@@ -57,11 +60,11 @@
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Id sap:</label>
-                  <input type="text" class="form-control" id="id" name="id" required>
+                  <input type="text" class="form-control" id="id" name="id" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="nombre" readonly>
+                  <input type="text" class="form-control" id="nombre" required>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Departamento:</label>
@@ -70,10 +73,6 @@
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Posicion:</label>
                   <input type="text" class="form-control" id="posicion" readonly>
-              </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Nivel:</label>
-                  <input type="text" class="form-control" id="nivel" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Rol:</label>
@@ -220,6 +219,38 @@
             });
           });
         });
-        
+    
+     // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+
+      $( "#nombre" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('empleados.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#nombre').val(ui.item.nombre); // display the selected text
+           $('#id').val(ui.item.id); // save selected id to input
+           $('#depto').val(ui.item.depto);
+           $('#posicion').val(ui.item.posicion);
+           $('#direccion').val(ui.item.direccion);
+           $('#cia').val(ui.item.cia);
+           return false;
+        }
+      });    
+    });
 </script>
 @endsection 

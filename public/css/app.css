@@ -25,6 +25,7 @@
         widows: 4;
     }
 
+
 .submenu{
     background: rgba(245,245,247,0.7);
     padding: 0;
@@ -92,8 +93,8 @@
     }
 
     html, body{
-        margin-top: 10mm;
-        margin-bottom: 10mm;
+        margin-top: 0mm;
+        margin-bottom:  0mm;
         margin-right: 5mm;
         margin-left: 5mm;
         background: white;

@@ -16,6 +16,14 @@
     <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet"> 
+    <!-- jquery-ui -->
+    <link href="{!! asset('jqueryui/jquery-ui.css') !!}" rel="stylesheet">
+    <script src="{!! asset('jqueryui/jquery-ui.js') !!}" ></script>
+    <!-- datepicker -->
+    <link href="{!! asset('datepicker/css/bootstrap-datepicker3.css') !!}" rel="stylesheet">
+    <link href="{!! asset('datepicker/css/bootstrap-datepicker.standalone.css') !!}" rel="stylesheet">
+    <script src="{!! asset('datepicker/js/bootstrap-datepicker.js') !!}" ></script>
+    <script src="{!! asset('datepicker/locales/bootstrap-datepicker.es.min.js') !!}" ></script>
 </head>
 <body>
     <div>
@@ -55,7 +63,7 @@
                              </div>
                             @endcan
                         </div>
-                        <div class="dropdown p-1">
+                        {{-- <div class="dropdown p-1">
                             @can('proyects.index')
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mejoras Rapidas
@@ -78,7 +86,7 @@
                                 @endcan
                              </div>
                             @endcan
-                        </div>
+                        </div> --}}
                     </div>
                         @can('users.index')
                         <li class="nav-item p-1">
