@@ -11,6 +11,12 @@ use DB;
 
 class PropuestaController extends Controller
 {
+
+    public function index()
+    {
+        return view('propuesta');
+    }
+
     public function store(Request $request)
     {
         $propuesta = new propuesta();

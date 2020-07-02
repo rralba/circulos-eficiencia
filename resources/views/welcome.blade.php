@@ -90,16 +90,16 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registro</a>
-                        @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Registro</a>
+                    @endif
                     @endauth
                 </div>
                 <div class="top-left links">
-                    <a href="/propuesta"> propuesta</a>
+                    <a href="{{ route('propuesta') }}">Propuesta</a>
                 </div>
             </div>    
-            @endif
+        @endif
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">

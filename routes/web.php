@@ -14,9 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/propuesta', function () {
-    return view('propuesta');
-});
+Route::get('/propuesta', 'PropuestaController@index')->name('propuesta');
+
 Route::post('/propuesta/getEmployees/','PropuestaController@getEmployees')->name('propuesta.getEmployees');
 Route::POST('/propuesta/store','PropuestaController@store')->name('propuesta.store');
 
