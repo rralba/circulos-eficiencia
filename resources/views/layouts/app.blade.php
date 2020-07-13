@@ -19,11 +19,6 @@
     <!-- jquery-ui -->
     <link href="{!! asset('jqueryui/jquery-ui.css') !!}" rel="stylesheet">
     <script src="{!! asset('jqueryui/jquery-ui.js') !!}" ></script>
-    <!-- datepicker -->
-    <link href="{!! asset('datepicker/css/bootstrap-datepicker3.css') !!}" rel="stylesheet">
-    <link href="{!! asset('datepicker/css/bootstrap-datepicker.standalone.css') !!}" rel="stylesheet">
-    <script src="{!! asset('datepicker/js/bootstrap-datepicker.js') !!}" ></script>
-    <script src="{!! asset('datepicker/locales/bootstrap-datepicker.es.min.js') !!}" ></script>
 </head>
 <body>
     <div>

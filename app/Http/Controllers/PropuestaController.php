@@ -20,28 +20,30 @@ class PropuestaController extends Controller
     public function store(Request $request)
     {
         $propuesta = new propuesta();
-        $propuesta->identificador = $request->input('identificador');
-        $propuesta->registro = $request->input('registro');
-        $propuesta->direccion = $request->input('direccion');
-        $propuesta->subdireccion = $request->input('subdireccion');
-        $propuesta->departamento = $request->input('departamento');
-        $propuesta->contacto = $request->input('contacto');
-        $propuesta->clave = $request->input('clave');
-        $propuesta->extension = $request->input('extension');
-        $propuesta->id_autoriza = $request->input('id_autoriza');
-        $propuesta->inicio = $request->input('inicio');
-        $propuesta->final = $request->input('final');
-        $propuesta->proyecto = $request->input('proyecto');
-        $propuesta->areas_part = $request->input('areas_part');
-        $propuesta->skills_integ = $request->input('skills_integ');
-        $propuesta->conocimiento_critico = $request->input('conocimiento_critico');
-        $propuesta->sindicalizados = $request->input('sindicalizados');
-        $propuesta->principales_act = $request->input('principales_act');
-        $propuesta->beneficio_eco = $request->input('beneficio_eco');
-        $propuesta->mejorar = $request->input('mejorar');
-        $propuesta->objetivo = $request->input('objetivo');
-        $propuesta->solucion = $request->input('solucion');
-        $propuesta->save();
+          $propuesta->identificador = $request->input('identificador');
+          $propuesta->registro = $request->input('registro');
+          $propuesta->direccion = $request->input('direccion');
+          $propuesta->subdireccion = $request->input('subdireccion');
+          $propuesta->departamento = $request->input('departamento');
+          $propuesta->contacto = $request->input('contacto');
+          $propuesta->clave = $request->input('clave');
+          $propuesta->extension = $request->input('extension');
+          $propuesta->id_autoriza = $request->input('id_autoriza');
+          $propuesta->inicio = $request->input('inicio');
+          $propuesta->final = $request->input('final');
+          $propuesta->proyecto = $request->input('proyecto');
+          $propuesta->areas_part = $request->input('areas_part');
+          $propuesta->skills_integ = $request->input('skills_integ');
+          $propuesta->conocimiento_critico = $request->input('conocimiento_critico');
+          $propuesta->sindicalizados = $request->input('sindicalizados');
+          $propuesta->principales_act = $request->input('principales_act');
+          $propuesta->beneficio_eco = $request->input('beneficio_eco');
+          $propuesta->mejorar = $request->input('mejorar');
+          $propuesta->objetivo = $request->input('objetivo');
+          $propuesta->solucion = $request->input('solucion');
+          $propuesta->save();
+        
+        
         if (($request->integrantes) == 2)
         {
         	foreach ($request->integp as $inte) 
@@ -78,7 +80,12 @@ class PropuestaController extends Controller
 		        }
         }
         
-        return redirect()->back()->with('info','Solicitud Guardada Con Exito');
+        $propid = propuesta::all();
+        $r = ($propid->last());
+        $x = $r->id;
+        $y = 'solicitud guardada con exito, con numero de folio';
+        $z = "$y" . " ". "$x";
+        return redirect()->back()->with('info',$z);
         //dd($request->all());
     }
     /*
@@ -89,14 +96,14 @@ class PropuestaController extends Controller
       $search = $request->search;
 
       if($search == ''){
-         $employees = empleado::orderby('nombre','asc')->select('id','nombre','depto')->limit(5)->get();
+         $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion')->limit(5)->get();
       }else{
-         $employees = empleado::orderby('nombre','asc')->select('id','nombre','depto')->where('nombre', 'like', '%' .$search . '%')->limit(20)->get();
+         $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion')->where('nombre', 'like', '%' .$search . '%')->limit(20)->get();
       }
 
       $response = array();
       foreach($employees as $employee){
-         $response[] = array("value"=>$employee->id,"label"=>$employee->nombre,"depto"=>$employee->depto);
+         $response[] = array("value"=>$employee->id,"label"=>$employee->nombre,"depto"=>$employee->posicion);
       }
 
       return response()->json($response);

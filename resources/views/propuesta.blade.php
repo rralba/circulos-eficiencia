@@ -2,7 +2,7 @@
 
 @section('content')
 @section('submenu')
-    <h1 class="text-center">Registro de propuesta de Circulo de Eficiencia</h1>
+    <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
 @endsection      
       <div class="container">
           <form id="mr" action="{{ route('propuesta.store') }}" method = "POST">
@@ -11,7 +11,7 @@
               <div class="input-group col-md-4">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="identificador" id="nivel1" value="1" required>
-                  <label class="form-check-label"  for="inlineRadio1"><h4 class="p-0 m-0">Proyecto de Innovación o Mejora</h4></label>
+                  <label class="form-check-label" for="inlineRadio1"><h4 class="p-0 m-0">Proyecto de Innovación o Mejora</h4></label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="identificador" id="nivel2" value="2" required>
@@ -71,7 +71,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Contacto:</h6></span>
                     </div>
-                    <input type="text" class="form-control" id="contacto" name="contacto" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="99" required>
+                    <input type="text" class="form-control" id="contacto" name="contacto" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="99" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>
                   <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
@@ -113,63 +113,72 @@
               <div class="row">
                 <div class="col-md-8"></div>
                 <div class="col-md-2">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Inicio:</h6></label>
-                  <input type="text" class="form-control datepicker" id="inicio" name="inicio">
+                  <label for="from" class="col-form-label"><h6 class="p-0 m-0">Fecha Inicio:</h6></label>
+                  <input type="text" class="form-control datepicker" id="inicio" name="inicio" style="width: 100px">
                 </div>
                 <div class="col-md-2">  
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Final:</h6></label>
-                  <input type="text" class="form-control datepicker" id="final" name="final">
+                  <label for="to" class="col-form-label"><h6 class="p-0 m-0">Fecha Final:</h6></label>
+                  <input type="text" class="form-control datepicker" id="final" name="final" style="width: 100px">
                 </div>
               </div>
+              <br>
               <br>
               <div id="filanivel1">
                 <div class="row">
                   <div class="col-md-12">
                     <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre del Proyecto</h6></label>
-                    <input type="text" class="form-control requeridon1" id="proyecto" name="proyecto" maxlength="249">
+                    <input type="text" class="form-control requeridon1" id="proyecto" name="proyecto" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                  </div>  
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Porqué consideras que el proyecto es creativo y/o innovador?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="creativo" name="proyecto" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
                     <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué áreas deben participar en el desarrollo del proyecto?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="areas_part" name="areas_part" maxlength="249">
+                    <input type="text" class="form-control requeridon1" id="areas_part" name="areas_part" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
                     <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="skills_integ" name="skills_integ" maxlength="249">
+                    <input type="text" class="form-control requeridon1" id="skills_integ" name="skills_integ" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cúal es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="conocimiento_critico" name="conocimiento_critico" maxlength="249">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuál es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="conocimiento_critico" name="conocimiento_critico" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
                     <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cómo participa el personal sindicalizado?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="sindicalizados" name="sindicalizados" maxlength="249">
+                    <input type="text" class="form-control requeridon1" id="sindicalizados" name="sindicalizados" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuales son las principales actividades a realizar?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="principales_act" name="principales_act" maxlength="249">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuáles son las principales actividades a realizar por el equipo?</h6></label>
+                    <input type="text" class="form-control requeridon1" id="principales_act" name="principales_act" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-10"></div>
                   <div class="col-md-2">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Beneficio Economico</h6></label>
-                    <input type="text" class="form-control requeridon1" id="beneficio_eco" name="beneficio_eco" maxlength="10">
+                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Beneficio Económico</h6></label>
+                    <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00" maxlength="10">
+                    <input type="hidden" class="form-control requeridon1 validar" id="beneficio_eco" name="beneficio_eco" value="#currency-field">
                   </div>  
                 </div>
                 <br>
@@ -188,171 +197,170 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp1" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp1" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp1" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp1" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop1" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop1" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp2" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp2" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp2" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp2" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop2" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop2" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp3" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp3" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp3" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp3" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop3" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop3" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp4" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp4" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp4" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp4" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop4" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop4" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp5" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp5" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp5" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp5" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop5" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop5" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp6" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp6" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp6" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp6" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop6" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop6" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp7" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp7" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp7" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp7" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop7" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop7" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp8" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp8" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp8" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp8" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop8" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop8" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp9" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp9" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp9" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp9" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop9" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop9" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidp10" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpy" id="employeeidp10" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchp10" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp10" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptop10" name="" readonly>
+                  <input type="text" class="form-control intpy" id="employeedeptop10" name="" readonly>
                 </div>  
               </div>
               </div>  
-              <br>
               <div id="filanivel2">
               <div class="row">  
                 <div class="col-md-12">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué se debe mejorar?</h6></label>
-                  <textarea class="form-control requeridon2" id="mejorar" name="mejorar" rows="4" maxlength="249" placeholder="Escribe una breve descripcion del problema"></textarea>
+                  <textarea class="form-control requeridon2" id="mejorar" name="mejorar" rows="4" maxlength="249" placeholder="Escribe una breve descripcion del problema" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Objetivo:</h6></label>
-                  <textarea class="form-control requeridon2" id="objetivo" name="objetivo" rows="4" maxlength="249"></textarea>
+                  <textarea class="form-control requeridon2" id="objetivo" name="objetivo" rows="4" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Solución:</h6></label>
-                  <textarea class="form-control requeridon2" id="solucion" name="solucion" rows="4" maxlength="249"></textarea>
+                  <textarea class="form-control requeridon2" id="solucion" name="solucion" rows="4" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <br>
@@ -383,82 +391,82 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidm1" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmr" id="employeeidm1" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchm1" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm1" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptom1" name="" readonly>
+                  <input type="text" class="form-control intmr" id="employeedeptom1" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidm2" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmr" id="employeeidm2" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchm2" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm2" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptom2" name="" readonly>
+                  <input type="text" class="form-control intmr" id="employeedeptom2" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidm3" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmr" id="employeeidm3" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchm3" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm3" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptom3" name="" readonly>
+                  <input type="text" class="form-control intmr" id="employeedeptom3" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidm4" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmr" id="employeeidm4" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchm4" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm4" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptom4" name="" readonly>
+                  <input type="text" class="form-control intmr" id="employeedeptom4" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeidm5" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmr" id="employeeidm5" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
-                  <input type="text" class="form-control" id="employee_searchm5" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm5" name="">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
-                  <input type="text" class="form-control" id="employeedeptom5" name="" readonly>
+                  <input type="text" class="form-control intmr" id="employeedeptom5" name="" readonly>
                 </div>  
               </div>
               </div>
-            
             <br>
-            <button class="btn btn-primary small" type="submit">Guardar</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
           </form>
+          <br>
            <!-- Script -->
     <script type="text/javascript">
 
@@ -855,4 +863,25 @@
     });
     </script>
       </div>
+  
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

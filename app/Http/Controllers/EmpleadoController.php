@@ -19,7 +19,7 @@ class EmpleadoController extends Controller
       $search = $request->search;
 
       if($search == ''){
-         $employees = empleado::orderby('nombre','asc')->select('id','nombre','depto')->limit(5)->get();
+         $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion')->limit(5)->get();
       }else{
          $employees = empleado::orderby('nombre','asc')->select('id','nombre','depto','posicion','cia','direccion')->where('nombre', 'like', '%' .$search . '%')->limit(20)->get();
       }
