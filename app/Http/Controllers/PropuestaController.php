@@ -48,7 +48,12 @@ class PropuestaController extends Controller
         {
         	foreach ($request->integp as $inte) 
         	{
+            $integ[] = 0;
+            if (in_array($inte, $integ)){
+            }
+            else{
         		if (($inte) > 0){
+              $integ[] = $inte;
         			$propid = propuesta::all();
         			$x = ($propid->last());
         			$integrante = new integrantes_propuesta();
@@ -56,27 +61,32 @@ class PropuestaController extends Controller
         			$integrante->empleado_id = $inte;
         			$integrante->save();
         			$r[] = array($inte);
-        		}	
-        		
+        		 }
+            }	
         	}
         }
         else
         {
         	if (($request->integrantes) == 3)
 		        {
-		        	foreach ($request->integm as $inte) 
-		        	{
-		        		if (($inte) > 0){
-		        			$propid = propuesta::all();
-		        			$x = ($propid->last());
-		        			$integrante = new integrantes_propuesta();
-		        			$integrante->propuesta_id = $x->id;
-		        			$integrante->empleado_id = $inte;
-		        			$integrante->save();
-		        			$r[] = array($inte);
-		        		}	
-		        		
-		        	}
+  		        foreach ($request->integm as $inte) 
+                {
+                  $integ[] = 0;
+                  if (in_array($inte, $integ)){
+                  }
+                  else{
+                    if (($inte) > 0){
+                      $integ[] = $inte;
+                      $propid = propuesta::all();
+                      $x = ($propid->last());
+                      $integrante = new integrantes_propuesta();
+                      $integrante->propuesta_id = $x->id;
+                      $integrante->empleado_id = $inte;
+                      $integrante->save();
+                      $r[] = array($inte);
+                    }
+                  } 
+                }
 		        }
         }
         

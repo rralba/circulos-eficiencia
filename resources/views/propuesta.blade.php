@@ -344,6 +344,7 @@
                 </div>  
               </div>
               </div>  
+              <br>
               <div id="filanivel2">
               <div class="row">  
                 <div class="col-md-12">
@@ -462,8 +463,9 @@
                   <input type="text" class="form-control intmr" id="employeedeptom5" name="" readonly>
                 </div>  
               </div>
+              <br>
               </div>
-            <br>
+             <br>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
           </form>
           <br>
