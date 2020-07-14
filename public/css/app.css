@@ -26,6 +26,15 @@
     }
 
 
+.mr .contenido{
+  font-size: 16px;
+}
+
+option{
+  font-size: 16px;
+}
+
+
 .submenu{
     background: rgba(245,245,247,0.7);
     padding: 0;
@@ -133,36 +142,3 @@
     }
 }
 
-
-.navbar-custom {
-          position: relative;
-          background-color: #154398;
-          background-image: url("overlay.svg"),linear-gradient(45deg, #154398 0%, #006fe6 100%);
-          background-size: cover;
-          z-index: 0;
-}
-      
-
-      .navbar-custom .navbar-brand,
-      .navbar-custom .navbar-text {
-          color: black;
-      }
-
-      .navbar-custom .navbar-nav .nav-link {
-          color: #ffffff;
-      }
-
-      .navbar-custom .nav-item.active .nav-link,
-      .navbar-custom .nav-item:hover .nav-link {
-          color: #ffffff;
-      }
-
-      .navbar-custom .dropdown-menu {}
-
-      .navbar-custom .dropdown-item {
-          color: #ffffff;
-      }
-
-      .navbar-custom .dropdown-item:hover,
-      .navbar-custom .dropdown-item:focus {
-      }

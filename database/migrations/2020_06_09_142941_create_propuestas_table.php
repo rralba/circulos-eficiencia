@@ -30,6 +30,7 @@ class CreatePropuestasTable extends Migration
             $table->string('objetivo',250)->nullable();
             $table->string('solucion',250)->nullable();
             $table->string('proyecto',250)->nullable();
+            $table->string('creativo',500)->nullable();
             $table->string('areas_part',250)->nullable();
             $table->string('skills_integ',250)->nullable();
             $table->string('principales_act',250)->nullable();

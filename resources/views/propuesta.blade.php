@@ -3,11 +3,14 @@
 @section('content')
 @section('submenu')
     <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
-@endsection      
+@endsection    
+      <div>  
       <div class="container">
-          <form id="mr" action="{{ route('propuesta.store') }}" method = "POST">
+        <br>
+          <form id="mr" class="mr" action="{{ route('propuesta.store') }}" method = "POST">
             {{ csrf_field() }}
               <div class="row">
+                <br>
               <div class="input-group col-md-4">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="identificador" id="nivel1" value="1" required>
@@ -21,15 +24,16 @@
               <div class="col-md-6">
                </div> 
                 <div class="col-md-2">
-                  <label for="registro"><h6 class="p-0 m-0">Registro:</h6></label>
+                  <label for="registro"><h4 class="p-0 m-0">Registro:</h4></label>
                   <input type="date" class="form-control" id="registro" name="registro" value="{{ date("Y-m-d") }}" readonly>
                 </div>
               </div>
               <br>
               <br>
+              <br>
               <div class="row"> 
                 <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Dirección:</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Dirección:</h4></label>
                   <select class="form-control" id="direccion" name="direccion" required>
                       <option value=""></option>
                       <option value="CONSEJO">CONSEJO</option>
@@ -53,37 +57,38 @@
                   </select>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Subdirección:</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Subdirección:</h4></label>
                   <select class="form-control" id="subdireccion" name="subdireccion" required>
                   </select>
                 </div>
                 <div class="col-md-4">  
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Departamento:</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Departamento:</h4></label>
                   <select class="form-control" id="departamento" name="departamento" required>
                   </select>
                 </div>  
               </div>
               <br>
               <div class="row">
-                <div class="col-md-9"></div>
-                <div class="col-md-3">
+                <br>
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
                   <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Contacto:</h6></span>
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h4 class="p-0 m-0">Contacto:</h4></span>
                     </div>
-                    <input type="text" class="form-control" id="contacto" name="contacto" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="99" required onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <input type="text" class="form-control contenido" id="contacto" name="contacto" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="99" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>
                   <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Teléfono:</h6></span>
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h4 class="p-0 m-0">Teléfono:</h4></span>
                     </div>
-                    <input type="text" class="form-control validar" id="clave" name="clave" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="10" required>
+                    <input type="text" class="form-control validar contenido" id="clave" name="clave" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="10" required>
                   </div>
                   <div class="input-group input-group-sm mb-0">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm"><h6 class="p-0 m-0">Extensión:</h6></span>
+                      <span class="input-group-text" id="inputGroup-sizing-sm"><h4 class="p-0 m-0">Extensión:</h4></span>
                     </div>
-                    <input type="text" class="form-control validar" id="extension" name="extension" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="5" required>
+                    <input type="text" class="form-control validar contenido" id="extension" name="extension" aria-label="Small" aria-describedby="inputGroup-sizing-sm" maxlength="5" required>
                   </div>
                 </div>
               </div>
@@ -94,15 +99,15 @@
               <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
-                  <input type="text" class="form-control" id="employeeid" name="id_autoriza" readonly>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
+                  <input type="text" class="form-control" id="employeeid" name="id_autoriza" readonly required>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control" id="employee_search" name="nom_jefe" required>
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control" id="employeedepto" name="puesto_jefe" readonly>
                 </div>  
               </div>
@@ -113,12 +118,12 @@
               <div class="row">
                 <div class="col-md-8"></div>
                 <div class="col-md-2">
-                  <label for="from" class="col-form-label"><h6 class="p-0 m-0">Fecha Inicio:</h6></label>
-                  <input type="text" class="form-control datepicker" id="inicio" name="inicio" style="width: 100px">
+                  <label for="from" class="col-form-label"><h4 class="p-0 m-0">Fecha Inicio:</h4></label>
+                  <input type="text" class="form-control datepicker" id="inicio" name="inicio" style="width: 100px" required>
                 </div>
                 <div class="col-md-2">  
-                  <label for="to" class="col-form-label"><h6 class="p-0 m-0">Fecha Final:</h6></label>
-                  <input type="text" class="form-control datepicker" id="final" name="final" style="width: 100px">
+                  <label for="to" class="col-form-label"><h4 class="p-0 m-0">Fecha Final:</h4></label>
+                  <input type="text" class="form-control datepicker" id="final" name="final" style="width: 100px" required>
                 </div>
               </div>
               <br>
@@ -126,49 +131,49 @@
               <div id="filanivel1">
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre del Proyecto</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre del Proyecto</h4></label>
                     <input type="text" class="form-control requeridon1" id="proyecto" name="proyecto" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Porqué consideras que el proyecto es creativo y/o innovador?</h6></label>
-                    <input type="text" class="form-control requeridon1" id="creativo" name="proyecto" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Porqué consideras que el proyecto es creativo y/o innovador?</h4></label>
+                    <input type="text" class="form-control requeridon1" id="creativo" name="creativo" maxlength="499" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué áreas deben participar en el desarrollo del proyecto?</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Qué áreas deben participar en el desarrollo del proyecto?</h4></label>
                     <input type="text" class="form-control requeridon1" id="areas_part" name="areas_part" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h4></label>
                     <input type="text" class="form-control requeridon1" id="skills_integ" name="skills_integ" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuál es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Cuál es el conocimiento crítico requerido para el desarrollo del proyecto?</h4></label>
                     <input type="text" class="form-control requeridon1" id="conocimiento_critico" name="conocimiento_critico" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cómo participa el personal sindicalizado?</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Cómo participa el personal sindicalizado?</h4></label>
                     <input type="text" class="form-control requeridon1" id="sindicalizados" name="sindicalizados" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-md-12">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Cuáles son las principales actividades a realizar por el equipo?</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Cuáles son las principales actividades a realizar por el equipo?</h4></label>
                     <input type="text" class="form-control requeridon1" id="principales_act" name="principales_act" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>  
                 </div>
@@ -176,7 +181,7 @@
                 <div class="row">
                   <div class="col-md-10"></div>
                   <div class="col-md-2">
-                    <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Beneficio Económico</h6></label>
+                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Beneficio Económico</h4></label>
                     <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00" maxlength="10">
                     <input type="hidden" class="form-control requeridon1 validar" id="beneficio_eco" name="beneficio_eco" value="#currency-field">
                   </div>  
@@ -186,7 +191,7 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="integrantes" id="nivel3" value="2">
-                      <label class="form-check-label" for="inlineRadio1"><h6 class="p-0 m-0">¿Deseas agregar integrantes?</h6></label>
+                      <label class="form-check-label" for="inlineRadio1"><h4 class="p-0 m-0">¿Deseas agregar integrantes?</h4></label>
                     </div>
                   </div> 
                 </div>
@@ -196,182 +201,183 @@
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp1" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp1" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop1" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp2" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp2" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop2" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp3" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp3" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop3" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp4" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp4" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop4" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp5" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp5" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop5" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp6" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp6" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop6" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp7" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp7" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop7" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp8" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp8" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop8" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp9" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp9" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop9" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intpy" id="employeeidp10" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intpy" id="employee_searchp10" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intpy" id="employeedeptop10" name="" readonly>
                 </div>  
               </div>
               </div>  
+              <br>
               <div id="filanivel2">
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">¿Qué se debe mejorar?</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Qué se debe mejorar?</h4></label>
                   <textarea class="form-control requeridon2" id="mejorar" name="mejorar" rows="4" maxlength="249" placeholder="Escribe una breve descripcion del problema" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Objetivo:</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Objetivo:</h4></label>
                   <textarea class="form-control requeridon2" id="objetivo" name="objetivo" rows="4" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <div class="row">  
                 <div class="col-md-12">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Solución:</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Solución:</h4></label>
                   <textarea class="form-control requeridon2" id="solucion" name="solucion" rows="4" maxlength="249" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                 </div> 
               </div>
               <br>
               <br>
-             {{--  <h6>¿Deseas adjuntar imagenes?</h6>
+             {{--  <h4>¿Deseas adjuntar imagenes?</h4>
               <div class="row">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="savejpg" name="savejpg" lang="es">
-                    <label class="custom-file-label" for="customFileLang"><h6 class="p-0 m-0">Seleccionar Archivo</h6></label>
+                    <label class="custom-file-label" for="customFileLang"><h4 class="p-0 m-0">Seleccionar Archivo</h4></label>
                 </div>
                 </div>
               </div> --}}
@@ -380,7 +386,7 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="integrantes" id="nivel4" value="3">
-                      <label class="form-check-label" for="inlineRadio1"><h6 class="p-0 m-0"><h6 class="p-0 m-0">¿Deseas agregar integrantes?</h6></label>
+                      <label class="form-check-label" for="inlineRadio1"><h4 class="p-0 m-0"><h4 class="p-0 m-0">¿Deseas agregar integrantes?</h4></label>
                     </div>
                   </div> 
                 </div>
@@ -390,80 +396,81 @@
               <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intmr" id="employeeidm1" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intmr" id="employee_searchm1" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom1" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intmr" id="employeeidm2" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intmr" id="employee_searchm2" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom2" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intmr" id="employeeidm3" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intmr" id="employee_searchm3" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom3" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intmr" id="employeeidm4" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intmr" id="employee_searchm4" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom4" name="" readonly>
                 </div>  
               </div>
                 <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Ficha</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
                   <input type="text" class="form-control intmr" id="employeeidm5" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Nombre</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
                   <input type="text" class="form-control intmr" id="employee_searchm5" name="">
                 </div>
                 <div class="col-md-4">
-                  <label for="recipient-name" class="col-form-label"><h6 class="p-0 m-0">Posición</h6></label>
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom5" name="" readonly>
                 </div>  
               </div>
+              <br>
               </div>
-            <br>
+             <br>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
           </form>
           <br>
@@ -863,7 +870,7 @@
     });
     </script>
       </div>
-  
+      </div>
       <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

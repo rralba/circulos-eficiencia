@@ -15,30 +15,64 @@
     <script src="{!! asset('js/jquery.bootgrid.js') !!}" ></script>
     <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
-    <link href="{!! asset('css/app.css') !!}" rel="stylesheet"> 
+    <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/main.css') !!}" rel="stylesheet"> 
     <!-- jquery-ui -->
     <link href="{!! asset('jqueryui/jquery-ui.css') !!}" rel="stylesheet">
     <script src="{!! asset('jqueryui/jquery-ui.js') !!}" ></script>
+
+    <style>
+      .navbar-custom {
+          position: relative;
+          background-color: #154398;
+          background-image: url("overlay.svg"),linear-gradient(45deg, #154398 0%, #006fe6 100%);
+          background-size: cover;
+          z-index: 0;
+}
+      
+
+      .navbar-custom .navbar-brand,
+      .navbar-custom .navbar-text {
+          color: #ffffff;
+      }
+
+      .navbar-custom .navbar-nav .nav-link {
+          color: #ffffff;
+      }
+
+      .navbar-custom .nav-item.active .nav-link,
+      .navbar-custom .nav-item:hover .nav-link {
+          color: #ffffff;
+      }
+
+      .navbar-custom .dropdown-menu {}
+
+      .navbar-custom .dropdown-item {
+          color: #ffffff;
+      }
+
+      .navbar-custom .dropdown-item:hover,
+      .navbar-custom .dropdown-item:focus {
+      }
+  </style>
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('Inicio', 'Inicio') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <nav class="navbar navbar-expand-sm navbar-custom static-top">
+            <div class="container-fluid">
+                <a class="navbar-brand"><img src="{!! asset('jpg/logo_CE.png') !!}" alt="Logo CE"></a>
+                <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('Inicio', 'Inicio') }}
+                    </a>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <div class="btn-group">
                         <div class="dropdown p-1">
                             @can('proyects.index')
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Proyectos
-                            </button>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                                 @can('proyects.index')
                                     <a class="dropdown-item" href="{{ route('proyects.index') }}">Activos</a>
@@ -95,7 +129,7 @@
                         @endcan
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto mr-5">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item p-1">
@@ -125,6 +159,7 @@
                         @endguest
                     </ul>
                 </div>
+                <a class="navbar-brand navbar-right"><img src="{!! asset('jpg/logo_RH.png') !!}" alt="logo RH"></a>
             </div>
         </nav>
             <div class="submenu">

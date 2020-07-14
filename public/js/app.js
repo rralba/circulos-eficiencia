@@ -18,6 +18,45 @@
             $('#filanivel2').hide(); //ocultar mediante id
             $('#filaper1').hide(); //ocultar mediante id
             $('#filaper2').hide(); //ocultar mediante id
+
+             $("#nivel1").on( "click", function() {
+            $('#filanivel1').show(); //muestro mediante id
+            $('#filanivel2').hide(); //muestro mediante id
+            $('#filaper2').hide(); //muestro mediante id
+            $('.requeridon1').prop("required", true);
+            $('.requeridon1').val("");
+            $('.intpy').val("");
+        });
+        $("#nivel2").on( "click", function() {
+            $('#filanivel1').hide(); //oculto mediante id
+            $('#filanivel2').show(); //muestro mediante id
+            $('#filaper1').hide(); //muestro mediante id
+            $('.requeridon2').prop("required", true);
+            $('.requeridon2').val("");
+            $('.intmr').val("");
+        });
+        $("#nivel3").on( "click", function() {
+            $('#filaper1').show(); //muestro mediante id
+        });
+        $("#nivel4").on( "click", function() {
+            $('#filaper2').show(); //muestro mediante id
+        });
+
+         $("#currency-field").keyup(function () {
+        var value = $(this).val();
+        $("#beneficio_eco").val(value);
+    });
+
+
+  $("#inicio").on("change", function(){ 
+    startDate = $(this).datepicker("getDate"); 
+    $("#final").datepicker("option", "minDate", startDate); 
+  }); 
+  
+  $("#final").on("change", function(){ 
+    endDate = $(this).datepicker("getDate"); 
+    $("#inicio").datepicker("option", "maxDate", endDate); 
+  }); 
           });
 
  
@@ -116,32 +155,6 @@
       fillSecondar();
     });
 
-     $(document).ready(function(){
-        $("#nivel1").on( "click", function() {
-            $('#filanivel1').show(); //muestro mediante id
-            $('#filanivel2').hide(); //muestro mediante id
-            $('#filaper2').hide(); //muestro mediante id
-            $('.requeridon1').prop("required", true);
-            $('.requeridon1').val("");
-            $('.intpy').val("");
-        });
-        $("#nivel2").on( "click", function() {
-            $('#filanivel1').hide(); //oculto mediante id
-            $('#filanivel2').show(); //muestro mediante id
-            $('#filaper1').hide(); //muestro mediante id
-            $('.requeridon2').prop("required", true);
-            $('.requeridon2').val("");
-            $('.intmr').val("");
-        });
-        $("#nivel3").on( "click", function() {
-            $('#filaper1').show(); //muestro mediante id
-        });
-        $("#nivel4").on( "click", function() {
-            $('#filaper2').show(); //muestro mediante id
-        });
-    });
-
-
      $("input[data-type='currency']").on({
     keyup: function() {
       formatCurrency($(this));
@@ -220,21 +233,3 @@ function formatCurrency(input, blur) {
   caret_pos = updated_len - original_len + caret_pos;
   input[0].setSelectionRange(caret_pos, caret_pos);
 }
-
-$(document).ready(function () {
-    $("#currency-field").keyup(function () {
-        var value = $(this).val();
-        $("#beneficio_eco").val(value);
-    });
-
-
-  $("#inicio").on("change", function(){ 
-    startDate = $(this).datepicker("getDate"); 
-    $("#final").datepicker("option", "minDate", startDate); 
-  }); 
-  
-  $("#final").on("change", function(){ 
-    endDate = $(this).datepicker("getDate"); 
-    $("#inicio").datepicker("option", "maxDate", endDate); 
-  }); 
-});
