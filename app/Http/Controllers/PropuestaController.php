@@ -92,11 +92,9 @@ class PropuestaController extends Controller
         
         $propid = propuesta::all();
         $r = ($propid->last());
-        $x = $r->id;
-        $y = 'solicitud guardada con exito, con numero de folio';
-        $z = "$y" . " ". "$x";
-        return redirect()->back()->with('info',$z);
-        //dd($request->all());
+
+        return view('resumen', compact('r'));
+        //dd($r->all());
     }
     /*
    AJAX request

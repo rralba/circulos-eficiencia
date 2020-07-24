@@ -79,6 +79,14 @@
                 position: relative;
                 overflow: hidden;
             }
+
+            /* footer {
+                position: fixed;
+                height: 100px;
+                bottom: 0;
+                width: 100%;
+                background: #F5F5F5;
+            } */
         </style>
     </head>
     <body>
@@ -108,5 +116,30 @@
                 </div>
             </div>
         </div>
+        {{-- <footer class="page-footer font-small blue pt-4">
+            <div class="container-fluid text-center text-md-left">
+                <div class="row">
+                  <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Información de Contacto</h5>
+                    <p>En caso de requerir ayuda o información .</p>
+                  </div>
+                  <hr class="clearfix w-100 d-md-none pb-3">
+                  <div class="col-md-6 mb-md-0 mb-3">
+                    <p class="text-center">Extensiones:</p>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <p class="fa fa-phone"> 11478</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p class="fa fa-phone"> 11478</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p class="fa fa-phone"> 11478</p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </footer> --}}
     </body>
 </html>

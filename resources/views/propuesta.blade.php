@@ -1,9 +1,10 @@
 @extends('layouts.appm')
 
 @section('content')
-@section('submenu')
-    <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
-@endsection    
+    <span class="contact100-form-title">
+      <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
+      <hr>
+    </span>
       <div>  
       <div class="container">
         <br>
@@ -25,13 +26,13 @@
                </div> 
                 <div class="col-md-2">
                   <label for="registro"><h4 class="p-0 m-0">Registro:</h4></label>
-                  <input type="date" class="form-control" id="registro" name="registro" value="{{ date("Y-m-d") }}" readonly>
+                  <input type="text" class="form-control" id="registro" name="registro" style="width: 100px;" value="{{ date("Y-m-d") }}" readonly>
                 </div>
               </div>
               <br>
               <br>
               <br>
-              <div class="row"> 
+              <div class="row mb-4"> 
                 <div class="col-md-4">  
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Dirección:</h4></label>
                   <select class="form-control" id="direccion" name="direccion" required>
@@ -68,7 +69,7 @@
                 </div>  
               </div>
               <br>
-              <div class="row">
+              <div class="row mt-4 mb-4">
                 <br>
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
@@ -94,17 +95,17 @@
               </div>
               <br>
               <br>
-              <h3 class="text-center">¿Quién Autoriza el Proyecto?</h3>
+              <h3 class="text-center mt-4 mb-2">¿Quién Autoriza el Proyecto?</h3>
               <br>
-              <div class="row">
+              <div class="row mb-4">
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
-                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control" id="employeeid" name="id_autoriza" readonly required>
+                  <label for="recipient-name" class="col-form-label" style="display: none;"><h4 class="p-0 m-0">Ficha</h4></label>
+                  <input type="text" class="form-control" id="employeeid" name="id_autoriza" required="required" style="display: none;">
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control" id="employee_search" name="nom_jefe" required>
+                  <input type="text" class="form-control" id="employee_search" name="nom_jefe" placeholder="Escribe el nombre del Superintendente que autoriza el proyecto" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -113,7 +114,7 @@
               </div>
               <br>
               <br>
-              <h3 class="text-center">Preguntas de inicio de proyecto</h3>
+              <h3 class="text-center mt-4 mb-2">Preguntas de inicio de proyecto</h3>
               <br>
               <div class="row">
                 <div class="col-md-8"></div>
@@ -139,7 +140,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">¿Porqué consideras que el proyecto es creativo y/o innovador?</h4></label>
-                    <input type="text" class="form-control requeridon1" id="creativo" name="creativo" maxlength="499" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <textarea class="form-control requeridon1" rows="4" id="creativo" name="creativo" maxlength="499" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                   </div>  
                 </div>
                 <br>
@@ -181,8 +182,8 @@
                 <div class="row">
                   <div class="col-md-10"></div>
                   <div class="col-md-2">
-                    <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Beneficio Económico</h4></label>
-                    <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00" maxlength="10">
+                    <label for="recipient-name" class="col-form-label"><h5 class="p-0 m-0">Beneficio Económico</h5></label>
+                    <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" placeholder="$1,000,000.00" maxlength="10">
                     <input type="hidden" class="form-control requeridon1 validar" id="beneficio_eco" name="beneficio_eco" value="#currency-field">
                   </div>  
                 </div>
@@ -206,7 +207,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp1" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp1" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -221,7 +222,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp2" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp2" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -236,7 +237,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp3" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp3" onkeyup="javascript:this.value=this.value.toUpperCase();" name=""placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -251,7 +252,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp4" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp4" onkeyup="javascript:this.value=this.value.toUpperCase();" name=""placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -266,7 +267,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp5" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp5" onkeyup="javascript:this.value=this.value.toUpperCase();" name=""placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -281,7 +282,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp6" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp6" onkeyup="javascript:this.value=this.value.toUpperCase();" name=""placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -296,7 +297,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp7" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp7" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -311,7 +312,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp8" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp8" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -326,7 +327,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp9" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp9" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -341,7 +342,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intpy" id="employee_searchp10" name="">
+                  <input type="text" class="form-control intpy" id="employee_searchp10" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -401,7 +402,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intmr" id="employee_searchm1" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm1" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -416,7 +417,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intmr" id="employee_searchm2" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm2" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -431,7 +432,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intmr" id="employee_searchm3" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm3" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -446,7 +447,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intmr" id="employee_searchm4" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm4" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -461,7 +462,7 @@
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
-                  <input type="text" class="form-control intmr" id="employee_searchm5" name="">
+                  <input type="text" class="form-control intmr" id="employee_searchm5" onkeyup="javascript:this.value=this.value.toUpperCase();" name="" placeholder="Escribe el nombre del empleado y selecciona una de las opciones">
                 </div>
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
@@ -471,7 +472,14 @@
               <br>
               </div>
              <br>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
+            <div class="container-contact100-form-btn">
+              <button class="contact100-form-btn" type="submit">
+                <span>
+                  Guardar
+                  <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
           </form>
           <br>
            <!-- Script -->

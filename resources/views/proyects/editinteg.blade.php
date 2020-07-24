@@ -1,4 +1,4 @@
-@extends('layouts.appm')
+@extends('layouts.app')
 
 @section('content')
 @section('submenu')

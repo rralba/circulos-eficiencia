@@ -62,9 +62,12 @@
             <div class="container-fluid">
                 <a class="navbar-brand"><img src="{!! asset('jpg/logo_CE.png') !!}" alt="Logo CE"></a>
                 <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('Inicio', 'Inicio') }}
-                    </a>
+                    @guest
+                    @else
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            {{ config('Inicio', 'Inicio') }}
+                        </a>
+                    @endguest
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <div class="btn-group">
@@ -132,14 +135,14 @@
                     <ul class="navbar-nav ml-auto mr-5">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item p-1">
+                            {{-- <li class="nav-item p-1">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item p-1">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
-                            </li>
+                            </li> --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -162,9 +165,7 @@
                 <a class="navbar-brand navbar-right"><img src="{!! asset('jpg/logo_RH.png') !!}" alt="logo RH"></a>
             </div>
         </nav>
-            <div class="submenu">
-                @yield('submenu')
-            </div>  
+            
         @if(session('info'))
         <div class="container">
             <div class="row">
@@ -177,7 +178,11 @@
         </div>
         @endif
         <main class="py-1">
-            @yield('content')
+            <div class="container-contact100">
+                <div class="wrap-contact100">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>

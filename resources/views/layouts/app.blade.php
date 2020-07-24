@@ -16,6 +16,7 @@
     <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/w3.css') !!}" rel="stylesheet"> 
     <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/main.css') !!}" rel="stylesheet"> 
     <!-- jquery-ui -->
     <link href="{!! asset('jqueryui/jquery-ui.css') !!}" rel="stylesheet">
     <script src="{!! asset('jqueryui/jquery-ui.js') !!}" ></script>
@@ -69,9 +70,9 @@
                         <div class="btn-group">
                         <div class="dropdown p-1">
                             @can('proyects.index')
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Proyectos
-                            </button>
+                            </a>
                             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                                 @can('proyects.index')
                                     <a class="dropdown-item" href="{{ route('proyects.index') }}">Activos</a>
@@ -161,6 +162,9 @@
                 <a class="navbar-brand navbar-right"><img src="{!! asset('jpg/logo_RH.png') !!}" alt="logo RH"></a>
             </div>
         </nav>
+            <div class="submenu">
+                @yield('submenu')
+            </div>  
         @if(session('info'))
         <div class="container">
             <div class="row">
