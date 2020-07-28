@@ -34,6 +34,10 @@ option{
   font-size: 16px;
 }
 
+.cardhome{
+  z-index: -999;
+}
+
 
 .submenu{
     background: rgba(245,245,247,0.7);
@@ -42,7 +46,7 @@ option{
     padding-bottom: 8px;
     text-align: center; 
     height: 80px;
-    z-index: 1;
+    z-index: -999;
     width: 100%;
     position: relative;
     overflow: hidden;

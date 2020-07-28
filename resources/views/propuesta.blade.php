@@ -5,7 +5,7 @@
       <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
       <hr>
     </span> 
-      <div>
+      <div class="container">
         <br>
           <form id="mr" class="mr" action="{{ route('propuesta.store') }}" method = "POST">
             {{ csrf_field() }}
