@@ -32,6 +32,7 @@ class PropuestaController extends Controller
           $propuesta->inicio = $request->input('inicio');
           $propuesta->final = $request->input('final');
           $propuesta->proyecto = $request->input('proyecto');
+          $propuesta->creativo = $request->input('creativo');
           $propuesta->areas_part = $request->input('areas_part');
           $propuesta->skills_integ = $request->input('skills_integ');
           $propuesta->conocimiento_critico = $request->input('conocimiento_critico');
@@ -90,11 +91,8 @@ class PropuestaController extends Controller
 		        }
         }
         
-        $propid = propuesta::all();
-        $r = ($propid->last());
-
-        return view('resumen', compact('r'));
-        //dd($r->all());
+        return view('resumen', compact('propuesta'));
+        //dd($r);
     }
     /*
    AJAX request

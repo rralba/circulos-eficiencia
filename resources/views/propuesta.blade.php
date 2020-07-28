@@ -4,9 +4,8 @@
     <span class="contact100-form-title">
       <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
       <hr>
-    </span>
-      <div>  
-      <div class="container">
+    </span> 
+      <div>
         <br>
           <form id="mr" class="mr" action="{{ route('propuesta.store') }}" method = "POST">
             {{ csrf_field() }}
@@ -877,7 +876,6 @@
 
     });
     </script>
-      </div>
       </div>
       <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

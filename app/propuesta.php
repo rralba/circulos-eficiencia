@@ -11,11 +11,15 @@ class propuesta extends Model
    ]; 
    public function empleadosol()
         {
-            return $this->belongsToMany(empleado::class, 'integrantes_propuesta', 'propuesta_id', 'empleado_id')
+            return $this->belongsToMany(empleado::class, 'integrantes_propuestas', 'propuesta_id', 'empleado_id')
             ->withPivot('id','propuesta_id', 'empleado_id','rol');
         }
     public function attach()
 	    {
 	        return $this->hasMany(attach::class, 'propuestas_id', 'id');
 	    }
+    public function jefe()
+      {
+          return $this->hasOne(empleado::class, 'id', 'id_autoriza');
+      }
 }
