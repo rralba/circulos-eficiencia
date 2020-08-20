@@ -68,7 +68,7 @@
                             <label for="recipient-name" class="col-form-label float-right">Mes Pago:</label>
                         </div>
                         <div class="col m-0 p-0 col-10">
-                            <input class="form-control form-control-sm col-6" name="mes" type="date" id="mes" required>
+                            <input class="form-control form-control-sm col-6 datepicker" name="mes" type="text" id="mes" required>
                         </div>
                     </div>    
                     <br>

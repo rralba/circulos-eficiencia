@@ -1,6 +1,7 @@
 @extends('layouts.appm')
 
 @section('content')
+<div id="imprimible">
 <span class="contact100-form-title">
   <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
 </span>
@@ -12,7 +13,7 @@
       <h4 class="text-left">Número de Folio <strong>{{$propuesta->id}},</strong></h4>
       <h4 class="text-left">El seguimiento a la propuesta será dentro de los próximos 3 - 5 días hábiles.</h4>
       <h4 class="text-left">Para mayor información: Ext. 11478, 11607, 11604</h4>
-      <h4 class="text-left pt-3"><strong>Detale de la solicitud:</strong></h4>
+      <h4 class="text-left pt-3"><strong>Detalle de la solicitud:</strong></h4>
     </span>
       <div class="row">
         <div class="form-group col-md-4">
@@ -142,7 +143,18 @@
             <textarea type="text" class="form-control">{{ $propuesta->solucion }}</textarea>
           </div> 
         </div>
+        <div class="row" id="botones">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>Archivos Adjuntos:</h6></label>
+              <div class="row">
+                @foreach($propuesta->attach as $attached)
+                  <label class="ml-3 mr-3" for="inputattach">{{ $attached->attach_path }}</label>
+                @endforeach
+              </div>  
+          </div> 
+        </div>
       @endif  
+      <div id="botones">
       @foreach($propuesta->empleadosol as $integrante)
         <div class="row">
           <div class="form-group col-md-3">
@@ -161,16 +173,33 @@
           </div>
         </div>
       @endforeach
+    </div>
   </fieldset>
   <br>
-   <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn" type="submit">
-                <span>
-                  Salir
-                  <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-   
-</form>       
+  </div> 
+  <div class="row" id="botones">
+  <div class="container-contact100-form-btn col-md-6">
+    <button class="contact100-form-btn" type="submit">
+      <span>
+        Salir
+        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="container-contact100-form-btn col-md-6">
+    <button class="contact100-form-btn imprimir">
+      <span>
+        Imprimir
+        <i class="imprimir fa fa-print m-l-7" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div> 
+</div>
+</form>   
+<script>
+    $('.imprimir').click(function(){
+        window.print();
+        return false;
+    });       
+  </script>   
 @endsection

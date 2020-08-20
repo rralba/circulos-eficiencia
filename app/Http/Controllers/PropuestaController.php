@@ -17,6 +17,14 @@ class PropuestaController extends Controller
         return view('propuesta');
     }
 
+    public function list()
+    {
+        $propuesta = DB::table('propuestas')
+        ->get();
+        return view('propuestas.list', compact('propuesta'));
+        //dd($propuesta);
+    }
+
     public function store(Request $request)
     {
         $propuesta = new propuesta();
@@ -90,9 +98,24 @@ class PropuestaController extends Controller
                 }
 		        }
         }
-        
+
+        foreach($request->files as $imagen)
+        {
+          $i = $imagen;
+            foreach ($i as $image)
+              {
+                $propid = propuesta::all();
+                $x = ($propid->last());
+                $images = new attach();
+                $images->propuesta_id = $x->id;
+                $nombre =  time()."_".$image->getClientOriginalName();
+                \Storage::disk('local')->put($nombre,  \File::get($image));
+                $images->attach_path = $nombre;
+                $images->save();
+              }
+        }
         return view('resumen', compact('propuesta'));
-        //dd($r);
+        //dd($request->all());
     }
     /*
    AJAX request

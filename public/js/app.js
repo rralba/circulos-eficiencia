@@ -14,6 +14,8 @@
             }); 
         }); 
 
+            //seccion de ocultar y mostrar contenido en formulario de propuestas
+
             $('#filanivel1').hide(); //ocultar mediante id
             $('#filanivel2').hide(); //ocultar mediante id
             $('#filaper1').hide(); //ocultar mediante id
@@ -44,6 +46,14 @@
             $('#filaper2').show(); //muestro mediante id
         });
 
+        //seccion de ocultar y mostrar contenido en asignacion de propuestas
+
+        $('#prop3sa').hide(); //ocultar mediante id
+        $('#prop12sa').hide(); //ocultar mediante id
+
+
+
+
          $("#currency-field").keyup(function () {
         var value = $(this).val();
         $("#beneficio_eco").val(value);
@@ -59,8 +69,18 @@
     endDate = $(this).datepicker("getDate"); 
     $("#inicio").datepicker("option", "maxDate", endDate); 
   }); 
-          });
+});
 
+$(function() {
+       $('input').change(function() {
+           this.value = this.value.toLocaleUpperCase();
+       });
+});
+$(function() {
+       $('textarea').change(function() {
+           this.value = this.value.toLocaleUpperCase();
+       });
+});
  
 // function pregunta(){
 //     if (confirm('¿Estas seguro de enviar este formulario?')){

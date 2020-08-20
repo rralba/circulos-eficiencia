@@ -355,6 +355,12 @@ class PermissionsTableSeeder extends Seeder
             'name'          =>  'Acceso a Maestro',
             'slug'          =>  'mrmaestro.index',
             'description'   =>  'Ejecuta proceso Maestro de mejoras rapidas',
-        ]);    
+        ]);
+        //propuestas
+        Permission::create([
+            'name'          =>  'Acceso a propuestas',
+            'slug'          =>  'propuestas.index',
+            'description'   =>  'Lista y navega todos las propuestas del sistema',
+        ]);        
     }
 }

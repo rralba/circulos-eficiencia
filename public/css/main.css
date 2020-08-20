@@ -440,6 +440,19 @@ textarea.input100 {
 }
 
 
+@media (max-width: 1300px) { 
+ .container-fluid{
+ font-size: 85%;
+}
+.container{
+ font-size: 85%;
+}
+.mr{
+  font-size: 85%;
+}
+}
+
+
 /*==================================================================
 [ Restyle Select2 ]*/
 

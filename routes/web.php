@@ -136,4 +136,8 @@ Route::POST('mejorarapidas', 'MejorasrapidasController@store')->name('mr.store')
 ->middleware('permission:mr.create');
 Route::get('mejorarapida/create', 'MejorasrapidasController@create')->name('mr.create')
 ->middleware('permission:mr.create');
+
+//Propuestas
+Route::get('propuestas/index', 'PropuestaController@list')->name('propuesta.index')
+->middleware('permission:prpuestas.index');
 });

@@ -62,9 +62,12 @@
             <div class="container-fluid">
                 <a class="navbar-brand"><img src="{!! asset('jpg/logo_CE.png') !!}" alt="Logo CE"></a>
                 <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('Inicio', 'Inicio') }}
-                    </a>
+                    @guest
+                    @else
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            {{ config('Inicio', 'Inicio') }}
+                        </a>
+                    @endguest
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <div class="btn-group">
@@ -92,26 +95,27 @@
                              </div>
                             @endcan
                         </div>
-                        {{-- <div class="dropdown p-1">
+                       {{--  <div class="dropdown p-1">
                             @can('proyects.index')
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Mejoras Rapidas
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Mejoras Rápidas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @can('mr.index')
-                                    <a class="dropdown-item" href="{{ route('mr.index') }}">Activos</a>
+                                    <a class="dropdown-item" href="{{ route('mr.index') }}">En Proceso</a>
                                 @endcan
-                                @can('proyects.finished')
-                                    <a class="dropdown-item" href="{{ route('proyects.finished') }}">Terminados</a>
-                                @endcan
-                                @can('procesos.index')
-                                    <a class="dropdown-item" href="{{ route('procesos.index') }}">En Proceso de Pago</a>
-                                @endcan
-                                @can('cancelados.edit')
-                                    <a class="dropdown-item" href="{{ route('cancelados.edit') }}">Maestro</a>
-                                @endcan
-                                @can('cancelados.index')
-                                <a class="dropdown-item" href="{{ route('cancelados.index') }}">Cancelados</a>
+                             </div>
+                            @endcan
+                        </div>
+                        <div class="dropdown p-1">
+                            @can('proyects.index')
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Propuestas
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('propuesta') }}">Registro</a>
+                                @can('Propuestas.index')
+                                    <a class="dropdown-item" href="{{ route('propuesta.index') }}">Propuestas</a>
                                 @endcan
                              </div>
                             @endcan

@@ -16,7 +16,7 @@ class propuesta extends Model
         }
     public function attach()
 	    {
-	        return $this->hasMany(attach::class, 'propuestas_id', 'id');
+	        return $this->hasMany(attach::class, 'propuesta_id', 'id');
 	    }
     public function jefe()
       {
