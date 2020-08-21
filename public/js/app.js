@@ -71,8 +71,10 @@
   }); 
 });
 
+//funciones de conversion a mayusculas
+
 $(function() {
-       $('input').change(function() {
+       $('.tomayus').change(function() {
            this.value = this.value.toLocaleUpperCase();
        });
 });

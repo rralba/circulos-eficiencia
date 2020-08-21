@@ -39,6 +39,7 @@ class PropuestaController extends Controller
           $propuesta->id_autoriza = $request->input('id_autoriza');
           $propuesta->inicio = $request->input('inicio');
           $propuesta->final = $request->input('final');
+          $propuesta->asesor = $request->input('asesor');
           $propuesta->proyecto = $request->input('proyecto');
           $propuesta->creativo = $request->input('creativo');
           $propuesta->areas_part = $request->input('areas_part');

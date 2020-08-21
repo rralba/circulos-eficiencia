@@ -73,6 +73,14 @@
           <input type="text" class="form-control" style="width: 100px;" value="{{ $propuesta->final }}">
         </div>
       </div>
+         <br>
+         <div class="row">
+          <div class="col-md-10"></div>
+          <div class="col-md-2">  
+            <label for="to" class="col-form-label"><h4 class="p-0 m-0">Asesor:</h4></label>
+            <input type="text" class="form-control" value="{{ $propuesta->asesor }}">
+          </div>
+        </div>
       @if (($propuesta->identificador) == (1))
         <div class="row">
           <div class="form-group col-md-12">
