@@ -9,7 +9,7 @@ class mejora extends Model
     protected $fillable =[
     	'id','registro','direccion','subdireccion','departamento','seccion','valor','desperdicio','inicio','final','asesor','entrego','gpago','status','mes_terminacion','reprogramada','amejorar','objetivo','solucion'
     ];
-    public function empleados()
+    public function empleadoss()
         {
             return $this->belongsToMany(empleado::class, 'integrants', 'mejora_id', 'empleado_id')
             ->withPivot('id','mejora_id', 'empleado_id','rol');
@@ -18,4 +18,8 @@ class mejora extends Model
     	{
         	return $this->hasMany(beneficio::class, 'mejora_id', 'id');
     	}
+        public function jefes()
+      {
+          return $this->hasOne(empleado::class, 'id', 'id_autoriza');
+      }
 }

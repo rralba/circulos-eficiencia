@@ -25,6 +25,13 @@
         widows: 4;
     }
 
+#imprimir {
+        font-size: 9px;
+        margin: 0;
+        padding: 0;
+        orphans: 4;
+        widows: 4;
+    }
 
 .mr .contenido{
   font-size: 16px;
@@ -36,6 +43,32 @@ option{
 
 .cardhome{
   z-index: -999;
+}
+
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+}
+
+
+.checkbox-xl .custom-control-label::before, 
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.checkbox-xl .custom-control-label {
+  padding-top: 23px;
+  padding-left: 10px;
 }
 
 

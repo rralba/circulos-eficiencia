@@ -7,6 +7,7 @@ use App\propuesta;
 use App\attach;
 use App\integrantes_propuesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use DB;
 
 class PropuestaController extends Controller
@@ -17,12 +18,74 @@ class PropuestaController extends Controller
         return view('propuesta');
     }
 
-    public function list()
+    public function list1()
     {
-        $propuesta = DB::table('propuestas')
-        ->get();
-        return view('propuestas.list', compact('propuesta'));
+        $propuesta1 = DB::table('propuestas')
+        ->where('identificador', '=', '1')->paginate(10);
+        
+        return view('propuestas.list1', compact('propuesta1'));
         //dd($propuesta);
+    }
+
+    public function list2()
+    {
+       $propuesta2 = DB::table('propuestas')
+        ->where('identificador', '=', '2')->paginate(10);
+        
+        return view('propuestas.list2', compact('propuesta2'));
+        //dd($propuesta);
+    }
+
+    public function list3()
+    {
+        $propuesta3 = DB::table('propuestas')
+        ->where('identificador', '=', '3')->paginate(10);
+        
+        return view('propuestas.list3', compact('propuesta3'));
+        //dd($propuesta);
+    }
+
+    public function list4()
+    {
+        $propuesta4 = DB::table('propuestas')
+        ->where('identificador', '=', '4')->paginate(10);
+        
+        return view('propuestas.list4', compact('propuesta4'));
+        //dd($propuesta);
+    }
+
+    public function update(propuesta $propuesta)
+    {
+        // $prop = DB::table('propuestas')
+        // ->where('id', '=', $propuesta)
+        // ->get();
+        // $prop1 = json_encode($prop);
+        return view('propuestas.update', compact('propuesta'));
+        //dd($prop);
+    }
+
+    public function validat(propuesta $propuesta, integrantes_propuesta $integrante)
+    {
+        return view('propuestas.validate', compact('propuesta', 'integrante'));
+        //dd($propuesta);
+    }
+
+    public function edit(Request $request)
+    {
+      $propuesta = propuesta::where('id', '=', $request->id)->first();
+      $propuesta->asesor = $request->input('asesor');
+      $propuesta->asignacion = $request->input('asignacion');
+      if(($request->identificador) == 1)
+      {
+        $propuesta->identificador = 3;
+      }
+      if(($request->identificador) == 2)
+      {
+        $propuesta->identificador = 4;
+      }
+      $propuesta->save();
+      return redirect()->route('propuesta1.index');
+      //dd($request->all());
     }
 
     public function store(Request $request)
@@ -54,12 +117,22 @@ class PropuestaController extends Controller
           $propuesta->save();
         
         
-        if (($request->integrantes) == 2)
+        if (($request->integrantes) == 2) 
         {
         	foreach ($request->integp as $inte) 
         	{
             $integ[] = 0;
             if (in_array($inte, $integ)){
+              if (($inte) == 0)
+              {
+                $propid = propuesta::all();
+                $x = ($propid->last());
+                $integrante = new integrantes_propuesta();
+                $integrante->propuesta_id = $x->id;
+                $integrante->empleado_id = $inte;
+                $integrante->save();
+                $r[] = array($inte);   
+              }
             }
             else{
         		if (($inte) > 0){
@@ -83,6 +156,16 @@ class PropuestaController extends Controller
                 {
                   $integ[] = 0;
                   if (in_array($inte, $integ)){
+                    if (($inte) == 0)
+                    {
+                      $propid = propuesta::all();
+                      $x = ($propid->last());
+                      $integrante = new integrantes_propuesta();
+                      $integrante->propuesta_id = $x->id;
+                      $integrante->empleado_id = $inte;
+                      $integrante->save();
+                      $r[] = array($inte);   
+                    }
                   }
                   else{
                     if (($inte) > 0){

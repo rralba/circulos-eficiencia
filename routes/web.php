@@ -138,6 +138,22 @@ Route::get('mejorarapida/create', 'MejorasrapidasController@create')->name('mr.c
 ->middleware('permission:mr.create');
 
 //Propuestas
-Route::get('propuestas/index', 'PropuestaController@list')->name('propuesta.index')
-->middleware('permission:prpuestas.index');
+Route::get('propuestas/index1', 'PropuestaController@list1')->name('propuesta1.index')
+->middleware('permission:propuestas.edit');
+Route::get('propuestas/index2', 'PropuestaController@list2')->name('propuesta2.index')
+->middleware('permission:propuestas.edit');
+Route::get('propuestas/index3', 'PropuestaController@list3')->name('propuesta3.index')
+->middleware('permission:propuestas.index');
+Route::get('propuestas/index4', 'PropuestaController@list4')->name('propuesta4.index')
+->middleware('permission:propuestas.index');
+Route::get('propuestas/update/{propuesta}', 'PropuestaController@update')->name('propuesta.update')
+->middleware('permission:propuestas.update');
+Route::post('propuestas/edit', 'PropuestaController@edit')->name('propuesta.edit')
+->middleware('permission:propuestas.update');
+Route::get('propuestas/validate/{propuesta}', 'PropuestaController@validat')->name('propuesta.validate')
+->middleware('permission:propuestas.update');
+Route::post('propuestas/accept', 'MejorasrapidasController@accept')->name('propuesta.accept')
+->middleware('permission:propuestas.update');
+Route::get('mejorarapidas/print/{mejora}', 'MejorasrapidasController@print')->name('mejoras.print')
+->middleware('permission:mr.index');
 });

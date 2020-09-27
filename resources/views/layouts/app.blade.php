@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Circulos de Eficiencia') }}</title>
+    <title>Circulos de Eficiencia</title>
     <link rel="shortcut icon" href="{!! asset('jpg/favicon.ico') !!}" type="image/x-icon">
     <!-- Styles -->
     <script src="{!! asset('js/jquery-3.3.1.js') !!}" ></script>
@@ -95,7 +95,7 @@
                              </div>
                             @endcan
                         </div>
-                       {{--  <div class="dropdown p-1">
+                        <div class="dropdown p-1">
                             @can('proyects.index')
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Mejoras Rápidas
@@ -115,11 +115,11 @@
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('propuesta') }}">Registro</a>
                                 @can('Propuestas.index')
-                                    <a class="dropdown-item" href="{{ route('propuesta.index') }}">Propuestas</a>
+                                    <a class="dropdown-item" href="{{ route('propuesta1.index') }}">Propuestas</a>
                                 @endcan
                              </div>
                             @endcan
-                        </div> --}}
+                        </div>
                     </div>
                         @can('users.index')
                         <li class="nav-item p-1">
@@ -186,4 +186,5 @@
     </div>
 </body>
 <script src="{!! asset('js/app.js') !!}"></script>
+<script src="{!! asset('js/app2.js') !!}"></script>
 </html>

@@ -29,6 +29,7 @@
             $('.requeridon2').prop("required", false);
             $('.requeridon1').val("");
             $('.intpy').val("");
+            $('.intpyn').val("0");
         });
         $("#nivel2").on( "click", function() {
             $('#filanivel1').hide(); //oculto mediante id
@@ -38,6 +39,9 @@
             $('.requeridon1').prop("required", false);
             $('.requeridon2').val("");
             $('.intmr').val("");
+            $('.intmrn').val("0");
+            $('.intmra').val("Autor");
+            $('.intmri').val("Integrante");
         });
         $("#nivel3").on( "click", function() {
             $('#filaper1').show(); //muestro mediante id
@@ -50,6 +54,7 @@
 
         $('#prop3sa').hide(); //ocultar mediante id
         $('#prop12sa').hide(); //ocultar mediante id
+        $('#idjefe').hide(); //ocultar ficha del jefe que autoriza la mejora en el formato de impresion mediante id
 
 
 
@@ -71,6 +76,8 @@
   }); 
 });
 
+ 
+
 //funciones de conversion a mayusculas
 
 $(function() {
@@ -78,17 +85,6 @@ $(function() {
            this.value = this.value.toLocaleUpperCase();
        });
 });
-$(function() {
-       $('textarea').change(function() {
-           this.value = this.value.toLocaleUpperCase();
-       });
-});
- 
-// function pregunta(){
-//     if (confirm('¿Estas seguro de enviar este formulario?')){
-//        document.getElementById("mr").submit();
-//     }
-// }
 
 
     var options = {

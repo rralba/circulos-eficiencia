@@ -220,7 +220,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp1" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp1" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -235,7 +235,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp2" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp2" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -250,7 +250,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp3" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp3" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -265,7 +265,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp4" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp4" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -280,7 +280,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp5" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp5" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -295,7 +295,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp6" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp6" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -310,7 +310,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp7" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp7" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -325,7 +325,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp8" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp8" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -340,7 +340,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp9" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp9" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -355,7 +355,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intpy" id="employeeidp10" name="integp[]" value="0" readonly>
+                  <input type="text" class="form-control intpyn" id="employeeidp10" name="integp[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -412,10 +412,10 @@
               <br>
               <div id="filaper2">
               <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intmr" id="employeeidm1" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmrn" id="employeeidm1" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -425,12 +425,16 @@
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom1" name="" readonly>
                 </div>  
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Rol</h4></label>
+                  <input type="text" class="form-control intmra" style="width: 100px" id="rol" name="rol" value="Autor" readonly>
+                </div>  
               </div>
                 <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intmr" id="employeeidm2" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmrn" id="employeeidm2" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -440,12 +444,16 @@
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom2" name="" readonly>
                 </div>  
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Rol</h4></label>
+                  <input type="text" class="form-control intmri" style="width: 100px" id="rol" name="rol" value="Integrante" readonly>
+                </div> 
               </div>
                 <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intmr" id="employeeidm3" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmrn" id="employeeidm3" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -454,13 +462,17 @@
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom3" name="" readonly>
+                </div> 
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Rol</h4></label>
+                  <input type="text" class="form-control intmri" style="width: 100px" id="rol" name="rol" value="Integrante" readonly>
                 </div>  
               </div>
                 <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intmr" id="employeeidm4" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmrn" id="employeeidm4" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -470,12 +482,16 @@
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom4" name="" readonly>
                 </div>  
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Rol</h4></label>
+                  <input type="text" class="form-control intmri" style="width: 100px" id="rol" name="rol" value="Integrante" readonly>
+                </div> 
               </div>
                 <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-1">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Ficha</h4></label>
-                  <input type="text" class="form-control intmr" id="employeeidm5" name="integm[]" value="0" readonly>
+                  <input type="text" class="form-control intmrn" id="employeeidm5" name="integm[]" value="0" readonly>
                 </div>  
                 <div class="col-md-4">
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Nombre</h4></label>
@@ -485,6 +501,10 @@
                   <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Posición</h4></label>
                   <input type="text" class="form-control intmr" id="employeedeptom5" name="" readonly>
                 </div>  
+                <div class="col-md-2">
+                  <label for="recipient-name" class="col-form-label"><h4 class="p-0 m-0">Rol</h4></label>
+                  <input type="text" class="form-control intmri" style="width: 100px" id="rol" name="rol" value="Integrante" readonly>
+                </div> 
               </div>
               <br>
               </div>
@@ -895,24 +915,4 @@
     });
     </script>
       </div>
-      <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
