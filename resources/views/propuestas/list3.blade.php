@@ -9,12 +9,16 @@
       <nav class="navbar navbar-expand-lg navbar-light">
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="nav navbar-nav m-auto">
+                            @can('propuestas.edit')
                             <li class="nav-item">
                                 <a class="nav-link mr-2" href="{{ route('propuesta1.index') }}"><h6>Propuestas CE nivel 1 y 2 no asignadas</h6></a>
                             </li>
+                            @endcan
+                            @can('propuestas.edit')
                             <li class="nav-item">
                                 <a class="nav-link mr-2" href="{{ route('propuesta2.index') }}"><h6>Propuestas CE nivel 3 no asignadas</h6></a>
                             </li>
+                            @endcan
                             <li class="nav-item active">
                                 <a class="nav-link mr-2" href="{{ route('propuesta3.index') }}"><h6>Propuestas CE nivel 1 y 2 asignadas</h6></a>
                             </li>

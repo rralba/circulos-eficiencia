@@ -17,7 +17,7 @@ class MejorasrapidasController extends Controller
     public function index()
     {
         $mejoras = DB::table('mejoras')
-        ->where('status', '=', '2')->paginate(10);
+        ->where('status', '=', '1')->paginate(10);
         return view('mejorasrapidas.index', compact('mejoras'));
        	//dd($mejoras->all());
     }

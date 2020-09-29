@@ -114,9 +114,11 @@
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('propuesta') }}">Registro</a>
-                                @can('Propuestas.index')
+                                @if (auth()->user()->can('propuestas.edit'))
                                     <a class="dropdown-item" href="{{ route('propuesta1.index') }}">Propuestas</a>
-                                @endcan
+                                @else
+                                    <a class="dropdown-item" href="{{ route('propuesta3.index') }}">Propuestas</a>        
+                                @endif
                              </div>
                             @endcan
                         </div>
