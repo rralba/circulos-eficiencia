@@ -79,8 +79,8 @@
         </div>
         <br>
         <div class="row" id="valor">
-          <div class="col-md-7"></div>
-          <div class=" form-group col-md-2" id="valorvalid">  
+          <div class="col-md-5"></div>
+          <div class=" form-group col-md-3" id="valorvalid">  
             <label for="to" class="col-form-label"><h4 class="p-0 m-0">Valor Corporativo:</h4></label>
             <select type="text" class="form-control" id="valor" name="valor">
                 <option value=""></option>
@@ -96,9 +96,9 @@
                 <option value="Seguridad">Seguridad</option>
               </select>
           </div>
-          <div class=" form-group col-md-3" id="desperdiciovalid">  
+          <div class=" form-group col-md-4" id="desperdiciovalid">  
             <label for="to" class="col-form-label"><h4 class="p-0 m-0">Desperdicios Lean Manufacturing:</h4></label>
-            <select type="text" class="form-control" id="desperdicio" name="desperdicio">
+            <select type="text" style="width: 70%;" class="form-control" id="desperdicio" name="desperdicio">
                 <option value=""></option>
                 <option value="Ahorro de Energia">Ahorro de Energia</option>
                 <option value="Ahorro de Suministros">Ahorro de Suministros</option>

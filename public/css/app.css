@@ -25,12 +25,9 @@
         widows: 4;
     }
 
-#imprimir {
-        font-size: 9px;
+.imprime {
         margin: 0;
         padding: 0;
-        orphans: 4;
-        widows: 4;
     }
 
 .mr .contenido{
@@ -133,10 +130,15 @@ option{
 
 @media print{
      @page {
-        size: letter landscape;
         margin: 0;
         padding: 0;
     }
+
+   /*  .saltoDePagina{
+        display:block;
+        page-break-before:always;
+      } */
+
 
     html, body{
         margin-top: 0mm;
@@ -144,32 +146,52 @@ option{
         margin-right: 5mm;
         margin-left: 5mm;
         background: white;
-        font-size: 7px;
         padding: 0;
     }
-   
-    h4{
-        font-size: 9px;
-    }
 
-    h6{
-        font-size: 9px;
+    .imprime{
+      size: letter;
+    }
+    .imprime, h3{
+      font-size: 15px;
     }
     
     #titulo{
-        font-size: 14px;
+        font-size: 20px;
     }
+    .imprime .custom-control-label{
+      padding: 0;
+      margin-top: 0mm;
+      margin-bottom: 0mm;
+    }
+    br{
+      display: none;
+    }
+    hr {
+    display: block;
+    height: 1px;
+    background: transparent;
+    width: 100%;
+    border: none;
+    border-top: solid 1px #aaa;
+}
+
     table, td{
         font-size: 7px;
     }
     #nav-tab {display: none}
     #botones {display: none}
     #imprimible {
+        size: letter landscape;
         font-size: 9px;
         margin: 0;
         padding: 0;
         orphans: 4;
         widows: 4;
+    }
+
+    #imprimible, h4, h6{
+      font-size: 9px;
     }
  
     .table-striped>tbody>tr:nth-child(odd)>td{
