@@ -68,8 +68,16 @@ class MejorasrapidasController extends Controller
                     
                     $integr[] = 0;
                     if (in_array($inte, $integr)){
-                      if (($inte) == 0){  
-                      }
+                        if (($inte) == 0){  
+                            $propid = mejora::all();
+                            $x = ($propid->last());
+                            $integrante = new integrant();
+                            $integrante->mejora_id = $x->id;
+                            $integrante->empleado_id = $inte;
+                            $integrante->rol = 3;
+                            $integrante->pago = 0;
+                            $integrante->save();
+                        }
                     }
                     else{
                         if (($inte) > 0){
@@ -113,6 +121,11 @@ class MejorasrapidasController extends Controller
     public function print(mejora $mejora)
     {
         return view('mejorasrapidas.print', compact('mejora'));
+        //dd($request);
+    }   
+    public function edit(mejora $mejora)
+    {
+        return view('mejorasrapidas.edit', compact('mejora'));
         //dd($request);
     }   
 }

@@ -151,9 +151,34 @@ option{
 
     .imprime{
       size: letter;
+      margin: 0;
+      padding: 0;
+      orphans: 4;
+      widows: 4;
     }
     .imprime, h3{
       font-size: 15px;
+    }
+
+    .conta .imagen1{
+      width: 320px;
+      height: 80px;
+    }
+
+    .piepag{
+      margin-top: 30mm;
+      margin-bottom: 0mm;
+    }
+
+    .container-contact100{
+        margin: 0mm;
+        padding: 0;
+    }
+
+    .wrap-contact100{
+      margin: 0mm;
+      padding: 0;
+      width: 100%;
     }
     
     #titulo{

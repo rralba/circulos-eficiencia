@@ -58,7 +58,6 @@
 
 
 
-
          $("#currency-field").keyup(function () {
         var value = $(this).val();
         $("#beneficio_eco").val(value);

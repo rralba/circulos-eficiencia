@@ -91,7 +91,28 @@ class PropuestaController extends Controller
     public function store(Request $request)
     {
         $propuesta = new propuesta();
-          $propuesta->identificador = $request->input('identificador');
+        if(($request->identificador) == 1)
+        {
+          if(($request->asesor) == "N/A")
+          {
+            $propuesta->identificador = $request->input('identificador');
+          }
+          else
+          {
+            $propuesta->identificador = 3;
+          }
+        }
+        if(($request->identificador) == 2)
+        {
+          if(($request->asesor) == "N/A")
+          {
+            $propuesta->identificador = $request->input('identificador');
+          }
+          else
+          {
+            $propuesta->identificador = 4;
+          }
+        }
           $propuesta->registro = $request->input('registro');
           $propuesta->direccion = $request->input('direccion');
           $propuesta->subdireccion = $request->input('subdireccion');

@@ -18,7 +18,7 @@
                         <th>FINAL</th>
                         <th>ASESOR</th>
                         <th width="40%">OBJETIVO</th>
-                        {{-- <th colspan="2">&nbsp;</th> --}}
+                        <th colspan="3">&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>  
@@ -32,9 +32,14 @@
                                 <td>{{ $mejora->final }}</td>
                                 <td>{{ $mejora->asesor }}</td>
                                 <td>{{ $mejora->objetivo }}</td>
-                                {{-- <td width="07px">
+                                <td width="07px">
                                   <a  href="{{ route('mejoras.print', $mejora->id) }}"
-                                  class="btn btn-sm btn-outline-primary fa fa-info-circle" title="Detalles del Proyecto">
+                                  class="btn btn-sm btn-outline-primary fa fa-print" title="Detalles del Proyecto">
+                                  </a>
+                                </td>
+                                {{-- <td width="07px">
+                                  <a  href="{{ route('mejoras.edit', $mejora->id) }}"
+                                  class="btn btn-sm btn-outline-primary fa fa-pencil" title="Detalles del Proyecto">
                                   </a>
                                 </td> --}}
                             </tr>

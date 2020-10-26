@@ -156,4 +156,6 @@ Route::post('propuestas/accept', 'MejorasrapidasController@accept')->name('propu
 ->middleware('permission:propuestas.update');
 Route::get('mejorarapidas/print/{mejora}', 'MejorasrapidasController@print')->name('mejoras.print')
 ->middleware('permission:mr.index');
+Route::get('mejorarapidas/edit/{mejora}', 'MejorasrapidasController@edit')->name('mejoras.edit')
+->middleware('permission:mr.edit');
 });

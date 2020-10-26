@@ -153,7 +153,7 @@
 	        	<label for="inputEmail4"><h3>Autor</h3></label>
 	        </div>
 	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" readonly>	
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
 	        </div>
 	        <div class="form-group row col-md-2">
 	         	<label for="inputEmail4"><h3>Ficha</h3></label>
@@ -190,7 +190,7 @@
 	        	<label for="inputEmail4"><h3>Integrante</h3></label>
 	        </div>
 	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" readonly>	
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
 	        </div>
 	        <div class="form-group row col-md-2">
 	         	<label for="inputEmail4"><h3>Ficha</h3></label>
@@ -230,7 +230,7 @@
 	        	<label for="inputEmail4"><h3>Autor</h3></label>
 	        </div>
 	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" readonly>	
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" >	
 	        </div>
 	        <div class="form-group row col-md-2">
 	         	<label for="inputEmail4"><h3>Ficha</h3></label>
@@ -267,7 +267,7 @@
 	        	<label for="inputEmail4"><h3>Integrante</h3></label>
 	        </div>
 	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" readonly>	
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" >	
 	        </div>
 	        <div class="form-group row col-md-2">
 	         	<label for="inputEmail4"><h3>Ficha</h3></label>
@@ -307,19 +307,19 @@
       <div class="row">
 	        <div class="form-group row col-md-12">
 	        	<label for="recipient-name" class="col-form-label "><h3>¿Qué debe mejorarse?</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion" readonly>{{ $mejora->amejorar }}</textarea>
+	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->amejorar }}</textarea>
 	        </div>
       </div>
       <div class="row">
 	        <div class="form-group row col-md-12">
 	        	<label for="recipient-name" class="col-form-label "><h3>Objetivo</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion" readonly>{{ $mejora->objetivo }}</textarea>
+	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->objetivo }}</textarea>
 	        </div>
       </div>
       <div class="row">
 	        <div class="form-group row col-md-12">
 	        	<label for="recipient-name" class="col-form-label "><h3>Solución</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion" readonly>{{ $mejora->solucion }}</textarea>
+	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->solucion }}</textarea>
 	        </div>
       </div>
       <br>
