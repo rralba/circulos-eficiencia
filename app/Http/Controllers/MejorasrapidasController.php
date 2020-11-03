@@ -8,6 +8,7 @@ use App\beneficio;
 use App\reconocimiento;
 use App\mejora;
 use App\propuesta;
+use App\Proyect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use DB;
@@ -58,10 +59,7 @@ class MejorasrapidasController extends Controller
                 $mejora->save();
 
 
-                    // $part = $request->integ;
-                    // $roll = $request->rol;
-                    // $unir = Arr::collapse([$part, $roll]);
-
+          
                     $ro=0;
                     foreach ($request->integ as $inte) 
                     {
@@ -103,21 +101,84 @@ class MejorasrapidasController extends Controller
                     $propuesta = propuesta::where('id', '=', $request->id)->first();
                     $propuesta->identificador = 5;
                     $propuesta->save();
+
+                    return view('mejorasrapidas.print', compact('mejora'));
                 }
-            return view('mejorasrapidas.print', compact('mejora'));
+            
+
+            if (($request->identificador) == 3)
+                {
+                $proyect = new Proyect();
+                $proyect->proyecto = $request->input('proyecto');
+                $proyect->fecha_reg = $request->input('registro');
+                $proyect->depto = $request->input('depto');
+                $proyect->asesor = $request->input('asesor');
+                $proyect->fecha_ini = $request->input('inicio');
+                $proyect->fecha_fin = $request->input('final');
+                $proyect->valor = $request->input('valor');
+                $proyect->ahorro_anual_proy = $request->input('currency-field');
+                $proyect->save();
+
+
+          
+                    foreach ($request->integ as $inte) 
+                    {
+                    
+                    $integr[] = 0;
+                    if (in_array($inte, $integr)){
+                        if (($inte) == 0){  
+                        }
+                    }
+                    else{
+                        if (($inte) > 0){
+                            $integr[] = $inte;
+                                $propid = Proyect::all();
+                                $x = ($propid->last());
+                                $integrante = new integrant();
+                                $integrante->proyect_id = $x->id;
+                                $integrante->empleado_id = $inte;
+                                $integrante->rol = 3;
+                                $integrante->save();
+
+                            }
+                        }
+                    }
+
+                    $propuesta = propuesta::where('id', '=', $request->id)->first();
+                    $propuesta->identificador = 7;
+                    $propuesta->save();
+
+                    return redirect()->route('proyects.show',[$x->id]);
+                }
+            
         }
         if (($request->aprobada) == 1)
         {
-           $propuesta = propuesta::where('id', '=', $request->id)->first();
-           $propuesta->identificador = 6;
-           $propuesta->comentarios = $request->input('observaciones');
-           $propuesta->save();
-           //dd($request->all());
+            if (($request->identificador) == 3)
+            {
+                $propuesta = propuesta::where('id', '=', $request->id)->first();
+                $propuesta->identificador = 8;
+                $propuesta->comentarios = $request->input('observaciones');
+                $propuesta->save();
+            }
+            if (($request->identificador) == 4)
+            {
+                $propuesta = propuesta::where('id', '=', $request->id)->first();
+                $propuesta->identificador = 6;
+                $propuesta->comentarios = $request->input('observaciones');
+                $propuesta->save();
+            }
+
+            return redirect()->route('propuesta3.index');
         }
-        return redirect()->route('propuesta1.index');
         
-        //dd($data);
+        // $fichas = $request->integ;
+        // $rol = $request->rol;
+        // $all = array_combine($fichas, $rol);        
+        // dd($rol);
     }
+
+
     public function print(mejora $mejora)
     {
         return view('mejorasrapidas.print', compact('mejora'));

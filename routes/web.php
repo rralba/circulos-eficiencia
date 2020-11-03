@@ -139,9 +139,9 @@ Route::get('mejorarapida/create', 'MejorasrapidasController@create')->name('mr.c
 
 //Propuestas
 Route::get('propuestas/index1', 'PropuestaController@list1')->name('propuesta1.index')
-->middleware('permission:propuestas.index');
+->middleware('permission:propuestas.edit');
 Route::get('propuestas/index2', 'PropuestaController@list2')->name('propuesta2.index')
-->middleware('permission:propuestas.index');
+->middleware('permission:propuestas.edit');
 Route::get('propuestas/index3', 'PropuestaController@list3')->name('propuesta3.index')
 ->middleware('permission:propuestas.index');
 Route::get('propuestas/index4', 'PropuestaController@list4')->name('propuesta4.index')

@@ -37,11 +37,7 @@
                                   class="btn btn-sm btn-outline-primary fa fa-print" title="Detalles del Proyecto">
                                   </a>
                                 </td>
-                                {{-- <td width="07px">
-                                  <a  href="{{ route('mejoras.edit', $mejora->id) }}"
-                                  class="btn btn-sm btn-outline-primary fa fa-pencil" title="Detalles del Proyecto">
-                                  </a>
-                                </td> --}}
+                                {{-- vali --}}
                             </tr>
                         @endforeach   
                 </tbody>

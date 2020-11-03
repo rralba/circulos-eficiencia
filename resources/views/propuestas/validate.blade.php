@@ -127,43 +127,43 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Nombre del Proyecto</h6></label>
-            <input type="text" class="form-control" id="proyecto" name="proyecto" value="{{ $propuesta->proyecto }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="proyecto" name="proyecto" value="{{ $propuesta->proyecto }}">
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Porqué consideras que el proyecto es creativo y/o innovador?</h6></label>
-            <textarea type="text" class="form-control" rows="4" id="creativo" name="creativo">{{ $propuesta->creativo }}</textarea>
+            <textarea type="text" class="form-control tomayus" maxlength="499" rows="4" id="creativo" name="creativo">{{ $propuesta->creativo }}</textarea>
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Qué áreas deben participar en el desarrollo del proyecto?</h6></label>
-            <input type="text" class="form-control" id="areas" name="areas" value="{{ $propuesta->areas_part }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="areas" name="areas" value="{{ $propuesta->areas_part }}">
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h6></label>
-            <input type="text" class="form-control" id="skills" name="skills" value="{{ $propuesta->skills_integ }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="skills" name="skills" value="{{ $propuesta->skills_integ }}">
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Cuáles son las principales actividades a realizar por el equipo?</h6></label>
-            <input type="text" class="form-control" id="principales" name="principales" value="{{ $propuesta->principales_act }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="principales" name="principales" value="{{ $propuesta->principales_act }}">
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Cuál es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
-            <input type="text" class="form-control" id="critico" name="critico" value="{{ $propuesta->conocimiento_critico }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="critico" name="critico" value="{{ $propuesta->conocimiento_critico }}">
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>¿Cómo participa el personal sindicalizado?</h6></label>
-            <input type="text" class="form-control" id="sindicalizados" name="sindicalizados" value="{{ $propuesta->sindicalizados }}">
+            <input type="text" class="form-control tomayus" maxlength="249" id="sindicalizados" name="sindicalizados" value="{{ $propuesta->sindicalizados }}">
           </div> 
         </div>
         <div class="row">
@@ -171,7 +171,8 @@
           </div>
           <div class="form-group col-md-2 ">
             <label for="inputEmail4"><h6>Beneficio Económico</h6></label>
-            <input type="text" class="form-control" id="beneficio" name="beneficio" value="{{ $propuesta->beneficio_eco }}">
+            <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" placeholder="$1,000,000.00" maxlength="10" value="{{ $propuesta->beneficio_eco }}">
+            <input type="hidden" class="form-control requeridon1 validar" id="beneficio_eco" name="beneficio_eco" value="#currency-field">
           </div> 
         </div>   
       @else 
@@ -179,19 +180,19 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>A Mejorar</h6></label>
-            <textarea class="form-control" id="mejorar" name="mejorar" rows="3">{{ $propuesta->mejorar }}</textarea>
+            <textarea class="form-control tomayus" maxlength="249" id="mejorar" name="mejorar" rows="3">{{ $propuesta->mejorar }}</textarea>
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Objetivo</h6></label>
-            <textarea type="text" class="form-control" id="objetivo" name="objetivo">{{ $propuesta->objetivo }}</textarea>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="objetivo" name="objetivo">{{ $propuesta->objetivo }}</textarea>
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Solución</h6></label>
-            <textarea type="text" class="form-control" id="solucion" name="solucion">{{ $propuesta->solucion }}</textarea>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="solucion" name="solucion">{{ $propuesta->solucion }}</textarea>
           </div> 
         </div>
          {{--  <div class="form-group col-md-12">
@@ -235,7 +236,7 @@
           </div>
           @endif
           @endif
-          @if($propuesta->identificador == 3)
+        {{--   @if($propuesta->identificador == 3)
             @if($x == 1)
             <div class="form-group col-md-1">
               <label for="inputPassword4"><h6>Rol</h6></label>
@@ -276,7 +277,7 @@
               </select>
             </div>
             @endif
-          @endif
+          @endif --}}
         </div>
       @endforeach
   <div class="row" id="observalid">
