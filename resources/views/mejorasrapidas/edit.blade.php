@@ -302,6 +302,214 @@
       @endif
       @endif
       @endforeach
+      @if((($x)==1))
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	@endif
+      	@if((($x)==2))
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	@endif
+      	@if((($x)==3))
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	@endif
+      	@if((($x)==4))
+      	<div class="row">
+	        <div class="form-group row col-md-2 justify-content-end">
+	        	<label for="inputEmail4"><h3>Integrante</h3></label>
+	        </div>
+	        <div class="form-group row col-md-4">
+	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
+	        </div>
+	        <div class="form-group row col-md-2">
+	         	<label for="inputEmail4"><h3>Ficha</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
+	        </div>
+	        <div class="form-group row col-md-1">
+	         	<label for="inputEmail4"><h3>S</h3></label>
+	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
+	        </div>
+	        <div class="form-group row col-md-3">
+	         	<label for="inputEmail4"><h3>Cia.</h3></label>
+	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
+	        </div>
+      	</div>
+      	@endif
       <br>
       <br>
       <div class="row">

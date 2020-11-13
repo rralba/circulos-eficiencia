@@ -5,7 +5,6 @@
     <h1 class="text-center">Circulos de Eficiencia Nivel 3</h1>
 @endsection
 <div class="container-fluid">   
-    {{-- <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-user-plus mb-3" data-toggle="modal" data-target="#addmr"></button> --}}
     <div class="table-responsive">
             <table id="grid-basic" class="w3-table-all w3-card-4">
                 <thead>
@@ -33,11 +32,15 @@
                                 <td>{{ $mejora->asesor }}</td>
                                 <td>{{ $mejora->objetivo }}</td>
                                 <td width="07px">
-                                  <a  href="{{ route('mejoras.print', $mejora->id) }}"
-                                  class="btn btn-sm btn-outline-primary fa fa-print" title="Detalles del Proyecto">
-                                  </a>
+                                    <a  href="{{ route('mejoras.print', $mejora->id) }}"
+                                        class="btn btn-sm btn-outline-primary fa fa-print" title="Imprimir Mejora Rapida">
+                                    </a>
                                 </td>
-                                {{-- vali --}}
+                                <td width="07px">
+                                    <a href="{{ route('mejoras.edit', $mejora->id) }}"
+                                        class="btn btn-sm btn-outline-primary fa fa-pencil" title="Editar Mejora Rapida">
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach   
                 </tbody>
