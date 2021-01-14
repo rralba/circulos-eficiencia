@@ -59,7 +59,10 @@ class MejorasrapidasController extends Controller
                 $mejora->save();
 
 
-          
+                    if (empty($request->integ))
+                    {
+                    }
+                    else{
                     $ro=0;
                     foreach ($request->integ as $inte) 
                     {
@@ -97,7 +100,7 @@ class MejorasrapidasController extends Controller
                         }
                         $ro++;   
                     }
-
+                    }
                     $propuesta = propuesta::where('id', '=', $request->id)->first();
                     $propuesta->identificador = 5;
                     $propuesta->save();
@@ -120,7 +123,12 @@ class MejorasrapidasController extends Controller
                 $proyect->save();
 
 
-          
+                    $propid = Proyect::all();
+                    $x = ($propid->last());
+                    if (empty($request->integ))
+                    {
+                    }
+                    else{
                     foreach ($request->integ as $inte) 
                     {
                     
@@ -132,8 +140,6 @@ class MejorasrapidasController extends Controller
                     else{
                         if (($inte) > 0){
                             $integr[] = $inte;
-                                $propid = Proyect::all();
-                                $x = ($propid->last());
                                 $integrante = new integrant();
                                 $integrante->proyect_id = $x->id;
                                 $integrante->empleado_id = $inte;
@@ -143,6 +149,7 @@ class MejorasrapidasController extends Controller
                             }
                         }
                     }
+                }
 
                     $propuesta = propuesta::where('id', '=', $request->id)->first();
                     $propuesta->identificador = 7;
@@ -171,13 +178,7 @@ class MejorasrapidasController extends Controller
 
             return redirect()->route('propuesta3.index');
         }
-        
-        // $fichas = $request->integ;
-        // $rol = $request->rol;
-        // $all = array_combine($fichas, $rol);        
-        // dd($rol);
     }
-
 
     public function print(mejora $mejora)
     {
@@ -188,5 +189,9 @@ class MejorasrapidasController extends Controller
     {
         return view('mejorasrapidas.edit', compact('mejora'));
         //dd($request);
+    }   
+    public function update(mejora $mejora)
+    {
+        dd($request);
     }   
 }

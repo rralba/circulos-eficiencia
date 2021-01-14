@@ -69,9 +69,9 @@
           <button type="submit" class="btn btn-primary">Guardar</button>
       </div>    
         </form>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger small" data-dismiss="modal">Close</button>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
 </div>
@@ -101,7 +101,7 @@
         <button class="btn btn-primary small" type="submit">Save</button>  
 </form>
 <div class="modal-footer">
-    <button onclick="document.getElementById('edit').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+    <button onclick="document.getElementById('edit').style.display='none'" type="submit" class="btn btn-danger small">Cancel</button>
  </div>
 </div>
 </div>
@@ -126,7 +126,7 @@
         </div>
      </form>
      <div class="modal-footer">
-        <button onclick="document.getElementById('delete').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+        <button onclick="document.getElementById('delete').style.display='none'" type="submit" class="btn btn-danger small">Cancel</button>
      </div>
   </div>
 </div>
@@ -150,7 +150,7 @@
           </div>
        </form>
        <div class="modal-footer">
-          <button onclick="document.getElementById('delete').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+          <button onclick="document.getElementById('reconocimientos').style.display='none'" type="submit" class="btn btn-danger small">Cancel</button>
        </div>
     </div>
   </div>

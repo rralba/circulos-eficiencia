@@ -13,7 +13,7 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-ahmsa" role="tabpanel" aria-labelledby="nav-home-tab">
             <br>
-    <div id="imprimible">
+    <div class="imprimible">
         <div id="wrapper">
         <div class="conta">
             <div class="left col-md-2 m-0 p-0">

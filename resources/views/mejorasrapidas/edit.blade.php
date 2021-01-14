@@ -1,572 +1,571 @@
 @extends('layouts.appm')
 
 @section('content')
-<style>
-	.row{
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-</style>
-	<div class="imprime">
-		<div class="conta">
-            <div class="left col-md-4 m-0 p-0">
-                <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center imagen1" alt="Logo de circulos de eficiencia" width="320" height="90">
-            </div>
-            <div class="center col-md-8 m-0 p-0">
-                <h1 id="titulo" class="text-right mt-5">REGISTRO CIRCULOS DE EFICIENCIA NIVEL 3</h1>
-            </div>   
+<span class="contact100-form-title">
+  <h1 class="text-center">Círculos de Eficiencia</h1>
+</span>
+<form id="validate" name="validate" action="{{ route('mejoras.update') }}" method = "POST" enctype="multipart/form-data">
+   {{ csrf_field() }}
+  
+    <input type="hidden" id="id" name="id" value="{{ $mejora->id }}">
+    <input type="hidden" id="identificador" name="identificador" value="{{ $mejora->identificador }}">
+    <input type="hidden" id="registro" name="registro" value="{{ date("Y-m-d") }}">
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4"><h6>Dirección</h6></label>
+          <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $mejora->direccion }}" readonly>
         </div>
-        <hr>
+        <div class="form-group col-md-4">
+          <label for="inputEmail4"><h6>Subdirección</h6></label>
+          <input type="text" class="form-control" id="subdireccion" name="subdireccion" value="{{ $mejora->subdireccion }}" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputPassword4"><h6>Departamento</h6></label>
+          <input type="text" class="form-control" id="depto" name="depto" value="{{ $mejora->departamento }}" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-3">
+        </div>
+        <div class="form-group col-md-1">
+          <label for="inputEmail4"><h6>Ficha</h6></label>
+          <input type="text" class="form-control" id="employeeid" name="id_jefe" value="{{ $mejora->id_autoriza }}" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputEmail4"><h6>Nombre</h6></label>
+          <input type="text" class="form-control" id="employee_search" value="{{ $mejora->jefes->nombre }}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputPassword4"><h6>Posición</h6></label>
+          <input type="text" class="form-control" id="employeedepto" value="{{ $mejora->jefes->posicion }}" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-8">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputEmail4"><h6>Fecha Inicio</h6></label>
+          <input type="text" class="form-control datepicker" style="width: 100px;" id="inicio" name="inicio" value="{{ $mejora->inicio }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputPassword4"><h6>Fecha Final</h6></label>
+          <input type="text" class="form-control datepicker" style="width: 100px;" id="final" name="final" value="{{ $mejora->final }}">
+        </div>
+      </div>
+         <br>
+        
+         <div class="row">
+          <div class="col-md-10"></div>
+          <div class=" form-group col-md-2">  
+            <label for="to" class="col-form-label"><h4 class="p-0 m-0">Asesor:</h4></label>
+            <input type="text" class="form-control" id="asesor" name="asesor" value="{{ $mejora->asesor }}" readonly>
+          </div>
+        </div>
+        <br>
+        <div class="row" id="valor">
+          <div class="col-md-5"></div>
+          <div class=" form-group col-md-3" id="valorvalid">  
+            <label for="to" class="col-form-label"><h4 class="p-0 m-0">Valor Corporativo:</h4></label>
+            <select type="text" class="form-control" id="valor" name="valor">
+                <option value=""></option>
+                <option value="Calidad">Calidad</option>
+                <option value="Costos">Costos</option>
+                <option value="Cuidado al Medio Ambiente">Cuidado al Medio Ambiente</option>
+                <option value="Medio Ambiente">Medio Ambiente</option>
+                <option value="Método de Trabajo">Método de Trabajo</option>
+                <option value="Productividad">Productividad</option>
+                <option value="productividad y Calidad">productividad y Calidad</option>
+                <option value="Productividad y Costos">Productividad y Costos</option>
+                <option value="Productividad, Calidad y Costos">Productividad, Calidad y Costos</option>
+                <option value="Seguridad">Seguridad</option>
+              </select>
+          </div>
+          <div class=" form-group col-md-4" id="desperdiciovalid">  
+            <label for="to" class="col-form-label"><h4 class="p-0 m-0">Desperdicios Lean Manufacturing:</h4></label>
+            <select type="text" style="width: 70%;" class="form-control" id="desperdicio" name="desperdicio">
+                <option value=""></option>
+                <option value="Ahorro de Energia">Ahorro de Energia</option>
+                <option value="Ahorro de Suministros">Ahorro de Suministros</option>
+                <option value="Consumo de Refacciones">Consumo de Refacciones</option>
+                <option value="Costos">Costos</option>
+                <option value="Defectos">Defectos</option>
+                <option value="Demoras">Demoras</option>
+                <option value="Demoras y Accidentes">Demoras y Accidentes</option>
+                <option value="Desperdicio de Agua">Desperdicio de Agua</option>
+                <option value="Disponibilidad de Equipos">Disponibilidad de Equipos</option>
+                <option value="Espera">Espera</option>
+                <option value="Inventario">Inventario</option>
+                <option value="Medio Ambiente">Medio Ambiente</option>
+                <option value="Metodo de Trabajo">Método de Trabajo</option>
+                <option value="Movimiento">Movimiento</option>
+                <option value="Productividad">Productividad</option>
+                <option value="Sobreprocesamiento">Sobreprocesamiento</option>
+                <option value="Sobreproduccion">Sobreproduccion</option>
+                <option value="Talentos">Talentos</option>
+                <option value="Transporacion">Transporación</option>
+              </select>
+          </div>
+        </div>
+       <br>
+      @if (($mejora->identificador) == (3))
         <div class="row">
-	        <div class="form-group row col-md-4 justify-content-end">
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	          <label for="inputEmail4"><h3>Folio</h3></label>
-	          <input type="text" class="form-control mr-5 ml-3" style="width: 30%;"  id="id" name="id" value="{{ $mejora->id }}" readonly>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Asesor</h3></label>	
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	        	<input type="text" class="form-control mr-5" id="asesor" name="asesor" value="{{ $mejora->asesor }}" readonly>	
-	        </div>
-	        <div class="form-group row col-md-2 justify-content-end">
-	         	<label for="inputEmail4"><h3>Fecha de Registro</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	         	<input type="text" class="form-control mr-5" id="registro" name="registro" value="{{ \carbon\carbon::parse($mejora->registro)->format('d   F   Y ') }}" readonly>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Dirección</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	        	<input type="text" class="form-control mr-5" id="direccion" name="direccion" value="{{ $mejora->direccion }}" readonly>	
-	        </div>
-	        <div class="form-group row col-md-2 justify-content-end">
-	         	<label for="inputEmail4"><h3>Departamento</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	         	<input type="text" class="form-control mr-5" id="departamento" name="departamento" value="{{ $mejora->departamento }}" readonly>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Subdirección</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	        	<input type="text" class="form-control mr-5" id="direccion" name="direccion" value="{{ $mejora->subdireccion }}" readonly>	
-	        </div>
-	        <div class="form-group row col-md-2 justify-content-end">
-	         	<label for="inputEmail4"><h3>Valor Corporativo</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	         	<input type="text" class="form-control mr-5" id="direccion" name="direccion" value="{{ $mejora->valor }}" readonly>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	        </div>
-	        <div class="form-group row col-md-2 justify-content-end">
-	         	<label for="inputEmail4"><h3>Fecha de Inicio</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	         	<input type="text" class="form-control mr-5" id="direccion" name="direccion" value="{{ \carbon\carbon::parse($mejora->inicio)->format('d   F   Y ') }}" readonly>
-	        </div>
-      </div>
-      <div class="row">
-      	<div class="form-group row col-md-1 justify-content-end">
-	        </div>
-	        <div class="form-group row col-md-5 justify-content-start">
-	         	<label for="inputEmail4"><h3>Desperdicios Lean Manufacturing (Mudas):</h3></label>
-	        </div>
-	        <div class="form-group row col-md-2 justify-content-end">
-	         	<label for="inputEmail4"><h3>Fecha Final</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4 justify-content-end">
-	         	<input type="text" class="form-control mr-5" id="direccion" name="direccion" value="{{ \carbon\carbon::parse($mejora->final)->format('d   F   Y ') }}" readonly>
-	        </div>
-      </div>  
-	  <br>   
-	<input type="hidden" id="var" name="var" value="{{ $mejora->desperdicio }}">	
-      <div class="row">
-	         	<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Transportacion" value="Transporacion" disabled>
-					<label class="custom-control-label  p-3" for="Transportacion"><h3>Transportación</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Sobreprocesamiento" value="Sobreprocesamiento" disabled>
-					<label class="custom-control-label  p-3" for="Sobreprocesamiento"><h3>Sobreprocesamiento</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Movimiento" value="Movimiento" disabled>
-					<label class="custom-control-label  p-3" for="Movimiento"><h3>Movimiento</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Espera" value="Espera" disabled>
-					<label class="custom-control-label  p-3" for="Espera"><h3>Espera</h3></label>
-				</div>
-      </div>
-      <div class="row">
-	         	<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Inventario" value="Inventario" disabled>
-					<label class="custom-control-label  p-3" for="Inventario"><h3>Inventario</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Sobreproduccion" value="Sobreproduccion" disabled>
-					<label class="custom-control-label  p-3" for="Sobreproduccion"><h3>Sobreproducción</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Defectos" value="Defectos" disabled>
-					<label class="custom-control-label  p-3" for="Defectos"><h3>Defectos</h3></label>
-				</div>
-				<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Talentos" value="Talentos" disabled>
-					<label class="custom-control-label  p-3" for="Talentos"><h3>Talentos</h3></label>
-				</div>
-      </div>
-      <div class="row">
-	         	<div class="custom-control custom-checkbox checkbox-xl col-md-3">
-					<input class="custom-control-input" type="checkbox" id="Metodo de Trabajo" value="Metodo de Trabajo" disabled>
-					<label class="custom-control-label  p-3" for="Metodo de Trabajo"><h3>Método de Trabajo</h3></label>
-				</div>
-				<div class="form-group row col-md-7">
-					<label for="inputEmail4" class=" p-3"><h3>Otros Conceptos:</h3></label>
-					<label for="inputEmail4" class=" m-0 pl-0 pt-3"><h3>{{ $mejora->desperdicio }}</h3></label>
-				</div>
-      </div>
-      <br>
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>Nombre del Proyecto</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="proyecto" name="proyecto" value="{{ $mejora->proyecto }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Porqué consideras que el proyecto es creativo y/o innovador?</h6></label>
+            <textarea type="text" class="form-control tomayus" maxlength="499" rows="4" id="creativo" name="creativo">{{ $mejora->creativo }}</textarea>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Qué áreas deben participar en el desarrollo del proyecto?</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="areas" name="areas" value="{{ $mejora->areas_part }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Qué conocimientos, especialidades y/o habilidades se requieren de los integrantes?</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="skills" name="skills" value="{{ $mejora->skills_integ }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Cuáles son las principales actividades a realizar por el equipo?</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="principales" name="principales" value="{{ $mejora->principales_act }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Cuál es el conocimiento crítico requerido para el desarrollo del proyecto?</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="critico" name="critico" value="{{ $mejora->conocimiento_critico }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>¿Cómo participa el personal sindicalizado?</h6></label>
+            <input type="text" class="form-control tomayus" maxlength="249" id="sindicalizados" name="sindicalizados" value="{{ $mejora->sindicalizados }}">
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10">
+          </div>
+          <div class="form-group col-md-2 ">
+            <label for="inputEmail4"><h6>Beneficio Económico</h6></label>
+            <input type="text" class="form-control requeridon1 validar" id="currency-field" name="currency-field" placeholder="$1,000,000.00" maxlength="10" value="{{ $mejora->beneficio_eco }}">
+            <input type="hidden" class="form-control requeridon1 validar" id="beneficio_eco" name="beneficio_eco" value="#currency-field">
+          </div> 
+        </div>   
+      @else 
+      @if (($mejora->identificador) == (4))
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>A Mejorar</h6></label>
+            <textarea class="form-control tomayus" maxlength="249" id="mejorar" name="mejorar" rows="3">{{ $mejora->mejorar }}</textarea>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>Objetivo</h6></label>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="objetivo" name="objetivo">{{ $mejora->objetivo }}</textarea>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>Solución</h6></label>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="solucion" name="solucion">{{ $mejora->solucion }}</textarea>
+          </div> 
+        </div>
+         {{--  <div class="form-group col-md-12">
+            <label for="inputEmail4"><h6>Archivos Adjuntos:</h6></label>
+              <div class="row">
+                @foreach($mejora->attach as $attached)
+                  <a><img src="{{ asset('/../storage/app/'.$attached->attach_path) }}"  height="90px" width="90px"></a>
+                @endforeach
+              </div>  
+          </div>  --}}
+      @endif
+      @endif
       <?php $x=0;?>
       @foreach($mejora->empleadoss as $integrante)
-      	<?php $x=$x+1 ?>
-      	@if((($integrante->pivot->empleado_id)==0))
-      	@if($x == 1)
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Autor</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	        	@if((($integrante->cia)==1000 or ($integrante->cia)==2000))
-	         		<label for="inputEmail4"><h3 style="background: gray">S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	         	@else
-	         		<label for="inputEmail4"><h3>S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3 style="background: gray">NS</h3></label>
-	         	@endif
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	@if((($integrante->cia)==1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)==2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)>2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)<1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	        </div>
-      </div>
-      @else
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	@if((($integrante->cia)==1000 or ($integrante->cia)==2000))
-	         		<label for="inputEmail4"><h3 style="background: gray">S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	         	@else
-	         		<label for="inputEmail4"><h3>S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3 style="background: gray">NS</h3></label>
-	         	@endif
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	@if((($integrante->cia)==1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)==2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)>2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	         	@if((($integrante->cia)<1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	         	@endif
-	        </div>
-	        <div class="col-md-1"></div>
-      </div>
-      @endif
-      @else
-      	@if($x == 1)
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Autor</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" value="{{ $integrante->pivot->empleado_id }}" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	        	@if((($integrante->cia)==1000 or ($integrante->cia)==2000))
-	         		<label for="inputEmail4"><h3 style="background: gray">S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	         	@else
-	         		<label for="inputEmail4"><h3>S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3 style="background: gray">NS</h3></label>
-	         	@endif
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	@if((($integrante->cia)==1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="AHMSA SIDERURGICA 1" readonly>
-	         	@endif
-	         	@if((($integrante->cia)==2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="AHMSA SIDERURGICA 2" readonly>
-	         	@endif
-	         	@if((($integrante->cia)>2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="SERVICIOS CORPORATIVOS AHMSA" readonly>
-	         	@endif
-	         	@if((($integrante->cia)<1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="SERVICIOS MONCLOVA" readonly>
-	         	@endif
-	        </div>
-      </div>
-      @else
-      <div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" value="{{ $integrante->nombre }}" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" value="{{ $integrante->pivot->empleado_id }}" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	@if((($integrante->cia)==1000 or ($integrante->cia)==2000))
-	         		<label for="inputEmail4"><h3 style="background: gray">S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	         	@else
-	         		<label for="inputEmail4"><h3>S</h3></label>
-	         		<label for="inputEmail4" class="ml-2"><h3 style="background: gray">NS</h3></label>
-	         	@endif
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	@if((($integrante->cia)==1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="AHMSA SIDERURGICA 1" readonly>
-	         	@endif
-	         	@if((($integrante->cia)==2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="AHMSA SIDERURGICA 2" readonly>
-	         	@endif
-	         	@if((($integrante->cia)>2000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="SERVICIOS CORPORATIVOS AHMSA" readonly>
-	         	@endif
-	         	@if((($integrante->cia)<1000))
-	         		<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" value="SERVICIOS MONCLOVA" readonly>
-	         	@endif
-	        </div>
-	        <div class="col-md-1"></div>
-      </div>
-      @endif
-      @endif
+        <?php $x=$x+1 ?>
+        <div class="row">
+          <div class="form-group col-md-2">
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4"><h6>Ficha</h6></label>
+            <input type="text" class="form-control" id="employeeid{{$x}}" name="integ[]" value="{{ $integrante->id }}" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputEmail4"><h6>Nombre</h6></label>
+            <input type="text" class="form-control" id="employee_search{{$x}}" value="{{ $integrante->nombre }}">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4"><h6>Posición</h6></label>
+            <input type="text" class="form-control" id="employeedepto{{$x}}" value="{{ $integrante->posicion }}" readonly>
+          </div>  
+          @if($mejora->identificador == 4)
+            @if($x == 1)
+            <div class="form-group col-md-1">
+              <label for="inputPassword4"><h6>Rol</h6></label>
+              <input type="text" class="form-control intmra" id="rol" name="rol" value="autor" readonly>
+            </div>
+          @else
+            <div class="form-group col-md-1">
+            <label for="inputPassword4"><h6>Rol</h6></label>
+            <input type="text" class="form-control intmri" id="rol" name="rol" value="integrante" readonly>
+          </div>
+          @endif
+          @endif
+        {{--   @if($mejora->identificador == 3)
+            @if($x == 1)
+            <div class="form-group col-md-1">
+              <label for="inputPassword4"><h6>Rol</h6></label>
+              <select type="text" class="form-control" id="rol" name="rol[]">
+                <option value="0"></option>
+                <option value="1">Autor</option>
+                <option value="2">Implementador A</option>
+                <option value="3">Implementador B</option>
+              </select>
+            </div>
+            @endif
+            @if($x == 2)
+            <div class="form-group col-md-1">
+              <label for="inputPassword4"><h6>Rol</h6></label>
+              <select type="text" class="form-control" id="rol" name="rol[]">
+                <option value="0"></option>
+                <option value="2">Implementador A</option>
+                <option value="3">Implementador B</option>
+              </select>
+            </div>
+            @endif
+            @if($x == 3)
+            <div class="form-group col-md-1">
+              <label for="inputPassword4"><h6>Rol</h6></label>
+              <select type="text" class="form-control" id="rol" name="rol[]">
+                <option value="0"></option>
+                <option value="2">Implementador A</option>
+                <option value="3">Implementador B</option>
+              </select>
+            </div>
+            @endif
+            @if($x > 3)
+            <div class="form-group col-md-1">
+              <label for="inputPassword4"><h6>Rol</h6></label>
+              <select type="text" class="form-control" id="rol" name="rol[]">
+                <option value="0"></option>
+                <option value="3">Implementador B</option>
+              </select>
+            </div>
+            @endif
+          @endif --}}
+        </div>
       @endforeach
-      @if((($x)==1))
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	@endif
-      	@if((($x)==2))
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	@endif
-      	@if((($x)==3))
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	@endif
-      	@if((($x)==4))
-      	<div class="row">
-	        <div class="form-group row col-md-2 justify-content-end">
-	        	<label for="inputEmail4"><h3>Integrante</h3></label>
-	        </div>
-	        <div class="form-group row col-md-4">
-	        	<input type="text" class="form-control  mr-2" style="width: 90%" id="direccion" name="direccion" >	
-	        </div>
-	        <div class="form-group row col-md-2">
-	         	<label for="inputEmail4"><h3>Ficha</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 50%" id="direccion" name="direccion" readonly>
-	        </div>
-	        <div class="form-group row col-md-1">
-	         	<label for="inputEmail4"><h3>S</h3></label>
-	         	<label for="inputEmail4" class="ml-2"><h3>NS</h3></label>
-	        </div>
-	        <div class="form-group row col-md-3">
-	         	<label for="inputEmail4"><h3>Cia.</h3></label>
-	         	<input type="text" class="form-control ml-3" style="width: 70%" id="direccion" name="direccion" readonly>
-	        </div>
-      	</div>
-      	@endif
-      <br>
-      <br>
-      <div class="row">
-	        <div class="form-group row col-md-12">
-	        	<label for="recipient-name" class="col-form-label "><h3>¿Qué debe mejorarse?</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->amejorar }}</textarea>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-12">
-	        	<label for="recipient-name" class="col-form-label "><h3>Objetivo</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->objetivo }}</textarea>
-	        </div>
-      </div>
-      <div class="row">
-	        <div class="form-group row col-md-12">
-	        	<label for="recipient-name" class="col-form-label "><h3>Solución</h3></label>
-	        	<textarea class="form-control " rows="3" id="direccion" name="direccion">{{ $mejora->solucion }}</textarea>
-	        </div>
-      </div>
-      <br>
-      <br>
-      <br>
-      <div class="piepag">
-      <div class="row mt-5">
-      	    <div class="col-md-3"></div>
-      	    <div class="col-md-6 text-center">
-      	    	<hr class="m-1 p-1">
-      	    	<label for="recipient-name" class="col-form-label m-0 p-0" id="idjefe"><i>{{ $mejora->id_autoriza }}</i></label>
-      	    	<label for="recipient-name" class="col-form-label m-0 p-0"><h3>{{ $mejora->jefes->nombre }}</h3></label> <br>
-      	    	<label for="recipient-name" class="col-form-label m-0 p-0"><h3>{{ $mejora->jefes->posicion }}</h3></label>
-      	    </div>
-      	    <div class="col-md-3"></div>
-      </div>
-      <div class="row">
-      	    <div class="col-md-10"></div>
-      	    <div class="col-md-2 text-center">
-      	    	<label for="recipient-name" class="col-form-label"><h3>RHC-02-F-03</h3></label>
-      	    </div>
-      </div>
-      </div>
-      {{-- <div class="saltoDePagina"></div> --}}
-	</div>
-	<div class="row" id="botones">
-		<div class="container-contact100-form-btn col-md-12">
-    		<button class="contact100-form-btn imprimir">
-      			<span>
-        			Imprimir
-        			<i class="imprimir fa fa-print m-l-7" aria-hidden="true"></i>
-      			</span>
-    		</button>
-    	</div>
-    </div>
-  <script>
-    $('.imprimir').click(function(){
-        window.print();
-        return false;
-    });       
-  </script>
+  <div class="row" id="observalid">
+      <div class="form-group col-md-12">
+          <label for="inputEmail4"><h6>Observaciones</h6></label>
+          <textarea type="text" class="form-control" rows="4" maxlength="299" id="observacioness" name="observaciones"></textarea>
+      </div> 
+  </div>
+  <br> 
+  <div class="row" id="botones">
+  <div class="container-contact100-form-btn">
+    <button class="contact100-form-btn col-6" type="submit" id="aprobada" name="aprobada" value="0">
+      <span>
+        Aprobada
+        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+      </span>
+    </button>
+    <button class="contact100-form-btn col-6" type="button" id="aprobada1" name="aprobada1">
+      <span>
+        Rechazada
+        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+      </span>
+    </button>
+    <button class="contact100-form-btn col-6" type="submit" id="aprobadavalid" name="aprobada" value="1">
+      <span>
+        Rechazar
+        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div> 
+</div>
+</form> 
+<script type="text/javascript">
+
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+
+      $( "#employee_search" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search').val(ui.item.label); // display the selected text
+           $('#employeeid').val(ui.item.value); // save selected id to input
+           $('#employeedepto').val(ui.item.depto);
+           return false;
+        }
+      });
+
+      $( "#employee_search1" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search1').val(ui.item.label); // display the selected text
+           $('#employeeid1').val(ui.item.value); // save selected id to input
+           $('#employeedepto1').val(ui.item.depto);
+           return false;
+        }
+      });
+
+      $( "#employee_search2" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search2').val(ui.item.label); // display the selected text
+           $('#employeeid2').val(ui.item.value); // save selected id to input
+           $('#employeedepto2').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search3" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search3').val(ui.item.label); // display the selected text
+           $('#employeeid3').val(ui.item.value); // save selected id to input
+           $('#employeedepto3').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search4" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search4').val(ui.item.label); // display the selected text
+           $('#employeeid4').val(ui.item.value); // save selected id to input
+           $('#employeedepto4').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search5" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search5').val(ui.item.label); // display the selected text
+           $('#employeeid5').val(ui.item.value); // save selected id to input
+           $('#employeedepto5').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search6" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search6').val(ui.item.label); // display the selected text
+           $('#employeeid6').val(ui.item.value); // save selected id to input
+           $('#employeedepto6').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search7" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search7').val(ui.item.label); // display the selected text
+           $('#employeeid7').val(ui.item.value); // save selected id to input
+           $('#employeedepto7').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search8" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search8').val(ui.item.label); // display the selected text
+           $('#employeeid8').val(ui.item.value); // save selected id to input
+           $('#employeedepto8').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search9" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search9').val(ui.item.label); // display the selected text
+           $('#employeeid9').val(ui.item.value); // save selected id to input
+           $('#employeedepto9').val(ui.item.depto);
+           return false;
+        }
+      });
+      $( "#employee_search10" ).autocomplete({
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#employee_search10').val(ui.item.label); // display the selected text
+           $('#employeeid10').val(ui.item.value); // save selected id to input
+           $('#employeedepto10').val(ui.item.depto);
+           return false;
+        }
+      });
+    });
+    </script>
 @endsection

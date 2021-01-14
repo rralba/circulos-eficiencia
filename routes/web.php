@@ -136,6 +136,12 @@ Route::POST('mejorarapidas', 'MejorasrapidasController@store')->name('mr.store')
 ->middleware('permission:mr.create');
 Route::get('mejorarapida/create', 'MejorasrapidasController@create')->name('mr.create')
 ->middleware('permission:mr.create');
+Route::get('mejorarapidas/print/{mejora}', 'MejorasrapidasController@print')->name('mejoras.print')
+->middleware('permission:mr.index');
+Route::get('mejorarapidas/edit/{mejora}', 'MejorasrapidasController@edit')->name('mejoras.edit')
+->middleware('permission:mr.edit');
+Route::get('mejorarapidas/update', 'MejorasrapidasController@update')->name('mejoras.update')
+->middleware('permission:mr.edit');
 
 //Propuestas
 Route::get('propuestas/index1', 'PropuestaController@list1')->name('propuesta1.index')
@@ -154,8 +160,34 @@ Route::get('propuestas/validate/{propuesta}', 'PropuestaController@validat')->na
 ->middleware('permission:propuestas.update');
 Route::post('propuestas/accept', 'MejorasrapidasController@accept')->name('propuesta.accept')
 ->middleware('permission:propuestas.update');
-Route::get('mejorarapidas/print/{mejora}', 'MejorasrapidasController@print')->name('mejoras.print')
-->middleware('permission:mr.index');
-Route::get('mejorarapidas/edit/{mejora}', 'MejorasrapidasController@edit')->name('mejoras.edit')
-->middleware('permission:mr.edit');
+
+
+//mantenimiento y actualizaciones
+
+Route::get('/mantenimiento', function () {
+    return view('mantenimiento');
+});
+// borrar caché de la aplicación
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return redirect()->back()->with('info', 'Application cache cleared');
+})->name('cache');
+
+ // borrar caché de ruta
+ Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:clear');
+    return redirect()->back()->with('info', 'Routes cache cleared');
+})->name('routes');
+
+// borrar caché de configuración
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    return redirect()->back()->with('info', 'Config cache cleared');
+})->name('config'); 
+
+// borrar caché de vista
+Route::get('/view-clear', function() {
+    $exitCode = Artisan::call('view:clear');
+    return redirect()->back()->with('info', 'View cache cleared');
+})->name('view');
 });

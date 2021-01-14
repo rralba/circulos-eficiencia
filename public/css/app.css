@@ -17,7 +17,7 @@
     font-size: 10px;
 }
 
-#imprimible {
+.imprimible {
         font-size: 9px;
         margin: 0;
         padding: 0;
@@ -129,10 +129,6 @@ option{
   }
 
 @media print{
-     @page {
-        margin: 0;
-        padding: 0;
-    }
 
    /*  .saltoDePagina{
         display:block;
@@ -148,7 +144,9 @@ option{
         background: white;
         padding: 0;
     }
-
+    .imprime br{
+      display: none;
+    }
     .imprime{
       size: letter;
       margin: 0;
@@ -189,9 +187,7 @@ option{
       margin-top: 0mm;
       margin-bottom: 0mm;
     }
-    br{
-      display: none;
-    }
+    
     hr {
     display: block;
     height: 1px;
@@ -206,7 +202,8 @@ option{
     }
     #nav-tab {display: none}
     #botones {display: none}
-    #imprimible {
+
+    .imprimible{
         size: letter landscape;
         font-size: 9px;
         margin: 0;
@@ -215,7 +212,8 @@ option{
         widows: 4;
     }
 
-    #imprimible, h4, h6{
+
+    .imprimible, h4, h6{
       font-size: 9px;
     }
  
