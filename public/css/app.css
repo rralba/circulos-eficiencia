@@ -203,8 +203,11 @@ option{
     #nav-tab {display: none}
     #botones {display: none}
 
+    .tab-content{
+      size: letter landscape;
+    }
+
     .imprimible{
-        size: letter landscape;
         font-size: 9px;
         margin: 0;
         padding: 0;

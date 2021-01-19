@@ -30,7 +30,7 @@ class CreateProyectsTable extends Migration
             $table->string('metrico_secundario',150)->nulleable();
             $table->string('empresa',10);
             $table->enum('desc_proy',['0','1'])->default('0');
-            $table->enum('proy_status',['0','1','2'])->default('1');
+            $table->enum('proy_status',['0','1','2','3','4'])->default('1');
             $table->timestamps();
         });
     }

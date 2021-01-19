@@ -14,6 +14,23 @@
             }); 
         }); 
 
+        $(function() {
+          $('.monthYearPicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: "yy-mm-dd"
+          }).focus(function() {
+            var thisCalendar = $(this);
+            $('.ui-datepicker-calendar').detach();
+            $('.ui-datepicker-close').click(function() {
+              var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+              thisCalendar.datepicker('setDate', new Date(year, month, 1));
+            });
+          });
+        }); 
+
             //seccion de ocultar y mostrar contenido en formulario de propuestas
 
             $('#filanivel1').hide(); //ocultar mediante id

@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <h1>Proyectos en proceso de pago</h1>
-    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-usd" data-toggle="modal" data-target="#proceso" title="Proceso de Pago">  Proceso de Pago</button>
+    <button type="button" class="btn btn-outline-primary btn-lg float-right fa fa-plus" data-toggle="modal" data-target="#proceso" title="Proceso de Pago">  Agregar Beneficios</button> 
         <div class="table-responsive">
           <br>
           <table id="grid-basic" class="w3-table-all w3-card-4">
             <thead>
               <tr>
                 <th data-column-id="proyect_id">Proyecto</th>
-                <th data-column-id="id">Beneficio Id</th>
+                <th data-column-id="id" data-visible="false">Beneficio Id</th>
                 <th data-column-id="fecha_gen" data-visible="false">Fecha de Gz</th>
                 <th data-column-id="beneficio" data-visible="false">Beneficio</th>
                 <th data-column-id="fecha_gen1">Fecha de Generacion</th>
@@ -24,11 +24,11 @@
                 <tr>
                   <td>{{ $beneficio->proyecto }}</td>
                   <td>{{ $beneficio->id }}</td>
-                  <td>{{ $beneficio->fecha_gen }}</td>
-                  <td>{{ $beneficio->beneficio }}</td>
-                  <td>{{ \carbon\carbon::parse($beneficio->fecha_gen)->format('M-Y') }}</td>
-                  <td>{{ sprintf('$ %s', number_format($beneficio->beneficio,0, '.', ',')) }}</td>
-                  <td>{{ $beneficio->status }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               @endforeach
             </tbody>
@@ -39,47 +39,34 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceso de Pago</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Seleccionar Mes a Pagar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('procesos.create') }}" method = "POST">
+            <form action="{{ route('procesos.indexb') }}" method = "POST">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h3>Lista de proyectos para proceso de pago</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Proyectos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($data as $beneficio)
-                                <tr>
-                                    <td>*{{ $beneficio->proyecto }}</td>
-                                </tr>    
-                            @endforeach
-                        </tbody>
-                    </table>
                     <br>
                     <div class="row float-left col-12"> 
-                        <div class="col m-0 p-0 col-2">  
-                            <label for="recipient-name" class="col-form-label float-right">Mes Pago:</label>
+                        <div class="col col-6"></div>
+                        <div class="col m-0 p-0 col-3">  
+                            <label for="recipient-name" class="col-form-label float-right pr-2">Mes de Pago:</label>
                         </div>
-                        <div class="col m-0 p-0 col-10">
-                            <input class="form-control form-control-sm col-6 datepicker" name="mes" type="text" id="mes" required>
+                        <div class="col m-0 p-0 col-3">
+                            <input class="form-control form-control-sm monthYearPicker" name="mes" type="text" id="mes" required>
                         </div>
                     </div>    
                     <br>
-                    <br>
                     <div class="row float-left col-5">
-                    <button type="submit" class="btn btn-primary">Ejecutar</button>  
+                    <button type="submit" class="btn btn-primary ml-4">Ejecutar</button>  
                     </div>
+                    <br>
+                    <br>
                 </div>  
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -96,7 +83,7 @@
        <form class="container" action="{{ route('procesos.destroy') }}  " method="POST">
        {{ csrf_field() }}
        <input type="hidden" id="pinn" name="pinn">
-       <input type="hidden" id="proyestat" name="proyestat" value="0">
+       <input type="hidden" id="proyestat" name="proyestat" value="4">
           <div class="modal-body">
              <input type="hidden" id="del_id" name="del_id">
              <p>Seguro que deseas eliminar del proceso de pago el proyecto: <br> <strong id ="delete_name"></strong> ?</p>
@@ -104,7 +91,7 @@
           </div>
        </form>
        <div class="modal-footer">
-          <button onclick="document.getElementById('delete').style.display='none'" type="button" class="btn btn-secundary small">Cancel</button>
+          <button onclick="document.getElementById('delete').style.display='none'" type="submit" class="btn btn-secundary">Cancel</button>
        </div>
     </div>
   </div>

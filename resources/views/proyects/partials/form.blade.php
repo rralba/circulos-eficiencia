@@ -166,7 +166,7 @@
 </div>
 <div class="form-group">
     {{ Form::label('proy_status', 'Status del proyecto') }}
-    {{ Form::select('proy_status', ['0'=>'Cancelado','1'=>'Activo','2'=>'Terminado'], null, ['class' => 'form-control']) }}
+    {{ Form::select('proy_status', ['0'=>'Cancelado','1'=>'Activo','2'=>'Terminado','3'=>'Terminado en Proceso de Pago'], null, ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
     {{ Form::submit('Guardar', ['class' => 'btn btn-primary']) }}

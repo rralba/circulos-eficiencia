@@ -114,7 +114,7 @@
             <div class="col col-md-6 float-left m-0 p-0">
                 <p class="font-weight-bold float-right">Total de Pago:</p>
             </div>
-            <div class="col col-md-6 float-left ml-0 p-0">
+            <div class="col col-md-6 float-left ml-0 p-3">
                 <div class="font-weight-bold float-right">{{ sprintf('$ %s', number_format(($pagosuma),0, '.', ',')) }}</div>
             </div>
         </div>
@@ -124,7 +124,7 @@
     <br>
     </div>
 <footer>
-    <div class="container-fluid m-o p-0">
+    <div class="container-fluid m-o p-0 piepag">
         <div class="row">
             <div class="col-xs-12 col-md-4 m-0 p-0">
                 <h4 class="text-muted lead text-center">Atentamente:</h4>
@@ -280,7 +280,7 @@
     <br>
     </div>
 <footer>
-    <div class="container-fluid m-o p-0">
+    <div class="container-fluid m-o p-0 piepag">
         <div class="row">
             <div class="col-xs-12 col-md-4 m-0 p-0">
                 <h4 class="text-muted lead text-center">Atentamente:</h4>
@@ -433,7 +433,7 @@
     <br>
     </div>
 <footer>
-    <div class="firmas container-fluid m-o p-0">
+    <div class="firmas container-fluid m-o p-0 piepag">
         <div class="row">
             <div class="col-xs-12 col-md-4 m-0 p-0">
                 <h4 class="text-muted lead text-center">Atentamente:</h4>

@@ -116,6 +116,8 @@ Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')-
 //proceso
 Route::get('proyects-proceso', 'ProyectController@procesosindex')->name('procesos.index')
 ->middleware('permission:procesos.index');
+Route::post('proyects-procesob', 'ProyectController@procesosindexbenef')->name('procesos.indexb')
+->middleware('permission:procesos.index');
 Route::post('proyects-procesos', 'ProyectController@procesosdest')->name('procesos.destroy')
 ->middleware('permission:procesos.destroy');
 Route::post('proyects-process', 'ProyectController@procesospago')->name('procesos.create')

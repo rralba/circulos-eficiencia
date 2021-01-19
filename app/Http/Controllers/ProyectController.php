@@ -310,26 +310,36 @@ class ProyectController extends Controller
     public function procesosindex(Proyect $proyect, beneficio $beneficio)
     {
         $data = db::table('proyects')
+        ->where('proyects.proy_status', '=','3')
+        ->get();
+        return view('proyects.procesos', compact('data'));
+        // dd($data->all());  
+    }
+
+    public function procesosindexbenef(Proyect $proyect, beneficio $beneficio, Request $request)
+    {
+        $data = db::table('proyects')
+        ->where('proyects.proy_status', '=','3')
         ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
         ->select('beneficios.*', 'proyects.proyecto')
-        ->where('beneficios.status', '=','2')
+        ->where('beneficios.fecha_gen', '=', $request->mes)
         ->get();
-        return view('proyects.procesos', compact('data', 'proyect', 'beneficio'));
-        // dd($data->all());  
+        return view('proyects.procesosbenef', compact('data', 'proyect', 'beneficio'));
+        //dd($request->all());  
     }
 
     public function procesosdest(Request $request)
     {
-        $beneficio = beneficio::where('id', '=', $request->pinn)->first();
-        $beneficio->status = $request->input('proyestat');
-        $beneficio->save();
+        $proyectstatus = Proyect::where('id', '=', $request->pinn)->first();
+        $proyectstatus->proy_status = $request->input('proyestat');
+        $proyectstatus->save();
         return redirect()->back()->with('info', 'Status Actualizado');
         // dd($request->all());  
     }
 
     public function procesospago(Request $request)
     {
-        $mes1 = $request->mes;
+        $mes1 = $request->fechabenef;
         $nproy = db::table('proyects')
             ->select('beneficios.proyect_id','proyects.proyecto','proyects.nivel','proyects.desc_proy','beneficios.id','beneficios.beneficio','beneficios.status','integrants.empleado_id','integrants.rol','integrants.pago','empleados.nombre','empleados.posicion',
             'empleados.depto','beneficios.fecha_gen','beneficios.num_pago','integrants.pago','empleados.cia','descuentos.descuento','descuentos.beneficio_id','descuentos.sap_id')
@@ -339,7 +349,8 @@ class ProyectController extends Controller
             ->leftjoin('descuentos', function ($join){
                 $join->on('beneficios.id', '=', 'descuentos.beneficio_id')->on('descuentos.sap_id','=','integrants.empleado_id');
                 })
-            ->where('beneficios.status', '=', '2')
+            ->where('proyects.proy_status', '=', '3')
+            ->where('beneficios.fecha_gen', '=', $mes1)
             ->get(); 
             foreach ($nproy as $beneficios)
                 {
