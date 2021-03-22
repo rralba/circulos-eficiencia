@@ -17,6 +17,7 @@ class CreateReconocimientosTable extends Migration
             $table->increments('id')->unique();
             $table->integer('beneficio_id')->unsigned();
             $table->integer('empleado')->unsigned();
+            $table->decimal('previo',9,0);
             $table->decimal('pago',9,0);
             $table->decimal('descuento',9,0)->default('0');
             $table->string('concepto_desc',100)->nullable();

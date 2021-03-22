@@ -113,6 +113,10 @@ Route::post('proyect/editinteg/','EmpleadoController@getEmployees')->name('emple
 //reconocimientos
 Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');
+Route::get('reconocimientos/{fol}', 'ProyectController@printpago')->name('reconocimientos.printpago')
+->middleware('permission:reconocimientos.index');
+Route::post('proyects/reconocimientos', 'ProyectController@recupdate')->name('reconocimientos.update')
+->middleware('permission:reconocimientos.edit');
 //proceso
 Route::get('proyects-proceso', 'ProyectController@procesosindex')->name('procesos.index')
 ->middleware('permission:procesos.index');

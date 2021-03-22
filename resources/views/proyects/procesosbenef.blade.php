@@ -63,6 +63,15 @@
                         </tbody>
                     </table>   
                     <br>
+                    <div class="row float-left col-12"> 
+                        <div class="col col-6"></div>
+                        <div class="col m-0 p-0 col-3">  
+                            <label for="recipient-name" class="col-form-label float-right pr-2">Folio:</label>
+                        </div>
+                        <div class="col m-0 p-0 col-3">
+                            <input class="form-control form-control-sm tomayus" name="folio" type="text" id="folio" required>
+                        </div>
+                    </div>
                     <br>
                     <div class="row float-left col-5 ml-2">
                     <button type="submit" class="btn btn-primary">Ejecutar</button>  

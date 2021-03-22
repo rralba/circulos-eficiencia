@@ -1,0 +1,98 @@
+@media print and (orientation: landscape){
+
+    .imprimible{
+        size: letter;
+        margin: 0;
+        padding: 0;
+        font-size: 9px;
+        orphans: 4;
+        widows: 4;
+    }
+
+    html, body{
+        margin-top: 0mm;
+        margin-bottom:  0mm;
+        margin-right: 5mm;
+        margin-left: 5mm;
+        background: white;
+        padding: 0;
+    }
+  
+    .conta .imagen1{
+      width: 320px;
+      height: 80px;
+    }
+
+    .piepag{
+      margin-top: 30mm;
+      margin-bottom: 0mm;
+    }
+
+    #titulo{
+        font-size: 20px;
+    }
+    
+    hr {
+    display: block;
+    height: 1px;
+    background: transparent;
+    width: 100%;
+    border: none;
+    border-top: solid 1px #aaa;
+}
+
+    table, td{
+        font-size: 7px;
+    }
+    #nav-tab {display: none}
+    #botones {display: none}
+
+    .imprimible, h4, h6{
+      font-size: 9px;
+    }
+}
+
+@media print and (orientation: portrait){
+
+  .imprime{
+    size: letter;
+        margin: 0;
+        padding: 0;
+        orphans: 4;
+        widows: 4;
+    }
+
+    html, body{
+        margin-top: 0mm;
+        margin-bottom:  0mm;
+        margin-right: 5mm;
+        margin-left: 5mm;
+        background: white;
+        padding: 0;
+    }
+
+    .imprime br{
+      display: none;
+    }
+ 
+    .imprime, h3{
+      font-size: 15px;
+    }
+
+    .container-contact100{
+        margin: 0mm;
+        padding: 0;
+    }
+
+    .wrap-contact100{
+      margin: 0mm;
+      padding: 0;
+      width: 100%;
+    }
+    
+    .imprime .custom-control-label{
+      padding: 0;
+      margin-top: 0mm;
+      margin-bottom: 0mm;
+    }
+}
