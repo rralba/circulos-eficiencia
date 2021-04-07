@@ -1,6 +1,7 @@
 @extends('layouts.appm')
 
 @section('content')
+<div class="container">
 <span class="contact100-form-title">
   <h1 class="text-center">Propuesta de Círculo de Eficiencia</h1>
 </span>
@@ -180,19 +181,19 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>A Mejorar</h6></label>
-            <textarea class="form-control tomayus" maxlength="249" id="mejorar" name="mejorar" rows="3">{{ $propuesta->mejorar }}</textarea>
+            <textarea class="form-control tomayus" maxlength="249" id="mejorar" name="mejorar" rows="4">{{ $propuesta->mejorar }}</textarea>
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Objetivo</h6></label>
-            <textarea type="text" class="form-control tomayus" maxlength="249" id="objetivo" name="objetivo">{{ $propuesta->objetivo }}</textarea>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="objetivo" name="objetivo" rows="4">{{ $propuesta->objetivo }}</textarea>
           </div> 
         </div>
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Solución</h6></label>
-            <textarea type="text" class="form-control tomayus" maxlength="249" id="solucion" name="solucion">{{ $propuesta->solucion }}</textarea>
+            <textarea type="text" class="form-control tomayus" maxlength="249" id="solucion" name="solucion" rows="4">{{ $propuesta->solucion }}</textarea>
           </div> 
         </div>
          {{--  <div class="form-group col-md-12">
@@ -310,6 +311,7 @@
   </div> 
 </div>
 </form> 
+</div>
 <script type="text/javascript">
 
     // CSRF Token

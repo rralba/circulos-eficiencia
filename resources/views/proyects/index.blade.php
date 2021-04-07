@@ -3,6 +3,8 @@
 @section('content')
 <div class="container-fluid">
 <br>
+<h1 align="center">Proyectos Activos, Nivel 1 y 2</h1>
+<br>
     @can('proyects.create')
         <a href="{{ route('proyects.create') }}" 
         class="btn btn-sm btn-outline-primary float-right fa fa-file-o" title="Agregar Proyecto">

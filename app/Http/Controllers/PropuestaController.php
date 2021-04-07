@@ -219,9 +219,17 @@ class PropuestaController extends Controller
                 $images->save();
               }
         }
-        return view('resumen', compact('propuesta'));
+        return redirect()->route('propuesta.resumen',[$propuesta]);
         //dd($request->all());
     }
+
+    public function resumen(propuesta $propuesta)
+    {
+      //dd($propuesta);
+      return view('resumen', compact('propuesta'));
+    }
+
+
     /*
    AJAX request
    */
@@ -232,12 +240,12 @@ class PropuestaController extends Controller
       if($search == ''){
          $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion')->limit(5)->get();
       }else{
-         $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion')->where('nombre', 'like', '%' .$search . '%')->limit(20)->get();
+         $employees = empleado::orderby('nombre','asc')->select('id','nombre','posicion','depto','cia','direccion')->where('nombre', 'like', '%' .$search . '%')->limit(20)->get();
       }
 
       $response = array();
       foreach($employees as $employee){
-         $response[] = array("value"=>$employee->id,"label"=>$employee->nombre,"depto"=>$employee->posicion);
+         $response[] = array("value"=>$employee->id,"label"=>$employee->nombre,"depto"=>$employee->posicion,"depa"=>$employee->depto,"cia"=>$employee->cia,"dir"=>$employee->direccion);
       }
 
       return response()->json($response);

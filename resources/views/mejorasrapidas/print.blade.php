@@ -8,6 +8,7 @@
 	}
 </style>
 	<div class="imprime">
+	<div class="container-fluid">
 		<div class="conta">
             <div class="left col-sm-4 m-0 p-0">
                 <img src="{!! asset('jpg/logoce.jpg') !!}" class="float-center imagen1" alt="Logo de circulos de eficiencia" width="320" height="90">
@@ -343,7 +344,7 @@
       	    </div>
       </div>
       </div>
-      {{-- <div class="saltoDePagina"></div> --}}
+    </div>  
 	</div>
 	<div class="row" id="botones">
 		<div class="container-contact100-form-btn col-sm-12">

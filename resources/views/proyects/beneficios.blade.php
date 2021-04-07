@@ -167,6 +167,8 @@
          <form class="container" action="{{ route('descuentos.create', $proyect->id) }}  " method="POST">
             {{ csrf_field() }}
             <input type="hidden" id="benefi" name="benefi">
+            <input type="hidden" id="proye_id" name="proye_id">
+            <input type="hidden" id="fechagenn" name="fechagenn">
                 <div class="modal-body">
                   <p>Agregar y/o Editar beneficios</p>
                   <br>
@@ -187,7 +189,7 @@ $( document ).ready(function(){
         {
           return "<button onclick=\"document.getElementById('edit').style.display='block'\" data-pin=\"" + row.pin + "\" data-proyect_id=\"" + row.proyect_id + "\" data-id=\"" + row.id + "\" data-fecha_gen=\"" + row.fecha_gen + "\" data-beneficio=\"" + row.beneficio + "\" data-posicion=\"" + row.posicion + "\" data-nivel=\"" + row.nivel + "\" data-rol=\"" + row.rol + "\" data-direccion=\"" + row.direccion + "\" data-cia=\"" + row.cia + "\" class=\"btn btn-sm btn-outline-primary edit\"><span class=\"fa fa-pencil\"></span></button> " +
           "<button onclick=\"document.getElementById('reconocimientos').style.display='block'\" data-id=\"" + row.id + "\" data-status=\"" + row.status + "\" class=\"btn btn-sm btn-outline-secondary reconocimientos\"><span class=\"fa fa-calculator\"></span></button> " +
-          "<button onclick=\"document.getElementById('descuentos').style.display='block'\" data-id=\"" + row.id + "\" class=\"btn btn-sm btn-outline-secondary descuentos\"><span class=\"fa fa-exclamation-triangle\"></span></button> " +
+          "<button onclick=\"document.getElementById('descuentos').style.display='block'\" data-id=\"" + row.id + "\" data-fecha_gen=\"" + row.fecha_gen + "\" class=\"btn btn-sm btn-outline-secondary descuentos\"><span class=\"fa fa-exclamation-triangle\"></span></button> " +
           "<button onclick=\"document.getElementById('delete').style.display='block'\" data-id=\"" + row.id + "\" data-proyect_id=\"" + row.proyect_id + "\" data-beneficio1=\"" + row.beneficio1 + "\" class=\"btn btn-sm btn-outline-danger delete\"><span class=\"fa fa-trash\"></span></button>";
         }
       }}).on("loaded.rs.jquery.bootgrid", function (){
@@ -216,6 +218,7 @@ $( document ).ready(function(){
       });
       $(this).find(".descuentos").click(function (e) {
         $('#benefi').val($(this).data("id"));
+        $('#fechagenn').val($(this).data("fecha_gen"));
       });
     });
   });  

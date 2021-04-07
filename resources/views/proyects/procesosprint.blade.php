@@ -79,11 +79,15 @@
                         <td class="ellipsis">{{ $proyect->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->previo),0, '.', ',')) }}</td>
                         <td class="text-center">{{ $proyect->num_pago }}</td>
+                        @if (($proyect->ajuste)==0)
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->pago),0, '.', ',')) }}</td>
-                    </tr>   
-                    @endif
+                        @else
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->ajuste),0, '.', ',')) }}</td>
+                        @endif
+                    </tr> 
                     <?php $r = $proyect->pago;
-                          $pagos = $pagos + $r; ?>
+                          $pagos = $pagos + $r; ?>  
+                    @endif
                 @endforeach
             </tbody>
        </table>
@@ -134,7 +138,7 @@
     <div id="botones">
         <div class="row">
             <div class="col-xs-12 col-md-6">
-                <a class="imprimir btn btn-outline-primary btn-lg float-left fa fa-print" href="#">Imprimir</a>
+                <a class="imprimir btn btn-outline-primary btn-lg float-right fa fa-print" href="#">Imprimir</a>
             </div>
             <div class="col-md-6"></div>
         </div>        
@@ -212,9 +216,8 @@
                         <td class="text-center">{{ $proyec->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyec->pago),0, '.', ',')) }}</td>
                     </tr>
-                        
+                    <?php $pagosuma3 = $pagosuma3 + $proyec->pago; ?>    
                     @endif
-                    <?php $pagosuma3 = $pagosuma3 + $proyec->pago; ?>
                 @endforeach
             </tbody>
        </table>
@@ -262,6 +265,14 @@
         </div>  
     </div>
     <br>
+    <div id="botones">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <a class="imprimir btn btn-outline-primary btn-lg float-right fa fa-print" href="#">Imprimir</a>
+            </div>
+            <div class="col-md-6"></div>
+        </div>        
+    </div>
     </footer>
 </div>
     <br>
@@ -335,9 +346,8 @@
                         <td class="text-center">{{ $proyectt->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyectt->pago),0, '.', ',')) }}</td>
                     </tr>
-                        
+                    <?php $pagosuma1 = $pagosuma1 + $proyectt->pago; ?>    
                     @endif
-                    <?php $pagosuma1 = $pagosuma1 + $proyectt->pago; ?>
                 @endforeach
             </tbody>
        </table>
@@ -385,6 +395,14 @@
         </div>  
     </div>
     <br>
+    <div id="botones">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <a class="imprimir btn btn-outline-primary btn-lg float-right fa fa-print" href="#">Imprimir</a>
+            </div>
+            <div class="col-md-6"></div>
+        </div>        
+    </div>
     </footer>
 </div>
     <br>
@@ -458,9 +476,8 @@
                         <td class="text-center">{{ $proyecttt->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyecttt->pago),0, '.', ',')) }}</td>
                     </tr>
-                       
-                    @endif
                     <?php $pagosuma2 = $pagosuma2 + $proyecttt->pago; ?>
+                    @endif
                 @endforeach
             </tbody>
        </table>
@@ -508,6 +525,14 @@
         </div>  
     </div>
     <br>
+    <div id="botones">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <a class="imprimir btn btn-outline-primary btn-lg float-right fa fa-print" href="#">Imprimir</a>
+            </div>
+            <div class="col-md-6"></div>
+        </div>        
+    </div>
 </footer>
 </div>
     <br>   

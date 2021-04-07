@@ -1,10 +1,11 @@
 @extends('layouts.appm')
 
 @section('content')
-@section('submenu')
-    <h1 class="text-center">Circulos de Eficiencia Nivel 3</h1>
-@endsection
-<div class="container-fluid">   
+<div class="container-fluid">
+<br>
+<h1 class="text-center">Circulos de Eficiencia Nivel 3</h1>
+<hr>
+<br>   
     <div class="table-responsive">
             <table id="grid-basic" class="w3-table-all w3-card-4">
                 <thead>

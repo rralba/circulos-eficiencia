@@ -278,7 +278,7 @@ class ProyectController extends Controller
         ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
         ->join('reconocimientos', 'beneficios.id', '=', 'reconocimientos.beneficio_id')
         ->join('empleados', 'reconocimientos.empleado', '=', 'empleados.id')
-        ->select('reconocimientos.id','reconocimientos.beneficio_id','reconocimientos.empleado','reconocimientos.previo','reconocimientos.pago','reconocimientos.ajuste', 'empleados.nombre')
+        ->select('reconocimientos.id','reconocimientos.beneficio_id','reconocimientos.empleado','reconocimientos.previo','reconocimientos.pago','reconocimientos.ajuste', 'empleados.nombre','beneficios.fecha_gen')
         ->where('proyects.id', '=', $proyect->id)
         ->get();
         //dd($data);
@@ -287,11 +287,13 @@ class ProyectController extends Controller
 
     public function recupdate(Request $request)
     {
-        $reconocimiento = reconocimiento::where('id', '=', $request->proyect_id)->first();
-        $reconocimiento->ajuste = $request->reco;
-        $reconocimiento->save();
+        $valor = $request->reco;
+        $valor2 = str_replace(array("$",","),"",$valor);
+        $reconocimient = reconocimiento::where('id', '=', $request->proyect_id)->first();
+        $reconocimient->ajuste = $valor2;
+        $reconocimient->save();
         return redirect()->back()->with('info', 'Reconocimiento Actualizado');
-        //dd($request->all());
+        //dd($reconocimient);
     }
 
 
@@ -327,8 +329,9 @@ class ProyectController extends Controller
         $data = db::table('proyects')
         ->where('proyects.proy_status', '=','3')
         ->get();
-        return view('proyects.procesos', compact('data'));
-        // dd($data->all());  
+        $folios = beneficio::where('foliopago', '<>', '')->groupBy('foliopago')->get()->filter(function ($value) { return !empty($value); });
+        return view('proyects.procesos', compact('data','folios'));
+        //dd($folios);  
     }
 
     public function procesosindexbenef(Proyect $proyect, beneficio $beneficio, Request $request)
@@ -471,6 +474,10 @@ class ProyectController extends Controller
                                $beneficio = $beneficio - $beneficios->descuento;
                            }
                        }
+                       if (($beneficio) < 0)
+                        {
+                            $beneficio = 0;
+                        }
                     }
                     else
                     {
@@ -566,7 +573,11 @@ class ProyectController extends Controller
                            {
                                $beneficio = $beneficio - $beneficios->descuento;
                            }
-                       }  
+                       } 
+                       if (($beneficio) < 0)
+                        {
+                            $beneficio = 0;
+                        } 
                     } 
                     $npago = db::table('beneficios')
                         ->where('proyect_id', '=', $x->proyect_id)
@@ -592,22 +603,18 @@ class ProyectController extends Controller
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)
     {
         $benef = $request->input('benefi'); 
+        $fgen = $request->input('fechagenn');
         $desctot = DB::table('descuentos')
             ->where('beneficio_id','=',$benef)
             ->count();
         if (($desctot) > 0){
-        $dat = db::table('proyects')
-            ->select('beneficios.*', 'integrants.empleado_id', 'integrants.rol', 'integrants.pago', 'empleados.nombre', 'empleados.posicion','descuentos.sap_id', 'descuentos.descuento', 'descuentos.concepto')
-            ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
-            ->join('integrants', 'beneficios.proyect_id', '=', 'integrants.proyect_id')
-            ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
-            ->join('descuentos', 'beneficios.id', '=', 'descuentos.beneficio_id')
-            ->where('beneficios.proyect_id', '=',$proyect->id)
-            ->where('beneficios.id', '=',$benef)    
-            ->groupBy('empleado_id')
-            ->orderBy('rol', 'asc')
+        $dat = db::table('descuentos')
+            ->select('descuentos.*','empleados.nombre')
+            ->join('empleados', 'descuentos.sap_id', '=','empleados.id')
+            ->where('descuentos.beneficio_id', '=',$benef)
+            ->groupBy('nombre')
             ->get();
-            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot'));
+            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot', 'fgen'));
         }
         else{
         $dat = db::table('proyects')
@@ -620,14 +627,43 @@ class ProyectController extends Controller
             ->groupBy('empleado_id')
             ->orderBy('rol', 'asc')
             ->get();
-            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot'));
+            return view('proyects.descuentos', compact('dat', 'proyect', 'request', 'beneficio', 'benef', 'desctot', 'fgen'));
         }
-        //dd($desctot);  
+        //dd($desctot, $dat, $fgen);  
     } 
 
-    public function descuentostore(Request $request)
+    public function descuentostore(Request $request, Proyect $proyect)
     {
-        dd($request->all());
+        if (($request->desctot) == 0){
+        $benef = $request->benefif;
+        $empl = $request->sapid;
+        $prev = $request->descu;
+        $rea = $request->concep;
+        $i=0;
+        foreach ($request->benefif as $request) {
+            descuento::create([
+                'beneficio_id' => $benef[$i],
+                'sap_id' => $empl[$i],
+                'descuento' =>$prev[$i],
+                'concepto' => $rea[$i]
+            ]);
+            $i++;
+        }
+        return redirect()->route('beneficios.index', [$proyect->id])->with('info', 'Descuentos guardado con exito');
+        }
+        else{
+        $r = 0;
+        foreach($request->benefif as $requestt)
+        {    
+            $descuento = descuento::where('id', '=', $requestt)->first();
+            $descuento->descuento = $request->descu[$r];
+            $descuento->concepto = $request->concep[$r];
+            $descuento->save();
+            $r++;
+        } 
+        return redirect()->route('beneficios.index', [$proyect->id])->with('info', 'Descuentos Actualizado con exito');         
+        }
+        //dd($request->all());
     }
 
     public function procesosave(Request $request)
@@ -689,5 +725,25 @@ class ProyectController extends Controller
             //$jsonp = json_encode($pagof);
             //dd($jsonp);
         return view('proyects.pagosprint', compact('jsonp','fol'));
+    }
+    public function procesosprint(Request $request)
+    {
+        $fol = $request->folio;
+        $jsonp = db::table('proyects')
+            ->join('integrants', 'proyects.id', '=', 'integrants.proyect_id')
+            ->join('empleados', 'integrants.empleado_id', '=', 'empleados.id')
+            ->join('beneficios', 'proyects.id', '=', 'beneficios.proyect_id')
+            ->leftjoin('reconocimientos', function ($join){
+                $join->on('beneficios.id', '=', 'reconocimientos.beneficio_id')->on('reconocimientos.empleado','=','integrants.empleado_id');
+                })
+            ->select('reconocimientos.empleado','reconocimientos.previo','reconocimientos.pago','reconocimientos.id','reconocimientos.ajuste','beneficios.num_pago','beneficios.foliopago','empleados.nombre','empleados.posicion','empleados.depto','empleados.cia','proyects.proyecto')
+            ->where('beneficios.foliopago', '=', $fol)
+            ->where('integrants.pago', '=', '1')
+            ->orderBy('proyecto', 'asc')
+            ->orderBy('pago', 'des')
+            ->groupBy('id')
+            ->get();
+        return view('proyects.procesosprint', compact('jsonp','fol'));
+        //dd($request->all());
     }
 }

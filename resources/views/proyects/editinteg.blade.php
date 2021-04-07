@@ -43,8 +43,8 @@
             </table>
     </div>
 </div>
-<div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+<div class="modal fade" id="adduser">
+      <div class="modal-dialog" role="dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Agreragr integrante</h5>
@@ -64,15 +64,15 @@
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="nombre" required>
+                  <input type="text" class="form-control" id="nombre" name="nombre" required>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Departamento:</label>
-                  <input type="text" class="form-control" id="depto" readonly>
+                  <input type="text" class="form-control" id="depto" name="depto" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Posicion:</label>
-                  <input type="text" class="form-control" id="posicion" readonly>
+                  <input type="text" class="form-control" id="posicion" name="posicion" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Rol:</label>
@@ -84,11 +84,11 @@
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Direccion:</label>
-                  <input type="select" class="form-control" id="direccion" readonly>
+                  <input type="select" class="form-control" id="direccion" name="direccion" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Compañia:</label>
-                  <input type="text" class="form-control" id="cia" readonly>
+                  <input type="text" class="form-control" id="cia" name="cia" readonly>
               </div>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
@@ -99,7 +99,7 @@
         </div>
       </div>
     </div>
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="edit">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
@@ -117,11 +117,11 @@
          <input type="hidden" id="proy_id" name="proy_id">
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Id sap:</label>
-                  <input type="text" class="form-control" id="edit_id" name="edit_id" required>
+                  <input type="text" class="form-control" id="edit_id" name="edit_id" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="fname" name="" readonly>
+                  <input type="text" class="form-control" id="fname" name="fname" required>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Departamento:</label>
@@ -130,10 +130,6 @@
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Posicion:</label>
                   <input type="text" class="form-control" id="gender" name="" readonly>
-              </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Nivel:</label>
-                  <input type="text" class="form-control" id="email" name="" readonly>
               </div>
               <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Rol:</label>
@@ -222,13 +218,15 @@
     
      // CSRF Token
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $(document).ready(function(){
+      $(document).ready(function(){
 
       $( "#nombre" ).autocomplete({
+        appendTo: "#adduser",
+        "position": { my : "right top", at: "right bottom" },
         source: function( request, response ) {
           // Fetch data
           $.ajax({
-            url:"{{route('empleados.getEmployees')}}",
+            url:"{{route('propuesta.getEmployees')}}",
             type: 'post',
             dataType: "json",
             data: {
@@ -242,15 +240,46 @@
         },
         select: function (event, ui) {
            // Set selection
-           $('#nombre').val(ui.item.nombre); // display the selected text
-           $('#id').val(ui.item.id); // save selected id to input
-           $('#depto').val(ui.item.depto);
-           $('#posicion').val(ui.item.posicion);
-           $('#direccion').val(ui.item.direccion);
+           $('#nombre').val(ui.item.label); // display the selected text
+           $('#id').val(ui.item.value); // save selected id to input
+           $('#depto').val(ui.item.depa);
+           $('#posicion').val(ui.item.depto);
+           $('#direccion').val(ui.item.dir);
            $('#cia').val(ui.item.cia);
            return false;
         }
-      });    
+      });  
+
+      $( "#fname" ).autocomplete({
+        appendTo: "#edit",
+        "position": { my : "right top", at: "right bottom" },
+        source: function( request, response ) {
+          // Fetch data
+          $.ajax({
+            url:"{{route('propuesta.getEmployees')}}",
+            type: 'post',
+            dataType: "json",
+            data: {
+               _token: CSRF_TOKEN,
+               search: request.term
+            },
+            success: function( data ) {
+               response( data );
+            }
+          });
+        },
+        select: function (event, ui) {
+           // Set selection
+           $('#fname').val(ui.item.label); // display the selected text
+           $('#edit_id').val(ui.item.value); // save selected id to input
+           $('#lname').val(ui.item.depa);
+           $('#gender').val(ui.item.depto);
+           $('#salary').val(ui.item.dir);
+           $('#comp').val(ui.item.cia);
+           return false;
+        }
+      });  
+
     });
 </script>
 @endsection 

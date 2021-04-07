@@ -168,9 +168,7 @@
                 <a class="navbar-brand navbar-right"><img src="{!! asset('jpg/logo_RH.png') !!}" alt="logo RH"></a>
             </div>
         </nav>
-            <div class="submenu">
-                @yield('submenu')
-            </div>  
+           
         @if(session('info'))
         <div class="container">
             <div class="row">

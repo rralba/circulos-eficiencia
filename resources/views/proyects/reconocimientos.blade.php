@@ -7,8 +7,9 @@
         <table id="grid-basic" class="w3-table-all w3-card-4">
             <thead>
                 <tr>
-                    <th data-column-id="proyect_id">proyect_id</th>
-                    <th data-column-id="id">Benefico</th>
+                    <th data-column-id="proyect_id" data-visible="false">proyect_id</th>
+                    <th data-column-id="id" data-visible="false">Benefico</th>
+                    <th data-column-id="fecha_gen">Fecha del Beneficio</th>
                     <th data-column-id="nombre">Empleado</th>
                     <th data-column-id="reconocimiento">Pago</th>
                     <th data-column-id="ajuste">Ajustado</th>
@@ -21,6 +22,7 @@
                     <tr>
                       <td>{{ $data->id }}</td>
                       <td>{{ $data->beneficio_id }}</td>
+                      <td>{{ \carbon\carbon::parse($data->fecha_gen)->format('M-Y') }}</td>
                       <td>{{ $data->nombre }}</td>
                       <td class="text-right">{{ sprintf('$ %s', number_format(($data->pago),0, '.', ',')) }}</td>
                       <td class="text-right">{{ sprintf('$ %s', number_format(($data->ajuste),0, '.', ',')) }}</td>

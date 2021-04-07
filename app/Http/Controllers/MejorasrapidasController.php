@@ -104,8 +104,8 @@ class MejorasrapidasController extends Controller
                     $propuesta = propuesta::where('id', '=', $request->id)->first();
                     $propuesta->identificador = 5;
                     $propuesta->save();
-
-                    return view('mejorasrapidas.print', compact('mejora'));
+                    return redirect()->action([MejorasrapidasController::class, 'print'], [$mejora]);
+                    //return view('mejorasrapidas.print', compact('mejora'));
                 }
             
 

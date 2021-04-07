@@ -181,11 +181,9 @@
         </div>
         @endif
         <main class="py-1">
-            <div class="container-contact100">
-                <div class="wrap-contact100">
+           
                     @yield('content')
-                </div>
-            </div>
+            
         </main>
     </div>
 </body>

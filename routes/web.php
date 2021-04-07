@@ -108,8 +108,6 @@ Route::get('empleados/create', 'EmpleadoController@create')->name('empleados.cre
 ->middleware('permission:empleados.create');
 Route::get('empleados/{empleado}', 'EmpleadoController@show')->name('empleados.show')
 ->middleware('permission:empleados.show');
-Route::post('proyect/editinteg/','EmpleadoController@getEmployees')->name('empleados.getEmployees')
-->middleware('permission:integrants.edit');
 //reconocimientos
 Route::get('proyects/{proyect}/reconocimientos', 'ProyectController@recoindex')->name('reconocimientos.index')
 ->middleware('permission:reconocimientos.index');
@@ -128,6 +126,8 @@ Route::post('proyects-process', 'ProyectController@procesospago')->name('proceso
 ->middleware('permission:procesos.create');
 Route::post('proyects-save', 'ProyectController@procesosave')->name('procesos.store')
 ->middleware('permission:procesos.create');
+Route::post('proyects-procesoprint', 'ProyectController@procesosprint')->name('procesos.print')
+->middleware('permission:procesos.index');
 //descuentos
 Route::post('proyects/{proyect}/beneficios/descuentos', 'ProyectController@desceuntoscrear')->name('descuentos.create')
 ->middleware('permission:descuentos.create');
@@ -166,6 +166,8 @@ Route::get('propuestas/validate/{propuesta}', 'PropuestaController@validat')->na
 ->middleware('permission:propuestas.update');
 Route::post('propuestas/accept', 'MejorasrapidasController@accept')->name('propuesta.accept')
 ->middleware('permission:propuestas.update');
+Route::get('propuestas/resumen/{propuesta}', 'PropuestaController@resumen')->name('propuesta.resumen')
+->middleware('permission:propuestas.edit');
 
 
 //mantenimiento y actualizaciones
