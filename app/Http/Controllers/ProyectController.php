@@ -597,7 +597,7 @@ class ProyectController extends Controller
                 array_multisort($count1, SORT_ASC, SORT_NUMERIC, $count2, SORT_DESC, SORT_NUMERIC, $nuwbar);
                  $json = json_encode($nuwbar);
          return view('proyects.pagos', compact('json','mes1', 'folio'));
-        //dd($nuwbar);  
+        //dd($json);  
     }
 
     public function desceuntoscrear(Request $request, Proyect $proyect, beneficio $beneficio)

@@ -67,8 +67,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $pagos=0; ?>
-                <?php $r=0; ?>
+                <?php $pagos=0;
+                 $r=0; ?>
                 @foreach($jsonp as $proyect)
                     @if (($proyect->cia) > 2000)
                     <tr>
@@ -81,12 +81,13 @@
                         <td class="text-center">{{ $proyect->num_pago }}</td>
                         @if (($proyect->ajuste)==0)
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->pago),0, '.', ',')) }}</td>
+                        <?php $r = $proyect->pago; ?>
                         @else
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->ajuste),0, '.', ',')) }}</td>
+                        <?php $r = $proyect->ajuste; ?>
                         @endif
                     </tr> 
-                    <?php $r = $proyect->pago;
-                          $pagos = $pagos + $r; ?>  
+                          <?php $pagos = $pagos + $r; ?>
                     @endif
                 @endforeach
             </tbody>
@@ -202,7 +203,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $pagosuma3=0; ?>
+                <?php $pagosuma3=0; 
+                $r=0;?>
                 @foreach($jsonp as $proyec)
                     @if (($proyec->cia) < 1000)
                      
@@ -214,9 +216,15 @@
                         <td class="ellipsis">{{ $proyec->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyec->previo),0, '.', ',')) }}</td>
                         <td class="text-center">{{ $proyec->num_pago }}</td>
+                        @if (($proyec->ajuste)==0)
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyec->pago),0, '.', ',')) }}</td>
+                        <?php $r = $proyec->pago; ?>
+                        @else
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($proyec->ajuste),0, '.', ',')) }}</td>
+                        <?php $r = $proyec->ajuste; ?>
+                        @endif
                     </tr>
-                    <?php $pagosuma3 = $pagosuma3 + $proyec->pago; ?>    
+                    <?php $pagosuma3 = $pagosuma3 + $r; ?>    
                     @endif
                 @endforeach
             </tbody>
@@ -332,7 +340,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $pagosuma1=0; ?>
+                <?php $pagosuma1=0;
+                $r=0; ?>
                 @foreach($jsonp as $proyectt)
                     @if (($proyectt->cia) == 1000)
                      
@@ -344,9 +353,15 @@
                         <td class="ellipsis">{{ $proyectt->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyectt->previo),0, '.', ',')) }}</td>
                         <td class="text-center">{{ $proyectt->num_pago }}</td>
+                        @if (($proyectt->ajuste)==0)
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyectt->pago),0, '.', ',')) }}</td>
+                        <?php $r = $proyectt->pago; ?>
+                        @else
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($proyectt->ajuste),0, '.', ',')) }}</td>
+                        <?php $r = $proyectt->ajuste; ?>
+                        @endif
                     </tr>
-                    <?php $pagosuma1 = $pagosuma1 + $proyectt->pago; ?>    
+                    <?php $pagosuma1 = $pagosuma1 + $r; ?>    
                     @endif
                 @endforeach
             </tbody>
@@ -462,7 +477,8 @@
                 </tr>
             </thead>
             <tbody>
-              <?php $pagosuma2=0; ?>
+              <?php $pagosuma2=0;
+              $r=0; ?>
                 @foreach($jsonp as $proyecttt)
                     @if (($proyecttt->cia) == 2000)
                         
@@ -474,9 +490,15 @@
                         <td class="ellipsis">{{ $proyecttt->proyecto }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyecttt->previo),0, '.', ',')) }}</td>
                         <td class="text-center">{{ $proyecttt->num_pago }}</td>
+                        @if (($proyecttt->ajuste)==0)
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyecttt->pago),0, '.', ',')) }}</td>
+                        <?php $r = $proyecttt->pago; ?>
+                        @else
+                        <td class="text-right">{{ sprintf('$ %s', number_format(($proyecttt->ajuste),0, '.', ',')) }}</td>
+                        <?php $r = $proyecttt->ajuste; ?>
+                        @endif
                     </tr>
-                    <?php $pagosuma2 = $pagosuma2 + $proyecttt->pago; ?>
+                    <?php $pagosuma2 = $pagosuma2 + $r; ?>
                     @endif
                 @endforeach
             </tbody>

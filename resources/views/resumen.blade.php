@@ -1,12 +1,13 @@
 @extends('layouts.appm')
 
 @section('content')
-<div id="imprimible">
+<div class="container-fluid" id="imprimible">
+  <br>
 <span class="contact100-form-title">
   <h1 class="text-center">Registro de Propuesta de Círculo de Eficiencia</h1>
 </span>
 <form action="{{ route('propuesta') }}">
-  <fieldset disabled>
+  <fieldset disabled class="pl-4 pr-4">
     <span class="contact100-form-title">
       <h4 class="text-left">GRACIAS,</h4>
       <h4 class="text-left">Solicitud guardada con Éxito,</h4>
@@ -81,7 +82,7 @@
             <input type="text" class="form-control" value="{{ $propuesta->asesor }}">
           </div>
         </div>
-      @if (($propuesta->identificador) == (1))
+      @if ((($propuesta->identificador) == 1) or ($propuesta->identificador) == 3)
         <div class="row">
           <div class="form-group col-md-12">
             <label for="inputEmail4"><h6>Nombre del Proyecto</h6></label>

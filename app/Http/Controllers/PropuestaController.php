@@ -138,7 +138,7 @@ class PropuestaController extends Controller
           $propuesta->save();
         
         
-        if (($request->integrantes) == 2) 
+        if (($request->identificador) == 1) 
         {
         	foreach ($request->integp as $inte) 
         	{
@@ -171,7 +171,7 @@ class PropuestaController extends Controller
         }
         else
         {
-        	if (($request->integrantes) == 3)
+        	if (($request->identificador) == 2)
 		        {
   		        foreach ($request->integm as $inte) 
                 {

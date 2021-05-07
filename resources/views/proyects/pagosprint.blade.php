@@ -81,9 +81,9 @@
                         <td class="text-center">{{ $proyect->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyect->pago),0, '.', ',')) }}</td>
                     </tr>   
-                    @endif
                     <?php $r = $proyect->pago;
-                          $pagos = $pagos + $r; ?>
+                    $pagos = $pagos + $r; ?>
+                    @endif
                 @endforeach
             </tbody>
        </table>
@@ -212,9 +212,8 @@
                         <td class="text-center">{{ $proyec->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyec->pago),0, '.', ',')) }}</td>
                     </tr>
-                        
-                    @endif
                     <?php $pagosuma3 = $pagosuma3 + $proyec->pago; ?>
+                    @endif   
                 @endforeach
             </tbody>
        </table>
@@ -335,9 +334,8 @@
                         <td class="text-center">{{ $proyectt->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyectt->pago),0, '.', ',')) }}</td>
                     </tr>
-                        
-                    @endif
                     <?php $pagosuma1 = $pagosuma1 + $proyectt->pago; ?>
+                    @endif
                 @endforeach
             </tbody>
        </table>
@@ -458,9 +456,8 @@
                         <td class="text-center">{{ $proyecttt->num_pago }}</td>
                         <td class="text-right">{{ sprintf('$ %s', number_format(($proyecttt->pago),0, '.', ',')) }}</td>
                     </tr>
-                       
-                    @endif
                     <?php $pagosuma2 = $pagosuma2 + $proyecttt->pago; ?>
+                    @endif
                 @endforeach
             </tbody>
        </table>

@@ -314,6 +314,12 @@
 </div>
 <script type="text/javascript">
 
+  window.addEventListener("keypress", function(event){
+    if (event.keyCode == 13){
+        event.preventDefault();
+    }
+}, false);
+
     // CSRF Token
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).ready(function(){

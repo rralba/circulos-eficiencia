@@ -27,7 +27,7 @@
           background-color: #154398;
           background-image: url("overlay.svg"),linear-gradient(45deg, #154398 0%, #006fe6 100%);
           background-size: cover;
-          z-index: 0;
+          z-index: 1000;
 }
       
 

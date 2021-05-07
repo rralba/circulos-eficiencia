@@ -187,11 +187,104 @@ class MejorasrapidasController extends Controller
     }   
     public function edit(mejora $mejora)
     {
-        return view('mejorasrapidas.edit', compact('mejora'));
-        //dd($request);
+        return view('mejorasrapidas.edit3', compact('mejora'));
+        //dd($mejora->empleadoss);
     }   
-    public function update(mejora $mejora)
+    public function update(Request $request)
     {
-        dd($request);
+        $mejoraupdate = mejora::where('id', '=', $request->id)->first();
+        $mejoraupdate->id_autoriza = $request->id_jefe;
+        $mejoraupdate->status = $request->status;
+        $mejoraupdate->valor = $request->valor;
+        $mejoraupdate->desperdicio = $request->desperdicio;
+        $mejoraupdate->amejorar = $request->mejorar;
+        $mejoraupdate->objetivo = $request->objetivo;
+        $mejoraupdate->solucion = $request->solucion;
+        $mejoraupdate->save();
+
+        $folio = $request->id;
+        $original = $request->intego;
+        $nueva = $request->integ;
+        $ids = $request->integh;
+        $i=0;
+        foreach ($request->intego as $new) {
+            if (($ids[$i]) == 0) {
+                if (($nueva[$i]) > 0) {
+                    if (($i) == 0) {
+                        $integrante = new integrant();
+                        $integrante->empleado_id = $nueva[$i];
+                        $integrante->mejora_id = $folio;
+                        $integrante->rol = 1;
+                        $integrante->pago = 1;
+                        $integrante->save();
+                    }
+                    else{
+                        $integrante = new integrant();
+                        $integrante->empleado_id = $nueva[$i];
+                        $integrante->mejora_id = $folio;
+                        $integrante->rol = 2;
+                        $integrante->pago = 1;
+                        $integrante->save();  
+                    }
+                }    
+                else{
+                    $integrante = new integrant();
+                    $integrante->empleado_id = 0;
+                    $integrante->mejora_id = $folio;
+                    $integrante->rol = 3;
+                    $integrante->pago = 0;
+                    $integrante->save();
+                }    
+            }
+            else{
+                if (($nueva[$i]) > 0) {
+                    if (($nueva[$i]) <> ($original)) {
+                        if (($original) > 0) {
+                            if (($i) == 0) {
+                                $integrante = integrant::where('id', '=', $ids[$i])->first();
+                                $integrante->empleado_id = $nueva[$i];
+                                $integrante->rol = 1;
+                                $integrante->pago = 1;
+                                $integrante->save();
+                            }
+                            else{
+                                $integrante = integrant::where('id', '=', $ids[$i])->first();
+                                $integrante->empleado_id = $nueva[$i];
+                                $integrante->rol = 2;
+                                $integrante->pago = 1;
+                                $integrante->save();  
+                            }
+                        }
+                        else{
+                            if (($i) == 0) {
+                                $integrante = integrant::where('id', '=', $ids[$i])->first();
+                                $integrante->empleado_id = $nueva[$i];
+                                $integrante->rol = 1;
+                                $integrante->pago = 1;
+                                $integrante->save();
+                            }
+                            else{
+                                $integrante = integrant::where('id', '=', $ids[$i])->first();
+                                $integrante->empleado_id = $nueva[$i];
+                                $integrante->rol = 2;
+                                $integrante->pago = 1;
+                                $integrante->save();  
+                            }
+                        }    
+                    }
+                }
+                else{
+                    $integrante = integrant::where('id', '=', $ids[$i])->first();
+                    $integrante->empleado_id = $nueva[$i];
+                    $integrante->rol = 3;
+                    $integrante->pago = 0;
+                    $integrante->save();    
+                }
+            }
+        $i++;
+        }
+
+        //dd($request->all());
+        return redirect()->back();
     }   
 }
